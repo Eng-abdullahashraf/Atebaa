@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "888295339059",
+    "project_id": "atebaa-99f51",
+    "storage_bucket": "atebaa-99f51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888295339059:android:4feb7aa3ae8ded69c71f46",
+        "android_client_info": {
+          "package_name": "com.example.atebaa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnqV5r75SYUZnZ4-y8KKq0V9LErc7Wqr0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
