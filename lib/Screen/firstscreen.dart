@@ -40,14 +40,14 @@ class FirstScreen extends StatelessWidget {
                 ),
                 AppTextField(
                     dataList: [
-                      SelectedListItem(name: 'Manzala'),
-                      SelectedListItem(name: 'Bosrat'),
-                      SelectedListItem(name: 'Gamaliya'),
-                      SelectedListItem(name: 'Matria'),
+                      SelectedListItem(name: 'المنزلة'),
+                      SelectedListItem(name: 'البصراط'),
+                      SelectedListItem(name: 'الجمالية'),
+                      SelectedListItem(name: 'المطرية'),
                     ],
                     textEditingController: city,
-                    title: 'Select city',
-                    hint: 'Your City',
+                    title: 'اختر مدينتك',
+                    hint: 'مدينتك',
                     isCitySelected: true),
                 AppTextField(
                     dataList: [
@@ -57,10 +57,10 @@ class FirstScreen extends StatelessWidget {
                       SelectedListItem(name: 'نساء'),
                     ],
                     textEditingController: specialty,
-                    title: 'Select specialty',
-                    hint: 'Your specialty',
+                    title: 'اختر تخصص الدكتور',
+                    hint: 'التخصص',
                     isCitySelected: true),
-                buttons('Search', 45, double.infinity, 25,
+                buttons('بحث', 45, double.infinity, 25,
                     Appcolor().firstcolor, Appcolor().thirdcolor, () {
                   controller.getdata();
                   // Get.to(Doctors());
