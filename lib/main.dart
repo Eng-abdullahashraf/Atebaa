@@ -1,11 +1,23 @@
+
+import 'dart:io';
+
 import 'package:atebaa/Screen/splash.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() async{
-  //WidgetsFlutterBinding.ensureInitialized();
-  //await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  Platform.isAndroid?
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: "AIzaSyCnqV5r75SYUZnZ4-y8KKq0V9LErc7Wqr0",
+      appId: "1:888295339059:android:4feb7aa3ae8ded69c71f46",
+      messagingSenderId: "888295339059",
+      projectId: "atebaa-99f51",
+    ),
+  )
+  :await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
