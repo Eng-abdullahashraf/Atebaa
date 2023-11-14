@@ -1,4 +1,5 @@
 
+import 'package:atebaa/controller/homecontroller.dart';
 import 'package:drop_down_list/drop_down_list.dart';
 import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,6 +27,7 @@ class AppTextField extends StatefulWidget {
 
 class _AppTextFieldState extends State<AppTextField> {
   /// This is on text changed method which will display on city text field on changed.
+
   void onTextFieldTap() {
     DropDownState(
       DropDown(
@@ -61,6 +63,7 @@ class _AppTextFieldState extends State<AppTextField> {
   }
 
   void showSnackBar(String message) {
+
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
   }

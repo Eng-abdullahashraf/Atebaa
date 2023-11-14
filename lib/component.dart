@@ -56,13 +56,13 @@ Widget buttons(
       ),
     );
 
-Widget doctorItem() => Padding(
-      padding: const EdgeInsets.only(left: 10,right: 10),
+Widget doctorItem(doctors,i) => Padding(
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: Container(
         decoration: BoxDecoration(
-            color: Appcolor().secondcolor,
+            color: Appcolor().thirdcolor,
             borderRadius: BorderRadius.circular(25)),
-        height: 125.0,
+        height: 150.0,
         width: double.infinity,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -78,10 +78,27 @@ Widget doctorItem() => Padding(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("MOHAMED SHABANA"),
-                Text("Batna"),
-                Text("Manzala,Dakahlia"),
-                Text("+20 01001050863"),
+                Text(
+                  "${doctors[i]["name"]}",
+                  style: TextStyle(
+                      color: Appcolor().firstcolor,
+                      fontFamily: "ElMessiri-Bold",
+                      fontSize: 20),
+                ),
+                Container(
+                    decoration: BoxDecoration(
+                      color: Appcolor().secondcolor,
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10,right: 10),
+                      child: Text(
+                        "${doctors[i]["special"]}",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    )),
+                Text("${doctors[i]["address"]}",style: TextStyle(fontSize: 18),),
+                Text("(+20) ${doctors[i]["phone"]}",style: TextStyle(fontSize: 18),),
               ],
             )
           ],

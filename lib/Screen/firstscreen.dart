@@ -12,17 +12,10 @@ import 'doctors.dart';
 class FirstScreen extends StatelessWidget {
   FirstScreen({Key? key}) : super(key: key);
 
-  TextEditingController city = TextEditingController();
+  TextEditingController cites = TextEditingController();
   TextEditingController specialty = TextEditingController();
 
-  // List? data;
 
-  // void getdata() async{
-  //
-  //   QuerySnapshot querySnapshot= await FirebaseFirestore.instance.collection('doctors').get();
-  //   data?.addAll(querySnapshot.docs);
-  //   print(data);
-  // }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -45,13 +38,13 @@ class FirstScreen extends StatelessWidget {
                       SelectedListItem(name: 'الجمالية'),
                       SelectedListItem(name: 'المطرية'),
                     ],
-                    textEditingController: city,
+                    textEditingController: cites,
                     title: 'اختر مدينتك',
                     hint: 'مدينتك',
                     isCitySelected: true),
                 AppTextField(
                     dataList: [
-                      SelectedListItem(name: 'باطنه'),
+                      SelectedListItem(name: 'باطنة'),
                       SelectedListItem(name: 'عظام'),
                       SelectedListItem(name: 'اسنان'),
                       SelectedListItem(name: 'نساء'),
@@ -62,8 +55,9 @@ class FirstScreen extends StatelessWidget {
                     isCitySelected: true),
                 buttons('بحث', 45, double.infinity, 25,
                     Appcolor().firstcolor, Appcolor().thirdcolor, () {
-                  controller.getdata();
-                  // Get.to(Doctors());
+                  controller.city=cites.text;
+                  controller.special=specialty.text;
+                  controller.getdata(context);
                 }, 15),
               ],
             ),

@@ -6,7 +6,7 @@ class Appcolor{
   final firstcolor= Color(0xFF6854E2);
   final secondcolor= Color(0xffEBEAFC);
   final thirdcolor= Color(0xffffffff);
-  final gray=Color(0xff545454);
+  final gray=Color(0xb2817e8a);
 
   Appcolor();
 
