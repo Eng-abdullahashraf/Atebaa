@@ -28,8 +28,7 @@ class _Splash extends State<Splash> {
     Timer(
         Duration(seconds: 3),
             () {
-                //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FirstScreen(),));
-                 Get.to(FirstScreen());
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FirstScreen(),));
             });
   }
 

@@ -2,11 +2,13 @@
 import 'dart:io';
 
 import 'package:atebaa/Screen/splash.dart';
+import 'package:atebaa/controller/dependency.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void main() async{
+  DependencyInjection.init();
   WidgetsFlutterBinding.ensureInitialized();
   Platform.isAndroid?
   await Firebase.initializeApp(

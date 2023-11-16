@@ -105,3 +105,23 @@ Widget doctorItem(doctors,i) => Padding(
         ),
       ),
     );
+
+Widget circular()=>CircularProgressIndicator();
+
+Widget collu(var data)=>Column(
+  children: [
+    SizedBox(
+      height: 10,
+    ),
+    Expanded(
+        child: Container(
+            child: ListView.separated(
+                scrollDirection: Axis.vertical,
+                itemBuilder: (context, i) =>
+                    doctorItem(data, i),
+                separatorBuilder: (context, i) =>
+                    SizedBox(height: 10),
+                itemCount: data!.length))),
+  ],
+);
+

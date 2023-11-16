@@ -1,3 +1,4 @@
+import 'package:animated_conditional_builder/animated_conditional_builder.dart';
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ class Doctors extends StatelessWidget {
   Doctors({Key? key}) : super(key: key);
 
   TextEditingController search = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -16,7 +18,8 @@ class Doctors extends StatelessWidget {
       backgroundColor: Appcolor().secondcolor,
       body: GetBuilder<homecontroller>(
         init: homecontroller(),
-        builder: (controller) => Column(
+        builder: (controller) =>AnimatedConditionalBuilder(
+            condition: controller.load!, builder: (BuildContext context)=>Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
@@ -39,11 +42,13 @@ class Doctors extends StatelessWidget {
                 child: Container(
                     child: ListView.separated(
                         scrollDirection: Axis.vertical,
-                        itemBuilder: (context, i) => doctorItem(controller.data,i),
-                        separatorBuilder: (context, i) => SizedBox(height: 10),
-                        itemCount: controller.data!.length))),
-          ],
+                        itemBuilder: (context, i) =>
+                            doctorItem(controller.data, i),
+                        separatorBuilder: (context, i) =>
+                            SizedBox(height: 10),
+                        itemCount: controller.data!.length))),          ],
         ),
+            fallback: (BuildContext context)=>Center(child: CircularProgressIndicator())),
       ),
     ));
   }
