@@ -43,12 +43,18 @@ class homecontroller extends GetxController{
       data!.add(element.data());
     });
       loading();
+      print(data!);
     load=false;
       update();
     }
 
   }
 
+  String? name="";
+  void search(value){
+    name=value;
+    update();
+  }
   bool? load=false;
 
   void loading(){

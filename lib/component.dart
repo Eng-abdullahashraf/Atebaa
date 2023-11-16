@@ -9,6 +9,7 @@ Widget textwrite({
   @required Widget? PrefIcon,
   @required String? LableText,
   @required String? HintText,
+  @required String? value,
   required bool Scure,
   @required double? radius,
   @required TextEditingController? controller,

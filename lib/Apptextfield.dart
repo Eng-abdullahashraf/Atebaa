@@ -55,7 +55,7 @@ class _AppTextFieldState extends State<AppTextField> {
               widget.textEditingController.text=item.name;
             }
           }
-          showSnackBar(list.toString());
+          //showSnackBar(list.toString());
         },
         enableMultipleSelection: false,
       ),

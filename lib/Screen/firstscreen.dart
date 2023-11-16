@@ -1,4 +1,5 @@
 import 'package:atebaa/controller/homecontroller.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,17 @@ class FirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: CurvedNavigationBar(
+          height: 50,
+          backgroundColor: Appcolor().thirdcolor,
+            color: Appcolor().firstcolor,
+            items: [
+              Icon(Icons.home,color: Appcolor().thirdcolor,),
+              Icon(Icons.favorite,color: Appcolor().thirdcolor,),
+              Icon(Icons.contact_page,color: Appcolor().thirdcolor,),
+
+            ]
+        ),
         body: GetBuilder<homecontroller>(
           init: homecontroller(),
           builder: (controller) => Padding(
