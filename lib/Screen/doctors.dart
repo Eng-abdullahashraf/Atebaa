@@ -3,6 +3,7 @@ import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../component.dart';
 
@@ -11,6 +12,7 @@ class Doctors extends StatelessWidget {
 
   TextEditingController search = TextEditingController();
   String? name;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -80,8 +82,6 @@ class Doctors extends StatelessWidget {
                               var data =
                               controller.data![i] as Map<String, dynamic>;
                               if (controller.name!.isEmpty) {
-                                print("2");
-
                                 return Padding(
                                   padding:
                                   const EdgeInsets.only(left: 10, right: 10),
@@ -95,50 +95,77 @@ class Doctors extends StatelessWidget {
                                       crossAxisAlignment:
                                       CrossAxisAlignment.stretch,
                                       children: [
-                                        Container(
-                                            height: 110,
-                                            child: Icon(
-                                              Icons.person,
-                                              size: 110,
-                                            )),
+                                        Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: Image.asset('images/pngegg.png'),
+                                        ),
                                         SizedBox(width: 5.0),
-                                        Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "${data["name"]}",
-                                              style: TextStyle(
-                                                  color: Appcolor().firstcolor,
-                                                  fontFamily: "ElMessiri-Bold",
-                                                  fontSize: 20),
-                                            ),
-                                            Container(
-                                                decoration: BoxDecoration(
-                                                    color: Appcolor().secondcolor,
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                        10)),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 10, right: 10),
-                                                  child: Text(
-                                                    "${data["special"]}",
-                                                    style:
-                                                    TextStyle(fontSize: 18),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "${controller.data![i]["name"]}",
+                                                style: TextStyle(
+                                                    color: Appcolor().firstcolor,
+                                                    fontFamily: "ElMessiri-Bold",
+                                                    fontSize: 20),
+                                              ),
+                                              Container(
+                                                  decoration: BoxDecoration(
+                                                      color: Appcolor().secondcolor,
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        left: 10, right: 10),
+                                                    child: Text(
+                                                      "${controller.data![i]["special"]}",
+                                                      style:
+                                                      TextStyle(fontSize: 18),
+                                                    ),
+                                                  )),
+                                              Container(
+                                                width: double.infinity,
+                                                child: Row(
+                                                  children: [
+                                                    Icon(Icons.place,color: Appcolor().fourthcolor,),
+                                                    Expanded(
+                                                      child: Text(
+                                                        "${controller.data![i]["address"]}",
+                                                        style: TextStyle(fontSize: 15,color: Appcolor().fourthcolor),
+                                                        maxLines: 2,
+                                                        overflow: TextOverflow.ellipsis,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              InkWell(
+                                                onTap: () {
+                                                  launch('tel:${controller.data![i]["phone"]}');
+                                                },
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  child: Row(
+                                                    children: [
+                                                      Icon(Icons.phone_enabled),
+                                                      Expanded(
+                                                        child: Text(
+                                                          "${controller.data![i]["phone"]} (2+) ",
+                                                          style: TextStyle(fontSize: 18),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                )),
-                                            Text(
-                                              "${data["address"]}",
-                                              style: TextStyle(fontSize: 18),
-                                            ),
-                                            Text(
-                                              "(+20) ${data["phone"]}",
-                                              style: TextStyle(fontSize: 18),
-                                            ),
-                                          ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         )
                                       ],
                                     ),
@@ -148,7 +175,6 @@ class Doctors extends StatelessWidget {
                               if (data!["name"]
                                   .toString()
                                   .contains(controller.name!)) {
-                                print("1");
                                 return Padding(
                                   padding:
                                   const EdgeInsets.only(left: 10, right: 10),
@@ -162,55 +188,83 @@ class Doctors extends StatelessWidget {
                                       crossAxisAlignment:
                                       CrossAxisAlignment.stretch,
                                       children: [
-                                        Container(
-                                            height: 110,
-                                            child: Icon(
-                                              Icons.person,
-                                              size: 110,
-                                            )),
+                                        Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: Image.asset('images/pngegg.png'),
+                                        ),
                                         SizedBox(width: 5.0),
-                                        Column(
-                                          mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "${data["name"]}",
-                                              style: TextStyle(
-                                                  color: Appcolor().firstcolor,
-                                                  fontFamily: "ElMessiri-Bold",
-                                                  fontSize: 20),
-                                            ),
-                                            Container(
-                                                decoration: BoxDecoration(
-                                                    color: Appcolor().secondcolor,
-                                                    borderRadius:
-                                                    BorderRadius.circular(
-                                                        10)),
-                                                child: Padding(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 10, right: 10),
-                                                  child: Text(
-                                                    "${data["special"]}",
-                                                    style:
-                                                    TextStyle(fontSize: 18),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "${controller.data![i]["name"]}",
+                                                style: TextStyle(
+                                                    color: Appcolor().firstcolor,
+                                                    fontFamily: "ElMessiri-Bold",
+                                                    fontSize: 20),
+                                              ),
+                                              Container(
+                                                  decoration: BoxDecoration(
+                                                      color: Appcolor().secondcolor,
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          10)),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.only(
+                                                        left: 10, right: 10),
+                                                    child: Text(
+                                                      "${controller.data![i]["special"]}",
+                                                      style:
+                                                      TextStyle(fontSize: 18),
+                                                    ),
+                                                  )),
+                                              Container(
+                                                width: double.infinity,
+                                                child: Row(
+                                                  children: [
+                                                    Icon(Icons.place,color: Appcolor().fourthcolor,),
+                                                    Expanded(
+                                                      child: Text(
+                                                        "${controller.data![i]["address"]}",
+                                                        style: TextStyle(fontSize: 15,color: Appcolor().fourthcolor),
+                                                        maxLines: 2,
+                                                        overflow: TextOverflow.ellipsis,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              InkWell(
+                                                onTap: () {
+                                                  launch('tel:${controller.data![i]["phone"]}');
+                                                },
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  child: Row(
+                                                    children: [
+                                                      Icon(Icons.phone_enabled),
+                                                      Expanded(
+                                                        child: Text(
+                                                          "${controller.data![i]["phone"]} (2+) ",
+                                                          style: TextStyle(fontSize: 18),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                )),
-                                            Text(
-                                              "${data["address"]}",
-                                              style: TextStyle(fontSize: 18),
-                                            ),
-                                            Text(
-                                              "(+20) ${data["phone"]}",
-                                              style: TextStyle(fontSize: 18),
-                                            ),
-                                          ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         )
                                       ],
                                     ),
                                   ),
                                 );
+
                               }
                               else{
                                 return SizedBox();

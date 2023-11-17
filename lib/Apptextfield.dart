@@ -32,13 +32,13 @@ class _AppTextFieldState extends State<AppTextField> {
     DropDownState(
       DropDown(
         isDismissible: true,
-        bottomSheetTitle: const Text(
-          'Cities',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20.0,
-          ),
-        ),
+        // bottomSheetTitle: const Text(
+        //   'Cities',
+        //   style: TextStyle(
+        //     fontWeight: FontWeight.bold,
+        //     fontSize: 20.0,
+        //   ),
+        // ),
         submitButtonChild: const Text(
           'Done',
           style: TextStyle(

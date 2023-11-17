@@ -1,4 +1,5 @@
 
+import 'package:atebaa/Screen/firstscreen.dart';
 import 'package:atebaa/component.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -35,14 +36,16 @@ class homecontroller extends GetxController{
           .showSnackBar(SnackBar(content: Text('يجب عليك اختيار البلد والتخصص')));
     }
     else {
+      name="";
+      load=false;
       Get.to(Doctors());
       data?.clear();
-    CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
+      loading();
+      CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
     var response=await doctors.where('city',isEqualTo: city).where('special',isEqualTo: special).get();
     response.docs.forEach((element) {
       data!.add(element.data());
     });
-      loading();
       print(data!);
     load=false;
       update();
@@ -58,11 +61,34 @@ class homecontroller extends GetxController{
   bool? load=false;
 
   void loading(){
-    Future.delayed(const Duration(seconds: 2),(){
+      Future.delayed(const Duration(seconds: 3),(){
+        if(data!.isEmpty){
+          Get.to(FirstScreen());
+          Get.rawSnackbar(
+              messageText: const Text(
+                  'هذه البلده لا تحتوى على دكاترة حاليا',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14
+                  )
+              ),
+              isDismissible: false,
+              duration: const Duration(seconds: 3),
+              backgroundColor: Colors.black!,
+              icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
+              margin: EdgeInsets.zero,
+              snackStyle: SnackStyle.GROUNDED
+          );
+          update();
+        }
+        else{
+          load=true;
+          update();
+        }
 
-      load=true;
-      update();
-    });
+      });
+
+
   }
 
   void _updateConnectionStatus(ConnectivityResult connectivityResult) {
@@ -77,8 +103,8 @@ class homecontroller extends GetxController{
               )
           ),
           isDismissible: false,
-          duration: const Duration(days: 1),
-          backgroundColor: Colors.red[400]!,
+          duration: const Duration(seconds: 3),
+          backgroundColor: Colors.black12!,
           icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
           margin: EdgeInsets.zero,
           snackStyle: SnackStyle.GROUNDED

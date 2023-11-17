@@ -70,6 +70,8 @@ class FirstScreen extends StatelessWidget {
                   controller.city=cites.text;
                   controller.special=specialty.text;
                   controller.getdata(context);
+                  specialty.clear();
+                  cites.clear();
                 }, 15),
 
               ],
