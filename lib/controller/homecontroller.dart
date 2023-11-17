@@ -1,4 +1,7 @@
 
+import 'package:atebaa/Screen/Favorite.dart';
+import 'package:atebaa/Screen/Homescreen.dart';
+import 'package:atebaa/Screen/aboutus.dart';
 import 'package:atebaa/Screen/firstscreen.dart';
 import 'package:atebaa/component.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -21,6 +24,17 @@ class homecontroller extends GetxController{
     _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
   }
 
+  List<Widget> Screennav=[
+    Homescreen(),
+    Favourite(),
+    Aboutus()
+  ];
+
+  int? screennum=0;
+  void changeScreen(value){
+    screennum=value;
+    update();
+  }
 
 
   List<dynamic>? data=[];
