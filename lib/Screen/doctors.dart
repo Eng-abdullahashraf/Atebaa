@@ -25,6 +25,20 @@ class Doctors extends StatelessWidget {
             builder: (BuildContext context) => Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Container(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10,bottom: 5 ),
+                        child: Center(
+                            child: Text(
+                              '${controller.city!} - ${controller.special!}',
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  color: Appcolor().thirdcolor,
+                                  fontFamily: 'ElMessiri-Bold'),
+                            )),
+                      ),
+                    ),
+
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 10, left: 10, right: 10),
@@ -41,22 +55,24 @@ class Doctors extends StatelessWidget {
                                   hintText: "Search",
                                   prefixIcon: Icon(Icons.search),
                                 ),
-
                                 onChanged: (value) {
                                   controller.search(value);
                                 },
                               ),
                             ),
                           ),
-                          SizedBox(width: 20,),
-                          IconButton(onPressed:
-                          (){
-                            controller.name="";
-                            controller.special="";
-                            controller.city="";
-                            Get.back();}
-                              ,icon: Icon(Icons.arrow_forward_ios),),
-
+                          SizedBox(
+                            width: 20,
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              controller.name = "";
+                              controller.special = "";
+                              controller.city = "";
+                              Get.back();
+                            },
+                            icon: Icon(Icons.arrow_forward_ios),
+                          ),
                         ],
                       ),
                     ),
@@ -65,9 +81,9 @@ class Doctors extends StatelessWidget {
                     ),
                     Expanded(
                         child: Container(
-                        child: ListView.separated(
-                        scrollDirection: Axis.vertical,
-                        /*itemBuilder: (context, i) {
+                            child: ListView.separated(
+                                scrollDirection: Axis.vertical,
+                                /*itemBuilder: (context, i) {
 
                          return doctorItem(controller.data, i);
                          //   if(controller.name!.isEmpty){
@@ -78,202 +94,268 @@ class Doctors extends StatelessWidget {
                          //  }
 
                         },*/
-                            itemBuilder: (context, i) {
-                              var data =
-                              controller.data![i] as Map<String, dynamic>;
-                              if (controller.name!.isEmpty) {
-                                return Padding(
-                                  padding:
-                                  const EdgeInsets.only(left: 10, right: 10),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: Appcolor().thirdcolor,
-                                        borderRadius: BorderRadius.circular(25)),
-                                    height: 150.0,
-                                    width: double.infinity,
-                                    child: Row(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: Image.asset('images/pngegg.png'),
-                                        ),
-                                        SizedBox(width: 5.0),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "${controller.data![i]["name"]}",
-                                                style: TextStyle(
-                                                    color: Appcolor().firstcolor,
-                                                    fontFamily: "ElMessiri-Bold",
-                                                    fontSize: 20),
-                                              ),
-                                              Container(
-                                                  decoration: BoxDecoration(
-                                                      color: Appcolor().secondcolor,
-                                                      borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        left: 10, right: 10),
-                                                    child: Text(
-                                                      "${controller.data![i]["special"]}",
-                                                      style:
-                                                      TextStyle(fontSize: 18),
-                                                    ),
-                                                  )),
-                                              Container(
-                                                width: double.infinity,
-                                                child: Row(
-                                                  children: [
-                                                    Icon(Icons.place,color: Appcolor().fourthcolor,),
-                                                    Expanded(
-                                                      child: Text(
-                                                        "${controller.data![i]["address"]}",
-                                                        style: TextStyle(fontSize: 15,color: Appcolor().fourthcolor),
-                                                        maxLines: 2,
-                                                        overflow: TextOverflow.ellipsis,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              InkWell(
-                                                onTap: () {
-                                                  launch('tel:${controller.data![i]["phone"]}');
-                                                },
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  child: Row(
-                                                    children: [
-                                                      Icon(Icons.phone_enabled),
-                                                      Expanded(
-                                                        child: Text(
-                                                          "${controller.data![i]["phone"]} (2+) ",
-                                                          style: TextStyle(fontSize: 18),
-                                                        ),
-                                                      ),
-                                                    ],
+                                itemBuilder: (context, i) {
+                                  var data = controller.data![i]
+                                      as Map<String, dynamic>;
+                                  if (controller.name!.isEmpty) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Appcolor().thirdcolor,
+                                            borderRadius:
+                                                BorderRadius.circular(25)),
+                                        height: 150.0,
+                                        width: double.infinity,
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(10),
+                                              child: Image.asset(
+                                                  'images/pngegg.png'),
+                                            ),
+                                            SizedBox(width: 5.0),
+                                            Expanded(
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "${controller.data![i]["name"]}",
+                                                    style: TextStyle(
+                                                        color: Appcolor()
+                                                            .firstcolor,
+                                                        fontFamily:
+                                                            "ElMessiri-Bold",
+                                                        fontSize: 20),
                                                   ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              }
-                              if (data!["name"]
-                                  .toString()
-                                  .contains(controller.name!)) {
-                                return Padding(
-                                  padding:
-                                  const EdgeInsets.only(left: 10, right: 10),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                        color: Appcolor().thirdcolor,
-                                        borderRadius: BorderRadius.circular(25)),
-                                    height: 150.0,
-                                    width: double.infinity,
-                                    child: Row(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: Image.asset('images/pngegg.png'),
-                                        ),
-                                        SizedBox(width: 5.0),
-                                        Expanded(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                            crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "${controller.data![i]["name"]}",
-                                                style: TextStyle(
-                                                    color: Appcolor().firstcolor,
-                                                    fontFamily: "ElMessiri-Bold",
-                                                    fontSize: 20),
-                                              ),
-                                              Container(
-                                                  decoration: BoxDecoration(
-                                                      color: Appcolor().secondcolor,
-                                                      borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                                  child: Padding(
-                                                    padding: const EdgeInsets.only(
-                                                        left: 10, right: 10),
-                                                    child: Text(
-                                                      "${controller.data![i]["special"]}",
-                                                      style:
-                                                      TextStyle(fontSize: 18),
-                                                    ),
-                                                  )),
-                                              Container(
-                                                width: double.infinity,
-                                                child: Row(
-                                                  children: [
-                                                    Icon(Icons.place,color: Appcolor().fourthcolor,),
-                                                    Expanded(
-                                                      child: Text(
-                                                        "${controller.data![i]["address"]}",
-                                                        style: TextStyle(fontSize: 15,color: Appcolor().fourthcolor),
-                                                        maxLines: 2,
-                                                        overflow: TextOverflow.ellipsis,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              InkWell(
-                                                onTap: () {
-                                                  launch('tel:${controller.data![i]["phone"]}');
-                                                },
-                                                child: Container(
-                                                  width: double.infinity,
-                                                  child: Row(
-                                                    children: [
-                                                      Icon(Icons.phone_enabled),
-                                                      Expanded(
-                                                        child: Text(
-                                                          "${controller.data![i]["phone"]} (2+) ",
-                                                          style: TextStyle(fontSize: 18),
+                                                  Container(
+                                                    width: double.infinity,
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Container(
+                                                            decoration: BoxDecoration(
+                                                                color: Appcolor()
+                                                                    .secondcolor,
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10)),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsets
+                                                                      .only(
+                                                                      left: 10,
+                                                                      right:
+                                                                          10),
+                                                              child: Text(
+                                                                "${controller.data![i]["special"]}",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        18),
+                                                              ),
+                                                            )),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  left: 15),
+                                                          child: Icon(
+                                                            Icons
+                                                                .favorite_border,
+                                                            color: Appcolor()
+                                                                .firstcolor,
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
+                                                  Container(
+                                                    width: double.infinity,
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.place,
+                                                          color: Appcolor()
+                                                              .fourthcolor,
+                                                        ),
+                                                        Expanded(
+                                                          child: Text(
+                                                            "${controller.data![i]["address"]}",
+                                                            style: TextStyle(
+                                                                fontSize: 15,
+                                                                color: Appcolor()
+                                                                    .fourthcolor),
+                                                            maxLines: 2,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      launch(
+                                                          'tel:${controller.data![i]["phone"]}');
+                                                    },
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      child: Row(
+                                                        children: [
+                                                          Icon(Icons
+                                                              .phone_enabled),
+                                                          Expanded(
+                                                            child: Text(
+                                                              "${controller.data![i]["phone"]} (2+) ",
+                                                              style: TextStyle(
+                                                                  fontSize: 18),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                );
-
-                              }
-                              else{
-                                return SizedBox();
-                              }
-                            },
-                        separatorBuilder: (context, i) =>
-                            SizedBox(height: 10),
-                        itemCount: controller.data!.length)
-                      /*child: ListView.builder(
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  if (data!["name"]
+                                      .toString()
+                                      .contains(controller.name!)) {
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Appcolor().thirdcolor,
+                                            borderRadius:
+                                                BorderRadius.circular(25)),
+                                        height: 150.0,
+                                        width: double.infinity,
+                                        child: Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.stretch,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(10),
+                                              child: Image.asset(
+                                                  'images/pngegg.png'),
+                                            ),
+                                            SizedBox(width: 5.0),
+                                            Expanded(
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "${controller.data![i]["name"]}",
+                                                    style: TextStyle(
+                                                        color: Appcolor()
+                                                            .firstcolor,
+                                                        fontFamily:
+                                                            "ElMessiri-Bold",
+                                                        fontSize: 20),
+                                                  ),
+                                                  Container(
+                                                      decoration: BoxDecoration(
+                                                          color: Appcolor()
+                                                              .secondcolor,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      10)),
+                                                      child: Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .only(
+                                                                left: 10,
+                                                                right: 10),
+                                                        child: Text(
+                                                          "${controller.data![i]["special"]}",
+                                                          style: TextStyle(
+                                                              fontSize: 18),
+                                                        ),
+                                                      )),
+                                                  Container(
+                                                    width: double.infinity,
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.place,
+                                                          color: Appcolor()
+                                                              .fourthcolor,
+                                                        ),
+                                                        Expanded(
+                                                          child: Text(
+                                                            "${controller.data![i]["address"]}",
+                                                            style: TextStyle(
+                                                                fontSize: 15,
+                                                                color: Appcolor()
+                                                                    .fourthcolor),
+                                                            maxLines: 2,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      launch(
+                                                          'tel:${controller.data![i]["phone"]}');
+                                                    },
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      child: Row(
+                                                        children: [
+                                                          Icon(Icons
+                                                              .phone_enabled),
+                                                          Expanded(
+                                                            child: Text(
+                                                              "${controller.data![i]["phone"]} (2+) ",
+                                                              style: TextStyle(
+                                                                  fontSize: 18),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  } else {
+                                    return SizedBox();
+                                  }
+                                },
+                                separatorBuilder: (context, i) =>
+                                    SizedBox(height: 10),
+                                itemCount: controller.data!.length)
+                            /*child: ListView.builder(
                           itemCount: controller.data!.length,
                           itemBuilder: (context, i) {
                             var data =
@@ -415,7 +497,7 @@ class Doctors extends StatelessWidget {
                               return SizedBox();
                             }
                           }),*/
-                    )),
+                            )),
                   ],
                 ),
             fallback: (BuildContext context) =>

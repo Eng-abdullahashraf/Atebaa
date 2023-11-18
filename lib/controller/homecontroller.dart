@@ -3,7 +3,6 @@ import 'package:atebaa/Screen/Favorite.dart';
 import 'package:atebaa/Screen/Homescreen.dart';
 import 'package:atebaa/Screen/aboutus.dart';
 import 'package:atebaa/Screen/firstscreen.dart';
-import 'package:atebaa/component.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';

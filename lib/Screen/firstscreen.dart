@@ -1,14 +1,11 @@
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/material.dart';
 
 import 'package:atebaa/theme/colors.dart';
 import 'package:get/get.dart';
 
-import '../Apptextfield.dart';
-import '../component.dart';
-import 'doctors.dart';
+
 
 class FirstScreen extends StatelessWidget {
   FirstScreen({Key? key}) : super(key: key);
@@ -29,7 +26,6 @@ class FirstScreen extends StatelessWidget {
                   backgroundColor: Appcolor().thirdcolor,
                   color: Appcolor().firstcolor,
                   onTap: (value) {
-                    print(value);
                     controller.changeScreen(value);
                   },
                   items: [
