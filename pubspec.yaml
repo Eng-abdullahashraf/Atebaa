@@ -46,6 +46,7 @@ dependencies:
   animated_conditional_builder:
   connectivity_plus:
   curved_navigation_bar:
+  shared_preferences:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -101,9 +102,7 @@ flutter:
     - family: ElMessiri-Bold
       fonts:
         - asset: fonts/ElMessiri-Bold.ttf
-        - asset: fonts/ElMessiri-Regular.ttf
-        - asset: fonts/ElMessiri-Medium.ttf
-        - asset: fonts/ElMessiri-SemiBold.ttf
+
   #  - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

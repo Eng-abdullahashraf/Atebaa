@@ -1,5 +1,6 @@
 import 'package:animated_conditional_builder/animated_conditional_builder.dart';
 import 'package:atebaa/controller/homecontroller.dart';
+import 'package:atebaa/doctorss.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,18 +28,17 @@ class Doctors extends StatelessWidget {
                   children: [
                     Container(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 10,bottom: 5 ),
+                        padding: const EdgeInsets.only(top: 10, bottom: 5),
                         child: Center(
                             child: Text(
-                              '${controller.city!} - ${controller.special!}',
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  color: Appcolor().thirdcolor,
-                                  fontFamily: 'ElMessiri-Bold'),
-                            )),
+                          '${controller.city!} - ${controller.special!}',
+                          style: TextStyle(
+                              fontSize: 18,
+                              color: Appcolor().thirdcolor,
+                              fontFamily: 'ElMessiri-Bold'),
+                        )),
                       ),
                     ),
-
                     Padding(
                       padding:
                           const EdgeInsets.only(top: 10, left: 10, right: 10),
@@ -83,17 +83,7 @@ class Doctors extends StatelessWidget {
                         child: Container(
                             child: ListView.separated(
                                 scrollDirection: Axis.vertical,
-                                /*itemBuilder: (context, i) {
 
-                         return doctorItem(controller.data, i);
-                         //   if(controller.name!.isEmpty){
-                         //     return doctorItem(controller.data, i);
-                         //   }
-                         //  if(controller.data![i]["name"].toString().toLowerCase().startsWith(controller.name!.toLowerCase())){
-                         //    return doctorItem(controller.data, i);
-                         //  }
-
-                        },*/
                                 itemBuilder: (context, i) {
                                   var data = controller.data![i]
                                       as Map<String, dynamic>;
@@ -169,12 +159,31 @@ class Doctors extends StatelessWidget {
                                                               const EdgeInsets
                                                                   .only(
                                                                   left: 15),
-                                                          child: Icon(
-                                                            Icons
-                                                                .favorite_border,
-                                                            color: Appcolor()
-                                                                .firstcolor,
-                                                          ),
+                                                          child: IconButton(onPressed: (){
+                                                            print('object');
+
+                                                            controller
+                                                                .readdata();
+                                                            controller.doctors.add(Doctorss(
+                                                                name: controller
+                                                                    .data![i]
+                                                                ["name"],
+                                                                special: controller
+                                                                    .data![i][
+                                                                "special"],
+                                                                phone: controller
+                                                                    .data![i]
+                                                                ["phone"],
+                                                                address: controller
+                                                                    .data![i][
+                                                                "address"],
+                                                                city: controller
+                                                                    .data![i]
+                                                                ["city"]));
+                                                            controller
+                                                                .savetocache();
+                                                            print(controller.doctors);
+                                                          }, icon: Icon(Icons.favorite)),
                                                         ),
                                                       ],
                                                     ),

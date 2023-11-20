@@ -21,56 +21,58 @@ class Homescreen extends StatelessWidget {
           init: homecontroller(),
           builder: (controller) => Padding(
             padding: const EdgeInsets.all(25),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [Image(
-                height: 150,
-                image: AssetImage('images/atebaa.png'),
-                color: Appcolor().firstcolor,
-              ),
-                Text(
-                  'atebaa',
-                  style: TextStyle(
-                      fontSize: 60,
-                      color: Appcolor().firstcolor,
-                      fontFamily: "ElMessiri-Bold",
-                      fontWeight: FontWeight.w800),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Image(
+                  height: 150,
+                  image: AssetImage('images/atebaa.png'),
+                  color: Appcolor().firstcolor,
                 ),
-                SizedBox(
-                  height: 40,
-                ),
-                AppTextField(
-                    dataList: [
-                      SelectedListItem(name: 'المنزلة'),
-                      SelectedListItem(name: 'البصراط'),
-                      SelectedListItem(name: 'الجمالية'),
-                      SelectedListItem(name: 'المطرية'),
-                    ],
-                    textEditingController: cites,
-                    title: 'اختر مدينتك',
-                    hint: 'مدينتك',
-                    isCitySelected: true),
-                AppTextField(
-                    dataList: [
-                      SelectedListItem(name: 'باطنة'),
-                      SelectedListItem(name: 'عظام'),
-                      SelectedListItem(name: 'اسنان'),
-                      SelectedListItem(name: 'نساء'),
-                    ],
-                    textEditingController: specialty,
-                    title: 'اختر تخصص الدكتور',
-                    hint: 'التخصص',
-                    isCitySelected: true),
-                buttons('بحث', 45, double.infinity, 25,
-                    Appcolor().firstcolor, Appcolor().thirdcolor, () {
-                      controller.city=cites.text;
-                      controller.special=specialty.text;
-                      controller.getdata(context);
-                      specialty.clear();
-                      cites.clear();
-                    }, 15),
+                  Text(
+                    'atebaa',
+                    style: TextStyle(
+                        fontSize: 60,
+                        color: Appcolor().firstcolor,
+                        fontFamily: "ElMessiri-Bold",
+                        fontWeight: FontWeight.w800),
+                  ),
+                  SizedBox(
+                    height: 40,
+                  ),
+                  AppTextField(
+                      dataList: [
+                        SelectedListItem(name: 'المنزلة'),
+                        SelectedListItem(name: 'البصراط'),
+                        SelectedListItem(name: 'الجمالية'),
+                        SelectedListItem(name: 'المطرية'),
+                      ],
+                      textEditingController: cites,
+                      title: 'اختر مدينتك',
+                      hint: 'مدينتك',
+                      isCitySelected: true),
+                  AppTextField(
+                      dataList: [
+                        SelectedListItem(name: 'باطنة'),
+                        SelectedListItem(name: 'عظام'),
+                        SelectedListItem(name: 'اسنان'),
+                        SelectedListItem(name: 'نساء'),
+                      ],
+                      textEditingController: specialty,
+                      title: 'اختر تخصص الدكتور',
+                      hint: 'التخصص',
+                      isCitySelected: true),
+                  buttons('بحث', 45, double.infinity, 25,
+                      Appcolor().firstcolor, Appcolor().thirdcolor, () {
+                        controller.city=cites.text;
+                        controller.special=specialty.text;
+                        controller.getdata(context);
+                        specialty.clear();
+                        cites.clear();
+                      }, 15),
 
-              ],
+                ],
+              ),
             ),
           ),
         ),
