@@ -34,8 +34,8 @@ class homecontroller extends GetxController{
   List<Widget> Screennav=[
     Homescreen(),
     Favourite(),
-    Aboutus(),
     MixInfo(),
+    Aboutus(),
   ];
 
   int? screennum=0;
@@ -150,6 +150,7 @@ class homecontroller extends GetxController{
   List<Doctorss> doctors=List.empty(growable: true);
   void savetocache() {
     // doctors.clear();
+
     List<String> doctorslist=doctors.map((e) => jsonEncode(e.toJson())).toList();
     sharedPreferences.setStringList('mydoctors', doctorslist);
   }
@@ -162,6 +163,14 @@ class homecontroller extends GetxController{
     else{
       print("now no doctors");
     }
+  }
+
+  void delete(i){
+    print('object');
+    doctors.removeAt(i);
+    savetocache();
+    print(doctors);
+    update();
   }
 
 }

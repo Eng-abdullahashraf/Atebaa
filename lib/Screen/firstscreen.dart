@@ -23,7 +23,7 @@ class FirstScreen extends StatelessWidget {
             child: Scaffold(
               bottomNavigationBar: CurvedNavigationBar(
                   height: 50,
-                  backgroundColor: Appcolor().thirdcolor,
+                  backgroundColor: Appcolor().secondcolor,
                   color: Appcolor().firstcolor,
                   onTap: (value) {
                     controller.changeScreen(value);
@@ -31,48 +31,20 @@ class FirstScreen extends StatelessWidget {
                   items: [
                     Icon(Icons.home,color: Appcolor().thirdcolor,),
                     Icon(Icons.favorite,color: Appcolor().thirdcolor,),
-                    Icon(Icons.contact_page,color: Appcolor().thirdcolor,),
                     Icon(Icons.notifications,color: Appcolor().thirdcolor,),
+                    Icon(Icons.contact_page,color: Appcolor().thirdcolor,),
 
 
                   ]
               ),
               body: GetBuilder<homecontroller>(
                 init: homecontroller(),
-                builder: (controller) => Padding(
-                  padding: const EdgeInsets.all(5),
-                  child: controller.Screennav[controller.screennum!],
-                ),
+                builder: (controller) => Container(
+                    color: Appcolor().secondcolor,
+                    child: controller.Screennav[controller.screennum!]),
               ),
             ),
           );
         });
-    /*SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: CurvedNavigationBar(
-          height: 50,
-          backgroundColor: Appcolor().thirdcolor,
-            color: Appcolor().firstcolor,
-            onTap: (value) {
-            print(value);
-            homecontroller controller=homecontroller();
-            controller.changeScreen(value);
-            },
-            items: [
-              Icon(Icons.home,color: Appcolor().thirdcolor,),
-              Icon(Icons.favorite,color: Appcolor().thirdcolor,),
-              Icon(Icons.contact_page,color: Appcolor().thirdcolor,),
-
-            ]
-        ),
-        body: GetBuilder<homecontroller>(
-          init: homecontroller(),
-          builder: (controller) => Padding(
-            padding: const EdgeInsets.all(25),
-            child: controller.Screennav[controller.screennum!],
-          ),
-        ),
-      ),
-    );*/
   }
 }

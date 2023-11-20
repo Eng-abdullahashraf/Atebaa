@@ -13,28 +13,27 @@ class MixInfo extends StatelessWidget {
       child: GetBuilder<homecontroller>(
         init: homecontroller(),
         builder: (controller) => Scaffold(
+          backgroundColor: Appcolor().secondcolor,
           body: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                        child: Text(
-                      "تَذْكِرَةٌ",
-                      style: TextStyle(
-                          fontFamily: "ElMessiri-Bold",
-                          color: Appcolor().thirdcolor,
-                          fontSize: 40),
-                    )),
-                  ),
-                  height: 70,
+                  child: Center(
+                      child: Text(
+                        "تذكرة",
+                        style: TextStyle(
+                            fontFamily: "ElMessiri-Bold",
+                            color: Appcolor().thirdcolor,
+                            fontSize: 25),
+                      )),
+                  height: 50,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10),bottomRight: Radius.circular(10)),
                     color: Appcolor().firstcolor,
                   ),
                 ),
+                SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.only(right: 10.0, top: 7),
                   child: titleApp("اّيه:"),
