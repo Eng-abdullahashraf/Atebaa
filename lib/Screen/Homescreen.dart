@@ -23,8 +23,19 @@ class Homescreen extends StatelessWidget {
             padding: const EdgeInsets.all(25),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('tabebak', style: TextStyle(fontSize: 35)),
+              children: [Image(
+                height: 150,
+                image: AssetImage('images/atebaa.png'),
+                color: Appcolor().firstcolor,
+              ),
+                Text(
+                  'atebaa',
+                  style: TextStyle(
+                      fontSize: 60,
+                      color: Appcolor().firstcolor,
+                      fontFamily: "ElMessiri-Bold",
+                      fontWeight: FontWeight.w800),
+                ),
                 SizedBox(
                   height: 40,
                 ),

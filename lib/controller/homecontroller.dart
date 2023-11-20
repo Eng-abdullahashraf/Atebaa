@@ -2,7 +2,10 @@
 import 'package:atebaa/Screen/Favorite.dart';
 import 'package:atebaa/Screen/Homescreen.dart';
 import 'package:atebaa/Screen/aboutus.dart';
+import 'package:atebaa/Screen/ayat.dart';
+import 'package:atebaa/Screen/doaa.dart';
 import 'package:atebaa/Screen/firstscreen.dart';
+import 'package:atebaa/Screen/mix%20info.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +29,8 @@ class homecontroller extends GetxController{
   List<Widget> Screennav=[
     Homescreen(),
     Favourite(),
-    Aboutus()
+    Aboutus(),
+    MixInfo(),
   ];
 
   int? screennum=0;
@@ -127,5 +131,12 @@ class homecontroller extends GetxController{
         Get.closeCurrentSnackbar();
       }
     }
+  }
+  List<Widget> zekrScreens = [AyatScreen(),DoaaScreen()];
+  int? zekrnmuber = 0;
+
+  void changezekrdata(d){
+    zekrnmuber=d;
+    update();
   }
 }

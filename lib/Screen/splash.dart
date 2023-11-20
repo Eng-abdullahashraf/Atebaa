@@ -8,10 +8,6 @@ import 'package:get/get.dart';
 import '../../theme/colors.dart';
 import 'firstscreen.dart';
 
-
-
-
-
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
 
@@ -25,25 +21,32 @@ class _Splash extends State<Splash> {
     // TODO: implement initState
     super.initState();
 
-    Timer(
-        Duration(seconds: 3),
-            () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FirstScreen(),));
-            });
+    Timer(Duration(seconds: 5), () {
+      Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FirstScreen(),
+          ));
+    });
   }
-
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          width:double.infinity,
-          color: Appcolor().firstcolor,
-          child: Center(
-            child: Text('Tabebak',style: TextStyle(fontSize:  45,color: Appcolor().thirdcolor),),
-          )
-        ),
+            width: double.infinity,
+            color: Appcolor().thirdcolor,
+            child: Center(
+              child: Text(
+                'atebaa',
+                style: TextStyle(
+                    fontSize: 60,
+                    color: Appcolor().firstcolor,
+                    fontFamily: "ElMessiri-Bold",
+                    fontWeight: FontWeight.w800),
+              ),
+            )),
       ),
     );
   }

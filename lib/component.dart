@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 import 'package:atebaa/theme/colors.dart';
 
@@ -125,4 +126,27 @@ Widget collu(var data)=>Column(
                 itemCount: data!.length))),
   ],
 );
+Widget containerApp(String textcontain,TextAlign textAlignCont){
+  return Center(
+    child: Container(
+      decoration: BoxDecoration(boxShadow: [BoxShadow(
+          color: Colors.black54,
+          offset: Offset(4, 4),
+          spreadRadius: 1,
+          blurRadius: 15
+      )],
+          borderRadius: BorderRadius.circular(15),
+          color: Appcolor().gray),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(textcontain,textAlign: textAlignCont,
+          style: TextStyle(fontFamily: "ElMessiri-Bold",fontWeight: FontWeight.w200,color: Appcolor().thirdcolor),),
+      ),
+    ),
+  );
+  
 
+}
+Widget titleApp(String titleCont){
+return Text(titleCont,style: TextStyle(fontFamily: "ElMessiri-Bold",color: Colors.black87,fontSize: 18),);
+}
