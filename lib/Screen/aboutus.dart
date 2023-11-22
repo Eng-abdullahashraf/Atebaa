@@ -1,6 +1,9 @@
+import 'package:atebaa/Screen/uplaoddata.dart';
+import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Aboutus extends StatelessWidget {
@@ -8,7 +11,8 @@ class Aboutus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold( backgroundColor: Appcolor().secondcolor,
+    return Scaffold(
+      backgroundColor: Appcolor().secondcolor,
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -30,7 +34,7 @@ class Aboutus extends StatelessWidget {
                   ),
                 ),*/
                 SizedBox(
-                  height:270,
+                  height: 270,
                 ),
                 Text(
                   'عنا',
@@ -47,52 +51,82 @@ class Aboutus extends StatelessWidget {
                         color: Colors.black),
                   ),
                 ),
-                SizedBox(height: 10,),
-                Divider(height: 3,color: Appcolor().firstcolor,),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
+                Divider(
+                  height: 3,
+                  color: Appcolor().firstcolor,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   'تواصل معنا',
                   style: TextStyle(fontSize: 30, fontFamily: "ElMessiri-Bold"),
                 ),
-
                 Container(
                   height: 70,
                   width: double.infinity,
                   decoration: BoxDecoration(
                       color: Appcolor().secondcolor,
                       borderRadius: BorderRadius.circular(15)),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       InkWell(
-                        child: CircleAvatar(backgroundColor:  Appcolor().thirdcolor,
+                        child: CircleAvatar(
+                            backgroundColor: Appcolor().thirdcolor,
                             child: Image(
-                          image: AssetImage('images/face.png'),
-                        )),onTap: (){
+                              image: AssetImage('images/face.png'),
+                            )),
+                        onTap: () {
                           Facebook();
-                      },
+                        },
                       ),
                       InkWell(
-                        child: CircleAvatar(backgroundColor: Appcolor().thirdcolor,
+                        child: CircleAvatar(
+                            backgroundColor: Appcolor().thirdcolor,
                             child: Image(
                               image: AssetImage('images/whats.png'),
-                            )),onTap: (){
+                            )),
+                        onTap: () {
                           Whatsapp();
-                      },
+                        },
                       ),
                       InkWell(
-                        child: CircleAvatar(backgroundColor: Appcolor().thirdcolor,
+                        child: CircleAvatar(
+                            backgroundColor: Appcolor().thirdcolor,
                             child: Padding(
                               padding: const EdgeInsets.all(2.0),
                               child: Image(
                                 image: AssetImage('images/phone.png'),
                               ),
                             )),
-                        onTap: (){
+                        onTap: () {
                           Calling();
                         },
                       ),
                     ],
                   ),
+                ),
+                GetBuilder(
+                  init: homecontroller(),
+                  builder: (controller) =>
+                      IconButton(
+                        onPressed: () {
+                          if(controller.x==4){
+                            Get.to(Uploaddata());
+                          }
+                          else{
+                            controller.changestate();
+                          }
+                        },
+                        icon: Icon(
+                          Icons.add_circle,
+                          color: Appcolor().secondcolor,
+                        )
+                      ),
                 )
               ],
             ),
@@ -119,30 +153,30 @@ class Aboutus extends StatelessWidget {
                             )*/
     );
   }
-  Calling()async{
+
+  Calling() async {
     const url = "tel:+201220288992";
-    if(await canLaunch(url)){
+    if (await canLaunch(url)) {
       await launch(url);
-    }
-    else{
+    } else {
       throw "لا يمكن تحميل رابط URL";
     }
   }
-  Whatsapp()async{
+
+  Whatsapp() async {
     const url = "https://wa.me/qr/ZTCNIH7GQWRZL1";
-    if(await canLaunch(url)){
+    if (await canLaunch(url)) {
       await launch(url);
-    }
-    else{
+    } else {
       throw "لا يمكن تحميل رابط URL";
     }
   }
-  Facebook()async{
+
+  Facebook() async {
     const url = "https://www.facebook.com/techsollution";
-    if(await canLaunch(url)){
+    if (await canLaunch(url)) {
       await launch(url);
-    }
-    else{
+    } else {
       throw "لا يمكن تحميل رابط URL";
     }
   }

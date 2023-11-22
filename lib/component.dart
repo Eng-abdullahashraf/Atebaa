@@ -10,7 +10,6 @@ Widget textwrite({
   @required Widget? PrefIcon,
   @required String? LableText,
   @required String? HintText,
-  @required String? value,
   required bool Scure,
   @required double? radius,
   @required TextEditingController? controller,
@@ -149,4 +148,23 @@ Widget containerApp(String textcontain,TextAlign textAlignCont){
 }
 Widget titleApp(String titleCont){
 return Text(titleCont,style: TextStyle(fontFamily: "ElMessiri-Bold",color: Colors.black87,fontSize: 18),);
+}
+
+Widget textFormApp(
+    @required String name,
+    @required TextEditingController? controller,
+    @required TextInputType type
+
+){
+  return  TextField(
+    decoration: InputDecoration(
+      prefixIconColor: Appcolor().gray,
+      border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(15)),
+      hintText: name,
+      prefixIcon: Icon(Icons.search),
+    ),
+    controller: controller,
+    keyboardType: type,
+  );
 }

@@ -58,20 +58,36 @@ class homecontroller extends GetxController{
           .showSnackBar(SnackBar(content: Text('يجب عليك اختيار البلد والتخصص')));
     }
     else {
-      name="";
-      load=false;
+      gotodoctor();
       Get.to(Doctors());
-      data?.clear();
-      loading();
-      CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
+
+
+      update();
+    }
+
+  }
+
+  void gotodoctor() async{
+    name="";
+    load=false;
+    data?.clear();
+    CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
     var response=await doctors.where('city',isEqualTo: city).where('special',isEqualTo: special).get();
     response.docs.forEach((element) {
       data!.add(element.data());
     });
-      print(data!);
-    load=false;
-      update();
-    }
+    loading();
+    print(data!);
+    //load=false;
+  }
+
+  void uploaddatatofirestor(name,address,phone,special,city,gender)async{
+
+    CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
+    doctors.add({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
+    print('doctor is added');
+    update();
+
 
   }
 
@@ -83,7 +99,7 @@ class homecontroller extends GetxController{
   bool? load=false;
 
   void loading(){
-      Future.delayed(const Duration(seconds: 3),(){
+     /* Future.delayed(const Duration(seconds: 3),(){
         if(data!.isEmpty){
           Get.to(FirstScreen());
           Get.rawSnackbar(
@@ -108,14 +124,39 @@ class homecontroller extends GetxController{
           update();
         }
 
-      });
+      });*/
+    if(data!.isEmpty){
+      Get.to(FirstScreen());
+      Get.rawSnackbar(
+          messageText: const Text(
+              'هذه البلده لا تحتوى على دكاترة حاليا',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14
+              )
+          ),
+          isDismissible: false,
+          duration: const Duration(seconds: 3),
+          backgroundColor: Colors.black!,
+          icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
+          margin: EdgeInsets.zero,
+          snackStyle: SnackStyle.GROUNDED
+      );
+      update();
+    }
+    else{
+      load=true;
+      update();
+    }
 
 
   }
 
+  bool? noin=true;
   void _updateConnectionStatus(ConnectivityResult connectivityResult) {
 
     if (connectivityResult == ConnectivityResult.none) {
+      noin=false;
       Get.rawSnackbar(
           messageText: const Text(
               'PLEASE CONNECT TO THE INTERNET',
@@ -125,18 +166,20 @@ class homecontroller extends GetxController{
               )
           ),
           isDismissible: false,
-          duration: const Duration(seconds: 3),
-          backgroundColor: Colors.black12!,
+          duration: const Duration(seconds: 100),
+          backgroundColor: Colors.red!,
           icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
           margin: EdgeInsets.zero,
           snackStyle: SnackStyle.GROUNDED
       );
     } else {
       if (Get.isSnackbarOpen) {
+        noin=true;
         Get.closeCurrentSnackbar();
       }
     }
   }
+
   List<Widget> zekrScreens = [AyatScreen(),DoaaScreen()];
   int? zekrnmuber = 0;
 
@@ -173,4 +216,12 @@ class homecontroller extends GetxController{
     update();
   }
 
+  //.....................................................
+  //..................................................
+
+  int? x=0;
+  void changestate(){
+    x=x!+1;
+    update();
+  }
 }

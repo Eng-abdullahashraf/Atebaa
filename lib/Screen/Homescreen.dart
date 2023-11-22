@@ -1,4 +1,3 @@
-
 import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,8 +6,9 @@ import '../Apptextfield.dart';
 import '../component.dart';
 import '../controller/homecontroller.dart';
 import '../theme/colors.dart';
+
 class Homescreen extends StatelessWidget {
-   Homescreen({super.key});
+  Homescreen({super.key});
 
   TextEditingController cites = TextEditingController();
   TextEditingController specialty = TextEditingController();
@@ -26,11 +26,12 @@ class Homescreen extends StatelessWidget {
               child: Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [Image(
-                    height: 150,
-                    image: AssetImage('images/atebaa.png'),
-                    color: Appcolor().firstcolor,
-                  ),
+                  children: [
+                    Image(
+                      height: 150,
+                      image: AssetImage('images/atebaa.png'),
+                      color: Appcolor().firstcolor,
+                    ),
                     Text(
                       'atebaa',
                       style: TextStyle(
@@ -66,13 +67,31 @@ class Homescreen extends StatelessWidget {
                         isCitySelected: true),
                     buttons('بحث', 45, double.infinity, 25,
                         Appcolor().firstcolor, Appcolor().thirdcolor, () {
-                          controller.city=cites.text;
-                          controller.special=specialty.text;
-                          controller.getdata(context);
-                          specialty.clear();
-                          cites.clear();
-                        }, 15),
-
+                      if (controller.noin == true) {
+                        controller.city = cites.text;
+                        controller.special = specialty.text;
+                        controller.getdata(context);
+                        specialty.clear();
+                        cites.clear();
+                      }
+                      else{
+                        Get.rawSnackbar(
+                            messageText: const Text(
+                                'PLEASE CONNECT TO THE INTERNET',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14
+                                )
+                            ),
+                            isDismissible: false,
+                            duration: const Duration(seconds: 100),
+                            backgroundColor: Colors.red!,
+                            icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
+                            margin: EdgeInsets.zero,
+                            snackStyle: SnackStyle.GROUNDED
+                        );
+                      }
+                    }, 15),
                   ],
                 ),
               ),
