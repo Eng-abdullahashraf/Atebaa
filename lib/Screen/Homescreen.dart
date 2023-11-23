@@ -23,77 +23,77 @@ class Homescreen extends StatelessWidget {
           builder: (controller) => Padding(
             padding: const EdgeInsets.all(25),
             child: SingleChildScrollView(
-              child: Container(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  Padding(
+                    padding: const EdgeInsets.only(top: 100,bottom: 40),
+                    child: Image(
                       height: 150,
                       image: AssetImage('images/atebaa.png'),
                       color: Appcolor().firstcolor,
                     ),
-                    Text(
-                      'atebaa',
-                      style: TextStyle(
-                          fontSize: 60,
-                          color: Appcolor().firstcolor,
-                          fontFamily: "ElMessiri-Bold",
-                          fontWeight: FontWeight.w800),
-                    ),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    AppTextField(
-                        dataList: [
-                          SelectedListItem(name: 'المنزلة'),
-                          SelectedListItem(name: 'البصراط'),
-                          SelectedListItem(name: 'الجمالية'),
-                          SelectedListItem(name: 'المطرية'),
-                        ],
-                        textEditingController: cites,
-                        title: 'اختر مدينتك',
-                        hint: 'مدينتك',
-                        isCitySelected: true),
-                    AppTextField(
-                        dataList: [
-                          SelectedListItem(name: 'باطنة'),
-                          SelectedListItem(name: 'عظام'),
-                          SelectedListItem(name: 'اسنان'),
-                          SelectedListItem(name: 'نساء'),
-                        ],
-                        textEditingController: specialty,
-                        title: 'اختر تخصص الدكتور',
-                        hint: 'التخصص',
-                        isCitySelected: true),
-                    buttons('بحث', 45, double.infinity, 25,
-                        Appcolor().firstcolor, Appcolor().thirdcolor, () {
-                      if (controller.noin == true) {
-                        controller.city = cites.text;
-                        controller.special = specialty.text;
-                        controller.getdata(context);
-                        specialty.clear();
-                        cites.clear();
-                      }
-                      else{
-                        Get.rawSnackbar(
-                            messageText: const Text(
-                                'PLEASE CONNECT TO THE INTERNET',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14
-                                )
-                            ),
-                            isDismissible: false,
-                            duration: const Duration(seconds: 100),
-                            backgroundColor: Colors.red!,
-                            icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
-                            margin: EdgeInsets.zero,
-                            snackStyle: SnackStyle.GROUNDED
-                        );
-                      }
-                    }, 15),
-                  ],
-                ),
+                  ),
+
+                  AppTextField(
+                      dataList: [
+                        SelectedListItem(name: 'المنزلة'),
+                        SelectedListItem(name: 'البصراط'),
+                        SelectedListItem(name: 'الجمالية'),
+                        SelectedListItem(name: 'المطرية'),
+                      ],
+                      textEditingController: cites,
+                      title: 'اختر مدينتك',
+                      hint: 'مدينتك',
+                      isCitySelected: true),
+                  AppTextField(
+                      dataList: [
+                        SelectedListItem(name: 'باطنة'),
+                        SelectedListItem(name: 'عظام'),
+                        SelectedListItem(name: 'اسنان'),
+                        SelectedListItem(name: 'نساء'),
+                        SelectedListItem(name: 'أنف وأذن'),
+                        SelectedListItem(name: 'قلب'),
+                        SelectedListItem(name: 'جراحة'),
+                        SelectedListItem(name: 'مخ وأعصاب'),
+                        SelectedListItem(name: 'عيون'),
+
+
+                      ],
+                      textEditingController: specialty,
+                      title: 'اختر تخصص الدكتور',
+                      hint: 'التخصص',
+                      isCitySelected: true),
+                  buttons('بحث', 45, double.infinity, 25,
+                      Appcolor().firstcolor, Appcolor().thirdcolor, () {
+                    if (controller.noin == true) {
+                      controller.city = cites.text;
+                      controller.special = specialty.text;
+                      controller.getdata(context);
+                      specialty.clear();
+                      cites.clear();
+                    }
+                    else{
+                      Get.rawSnackbar(
+                          messageText: const Text(
+                              'PLEASE CONNECT TO THE INTERNET',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14
+                              )
+                          ),
+                          isDismissible: false,
+                          duration: const Duration(seconds: 100),
+                          backgroundColor: Colors.red!,
+                          icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
+                          margin: EdgeInsets.zero,
+                          snackStyle: SnackStyle.GROUNDED
+                      );
+                    }
+                  }, 15),
+                ],
               ),
             ),
           ),

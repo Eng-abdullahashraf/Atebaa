@@ -38,14 +38,22 @@ class _Splash extends State<Splash> {
             width: double.infinity,
             color: Appcolor().thirdcolor,
             child: Center(
-              child: Text(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Image(
+                  height: 150,
+                  image: AssetImage('images/atebaa.png'),
+                  color: Appcolor().firstcolor,
+                ),
+              ),
+              /*child: Text(
                 'atebaa',
                 style: TextStyle(
                     fontSize: 60,
                     color: Appcolor().firstcolor,
                     fontFamily: "ElMessiri-Bold",
                     fontWeight: FontWeight.w800),
-              ),
+              ),*/
             )),
       ),
     );
