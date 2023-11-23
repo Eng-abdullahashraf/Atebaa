@@ -84,7 +84,8 @@ class homecontroller extends GetxController{
   void uploaddatatofirestor(name,address,phone,special,city,gender)async{
 
     CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
-    doctors.add({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
+    //doctors.add({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
+    doctors.doc(name).set({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
     print('doctor is added');
     update();
 
