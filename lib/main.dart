@@ -7,6 +7,7 @@ import 'package:atebaa/controller/homecontroller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/adapters.dart';
 
 void main() async{
   DependencyInjection.init();
@@ -21,6 +22,8 @@ void main() async{
     ),
   )
   :await Firebase.initializeApp();
+  await Hive.initFlutter();
+  await Hive.openBox('favorite');
   runApp(const MyApp());
 }
 

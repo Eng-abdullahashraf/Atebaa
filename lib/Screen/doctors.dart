@@ -4,6 +4,7 @@ import 'package:atebaa/doctorss.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../component.dart';
@@ -80,7 +81,336 @@ class Doctors extends StatelessWidget {
                     ),
                     Expanded(
                         child: Container(
-                            child: ListView.separated(
+                            child: ValueListenableBuilder(
+                                valueListenable: Hive.box('favorite').listenable(),
+                                builder: (context,box,child){
+                                  return ListView.separated(
+                                      scrollDirection: Axis.vertical,
+
+                                      itemBuilder: (context, i) {
+                                        var data = controller.data![i]
+                                        as Map<String, dynamic>;
+
+                                        final isfavorite=box.get(i)!=null;
+
+                                        if (controller.name!.isEmpty) {
+                                          return Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 10, right: 10),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: Appcolor().thirdcolor,
+                                                  borderRadius:
+                                                  BorderRadius.circular(25)),
+                                              height: 150.0,
+                                              width: double.infinity,
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsets.all(10),
+                                                    child:controller.data![i]['gender'] =='ذكر' ? Image.asset('images/pngegg.png') : Image.asset('images/doctora.png') ,
+                                                  ),
+                                                  const  SizedBox(width: 5.0),
+                                                  Expanded(
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(
+                                                          "د/ ${controller.data![i]["name"]}",
+                                                          style: TextStyle(
+                                                              color: Appcolor()
+                                                                  .firstcolor,
+                                                              fontFamily:
+                                                              "ElMessiri-Bold",
+                                                              fontSize: 15,fontWeight: FontWeight.bold),
+
+                                                        ),
+                                                        Container(
+                                                          width: double.infinity,
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                            children: [
+                                                              Container(
+                                                                  decoration: BoxDecoration(
+                                                                      color: Appcolor()
+                                                                          .secondcolor,
+                                                                      borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                          10)),
+                                                                  child: Padding(
+                                                                    padding:
+                                                                    const EdgeInsets
+                                                                        .only(
+                                                                        left: 10,
+                                                                        right:
+                                                                        10),
+                                                                    child: Text(
+                                                                      "${controller.data![i]["special"]}",
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                          18),
+                                                                    ),
+                                                                  )),
+                                                              Padding(
+                                                                padding:
+                                                                const EdgeInsets
+                                                                    .only(
+                                                                    left: 15),
+                                                                child: IconButton(onPressed: ()async{
+                                                                  await box.put(i,controller.data![i]["name"]);
+                                                                  controller.readdata();
+                                                                  controller.doctors!.add(Doctorss(
+                                                                      name: controller
+                                                                          .data![i]
+                                                                      ["name"],
+                                                                      special: controller
+                                                                          .data![i][
+                                                                      "special"],
+                                                                      phone: controller
+                                                                          .data![i]
+                                                                      ["phone"],
+                                                                      address: controller
+                                                                          .data![i][
+                                                                      "address"],
+                                                                      city: controller
+                                                                          .data![i]
+                                                                      ["city"]));
+                                                                  controller.savetocache();
+                                                                }
+                                                                    , icon:isfavorite? Icon(Icons.favorite):Icon(Icons.favorite_border)),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          width: double.infinity,
+                                                          child: Row(
+                                                            children: [
+                                                              Icon(
+                                                                Icons.place,
+                                                                color: Appcolor()
+                                                                    .fourthcolor,
+                                                              ),
+                                                              Expanded(
+                                                                child: Text(
+                                                                  "${controller.data![i]["address"]}",
+                                                                  style: TextStyle(
+                                                                      fontSize: 15,
+                                                                      color: Appcolor()
+                                                                          .fourthcolor),
+                                                                  maxLines: 2,
+                                                                  overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        InkWell(
+                                                          onTap: () {
+                                                            launch(
+                                                                'tel:${controller.data![i]["phone"]}');
+                                                          },
+                                                          child: Container(
+                                                            width: double.infinity,
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(Icons
+                                                                    .phone_enabled),
+                                                                Expanded(
+                                                                  child: Text(
+                                                                    "${controller.data![i]["phone"]}",
+                                                                    style: TextStyle(
+                                                                        fontSize: 18),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        if (data!["name"]
+                                            .toString()
+                                            .contains(controller.name!)) {
+
+                                          return Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 10, right: 10),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                  color: Appcolor().thirdcolor,
+                                                  borderRadius:
+                                                  BorderRadius.circular(25)),
+                                              height: 150.0,
+                                              width: double.infinity,
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.stretch,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsets.all(10),
+                                                    child:controller.data![i]['gender'] =='ذكر' ? Image.asset('images/pngegg.png') : Image.asset('images/doctora.png') ,
+                                                  ),
+                                                  const  SizedBox(width: 5.0),
+                                                  Expanded(
+                                                    child: Column(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceEvenly,
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text(
+                                                          "د/ ${controller.data![i]["name"]}",
+                                                          style: TextStyle(
+                                                              color: Appcolor()
+                                                                  .firstcolor,
+                                                              fontFamily:
+                                                              "ElMessiri-Bold",
+                                                              fontSize: 15,fontWeight: FontWeight.bold),
+
+                                                        ),
+                                                        Container(
+                                                          width: double.infinity,
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                            children: [
+                                                              Container(
+                                                                  decoration: BoxDecoration(
+                                                                      color: Appcolor()
+                                                                          .secondcolor,
+                                                                      borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                          10)),
+                                                                  child: Padding(
+                                                                    padding:
+                                                                    const EdgeInsets
+                                                                        .only(
+                                                                        left: 10,
+                                                                        right:
+                                                                        10),
+                                                                    child: Text(
+                                                                      "${controller.data![i]["special"]}",
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                          18),
+                                                                    ),
+                                                                  )),
+                                                              Padding(
+                                                                padding:
+                                                                const EdgeInsets
+                                                                    .only(
+                                                                    left: 15),
+                                                                child: IconButton(onPressed: (){
+
+                                                                  controller
+                                                                      .readdata();
+                                                                  controller.doctors.add(Doctorss(
+                                                                      name: controller
+                                                                          .data![i]
+                                                                      ["name"],
+                                                                      special: controller
+                                                                          .data![i][
+                                                                      "special"],
+                                                                      phone: controller
+                                                                          .data![i]
+                                                                      ["phone"],
+                                                                      address: controller
+                                                                          .data![i][
+                                                                      "address"],
+                                                                      city: controller
+                                                                          .data![i]
+                                                                      ["city"]));
+                                                                  controller
+                                                                      .savetocache();
+                                                                }, icon: Icon(Icons.add_circle)),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          width: double.infinity,
+                                                          child: Row(
+                                                            children: [
+                                                              Icon(
+                                                                Icons.place,
+                                                                color: Appcolor()
+                                                                    .fourthcolor,
+                                                              ),
+                                                              Expanded(
+                                                                child: Text(
+                                                                  "${controller.data![i]["address"]}",
+                                                                  style: TextStyle(
+                                                                      fontSize: 15,
+                                                                      color: Appcolor()
+                                                                          .fourthcolor),
+                                                                  maxLines: 2,
+                                                                  overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        InkWell(
+                                                          onTap: () {
+                                                            launch(
+                                                                'tel:${controller.data![i]["phone"]}');
+                                                          },
+                                                          child: Container(
+                                                            width: double.infinity,
+                                                            child: Row(
+                                                              children: [
+                                                                Icon(Icons
+                                                                    .phone_enabled),
+                                                                Expanded(
+                                                                  child: Text(
+                                                                    "${controller.data![i]["phone"]}",
+                                                                    style: TextStyle(
+                                                                        fontSize: 18),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        } else {
+                                          return SizedBox();
+                                        }
+                                      },
+                                      separatorBuilder: (context, i) =>
+                                          SizedBox(height: 10),
+                                      itemCount: controller.data!.length);
+                                })
+                          /*ListView.separated(
                                 scrollDirection: Axis.vertical,
 
                                 itemBuilder: (context, i) {
@@ -401,7 +731,7 @@ class Doctors extends StatelessWidget {
                                 },
                                 separatorBuilder: (context, i) =>
                                     SizedBox(height: 10),
-                                itemCount: controller.data!.length)
+                                itemCount: controller.data!.length)*/
                             )),
                   ],
                 ),
@@ -412,23 +742,3 @@ class Doctors extends StatelessWidget {
   }
 }
 
-class Addbutton extends StatelessWidget{
-
-  final String? data;
-  const Addbutton({required this.data, Key? key}):super(key: key);
-
-
-  @override
-  Widget build(BuildContext context) {
-    return GetBuilder<homecontroller>(
-      init: homecontroller(),
-      builder: (controller) {
-        controller.checkfav(data!);
-        return IconButton(
-            onPressed: (){
-            },
-            icon: controller.z! ? Icon(Icons.favorite):Icon(Icons.favorite_border) );
-
-      },);
-  }
-}

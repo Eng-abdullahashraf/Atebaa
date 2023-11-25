@@ -48,6 +48,7 @@ class Favourite extends StatelessWidget {
                                 color: Appcolor().firstcolor,
                                 fontFamily: 'ElMessiri-Bold'
                               ),
+
                             ),
                         )
                         : ListView.separated(

@@ -81,6 +81,7 @@ class homecontroller extends GetxController{
     //load=false;
   }
 
+
   bool? z=false;
   void checkfav(name){
     for(var s in doctors){

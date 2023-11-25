@@ -30,6 +30,7 @@ class Uploaddata extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(children: [
               textFormApp('doc', doc,TextInputType.text),
+
               SizedBox(height: 10,),
               textFormApp('name', name,TextInputType.text),
               SizedBox(height: 10,),
