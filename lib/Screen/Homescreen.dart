@@ -39,6 +39,7 @@ class Homescreen extends StatelessWidget {
 
                   AppTextField(
                       dataList: [
+                        SelectedListItem(name: 'الكل'),
                         SelectedListItem(name: 'المنزلة'),
                         SelectedListItem(name: 'البصراط'),
                         SelectedListItem(name: 'الجمالية'),
@@ -50,6 +51,7 @@ class Homescreen extends StatelessWidget {
                       isCitySelected: true),
                   AppTextField(
                       dataList: [
+                        SelectedListItem(name: 'الكل'),
                         SelectedListItem(name: 'باطنة'),
                         SelectedListItem(name: 'عظام'),
                         SelectedListItem(name: 'اسنان'),

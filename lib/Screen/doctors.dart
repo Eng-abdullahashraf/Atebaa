@@ -166,27 +166,35 @@ class Doctors extends StatelessWidget {
                                                                     .only(
                                                                     left: 15),
                                                                 child: IconButton(onPressed: ()async{
-                                                                  await box.put(i,controller.data![i]["name"]);
-                                                                  controller.readdata();
-                                                                  controller.doctors!.add(Doctorss(
-                                                                      name: controller
-                                                                          .data![i]
-                                                                      ["name"],
-                                                                      special: controller
-                                                                          .data![i][
-                                                                      "special"],
-                                                                      phone: controller
-                                                                          .data![i]
-                                                                      ["phone"],
-                                                                      address: controller
-                                                                          .data![i][
-                                                                      "address"],
-                                                                      city: controller
-                                                                          .data![i]
-                                                                      ["city"]));
-                                                                  controller.savetocache();
+                                                                  if(isfavorite){
+                                                                    await box.delete(i);
+                                                                    controller.delete(i);
+
+                                                                  }
+                                                                  else{
+                                                                    await box.put(i,controller.data![i]["name"]);
+                                                                    controller.readdata();
+                                                                    controller.doctors!.add(Doctorss(
+                                                                        name: controller
+                                                                            .data![i]
+                                                                        ["name"],
+                                                                        special: controller
+                                                                            .data![i][
+                                                                        "special"],
+                                                                        phone: controller
+                                                                            .data![i]
+                                                                        ["phone"],
+                                                                        address: controller
+                                                                            .data![i][
+                                                                        "address"],
+                                                                        city: controller
+                                                                            .data![i]
+                                                                        ["city"]));
+                                                                    controller.savetocache();
+                                                                  }
+
                                                                 }
-                                                                    , icon:isfavorite? Icon(Icons.favorite):Icon(Icons.favorite_border)),
+                                                                    , icon:isfavorite? Icon(Icons.favorite,color: Colors.red,):Icon(Icons.favorite_border)),
                                                               ),
                                                             ],
                                                           ),
@@ -321,29 +329,36 @@ class Doctors extends StatelessWidget {
                                                                 const EdgeInsets
                                                                     .only(
                                                                     left: 15),
-                                                                child: IconButton(onPressed: (){
+                                                                child: IconButton(onPressed: ()async{
+                                                                  if(isfavorite){
+                                                                    await box.delete(i);
+                                                                    controller.delete(i);
 
-                                                                  controller
-                                                                      .readdata();
-                                                                  controller.doctors.add(Doctorss(
-                                                                      name: controller
-                                                                          .data![i]
-                                                                      ["name"],
-                                                                      special: controller
-                                                                          .data![i][
-                                                                      "special"],
-                                                                      phone: controller
-                                                                          .data![i]
-                                                                      ["phone"],
-                                                                      address: controller
-                                                                          .data![i][
-                                                                      "address"],
-                                                                      city: controller
-                                                                          .data![i]
-                                                                      ["city"]));
-                                                                  controller
-                                                                      .savetocache();
-                                                                }, icon: Icon(Icons.add_circle)),
+                                                                  }
+                                                                  else{
+                                                                    await box.put(i,controller.data![i]["name"]);
+                                                                    controller.readdata();
+                                                                    controller.doctors!.add(Doctorss(
+                                                                        name: controller
+                                                                            .data![i]
+                                                                        ["name"],
+                                                                        special: controller
+                                                                            .data![i][
+                                                                        "special"],
+                                                                        phone: controller
+                                                                            .data![i]
+                                                                        ["phone"],
+                                                                        address: controller
+                                                                            .data![i][
+                                                                        "address"],
+                                                                        city: controller
+                                                                            .data![i]
+                                                                        ["city"]));
+                                                                    controller.savetocache();
+                                                                  }
+
+                                                                }
+                                                                    , icon:isfavorite? Icon(Icons.favorite,color: Colors.red,):Icon(Icons.favorite_border)),
                                                               ),
                                                             ],
                                                           ),

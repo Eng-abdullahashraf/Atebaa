@@ -71,13 +71,26 @@ class homecontroller extends GetxController{
     name="";
     load=false;
     data?.clear();
+    var response;
     CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
-    var response=await doctors.where('city',isEqualTo: city).where('special',isEqualTo: special).get();
+    if(city=='الكل' || special=='الكل'){
+       response=await doctors.get();
+    }
+    else if(city=='الكل'){
+      response=await doctors.where('special',isEqualTo: special).get();
+    }
+    else if(special=='الكل'){
+      response=await doctors.where('city',isEqualTo: city).get();
+    }
+    else{
+      response=await doctors.where('city',isEqualTo: city).where('special',isEqualTo: special).get();
+    }
     response.docs.forEach((element) {
       data!.add(element.data());
     });
-    loading();
+
     print(data!);
+    loading();
     //load=false;
   }
 
