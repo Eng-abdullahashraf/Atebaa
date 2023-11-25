@@ -43,7 +43,6 @@ class _Splash extends State<Splash> {
                 child: Image(
                   height: 150,
                   image: AssetImage('images/atebaa.png'),
-                  color: Appcolor().firstcolor,
                 ),
               ),
               /*child: Text(
