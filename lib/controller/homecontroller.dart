@@ -73,7 +73,7 @@ class homecontroller extends GetxController{
     data?.clear();
     var response;
     CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
-    if(city=='الكل' || special=='الكل'){
+    if(city=='الكل' && special=='الكل'){
        response=await doctors.get();
     }
     else if(city=='الكل'){
