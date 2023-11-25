@@ -16,6 +16,7 @@ class Uploaddata extends StatelessWidget {
    TextEditingController phone = TextEditingController();
    TextEditingController special = TextEditingController();
    TextEditingController gender = TextEditingController();
+   TextEditingController doc = TextEditingController();
 
 
 
@@ -28,7 +29,8 @@ class Uploaddata extends StatelessWidget {
           padding: const EdgeInsets.all(15),
           child: SingleChildScrollView(
             child: Column(children: [
-
+              textFormApp('doc', doc,TextInputType.text),
+              SizedBox(height: 10,),
               textFormApp('name', name,TextInputType.text),
               SizedBox(height: 10,),
               textFormApp('address', add,TextInputType.text),
@@ -81,7 +83,7 @@ class Uploaddata extends StatelessWidget {
                   init: homecontroller(),
                   builder: (controller) {
                     return  MaterialButton(onPressed: (){
-                      controller.uploaddatatofirestor(name.text, add.text, phone.text, special.text, city.text, gender.text);
+                      controller.uploaddatatofirestor(name.text, add.text, phone.text, special.text, city.text, gender.text,doc.text);
                       name.clear();
                       add.clear();
                       city.clear();

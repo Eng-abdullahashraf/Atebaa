@@ -10,6 +10,9 @@ class Appcolor{
 
   final gray=Color(0xb2817e8a);
 
+  final pur=Color(0x817e8a);
+
+
   Appcolor();
 
 }

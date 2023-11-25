@@ -103,8 +103,7 @@ class Doctors extends StatelessWidget {
                                           children: [
                                             Padding(
                                               padding: const EdgeInsets.all(10),
-                                              child: Image.asset(
-                                                  'images/pngegg.png'),
+                                              child:controller.data![i]['gender'] =='ذكر' ? Image.asset('images/pngegg.png') : Image.asset('images/doctora.png') ,
                                             ),
                                           const  SizedBox(width: 5.0),
                                             Expanded(
@@ -116,13 +115,13 @@ class Doctors extends StatelessWidget {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    "${controller.data![i]["name"]}",
+                                                    "د/ ${controller.data![i]["name"]}",
                                                     style: TextStyle(
                                                         color: Appcolor()
                                                             .firstcolor,
                                                         fontFamily:
                                                             "ElMessiri-Bold",
-                                                        fontSize: 20),
+                                                        fontSize: 15,fontWeight: FontWeight.bold),
 
                                                   ),
                                                   Container(
@@ -159,6 +158,162 @@ class Doctors extends StatelessWidget {
                                                               const EdgeInsets
                                                                   .only(
                                                                   left: 15),
+                                                         // child: Addbutton(data: controller.data![i]["name"]),
+                                                          child: IconButton(onPressed: (){
+                                                            controller.readdata();
+                                                            controller.doctors!.add(Doctorss(
+                                                                name: controller
+                                                                    .data![i]
+                                                                ["name"],
+                                                                special: controller
+                                                                    .data![i][
+                                                                "special"],
+                                                                phone: controller
+                                                                    .data![i]
+                                                                ["phone"],
+                                                                address: controller
+                                                                    .data![i][
+                                                                "address"],
+                                                                city: controller
+                                                                    .data![i]
+                                                                ["city"]));
+                                                            controller.savetocache();
+                                                          }
+                                                              , icon: Icon(Icons.favorite_border)),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    width: double.infinity,
+                                                    child: Row(
+                                                      children: [
+                                                        Icon(
+                                                          Icons.place,
+                                                          color: Appcolor()
+                                                              .fourthcolor,
+                                                        ),
+                                                        Expanded(
+                                                          child: Text(
+                                                            "${controller.data![i]["address"]}",
+                                                            style: TextStyle(
+                                                                fontSize: 15,
+                                                                color: Appcolor()
+                                                                    .fourthcolor),
+                                                            maxLines: 2,
+                                                            overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      launch(
+                                                          'tel:${controller.data![i]["phone"]}');
+                                                    },
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      child: Row(
+                                                        children: [
+                                                          Icon(Icons
+                                                              .phone_enabled),
+                                                          Expanded(
+                                                            child: Text(
+                                                              "${controller.data![i]["phone"]}",
+                                                              style: TextStyle(
+                                                                  fontSize: 18),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  if (data!["name"]
+                                      .toString()
+                                      .contains(controller.name!)) {
+
+                                    return Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            color: Appcolor().thirdcolor,
+                                            borderRadius:
+                                            BorderRadius.circular(25)),
+                                        height: 150.0,
+                                        width: double.infinity,
+                                        child: Row(
+                                          crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.all(10),
+                                              child:controller.data![i]['gender'] =='ذكر' ? Image.asset('images/pngegg.png') : Image.asset('images/doctora.png') ,
+                                            ),
+                                            const  SizedBox(width: 5.0),
+                                            Expanded(
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                MainAxisAlignment
+                                                    .spaceEvenly,
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "د/ ${controller.data![i]["name"]}",
+                                                    style: TextStyle(
+                                                        color: Appcolor()
+                                                            .firstcolor,
+                                                        fontFamily:
+                                                        "ElMessiri-Bold",
+                                                        fontSize: 15,fontWeight: FontWeight.bold),
+
+                                                  ),
+                                                  Container(
+                                                    width: double.infinity,
+                                                    child: Row(
+                                                      mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                      children: [
+                                                        Container(
+                                                            decoration: BoxDecoration(
+                                                                color: Appcolor()
+                                                                    .secondcolor,
+                                                                borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                    10)),
+                                                            child: Padding(
+                                                              padding:
+                                                              const EdgeInsets
+                                                                  .only(
+                                                                  left: 10,
+                                                                  right:
+                                                                  10),
+                                                              child: Text(
+                                                                "${controller.data![i]["special"]}",
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                    18),
+                                                              ),
+                                                            )),
+                                                        Padding(
+                                                          padding:
+                                                          const EdgeInsets
+                                                              .only(
+                                                              left: 15),
                                                           child: IconButton(onPressed: (){
 
                                                             controller
@@ -204,8 +359,8 @@ class Doctors extends StatelessWidget {
                                                                     .fourthcolor),
                                                             maxLines: 2,
                                                             overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
+                                                            TextOverflow
+                                                                .ellipsis,
                                                           ),
                                                         ),
                                                       ],
@@ -224,7 +379,7 @@ class Doctors extends StatelessWidget {
                                                               .phone_enabled),
                                                           Expanded(
                                                             child: Text(
-                                                              "${controller.data![i]["phone"]} (2+) ",
+                                                              "${controller.data![i]["phone"]}",
                                                               style: TextStyle(
                                                                   fontSize: 18),
                                                             ),
@@ -240,167 +395,6 @@ class Doctors extends StatelessWidget {
                                         ),
                                       ),
                                     );
-                                  }
-                                  if (data!["name"]
-                                      .toString()
-                                      .contains(controller.name!)) {
-
-                                    return Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, right: 10),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Appcolor().thirdcolor,
-                                            borderRadius:
-                                            BorderRadius.circular(25)),
-                                        height: 150.0,
-                                        width: double.infinity,
-                                        child: Row(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.all(10),
-                                              child: Image.asset(
-                                                  'images/pngegg.png'),
-                                            ),
-                                            const  SizedBox(width: 5.0),
-                                            Expanded(
-                                              child: SingleChildScrollView(
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceEvenly,
-                                                  crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      "${controller.data![i]["name"]}",
-                                                      style: TextStyle(
-                                                          color: Appcolor()
-                                                              .firstcolor,
-                                                          fontFamily:
-                                                          "ElMessiri-Bold",
-                                                          fontSize: 20),
-
-                                                    ),
-                                                    Container(
-                                                      width: double.infinity,
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                        children: [
-                                                          Container(
-                                                              decoration: BoxDecoration(
-                                                                  color: Appcolor()
-                                                                      .secondcolor,
-                                                                  borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                      10)),
-                                                              child: Padding(
-                                                                padding:
-                                                                const EdgeInsets
-                                                                    .only(
-                                                                    left: 10,
-                                                                    right:
-                                                                    10),
-                                                                child: Text(
-                                                                  "${controller.data![i]["special"]}",
-                                                                  style: TextStyle(
-                                                                      fontSize:
-                                                                      18),
-                                                                ),
-                                                              )),
-                                                          Padding(
-                                                            padding:
-                                                            const EdgeInsets
-                                                                .only(
-                                                                left: 15),
-                                                            child: IconButton(onPressed: (){
-
-                                                              controller
-                                                                  .readdata();
-                                                              controller.doctors.add(Doctorss(
-                                                                  name: controller
-                                                                      .data![i]
-                                                                  ["name"],
-                                                                  special: controller
-                                                                      .data![i][
-                                                                  "special"],
-                                                                  phone: controller
-                                                                      .data![i]
-                                                                  ["phone"],
-                                                                  address: controller
-                                                                      .data![i][
-                                                                  "address"],
-                                                                  city: controller
-                                                                      .data![i]
-                                                                  ["city"]));
-                                                              controller
-                                                                  .savetocache();
-                                                              bool x=true;
-                                                            },  icon: Icon(Icons.add_circle)),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: double.infinity,
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.place,
-                                                            color: Appcolor()
-                                                                .fourthcolor,
-                                                          ),
-                                                          Expanded(
-                                                            child: Text(
-                                                              "${controller.data![i]["address"]}",
-                                                              style: TextStyle(
-                                                                  fontSize: 15,
-                                                                  color: Appcolor()
-                                                                      .fourthcolor),
-                                                              maxLines: 2,
-                                                              overflow:
-                                                              TextOverflow
-                                                                  .ellipsis,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    InkWell(
-                                                      onTap: () {
-                                                        launch(
-                                                            'tel:${controller.data![i]["phone"]}');
-                                                      },
-                                                      child: Container(
-                                                        width: double.infinity,
-                                                        child: Row(
-                                                          children: [
-                                                            Icon(Icons
-                                                                .phone_enabled),
-                                                            Expanded(
-                                                              child: Text(
-                                                                "${controller.data![i]["phone"]} (2+) ",
-                                                                style: TextStyle(
-                                                                    fontSize: 18),
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                    );
                                   } else {
                                     return SizedBox();
                                   }
@@ -408,148 +402,6 @@ class Doctors extends StatelessWidget {
                                 separatorBuilder: (context, i) =>
                                     SizedBox(height: 10),
                                 itemCount: controller.data!.length)
-                            /*child: ListView.builder(
-                          itemCount: controller.data!.length,
-                          itemBuilder: (context, i) {
-                            var data =
-                                controller.data![i] as Map<String, dynamic>;
-                            if (controller.name!.isEmpty) {
-                              print("2");
-
-                              return Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Appcolor().thirdcolor,
-                                      borderRadius: BorderRadius.circular(25)),
-                                  height: 150.0,
-                                  width: double.infinity,
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      Container(
-                                          height: 110,
-                                          child: Icon(
-                                            Icons.person,
-                                            size: 110,
-                                          )),
-                                      SizedBox(width: 5.0),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "${data["name"]}",
-                                            style: TextStyle(
-                                                color: Appcolor().firstcolor,
-                                                fontFamily: "ElMessiri-Bold",
-                                                fontSize: 20),
-                                          ),
-                                          Container(
-                                              decoration: BoxDecoration(
-                                                  color: Appcolor().secondcolor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 10, right: 10),
-                                                child: Text(
-                                                  "${data["special"]}",
-                                                  style:
-                                                      TextStyle(fontSize: 18),
-                                                ),
-                                              )),
-                                          Text(
-                                            "${data["address"]}",
-                                            style: TextStyle(fontSize: 18),
-                                          ),
-                                          Text(
-                                            "(+20) ${data["phone"]}",
-                                            style: TextStyle(fontSize: 18),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }
-                            if (data!["name"]
-                                .toString()
-                                .startsWith(controller.name!)) {
-                              print("1");
-                              return Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 10, right: 10),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: Appcolor().thirdcolor,
-                                      borderRadius: BorderRadius.circular(25)),
-                                  height: 150.0,
-                                  width: double.infinity,
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      Container(
-                                          height: 110,
-                                          child: Icon(
-                                            Icons.person,
-                                            size: 110,
-                                          )),
-                                      SizedBox(width: 5.0),
-                                      Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "${data["name"]}",
-                                            style: TextStyle(
-                                                color: Appcolor().firstcolor,
-                                                fontFamily: "ElMessiri-Bold",
-                                                fontSize: 20),
-                                          ),
-                                          Container(
-                                              decoration: BoxDecoration(
-                                                  color: Appcolor().secondcolor,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10)),
-                                              child: Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 10, right: 10),
-                                                child: Text(
-                                                  "${data["special"]}",
-                                                  style:
-                                                      TextStyle(fontSize: 18),
-                                                ),
-                                              )),
-                                          Text(
-                                            "${data["address"]}",
-                                            style: TextStyle(fontSize: 18),
-                                          ),
-                                          Text(
-                                            "(+20) ${data["phone"]}",
-                                            style: TextStyle(fontSize: 18),
-                                          ),
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              );
-                            }
-                            else{
-                              return SizedBox();
-                            }
-                          }),*/
                             )),
                   ],
                 ),
@@ -557,5 +409,26 @@ class Doctors extends StatelessWidget {
                 Center(child: CircularProgressIndicator())),
       ),
     ));
+  }
+}
+
+class Addbutton extends StatelessWidget{
+
+  final String? data;
+  const Addbutton({required this.data, Key? key}):super(key: key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<homecontroller>(
+      init: homecontroller(),
+      builder: (controller) {
+        controller.checkfav(data!);
+        return IconButton(
+            onPressed: (){
+            },
+            icon: controller.z! ? Icon(Icons.favorite):Icon(Icons.favorite_border) );
+
+      },);
   }
 }

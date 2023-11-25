@@ -63,7 +63,7 @@ Widget doctorItem(doctors,i) => Padding(
         decoration: BoxDecoration(
             color: Appcolor().thirdcolor,
             borderRadius: BorderRadius.circular(25)),
-        height: 150.0,
+        height: 170.0,
         width: double.infinity,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,

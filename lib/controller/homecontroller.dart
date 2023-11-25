@@ -81,11 +81,25 @@ class homecontroller extends GetxController{
     //load=false;
   }
 
-  void uploaddatatofirestor(name,address,phone,special,city,gender)async{
+  bool? z=false;
+  void checkfav(name){
+    for(var s in doctors){
+      if(s.name==name){
+        z=true;
+        update();
+        break;
+      }
+      else{
+        z=false;
+        update();
+      }
+    }
+  }
+  void uploaddatatofirestor(name,address,phone,special,city,gender,doc)async{
 
     CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
     //doctors.add({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
-    doctors.doc(name).set({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
+    doctors.doc(doc).set({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
     print('doctor is added');
     update();
 
