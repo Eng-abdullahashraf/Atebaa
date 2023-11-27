@@ -24,736 +24,438 @@ class Doctors extends StatelessWidget {
         init: homecontroller(),
         builder: (controller) => AnimatedConditionalBuilder(
             condition: controller.load!,
-            builder: (BuildContext context) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(color: Appcolor().firstcolor,borderRadius: BorderRadius.only(bottomRight: Radius.circular(15),bottomLeft: Radius.circular(15))),
-                      height: 50,
-                      width: double.infinity,
-                      child: Row(
-                        children: [
-
-                          Expanded(
-                            child: Center(
-                                child: Text(
+            builder: (BuildContext context) {
+              controller.readdata();
+              return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Appcolor().firstcolor,
+                      borderRadius: BorderRadius.only(
+                          bottomRight: Radius.circular(15),
+                          bottomLeft: Radius.circular(15))),
+                  height: 50,
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Center(
+                            child: Text(
                               '${controller.city!} - ${controller.special!}',
                               style: TextStyle(
                                   fontSize: 18,
                                   color: Appcolor().thirdcolor,
                                   fontFamily: 'ElMessiri-Bold'),
                             )),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              controller.name = "";
-                              controller.special = "";
-                              controller.city = "";
-                              Get.back();
-                            },
-                            icon: Icon(Icons.arrow_forward_ios,color: Appcolor().thirdcolor),
-                          ),
-
-                        ],
                       ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 10, left: 10, right: 10),
-                      child: Container(
-                        height: 50,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            prefixIconColor: Appcolor().gray,
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(15)),
-                            hintText: "Search",
-                            prefixIcon: Icon(Icons.search),
-                          ),
-                          onChanged: (value) {
-                            controller.search(value);
-                          },
-                        ),
+                      IconButton(
+                        onPressed: () {
+                          controller.name = "";
+                          controller.special = "";
+                          controller.city = "";
+                          Get.back();
+                        },
+                        icon: Icon(Icons.arrow_forward_ios,
+                            color: Appcolor().thirdcolor),
                       ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding:
+                  const EdgeInsets.only(top: 10, left: 10, right: 10),
+                  child: Container(
+                    height: 50,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        prefixIconColor: Appcolor().gray,
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        hintText: "Search",
+                        prefixIcon: Icon(Icons.search),
+                      ),
+                      onChanged: (value) {
+                        controller.search(value);
+                      },
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Expanded(
-                        child: Container(
-                            child: ValueListenableBuilder(
-                                valueListenable: Hive.box('favorite').listenable(),
-                                builder: (context,box,child){
-                                  return ListView.separated(
-                                      scrollDirection: Axis.vertical,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                    child: Container(
+                        child: ListView.separated(
+                            scrollDirection: Axis.vertical,
+                            itemBuilder: (context, i) {
+                              bool? z=false;
 
-                                      itemBuilder: (context, i) {
-                                        var data = controller.data![i]
-                                        as Map<String, dynamic>;
+                              for(var s in controller.doctors){
+                                if(s.name==controller.data![i]["name"]){
+                                  print('object');
 
-                                        final isfavorite=box.get(i)!=null;
+                                  z=true;
+                                  break;
+                                }
+                                else{
+                                  z=false;
+                                }
 
-                                        if (controller.name!.isEmpty) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10, right: 10),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                  color: Appcolor().thirdcolor,
-                                                  borderRadius:
-                                                  BorderRadius.circular(25)),
-                                              height: 150.0,
-                                              width: double.infinity,
-                                              child: Row(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(10),
-                                                    child:controller.data![i]['gender'] =='ذكر' ? Image.asset('images/pngegg.png') : Image.asset('images/doctora.png') ,
-                                                  ),
-                                                  const  SizedBox(width: 5.0),
-                                                  Expanded(
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                      crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                      children: [
-                                                        Text(
-                                                          "د/ ${controller.data![i]["name"]}",
-                                                          style: TextStyle(
-                                                              color: Appcolor()
-                                                                  .firstcolor,
-                                                              fontFamily:
-                                                              "ElMessiri-Bold",
-                                                              fontSize: 15,fontWeight: FontWeight.bold),
-
-                                                        ),
-                                                        Container(
-                                                          width: double.infinity,
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                            children: [
-                                                              Container(
-                                                                  decoration: BoxDecoration(
-                                                                      color: Appcolor()
-                                                                          .secondcolor,
-                                                                      borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                          10)),
-                                                                  child: Padding(
-                                                                    padding:
-                                                                    const EdgeInsets
-                                                                        .only(
-                                                                        left: 10,
-                                                                        right:
-                                                                        10),
-                                                                    child: Text(
-                                                                      "${controller.data![i]["special"]}",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                          18),
-                                                                    ),
-                                                                  )),
-                                                              Padding(
-                                                                padding:
-                                                                const EdgeInsets
-                                                                    .only(
-                                                                    left: 15),
-                                                                child: IconButton(onPressed: ()async{
-                                                                  if(isfavorite){
-                                                                    await box.delete(i);
-                                                                    controller.delete(i);
-
-                                                                  }
-                                                                  else{
-                                                                    await box.put(i,controller.data![i]["name"]);
-                                                                    controller.readdata();
-                                                                    controller.doctors!.add(Doctorss(
-                                                                        name: controller
-                                                                            .data![i]
-                                                                        ["name"],
-                                                                        special: controller
-                                                                            .data![i][
-                                                                        "special"],
-                                                                        phone: controller
-                                                                            .data![i]
-                                                                        ["phone"],
-                                                                        address: controller
-                                                                            .data![i][
-                                                                        "address"],
-                                                                        city: controller
-                                                                            .data![i]
-                                                                        ["city"]));
-                                                                    controller.savetocache();
-                                                                  }
-
-                                                                }
-                                                                    , icon:isfavorite? Icon(Icons.favorite,color: Colors.red,):Icon(Icons.favorite_border)),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          width: double.infinity,
-                                                          child: Row(
-                                                            children: [
-                                                              Icon(
-                                                                Icons.place,
-                                                                color: Appcolor()
-                                                                    .fourthcolor,
-                                                              ),
-                                                              Expanded(
-                                                                child: Text(
-                                                                  "${controller.data![i]["address"]}",
-                                                                  style: TextStyle(
-                                                                      fontSize: 15,
-                                                                      color: Appcolor()
-                                                                          .fourthcolor),
-                                                                  maxLines: 2,
-                                                                  overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        InkWell(
-                                                          onTap: () {
-                                                            launch(
-                                                                'tel:${controller.data![i]["phone"]}');
-                                                          },
-                                                          child: Container(
-                                                            width: double.infinity,
-                                                            child: Row(
-                                                              children: [
-                                                                Icon(Icons
-                                                                    .phone_enabled),
-                                                                Expanded(
-                                                                  child: Text(
-                                                                    "${controller.data![i]["phone"]}",
-                                                                    style: TextStyle(
-                                                                        fontSize: 18),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        if (data!["name"]
-                                            .toString()
-                                            .contains(controller.name!)) {
-
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10, right: 10),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                  color: Appcolor().thirdcolor,
-                                                  borderRadius:
-                                                  BorderRadius.circular(25)),
-                                              height: 150.0,
-                                              width: double.infinity,
-                                              child: Row(
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.stretch,
-                                                children: [
-                                                  Padding(
-                                                    padding: const EdgeInsets.all(10),
-                                                    child:controller.data![i]['gender'] =='ذكر' ? Image.asset('images/pngegg.png') : Image.asset('images/doctora.png') ,
-                                                  ),
-                                                  const  SizedBox(width: 5.0),
-                                                  Expanded(
-                                                    child: Column(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                      crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                      children: [
-                                                        Text(
-                                                          "د/ ${controller.data![i]["name"]}",
-                                                          style: TextStyle(
-                                                              color: Appcolor()
-                                                                  .firstcolor,
-                                                              fontFamily:
-                                                              "ElMessiri-Bold",
-                                                              fontSize: 15,fontWeight: FontWeight.bold),
-
-                                                        ),
-                                                        Container(
-                                                          width: double.infinity,
-                                                          child: Row(
-                                                            mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                            children: [
-                                                              Container(
-                                                                  decoration: BoxDecoration(
-                                                                      color: Appcolor()
-                                                                          .secondcolor,
-                                                                      borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                          10)),
-                                                                  child: Padding(
-                                                                    padding:
-                                                                    const EdgeInsets
-                                                                        .only(
-                                                                        left: 10,
-                                                                        right:
-                                                                        10),
-                                                                    child: Text(
-                                                                      "${controller.data![i]["special"]}",
-                                                                      style: TextStyle(
-                                                                          fontSize:
-                                                                          18),
-                                                                    ),
-                                                                  )),
-                                                              Padding(
-                                                                padding:
-                                                                const EdgeInsets
-                                                                    .only(
-                                                                    left: 15),
-                                                                child: IconButton(onPressed: ()async{
-                                                                  if(isfavorite){
-                                                                    await box.delete(i);
-                                                                    controller.delete(i);
-
-                                                                  }
-                                                                  else{
-                                                                    await box.put(i,controller.data![i]["name"]);
-                                                                    controller.readdata();
-                                                                    controller.doctors!.add(Doctorss(
-                                                                        name: controller
-                                                                            .data![i]
-                                                                        ["name"],
-                                                                        special: controller
-                                                                            .data![i][
-                                                                        "special"],
-                                                                        phone: controller
-                                                                            .data![i]
-                                                                        ["phone"],
-                                                                        address: controller
-                                                                            .data![i][
-                                                                        "address"],
-                                                                        city: controller
-                                                                            .data![i]
-                                                                        ["city"]));
-                                                                    controller.savetocache();
-                                                                  }
-
-                                                                }
-                                                                    , icon:isfavorite? Icon(Icons.favorite,color: Colors.red,):Icon(Icons.favorite_border)),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          width: double.infinity,
-                                                          child: Row(
-                                                            children: [
-                                                              Icon(
-                                                                Icons.place,
-                                                                color: Appcolor()
-                                                                    .fourthcolor,
-                                                              ),
-                                                              Expanded(
-                                                                child: Text(
-                                                                  "${controller.data![i]["address"]}",
-                                                                  style: TextStyle(
-                                                                      fontSize: 15,
-                                                                      color: Appcolor()
-                                                                          .fourthcolor),
-                                                                  maxLines: 2,
-                                                                  overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        InkWell(
-                                                          onTap: () {
-                                                            launch(
-                                                                'tel:${controller.data![i]["phone"]}');
-                                                          },
-                                                          child: Container(
-                                                            width: double.infinity,
-                                                            child: Row(
-                                                              children: [
-                                                                Icon(Icons
-                                                                    .phone_enabled),
-                                                                Expanded(
-                                                                  child: Text(
-                                                                    "${controller.data![i]["phone"]}",
-                                                                    style: TextStyle(
-                                                                        fontSize: 18),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          );
-                                        } else {
-                                          return SizedBox();
-                                        }
-                                      },
-                                      separatorBuilder: (context, i) =>
-                                          SizedBox(height: 10),
-                                      itemCount: controller.data!.length);
-                                })
-                          /*ListView.separated(
-                                scrollDirection: Axis.vertical,
-
-                                itemBuilder: (context, i) {
-                                  var data = controller.data![i]
-                                      as Map<String, dynamic>;
-                                  if (controller.name!.isEmpty) {
-                                    return Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, right: 10),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Appcolor().thirdcolor,
-                                            borderRadius:
-                                                BorderRadius.circular(25)),
-                                        height: 150.0,
-                                        width: double.infinity,
-                                        child: Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.stretch,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.all(10),
-                                              child:controller.data![i]['gender'] =='ذكر' ? Image.asset('images/pngegg.png') : Image.asset('images/doctora.png') ,
-                                            ),
-                                          const  SizedBox(width: 5.0),
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "د/ ${controller.data![i]["name"]}",
-                                                    style: TextStyle(
-                                                        color: Appcolor()
-                                                            .firstcolor,
-                                                        fontFamily:
-                                                            "ElMessiri-Bold",
-                                                        fontSize: 15,fontWeight: FontWeight.bold),
-
-                                                  ),
-                                                  Container(
-                                                    width: double.infinity,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      children: [
-                                                        Container(
-                                                            decoration: BoxDecoration(
-                                                                color: Appcolor()
-                                                                    .secondcolor,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            10)),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .only(
-                                                                      left: 10,
-                                                                      right:
-                                                                          10),
-                                                              child: Text(
-                                                                "${controller.data![i]["special"]}",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        18),
-                                                              ),
-                                                            )),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                                  left: 15),
-                                                         // child: Addbutton(data: controller.data![i]["name"]),
-                                                          child: IconButton(onPressed: (){
-                                                            controller.readdata();
-                                                            controller.doctors!.add(Doctorss(
-                                                                name: controller
-                                                                    .data![i]
-                                                                ["name"],
-                                                                special: controller
-                                                                    .data![i][
-                                                                "special"],
-                                                                phone: controller
-                                                                    .data![i]
-                                                                ["phone"],
-                                                                address: controller
-                                                                    .data![i][
-                                                                "address"],
-                                                                city: controller
-                                                                    .data![i]
-                                                                ["city"]));
-                                                            controller.savetocache();
-                                                          }
-                                                              , icon: Icon(Icons.favorite_border)),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: double.infinity,
-                                                    child: Row(
-                                                      children: [
-                                                        Icon(
-                                                          Icons.place,
-                                                          color: Appcolor()
-                                                              .fourthcolor,
-                                                        ),
-                                                        Expanded(
-                                                          child: Text(
-                                                            "${controller.data![i]["address"]}",
-                                                            style: TextStyle(
-                                                                fontSize: 15,
-                                                                color: Appcolor()
-                                                                    .fourthcolor),
-                                                            maxLines: 2,
-                                                            overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  InkWell(
-                                                    onTap: () {
-                                                      launch(
-                                                          'tel:${controller.data![i]["phone"]}');
-                                                    },
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(Icons
-                                                              .phone_enabled),
-                                                          Expanded(
-                                                            child: Text(
-                                                              "${controller.data![i]["phone"]}",
-                                                              style: TextStyle(
-                                                                  fontSize: 18),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                          ],
+                              }
+                              if (controller.name!.isEmpty) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, right: 10,bottom: 10),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: Appcolor().thirdcolor,
+                                        borderRadius:
+                                        BorderRadius.circular(25)),
+                                    height: 150.0,
+                                    width: double.infinity,
+                                    child: Row(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: controller.data![i]
+                                          ['gender'] ==
+                                              'ذكر'
+                                              ? Image.asset(
+                                              'images/pngegg.png')
+                                              : Image.asset(
+                                              'images/doctora.png'),
                                         ),
-                                      ),
-                                    );
-                                  }
-                                  if (data!["name"]
-                                      .toString()
-                                      .contains(controller.name!)) {
-
-                                    return Padding(
-                                      padding: const EdgeInsets.only(
-                                          left: 10, right: 10),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                            color: Appcolor().thirdcolor,
-                                            borderRadius:
-                                            BorderRadius.circular(25)),
-                                        height: 150.0,
-                                        width: double.infinity,
-                                        child: Row(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.stretch,
-                                          children: [
-                                            Padding(
-                                              padding: const EdgeInsets.all(10),
-                                              child:controller.data![i]['gender'] =='ذكر' ? Image.asset('images/pngegg.png') : Image.asset('images/doctora.png') ,
-                                            ),
-                                            const  SizedBox(width: 5.0),
-                                            Expanded(
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceEvenly,
-                                                crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    "د/ ${controller.data![i]["name"]}",
-                                                    style: TextStyle(
-                                                        color: Appcolor()
-                                                            .firstcolor,
-                                                        fontFamily:
-                                                        "ElMessiri-Bold",
-                                                        fontSize: 15,fontWeight: FontWeight.bold),
-
-                                                  ),
-                                                  Container(
-                                                    width: double.infinity,
-                                                    child: Row(
-                                                      mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                      children: [
-                                                        Container(
-                                                            decoration: BoxDecoration(
-                                                                color: Appcolor()
-                                                                    .secondcolor,
-                                                                borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                    10)),
-                                                            child: Padding(
-                                                              padding:
-                                                              const EdgeInsets
-                                                                  .only(
-                                                                  left: 10,
-                                                                  right:
-                                                                  10),
-                                                              child: Text(
-                                                                "${controller.data![i]["special"]}",
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                    18),
-                                                              ),
-                                                            )),
-                                                        Padding(
+                                        const SizedBox(width: 5.0),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment
+                                                .spaceEvenly,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "د/ ${controller.data![i]["name"]}",
+                                                style: TextStyle(
+                                                    color: Appcolor()
+                                                        .firstcolor,
+                                                    fontFamily:
+                                                    "ElMessiri-Bold",
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                    FontWeight.bold),
+                                              ),
+                                              Container(
+                                                width: double.infinity,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                                  children: [
+                                                    Container(
+                                                        decoration: BoxDecoration(
+                                                            color: Appcolor()
+                                                                .secondcolor,
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                10)),
+                                                        child: Padding(
                                                           padding:
                                                           const EdgeInsets
                                                               .only(
-                                                              left: 15),
-                                                          child: IconButton(onPressed: (){
-
-                                                            controller
-                                                                .readdata();
-                                                            controller.doctors.add(Doctorss(
-                                                                name: controller
-                                                                    .data![i]
-                                                                ["name"],
-                                                                special: controller
-                                                                    .data![i][
-                                                                "special"],
-                                                                phone: controller
-                                                                    .data![i]
-                                                                ["phone"],
-                                                                address: controller
-                                                                    .data![i][
-                                                                "address"],
-                                                                city: controller
-                                                                    .data![i]
-                                                                ["city"]));
-                                                            controller
-                                                                .savetocache();
-                                                          }, icon: Icon(Icons.add_circle)),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    width: double.infinity,
-                                                    child: Row(
-                                                      children: [
-                                                        Icon(
-                                                          Icons.place,
-                                                          color: Appcolor()
-                                                              .fourthcolor,
-                                                        ),
-                                                        Expanded(
+                                                              left: 10,
+                                                              right:
+                                                              10),
                                                           child: Text(
-                                                            "${controller.data![i]["address"]}",
+                                                            "${controller.data![i]["special"]}",
                                                             style: TextStyle(
-                                                                fontSize: 15,
-                                                                color: Appcolor()
-                                                                    .fourthcolor),
-                                                            maxLines: 2,
-                                                            overflow:
-                                                            TextOverflow
-                                                                .ellipsis,
+                                                                fontSize:
+                                                                18),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        )),
+                                                    Padding(
+                                                      padding:
+                                                      const EdgeInsets
+                                                          .only(
+                                                          left: 15),
+                                                      // child: Addbutton(data: controller.data![i]["name"]),
+                                                      child: IconButton(
+                                                          onPressed: () {
+                                                            controller.readdata();
+                                                            controller.checkinlist(controller.data![i]["name"],);
+                                                            if(controller.z!){
+                                                             // controller.delete(x);
+                                                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('العنصر مضاف سابقا')));
+                                                            }
+                                                            else{
+                                                              if (controller.doctors.length < 10) {
+                                                                controller.doctors!.add(Doctorss(
+                                                                    name: controller.data![i][
+                                                                    "name"],
+                                                                    special: controller.data![i][
+                                                                    "special"],
+                                                                    phone: controller.data![i][
+                                                                    "phone"],
+                                                                    address: controller.data![i]
+                                                                    [
+                                                                    "address"],
+                                                                    city: controller
+                                                                        .data![i]
+                                                                    ["city"]));
+                                                                controller.savetocache();
+                                                              } else {
+                                                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('القائمة المفضلة لديك ممتلئة')));
+                                                              }
+                                                            }
+                                                            controller.z=false;
+
+                                                          },
+                                                          icon: z! ?Icon(Icons.favorite,color: Colors.red,):Icon(Icons.favorite_border,color: Colors.red)),
                                                     ),
-                                                  ),
-                                                  InkWell(
-                                                    onTap: () {
-                                                      launch(
-                                                          'tel:${controller.data![i]["phone"]}');
-                                                    },
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      child: Row(
-                                                        children: [
-                                                          Icon(Icons
-                                                              .phone_enabled),
-                                                          Expanded(
-                                                            child: Text(
-                                                              "${controller.data![i]["phone"]}",
-                                                              style: TextStyle(
-                                                                  fontSize: 18),
-                                                            ),
-                                                          ),
-                                                        ],
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                width: double.infinity,
+                                                child: Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.place,
+                                                      color: Appcolor()
+                                                          .fourthcolor,
+                                                    ),
+                                                    Expanded(
+                                                      child: Text(
+                                                        "${controller.data![i]["address"]}",
+                                                        style: TextStyle(
+                                                            fontSize: 15,
+                                                            color: Appcolor()
+                                                                .fourthcolor),
+                                                        maxLines: 2,
+                                                        overflow:
+                                                        TextOverflow
+                                                            .ellipsis,
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
-                                            )
-                                          ],
+                                              InkWell(
+                                                onTap: () {
+                                                  launch(
+                                                      'tel:${controller.data![i]["phone"]}');
+                                                },
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  child: Row(
+                                                    children: [
+                                                      Icon(Icons
+                                                          .phone_enabled),
+                                                      Expanded(
+                                                        child: Text(
+                                                          "${controller.data![i]["phone"]}",
+                                                          style: TextStyle(
+                                                              fontSize: 18),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }
+                              else if (controller.data![i]["name"].toString().contains(controller.name!)) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, right: 10,bottom: 10),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: Appcolor().thirdcolor,
+                                        borderRadius:
+                                        BorderRadius.circular(25)),
+                                    height: 150.0,
+                                    width: double.infinity,
+                                    child: Row(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(10),
+                                          child: controller.data![i]
+                                          ['gender'] ==
+                                              'ذكر'
+                                              ? Image.asset(
+                                              'images/pngegg.png')
+                                              : Image.asset(
+                                              'images/doctora.png'),
                                         ),
-                                      ),
-                                    );
-                                  } else {
-                                    return SizedBox();
-                                  }
-                                },
-                                separatorBuilder: (context, i) =>
-                                    SizedBox(height: 10),
-                                itemCount: controller.data!.length)*/
-                            )),
-                  ],
-                ),
+                                        const SizedBox(width: 5.0),
+                                        Expanded(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment
+                                                .spaceEvenly,
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "د/ ${controller.data![i]["name"]}",
+                                                style: TextStyle(
+                                                    color: Appcolor()
+                                                        .firstcolor,
+                                                    fontFamily:
+                                                    "ElMessiri-Bold",
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                    FontWeight.bold),
+                                              ),
+                                              Container(
+                                                width: double.infinity,
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                                  children: [
+                                                    Container(
+                                                        decoration: BoxDecoration(
+                                                            color: Appcolor()
+                                                                .secondcolor,
+                                                            borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                10)),
+                                                        child: Padding(
+                                                          padding:
+                                                          const EdgeInsets
+                                                              .only(
+                                                              left: 10,
+                                                              right:
+                                                              10),
+                                                          child: Text(
+                                                            "${controller.data![i]["special"]}",
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                18),
+                                                          ),
+                                                        )),
+                                                    Padding(
+                                                      padding:
+                                                      const EdgeInsets
+                                                          .only(
+                                                          left: 15),
+                                                      // child: Addbutton(data: controller.data![i]["name"]),
+                                                      child: IconButton(
+                                                          onPressed: () {
+                                                            controller.readdata();
+                                                            controller.checkinlist(controller.data![i]["name"],);
+                                                            if(controller.z!){
+                                                              // controller.delete(x);
+                                                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('العنصر مضاف سابقا')));
+                                                            }
+                                                            else{
+                                                              if (controller.doctors.length < 10) {
+                                                                controller.doctors!.add(Doctorss(
+                                                                    name: controller.data![i][
+                                                                    "name"],
+                                                                    special: controller.data![i][
+                                                                    "special"],
+                                                                    phone: controller.data![i][
+                                                                    "phone"],
+                                                                    address: controller.data![i]
+                                                                    [
+                                                                    "address"],
+                                                                    city: controller
+                                                                        .data![i]
+                                                                    ["city"]));
+                                                                controller.savetocache();
+                                                              } else {
+                                                                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('القائمة المفضلة لديك ممتلئة')));
+                                                              }
+                                                            }
+                                                            controller.z=false;
+
+                                                          },
+                                                          icon: z! ?Icon(Icons.favorite,color: Colors.red,):Icon(Icons.favorite_border,color: Colors.red)),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                width: double.infinity,
+                                                child: Row(
+                                                  children: [
+                                                    Icon(
+                                                      Icons.place,
+                                                      color: Appcolor()
+                                                          .fourthcolor,
+                                                    ),
+                                                    Expanded(
+                                                      child: Text(
+                                                        "${controller.data![i]["address"]}",
+                                                        style: TextStyle(
+                                                            fontSize: 15,
+                                                            color: Appcolor()
+                                                                .fourthcolor),
+                                                        maxLines: 2,
+                                                        overflow:
+                                                        TextOverflow
+                                                            .ellipsis,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              InkWell(
+                                                onTap: () {
+                                                  launch(
+                                                      'tel:${controller.data![i]["phone"]}');
+                                                },
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  child: Row(
+                                                    children: [
+                                                      Icon(Icons
+                                                          .phone_enabled),
+                                                      Expanded(
+                                                        child: Text(
+                                                          "${controller.data![i]["phone"]}",
+                                                          style: TextStyle(
+                                                              fontSize: 18),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return SizedBox(height: 0,);
+                              }
+                            },
+                            separatorBuilder: (context, i) =>
+                                SizedBox(height: 0),
+                            itemCount: controller.data!.length))),
+              ],
+            );} ,
             fallback: (BuildContext context) =>
                 Center(child: CircularProgressIndicator())),
       ),
     ));
   }
 }
-

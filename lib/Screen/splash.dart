@@ -40,10 +40,17 @@ class _Splash extends State<Splash> {
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(20),
-                child: Image(
-                  height: 150,
-                  image: AssetImage('images/atebaa.png'),
-                  color: Appcolor().firstcolor,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    /*Image(
+                      height: 150,
+                      image: AssetImage('images/atebaa.png'),
+                      //color: Appcolor().firstcolor,
+                    ),*/
+                    Text('atebaa',style: TextStyle(fontSize: 75,color: Appcolor().firstcolor,fontFamily: 'ElMessiri-Bold'),),
+                  ],
                 ),
               ),
               /*child: Text(

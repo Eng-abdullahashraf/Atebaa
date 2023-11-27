@@ -31,6 +31,9 @@ class homecontroller extends GetxController{
     _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
   }
 
+  //........................................................
+  //..................................................................
+
   List<Widget> Screennav=[
     Homescreen(),
     Favourite(),
@@ -44,13 +47,14 @@ class homecontroller extends GetxController{
     update();
   }
 
+  //....................................................
+  //........................................................
 
   List<dynamic>? data=[];
   String? city;
   String? special;
 
   void getdata(context) async{
-
     // QuerySnapshot querySnapshot= await FirebaseFirestore.instance.collection('doctors').get();
     // data?.addAll(querySnapshot.docs);
     if(city==null || special==null || city=='' ||special==''){
@@ -60,8 +64,6 @@ class homecontroller extends GetxController{
     else {
       gotodoctor();
       Get.to(Doctors());
-
-
       update();
     }
 
@@ -94,21 +96,23 @@ class homecontroller extends GetxController{
     //load=false;
   }
 
-
   bool? z=false;
-  void checkfav(name){
+  void checkinlist(name){
     for(var s in doctors){
       if(s.name==name){
+        print('object');
         z=true;
-        update();
         break;
       }
       else{
         z=false;
-        update();
       }
+
     }
+    update();
   }
+
+
   void uploaddatatofirestor(name,address,phone,special,city,gender,doc)async{
 
     CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
@@ -125,6 +129,8 @@ class homecontroller extends GetxController{
     name=value;
     update();
   }
+
+
   bool? load=false;
 
   void loading(){
@@ -181,6 +187,8 @@ class homecontroller extends GetxController{
 
   }
 
+  //..............................................
+  //.....................................................
   bool? noin=true;
   void _updateConnectionStatus(ConnectivityResult connectivityResult) {
 
@@ -209,14 +217,9 @@ class homecontroller extends GetxController{
     }
   }
 
-  List<Widget> zekrScreens = [AyatScreen(),DoaaScreen()];
-  int? zekrnmuber = 0;
 
-  void changezekrdata(d){
-    zekrnmuber=d;
-    update();
-  }
-
+  //......................................
+  //........................................
   late SharedPreferences sharedPreferences;
 
   List<Doctorss> doctors=List.empty(growable: true);
@@ -238,7 +241,6 @@ class homecontroller extends GetxController{
   }
 
   void delete(i){
-    print('object');
     doctors.removeAt(i);
     savetocache();
     print(doctors);
@@ -251,6 +253,16 @@ class homecontroller extends GetxController{
   int? x=0;
   void changestate(){
     x=x!+1;
+    update();
+  }
+
+  //..........................................................
+  //.........................................................
+  List<Widget> zekrScreens = [AyatScreen(),DoaaScreen()];
+  int? zekrnmuber = 0;
+
+  void changezekrdata(d){
+    zekrnmuber=d;
     update();
   }
 }
