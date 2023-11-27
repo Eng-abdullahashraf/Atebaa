@@ -265,4 +265,10 @@ class homecontroller extends GetxController{
     zekrnmuber=d;
     update();
   }
+
+  List<dynamic>? zekr=[];
+
+  void getzekr(){
+    CollectionReference sr=FirebaseFirestore.instance.collection('doctors');
+  }
 }

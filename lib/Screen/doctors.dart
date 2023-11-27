@@ -101,7 +101,6 @@ class Doctors extends StatelessWidget {
                                 else{
                                   z=false;
                                 }
-
                               }
                               if (controller.name!.isEmpty) {
                                 return Padding(

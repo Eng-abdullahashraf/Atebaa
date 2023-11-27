@@ -49,6 +49,7 @@ class _Splash extends State<Splash> {
                       image: AssetImage('images/atebaa.png'),
                       //color: Appcolor().firstcolor,
                     ),*/
+
                     Text('atebaa',style: TextStyle(fontSize: 75,color: Appcolor().firstcolor,fontFamily: 'ElMessiri-Bold'),),
                   ],
                 ),
