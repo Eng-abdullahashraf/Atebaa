@@ -133,7 +133,24 @@ class Aboutus extends StatelessWidget {
           ],
         ),
       ),
-
+      /* Padding(
+                              padding: const EdgeInsets.only(top: 200),
+                              child: RichText(text: TextSpan(
+                                children: [
+                                  TextSpan(text: "صفحة الفيس بوك",style: TextStyle(color: Colors.black,fontSize: 22)),
+                                  TextSpan(text: "اضغط هنا",style: TextStyle(color: Appcolor().firstcolor,fontSize: 15),
+                                  recognizer: TapGestureRecognizer()..onTap =() async{
+                                    var url ="https://www.facebook.com/techsollution";
+                                    if(await canLaunch(url)){
+                                      await launch(url);
+                                    }
+                                    else{
+                                      throw "لا يمكن تحميل رابط URL";
+                                    }
+                                  })
+                                ],
+                              )),
+                            )*/
     );
   }
 

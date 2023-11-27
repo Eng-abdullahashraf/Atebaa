@@ -72,9 +72,9 @@ class Uploaddata extends StatelessWidget {
                     SelectedListItem(name: 'جراحة'),
                     SelectedListItem(name: 'مخ وأعصاب'),
                     SelectedListItem(name: 'عيون'),
-                    SelectedListItem(name: 'تغذية علاجيه'),
-                    SelectedListItem(name: 'علاج طبيعى'),
-                    SelectedListItem(name: 'اطفال'),
+
+
+
                   ],
                   textEditingController: special,
                   title: 'اختر تخصص الدكتور',
@@ -91,7 +91,6 @@ class Uploaddata extends StatelessWidget {
                       phone.clear();
                       gender.clear();
                       special.clear();
-                      doc.clear();
                     },child: Text('add',style: TextStyle(fontSize: 35),),color: Appcolor().firstcolor);
 
                   },),
