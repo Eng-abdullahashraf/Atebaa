@@ -44,7 +44,6 @@ class homecontroller extends GetxController{
     update();
   }
 
-
   List<dynamic>? data=[];
   String? city;
   String? special;

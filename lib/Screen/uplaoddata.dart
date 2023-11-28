@@ -73,8 +73,6 @@ class Uploaddata extends StatelessWidget {
                     SelectedListItem(name: 'مخ وأعصاب'),
                     SelectedListItem(name: 'عيون'),
 
-
-
                   ],
                   textEditingController: special,
                   title: 'اختر تخصص الدكتور',
