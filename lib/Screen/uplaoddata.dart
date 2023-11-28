@@ -105,8 +105,6 @@ class Uploaddata extends StatelessWidget {
                     SelectedListItem(name: 'مسالك بولية'),
                     SelectedListItem(name: 'نطق وتخاطب'),
 
-
-
                   ],
                   textEditingController: special,
                   title: 'اختر تخصص الدكتور',
