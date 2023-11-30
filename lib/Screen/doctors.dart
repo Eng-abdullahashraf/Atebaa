@@ -171,9 +171,11 @@ class Doctors extends StatelessWidget {
                                                               10),
                                                           child: Text(
                                                             "${controller.data![i]["special"]}",
+                                                            overflow: TextOverflow.ellipsis,
+                                                            maxLines: 2,
                                                             style: TextStyle(
                                                                 fontSize:
-                                                                18),
+                                                                15),
                                                           ),
                                                         )),
                                                     Padding(
