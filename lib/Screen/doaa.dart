@@ -13,11 +13,11 @@ class DoaaScreen extends StatelessWidget {
         init: homecontroller(),
         builder: (controller) =>  Column(
           children: [
-            containerApp("بسم الله", TextAlign.center),
+            containerApp("بسم الله", "المقالة اليوميه",TextAlign.center),
             SizedBox(
               height: 10,
             ),
-            containerApp("اللهم ارحمنا", TextAlign.center)
+            containerApp("اللهم ارحمنا","المقالة اليوميه", TextAlign.center)
           ],
         ),
       ),

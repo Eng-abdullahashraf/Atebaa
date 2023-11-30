@@ -31,7 +31,7 @@ class FirstScreen extends StatelessWidget {
                   items: [
                     Icon(Icons.home,color: Appcolor().thirdcolor,),
                     Icon(Icons.favorite,color: Appcolor().thirdcolor,),
-                    Icon(Icons.notifications,color: Appcolor().thirdcolor,),
+                    Icon(Icons.lightbulb,color: Appcolor().thirdcolor,),
                     Icon(Icons.contact_page,color: Appcolor().thirdcolor,),
 
 

@@ -123,9 +123,9 @@ class Doctors extends StatelessWidget {
                                           ['gender'] ==
                                               'ذكر'
                                               ? Image.asset(
-                                              'images/pngegg.png')
+                                              'images/pngegg.png',width: 100,)
                                               : Image.asset(
-                                              'images/doctora.png'),
+                                              'images/doctora.png',width: 100),
                                         ),
                                         const SizedBox(width: 5.0),
                                         Expanded(

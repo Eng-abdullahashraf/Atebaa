@@ -3,11 +3,13 @@ import 'dart:convert';
 
 import 'package:atebaa/Screen/Favorite.dart';
 import 'package:atebaa/Screen/Homescreen.dart';
+import 'package:atebaa/Screen/Roqya.dart';
 import 'package:atebaa/Screen/aboutus.dart';
 import 'package:atebaa/Screen/ayat.dart';
 import 'package:atebaa/Screen/doaa.dart';
 import 'package:atebaa/Screen/firstscreen.dart';
 import 'package:atebaa/Screen/mix%20info.dart';
+import 'package:atebaa/component.dart';
 import 'package:atebaa/doctorss.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -37,7 +39,7 @@ class homecontroller extends GetxController{
   List<Widget> Screennav=[
     Homescreen(),
     Favourite(),
-    MixInfo(),
+    Roqya(),
     Aboutus(),
   ];
 
@@ -203,8 +205,8 @@ class homecontroller extends GetxController{
               )
           ),
           isDismissible: false,
-          duration: const Duration(seconds: 100),
-          backgroundColor: Colors.red!,
+          duration: const Duration(seconds: 5),
+          backgroundColor: Colors.black26!,
           icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
           margin: EdgeInsets.zero,
           snackStyle: SnackStyle.GROUNDED
@@ -216,7 +218,6 @@ class homecontroller extends GetxController{
       }
     }
   }
-
 
   //......................................
   //........................................
@@ -258,7 +259,7 @@ class homecontroller extends GetxController{
 
   //..........................................................
   //.........................................................
-  List<Widget> zekrScreens = [AyatScreen(),DoaaScreen()];
+  List<Widget> zekrScreens = [ayat(),doa()];
   int? zekrnmuber = 0;
 
   void changezekrdata(d){

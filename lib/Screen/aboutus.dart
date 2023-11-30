@@ -76,7 +76,7 @@ class Aboutus extends StatelessWidget {
                     children: [
                       InkWell(
                         child: CircleAvatar(
-                            backgroundColor: Appcolor().thirdcolor,
+                            backgroundColor: Appcolor().secondcolor,
                             child: Image(
                               image: AssetImage('images/face.png'),
                             )),
@@ -86,7 +86,7 @@ class Aboutus extends StatelessWidget {
                       ),
                       InkWell(
                         child: CircleAvatar(
-                            backgroundColor: Appcolor().thirdcolor,
+                            backgroundColor: Appcolor().secondcolor,
                             child: Image(
                               image: AssetImage('images/whats.png'),
                             )),
@@ -96,7 +96,7 @@ class Aboutus extends StatelessWidget {
                       ),
                       InkWell(
                         child: CircleAvatar(
-                            backgroundColor: Appcolor().thirdcolor,
+                            backgroundColor: Appcolor().secondcolor,
                             child: Padding(
                               padding: const EdgeInsets.all(2.0),
                               child: Image(
@@ -180,4 +180,5 @@ class Aboutus extends StatelessWidget {
       throw "لا يمكن تحميل رابط URL";
     }
   }
+
 }
