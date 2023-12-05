@@ -1,5 +1,4 @@
-import 'package:atebaa/Screen/zekr.dart';
-import 'package:atebaa/component.dart';
+import 'package:atebaa/Screen/mix%20info.dart';
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -91,7 +90,7 @@ class Roqya extends StatelessWidget {
                                   onPressed: () {
                                     controller.changezekrdata(0);
                                   },
-                                  color: Appcolor().thirdcolor,
+                                  color: controller.zekrnmuber==1 ?Appcolor().thirdcolor : Color(0xffbebac9),
                                   child: Text('الأيات',style: TextStyle(color: Appcolor().firstcolor,fontSize: 20,fontFamily: 'ElMessiri-Bold',)),
 
                                 ),
@@ -103,7 +102,7 @@ class Roqya extends StatelessWidget {
                                     controller.changezekrdata(1);
 
                                   },
-                                  color: Appcolor().thirdcolor,
+                                  color: controller.zekrnmuber==0 ?Appcolor().thirdcolor : Color(0xffbebac9),
                                   child: Text('الأدعية',style: TextStyle(color: Appcolor().firstcolor,fontSize: 20,fontFamily: 'ElMessiri-Bold',)),
 
                                 ),
@@ -119,12 +118,26 @@ class Roqya extends StatelessWidget {
                                   width: double.infinity,
                                   decoration: BoxDecoration(border: Border.all(color: Appcolor().firstcolor,width: 1) ),
                                   child: SingleChildScrollView(child: controller.zekrScreens[controller.zekrnmuber!]));
-                            },))
+                            },)),
                       ]),
                 ),
               ),
             ],
           ),
+          floatingActionButton: GetBuilder<homecontroller>(
+            init: homecontroller(),
+            builder: (controller) {
+            return FloatingActionButton(
+              onPressed: (){
+                controller.getdoaa();
+                Get.to(MixInfo());
+                controller.loadings();
+
+              } ,
+              child:Icon(Icons.lightbulb,color: Colors.amber,size: 40),
+              backgroundColor: Appcolor().thirdcolor,
+            );
+          },)
         ),
       ),
     );

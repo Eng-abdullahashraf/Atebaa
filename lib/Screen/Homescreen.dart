@@ -37,7 +37,7 @@ class Homescreen extends StatelessWidget {
                       //color: Appcolor().firstcolor,
                     ),
                   ),
-                  Text('atebaa',style: TextStyle(fontSize: 60,color: Appcolor().firstcolor,fontFamily: 'ElMessiri-Bold',fontWeight: FontWeight.bold),),
+                  Text('atebaa',style: TextStyle(fontSize: 60,color: Appcolor().firstcolor,fontFamily: 'Bebas',fontWeight: FontWeight.bold,letterSpacing: 5),),
 
 
                   AppTextField(

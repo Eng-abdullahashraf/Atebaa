@@ -5,10 +5,7 @@ import 'package:atebaa/Screen/Favorite.dart';
 import 'package:atebaa/Screen/Homescreen.dart';
 import 'package:atebaa/Screen/Roqya.dart';
 import 'package:atebaa/Screen/aboutus.dart';
-import 'package:atebaa/Screen/ayat.dart';
-import 'package:atebaa/Screen/doaa.dart';
 import 'package:atebaa/Screen/firstscreen.dart';
-import 'package:atebaa/Screen/mix%20info.dart';
 import 'package:atebaa/component.dart';
 import 'package:atebaa/doctorss.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -132,7 +129,7 @@ class homecontroller extends GetxController{
     update();
   }
 
-
+  Color? colorCon=Colors.white;
   bool? load=false;
 
   void loading(){
@@ -272,4 +269,65 @@ class homecontroller extends GetxController{
   void getzekr(){
     CollectionReference sr=FirebaseFirestore.instance.collection('doctors');
   }
+
+  //....................................
+  //..........................................
+
+  List<dynamic>? doaadata=[];
+  void getdoaa()async{
+
+    load=false;
+
+    var response;
+    doaadata!.clear();
+    CollectionReference doct=FirebaseFirestore.instance.collection('doaa');
+    response=await doct.get();
+    response.docs.forEach((element) {
+      doaadata!.add(element.data());
+    });
+    print(doaadata);
+    loadings();
+   // load=false;
+  }
+
+  void loadings(){
+    /* Future.delayed(const Duration(seconds: 3),(){
+        if(data!.isEmpty){
+          Get.to(FirstScreen());
+          Get.rawSnackbar(
+              messageText: const Text(
+                  'هذه البلده لا تحتوى على دكاترة حاليا',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14
+                  )
+              ),
+              isDismissible: false,
+              duration: const Duration(seconds: 3),
+              backgroundColor: Colors.black!,
+              icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
+              margin: EdgeInsets.zero,
+              snackStyle: SnackStyle.GROUNDED
+          );
+          update();
+        }
+        else{
+          load=true;
+          update();
+        }
+
+      });*/
+    if(doaadata!.isEmpty){
+      //Get.to(FirstScreen());
+      update();
+    }
+    else{
+      load=true;
+      update();
+    }
+
+
+  }
+
+
 }

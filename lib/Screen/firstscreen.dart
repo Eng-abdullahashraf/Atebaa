@@ -31,7 +31,7 @@ class FirstScreen extends StatelessWidget {
                   items: [
                     Icon(Icons.home,color: Appcolor().thirdcolor,),
                     Icon(Icons.favorite,color: Appcolor().thirdcolor,),
-                    Icon(Icons.lightbulb,color: Appcolor().thirdcolor,),
+                    Image.asset('images/handpray.png',color: Colors.white,width: 30),
                     Icon(Icons.contact_page,color: Appcolor().thirdcolor,),
 
 

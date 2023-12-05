@@ -90,11 +90,9 @@ class Doctors extends StatelessWidget {
                             scrollDirection: Axis.vertical,
                             itemBuilder: (context, i) {
                               bool? z=false;
-
                               for(var s in controller.doctors){
                                 if(s.name==controller.data![i]["name"]){
                                   print('object');
-
                                   z=true;
                                   break;
                                 }
