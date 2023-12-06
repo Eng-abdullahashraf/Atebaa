@@ -51,7 +51,8 @@ class _Splash extends State<Splash> {
                     ),*/
 
                     Expanded(child: Center(child: Text('atebaa',style: TextStyle(fontSize: 85,color: Appcolor().firstcolor,fontFamily: 'Bebas',letterSpacing: 8,),))),
-                    Text('Powerd by: TECS ',style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),)
+                    Text('Powerd by: TECS ',style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),),
+
                   ],
                 ),
               ),

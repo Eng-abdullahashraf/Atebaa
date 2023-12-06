@@ -145,9 +145,9 @@ Widget containerApp(String textcontain,String text,TextAlign textAlignCont,Color
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              titleApp(text),
+              text ==''?SizedBox(height: 0,):titleApp(text),
               Text(textcontain,textAlign: textAlignCont,
-                style: TextStyle(fontFamily: "ElMessiri-Bold",color: Colors.black),),
+                style: TextStyle(fontFamily: "Hafs",color: Colors.black),),
             ],
           ),
         ),

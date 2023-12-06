@@ -121,6 +121,7 @@ class Uploaddata extends StatelessWidget {
                       phone.clear();
                       gender.clear();
                       special.clear();
+                      doc.clear();
                     },child: Text('add',style: TextStyle(fontSize: 35),),color: Appcolor().firstcolor);
 
                   },),

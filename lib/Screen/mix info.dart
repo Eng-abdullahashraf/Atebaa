@@ -22,12 +22,26 @@ class MixInfo extends StatelessWidget {
                   children: [
                     Container(
                       child: Center(
-                          child: Text(
-                            "تذكرة",
-                            style: TextStyle(
-                                fontFamily: "ElMessiri-Bold",
-                                color: Appcolor().thirdcolor,
-                                fontSize: 25),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    "تذكرة",
+                                    style: TextStyle(
+                                        fontFamily: "ElMessiri-Bold",
+                                        color: Appcolor().thirdcolor,
+                                        fontSize: 25),
+                                  ),
+                                ),
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                icon: Icon(Icons.arrow_forward_ios,
+                                    color: Appcolor().thirdcolor),
+                              ),                            ],
                           )),
                       height: 50,
                       decoration: BoxDecoration(

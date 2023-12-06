@@ -167,7 +167,7 @@ class Favourite extends StatelessWidget {
                                                       Icon(Icons.phone_enabled),
                                                       Expanded(
                                                         child: Text(
-                                                          "${controller.doctors![i].phone} (2+) ",
+                                                          "${controller.doctors![i].phone}",
                                                           style: TextStyle(
                                                               fontSize: 18),
                                                         ),

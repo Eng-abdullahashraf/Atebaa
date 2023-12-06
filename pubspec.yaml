@@ -108,6 +108,9 @@ flutter:
     - family: Bebas
       fonts:
         - asset: fonts/Bebas.ttf
+    - family: hafs
+      fonts:
+        - asset: fonts/Hafs.ttf
 
 
   #  - family: Trajan Pro
