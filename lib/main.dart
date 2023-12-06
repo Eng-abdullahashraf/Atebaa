@@ -22,8 +22,8 @@ void main() async{
     ),
   )
   :await Firebase.initializeApp();
-  await Hive.initFlutter();
-  await Hive.openBox('favorite');
+  //await Hive.initFlutter();
+  //await Hive.openBox('favorite');
   runApp(const MyApp());
 }
 
