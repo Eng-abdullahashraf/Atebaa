@@ -92,7 +92,6 @@ class Uploaddata extends StatelessWidget {
                     SelectedListItem(name: 'جهاز هضمي ومناظير'),
                     SelectedListItem(name: 'حساسية ومناعة'),
                     SelectedListItem(name: 'ذكورة وعقم'),
-                    SelectedListItem(name: 'روماتيزم'),
                     SelectedListItem(name: 'سكر وغدد صماء'),
                     SelectedListItem(name: 'سمعيات'),
                     SelectedListItem(name: 'صدر وجهاز تنفسي'),

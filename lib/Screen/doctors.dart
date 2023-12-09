@@ -314,73 +314,80 @@ class Doctors extends StatelessWidget {
                                       decoration: BoxDecoration(
                                           color: Appcolor().thirdcolor,
                                           borderRadius:
-                                              BorderRadius.circular(25)),
-                                      height: 150.0,
+                                          BorderRadius.circular(25)),
+                                      height: 170.0,
                                       width: double.infinity,
                                       child: Row(
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.stretch,
+                                        CrossAxisAlignment.stretch,
                                         children: [
                                           Padding(
                                             padding: const EdgeInsets.all(10),
                                             child: controller.data![i]
-                                                        ['gender'] ==
-                                                    'ذكر'
+                                            ['gender'] ==
+                                                'ذكر'
                                                 ? Image.asset(
-                                                    'images/pngegg.png')
+                                              'images/pngegg.png',
+                                              width: 100,
+                                            )
                                                 : Image.asset(
-                                                    'images/doctora.png'),
+                                                'images/doctora.png',
+                                                width: 100),
                                           ),
                                           const SizedBox(width: 5.0),
                                           Expanded(
                                             child: Column(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.spaceEvenly,
+                                              MainAxisAlignment.spaceEvenly,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              CrossAxisAlignment.start,
                                               children: [
                                                 Text(
                                                   "د/ ${controller.data![i]["name"]}",
                                                   style: TextStyle(
                                                       color:
-                                                          Appcolor().firstcolor,
+                                                      Colors.black,
                                                       fontFamily:
-                                                          "ElMessiri-Bold",
+                                                      "ElMessiri-Bold",
                                                       fontSize: 15,
                                                       fontWeight:
-                                                          FontWeight.bold),
+                                                      FontWeight.bold),
                                                 ),
                                                 Container(
                                                   width: double.infinity,
                                                   child: Row(
                                                     mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                     children: [
                                                       Container(
                                                           decoration: BoxDecoration(
                                                               color: Appcolor()
                                                                   .secondcolor,
                                                               borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10)),
+                                                              BorderRadius
+                                                                  .circular(
+                                                                  10)),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsets
-                                                                    .only(
-                                                                    left: 10,
-                                                                    right: 10),
+                                                            const EdgeInsets
+                                                                .only(
+                                                                left: 10,
+                                                                right: 10),
                                                             child: Text(
                                                               "${controller.data![i]["special"]}",
+                                                              overflow:
+                                                              TextOverflow
+                                                                  .ellipsis,
+                                                              maxLines: 2,
                                                               style: TextStyle(
-                                                                  fontSize: 18),
+                                                                  fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),
                                                             ),
                                                           )),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsets
-                                                                .only(left: 15),
+                                                        const EdgeInsets
+                                                            .only(left: 15),
                                                         // child: Addbutton(data: controller.data![i]["name"]),
                                                         child: IconButton(
                                                             onPressed: () {
@@ -389,64 +396,68 @@ class Doctors extends StatelessWidget {
                                                               controller
                                                                   .checkinlist(
                                                                 controller
-                                                                        .data![
-                                                                    i]["name"],
+                                                                    .data![
+                                                                i]["name"],
                                                               );
                                                               if (controller
                                                                   .z!) {
                                                                 // controller.delete(x);
                                                                 ScaffoldMessenger.of(
-                                                                        context)
+                                                                    context)
                                                                     .showSnackBar(SnackBar(
-                                                                        content:
-                                                                            Text('العنصر مضاف سابقا')));
+                                                                    content:
+                                                                    Text('العنصر مضاف سابقا لازالته من قائمة المفضلة')));
                                                               } else {
                                                                 if (controller
-                                                                        .doctors
-                                                                        .length <
+                                                                    .doctors
+                                                                    .length <
                                                                     10) {
                                                                   controller.doctors!.add(Doctorss(
                                                                       name: controller.data![i][
-                                                                          "name"],
+                                                                      "name"],
                                                                       special: controller.data![i][
-                                                                          "special"],
+                                                                      "special"],
                                                                       phone: controller.data![i][
-                                                                          "phone"],
+                                                                      "phone"],
                                                                       address: controller.data![i]
-                                                                          [
-                                                                          "address"],
+                                                                      [
+                                                                      "address"],
                                                                       city: controller
-                                                                              .data![i]
-                                                                          ["city"]));
+                                                                          .data![i]
+                                                                      ["city"]));
                                                                   controller
                                                                       .savetocache();
                                                                 } else {
                                                                   ScaffoldMessenger.of(
-                                                                          context)
+                                                                      context)
                                                                       .showSnackBar(SnackBar(
-                                                                          content:
-                                                                              Text('القائمة المفضلة لديك ممتلئة')));
+                                                                      content:
+                                                                      Text('القائمة المفضلة لديك ممتلئة')));
                                                                 }
                                                               }
                                                               controller.z =
-                                                                  false;
+                                                              false;
                                                             },
                                                             icon: z!
                                                                 ? Icon(
-                                                                    Icons
-                                                                        .favorite,
-                                                                    color: Colors
-                                                                        .red,
-                                                                  )
+                                                              Icons
+                                                                  .favorite,
+                                                              color: Colors
+                                                                  .red,
+                                                            )
                                                                 : Icon(
-                                                                    Icons
-                                                                        .favorite_border,
-                                                                    color: Colors
-                                                                        .red)),
+                                                                Icons
+                                                                    .favorite_border,
+                                                                color: Colors
+                                                                    .red)),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
+                                                Text(
+                                                    controller.data![i]["city"],
+                                                    style: TextStyle(
+                                                      fontSize: 15,color: Appcolor().firstcolor,fontFamily: 'ElMessiri-Bold',)),
                                                 Container(
                                                   width: double.infinity,
                                                   child: Row(
@@ -462,7 +473,7 @@ class Doctors extends StatelessWidget {
                                                           style: TextStyle(
                                                               fontSize: 15,
                                                               color: Appcolor()
-                                                                  .fourthcolor),
+                                                                  .fourthcolor,fontWeight: FontWeight.bold),
                                                           maxLines: 2,
                                                           overflow: TextOverflow
                                                               .ellipsis,
@@ -481,12 +492,12 @@ class Doctors extends StatelessWidget {
                                                     child: Row(
                                                       children: [
                                                         Icon(Icons
-                                                            .phone_enabled),
+                                                            .phone_enabled,color: Colors.green),
                                                         Expanded(
                                                           child: Text(
                                                             "${controller.data![i]["phone"]}",
                                                             style: TextStyle(
-                                                                fontSize: 18),
+                                                                fontSize: 15,fontWeight: FontWeight.bold),
                                                           ),
                                                         ),
                                                       ],
