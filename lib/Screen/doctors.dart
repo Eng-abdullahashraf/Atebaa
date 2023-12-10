@@ -106,6 +106,7 @@ class Doctors extends StatelessWidget {
                                     child: Container(
                                       decoration: BoxDecoration(
                                           color: Appcolor().thirdcolor,
+                                          border: Border.all(color: Appcolor().firstcolor,width: 1),
                                           borderRadius: BorderRadius.circular(25)),
                                       height: 150.0,
                                       width: double.infinity,
