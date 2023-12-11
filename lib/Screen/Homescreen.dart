@@ -42,19 +42,19 @@ class Homescreen extends StatelessWidget {
 
                   AppTextField(
                       dataList: [
-                        SelectedListItem(name: 'الكل'),
+                        SelectedListItem(name: 'كل المدن'),
                         SelectedListItem(name: 'المنزلة'),
                         SelectedListItem(name: 'البصراط'),
                         SelectedListItem(name: 'الجمالية'),
                         SelectedListItem(name: 'المطرية'),
                       ],
                       textEditingController: cites,
-                      title: 'اختر مدينتك',
-                      hint: 'مدينتك',
+                      title: 'اختر مدينة',
+                      hint: 'المدينه',
                       isCitySelected: true),
                   AppTextField(
                       dataList: [
-                        SelectedListItem(name: 'الكل'),
+                        SelectedListItem(name: 'كل التخصصات'),
                         SelectedListItem(name: 'جلديه'),
                         SelectedListItem(name: 'اسنان'),
                         SelectedListItem(name: 'نفسي'),
@@ -69,7 +69,7 @@ class Homescreen extends StatelessWidget {
                         SelectedListItem(name: 'امراض الدم'),
                         SelectedListItem(name: 'اورام'),
                         SelectedListItem(name: 'باطنة'),
-                        SelectedListItem(name: 'تخسيس وتغئية'),
+                        SelectedListItem(name: 'تخسيس وتغذية'),
                         SelectedListItem(name: 'جراحة اطفال'),
                         SelectedListItem(name: 'جراحة أورام'),
                         SelectedListItem(name: 'جراحة أوعية دموية'),
@@ -95,10 +95,10 @@ class Homescreen extends StatelessWidget {
                         SelectedListItem(name: 'نطق وتخاطب'),
                       ],
                       textEditingController: specialty,
-                      title: 'اختر تخصص الدكتور',
+                      title: 'اختر تخصص',
                       hint: 'التخصص',
                       isCitySelected: true),
-                  buttons('بحث', 45, double.infinity, 25,
+                  buttons('بحث', 45, double.infinity, 20,
                       Appcolor().firstcolor, Appcolor().thirdcolor, () {
                     if (controller.noin == true) {
                       controller.city = cites.text;

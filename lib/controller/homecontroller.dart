@@ -15,6 +15,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Screen/doctors.dart';
+import '../Screen/doctorsn.dart';
 
 
 
@@ -58,7 +59,7 @@ class homecontroller extends GetxController{
     // data?.addAll(querySnapshot.docs);
     if(city==null || special==null || city=='' ||special==''){
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('يجب عليك اختيار البلد والتخصص')));
+          .showSnackBar(SnackBar(content: Text('يجب عليك اختيار المدينة والتخصص')));
     }
     else {
       gotodoctor();
@@ -74,13 +75,13 @@ class homecontroller extends GetxController{
     data?.clear();
     var response;
     CollectionReference doctors=FirebaseFirestore.instance.collection('doctors');
-    if(city=='الكل' && special=='الكل'){
+    if(city=='كل المدن' && special=='كل التخصصات'){
        response=await doctors.get();
     }
-    else if(city=='الكل'){
+    else if(city=='كل المدن'){
       response=await doctors.where('special',isEqualTo: special).get();
     }
-    else if(special=='الكل'){
+    else if(special=='كل التخصصات'){
       response=await doctors.where('city',isEqualTo: city).get();
     }
     else{
@@ -122,6 +123,16 @@ class homecontroller extends GetxController{
 
 
   }
+
+  void uploaddatatofirestors(enwan,metwaa)async{
+
+    CollectionReference se=FirebaseFirestore.instance.collection('doaa');
+    //doctors.add({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
+    se.add({'العنوان': enwan,'المحتوي':metwaa,});
+    print('doaa is added');
+    update();
+  }
+
 
   String? name="";
   void search(value){

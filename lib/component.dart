@@ -2,6 +2,7 @@ import 'package:atebaa/controller/homecontroller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:atebaa/theme/colors.dart';
 
@@ -54,7 +55,7 @@ Widget buttons(
       child: Text(
         '$textbutton',
         style: TextStyle(
-            color: textcolor, fontSize: textfont, fontFamily: 'ElMessiri'),
+            color: textcolor, fontSize: textfont, fontFamily: 'ElMessiri-Bold'),
       ),
     );
 
@@ -133,12 +134,14 @@ Widget containerApp(String textcontain,String text,TextAlign textAlignCont,Color
       padding: const EdgeInsets.all(8.0),
       child: Container(
         width: double.infinity,
-        decoration: BoxDecoration(boxShadow: [BoxShadow(
-            color: Colors.black54,
-           // offset: Offset(2, 2),
-            spreadRadius: 1,
-            blurRadius: 3
-        )],
+        decoration: BoxDecoration(
+        //     boxShadow: [BoxShadow(
+        //     color: Colors.black54,
+        //    // offset: Offset(2, 2),
+        //     spreadRadius: 1,
+        //     blurRadius: 3
+        // )],
+            border: Border.all(color: Appcolor().firstcolor,width: 1),
             borderRadius: BorderRadius.circular(15),
             color: colorContainer),
         child: Padding(
@@ -146,8 +149,9 @@ Widget containerApp(String textcontain,String text,TextAlign textAlignCont,Color
           child: Column(
             children: [
               text ==''?SizedBox(height: 0,):titleApp(text),
+              Gap(3),
               Text(textcontain,textAlign: textAlignCont,
-                style: TextStyle(fontFamily: "Hafs",color: Colors.black),),
+                style: TextStyle(fontFamily: "Hafs",color: Colors.black,fontWeight: FontWeight.bold),),
             ],
           ),
         ),

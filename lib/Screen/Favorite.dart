@@ -1,6 +1,7 @@
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -59,8 +60,10 @@ class Favourite extends StatelessWidget {
                                 padding:
                                 const EdgeInsets.only(left: 10, right: 10),
                                 child: Container(
+
                                   decoration: BoxDecoration(
                                       color: Appcolor().thirdcolor,
+                                      border: Border.all(color: Appcolor().firstcolor,width: 1),
                                       borderRadius: BorderRadius.circular(25)),
                                   height: 150.0,
                                   width: double.infinity,
@@ -81,38 +84,36 @@ class Favourite extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              "${controller.doctors![i].name}",
+                                              "د/${controller.doctors![i].name}",
                                               style: TextStyle(
-                                                  color: Appcolor().firstcolor,
-                                                  fontFamily: "ElMessiri-Bold",
-                                                  fontSize: 20),
+                                                  color:
+                                                  Colors.black,
+                                                  fontFamily:
+                                                  "ElMessiri-Bold",
+                                                  fontSize: 15,
+                                                  fontWeight:
+                                                  FontWeight.bold),
                                             ),
                                             Container(
+                                              width: double.infinity,
+                                              height: 30,
                                               child: Row(
-                                                mainAxisAlignment:
-                                                MainAxisAlignment
-                                                    .spaceBetween,
+                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
-                                                  Container(
-                                                      decoration: BoxDecoration(
-                                                          color: Appcolor()
-                                                              .secondcolor,
-                                                          borderRadius:
-                                                          BorderRadius
-                                                              .circular(
-                                                              10)),
-                                                      child: Padding(
-                                                        padding:
-                                                        const EdgeInsets
-                                                            .only(
-                                                            left: 10,
-                                                            right: 10),
-                                                        child: Text(
-                                                          "${controller.doctors![i].special}",
-                                                          style: TextStyle(
-                                                              fontSize: 18),
-                                                        ),
-                                                      )),
+                                                  Expanded(
+                                                    child: Container(
+                                                        decoration: BoxDecoration(color: Appcolor().secondcolor,
+                                                            borderRadius: BorderRadius.circular(10)),
+                                                        child: Padding(padding:
+                                                          const EdgeInsets.only(left: 10, right: 10),
+                                                          child: Text(
+                                                            "${controller.doctors![i].special}",
+                                                            overflow: TextOverflow.ellipsis,
+                                                            maxLines: 1,
+                                                            style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),
+                                                          ),
+                                                        )),
+                                                  ),
                                                   Padding(
                                                     padding:
                                                     const EdgeInsets.only(
@@ -128,6 +129,9 @@ class Favourite extends StatelessWidget {
                                                 ],
                                               ),
                                             ),
+                                            Text('${controller.doctors![i].city}',
+                                                style: TextStyle(
+                                                  fontSize: 15,color: Appcolor().firstcolor,fontFamily: 'ElMessiri-Bold',)),
                                             Container(
                                               width: double.infinity,
                                               child: Row(
@@ -161,7 +165,7 @@ class Favourite extends StatelessWidget {
                                                 width: double.infinity,
                                                 child: Row(
                                                   children: [
-                                                    Icon(Icons.phone_enabled),
+                                                    Icon(Icons.phone_enabled,color: Colors.green),
                                                     Expanded(
                                                       child: Text(
                                                         "${controller.doctors![i].phone}",
@@ -186,6 +190,7 @@ class Favourite extends StatelessWidget {
                             itemCount: controller.doctors!.length)
                   ),
                 ),
+                Gap(15)
               ],
             ),
           );

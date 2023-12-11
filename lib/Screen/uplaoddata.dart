@@ -18,6 +18,8 @@ class Uploaddata extends StatelessWidget {
    TextEditingController gender = TextEditingController();
    TextEditingController doc = TextEditingController();
 
+   TextEditingController enwan=TextEditingController();
+   TextEditingController metwaa=TextEditingController();
 
 
 
@@ -124,6 +126,30 @@ class Uploaddata extends StatelessWidget {
                     },child: Text('add',style: TextStyle(fontSize: 35),),color: Appcolor().thirdcolor);
 
                   },),
+
+              AppTextField(
+                  dataList: [
+                    SelectedListItem(name: 'أية اليوم'),
+                    SelectedListItem(name: 'حديث اليوم'),
+                    SelectedListItem(name: 'النصيحة اليومية'),
+                    SelectedListItem(name: 'المقالة اليومية'),
+                  ],
+                  textEditingController: enwan,
+                  title: 'اختر مدينتك',
+                  hint: 'مدينتك',
+                  isCitySelected: true),
+              textFormApp('محتوى', metwaa,TextInputType.text),
+              GetBuilder<homecontroller>(
+                init: homecontroller(),
+                builder: (controller) {
+                  return  MaterialButton(onPressed: (){
+                    controller.uploaddatatofirestors(enwan.text, metwaa.text);
+                    enwan.clear();
+                    metwaa.clear();
+
+                  },child: Text('add',style: TextStyle(fontSize: 35),),color: Appcolor().thirdcolor);
+
+                },),
 
 
             ]),

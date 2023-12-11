@@ -26,12 +26,15 @@ class MixInfo extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Center(
-                                  child: Text(
-                                    "تذكرة",
-                                    style: TextStyle(
-                                        fontFamily: "ElMessiri-Bold",
-                                        color: Appcolor().thirdcolor,
-                                        fontSize: 25),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 25),
+                                    child: Text(
+                                      "تَذْكِرَةٌ",
+                                      style: TextStyle(
+                                          fontFamily: "ElMessiri-Bold",
+                                          color: Appcolor().thirdcolor,
+                                          fontSize: 25),
+                                    ),
                                   ),
                                 ),
                               ),

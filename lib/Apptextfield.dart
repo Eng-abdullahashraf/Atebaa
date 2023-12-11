@@ -73,7 +73,7 @@ class _AppTextFieldState extends State<AppTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.title),
+        Text(widget.title,style: TextStyle(fontFamily: 'ElMessiri-Bold')),
         const SizedBox(
           height: 5.0,
         ),
