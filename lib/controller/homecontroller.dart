@@ -235,13 +235,24 @@ class homecontroller extends GetxController{
     //doctors.clear();
     List<String> doctorslist=doctors.map((e) => jsonEncode(e.toJson())).toList();
     sharedPreferences.setStringList('mydoctors', doctorslist);
+    print('object');
   }
 
   void readdata(){
-    List<String>? doctorsstring=sharedPreferences.getStringList('mydoctors');
-    doctors=doctorsstring!.map((doctor) => Doctorss.fromJson(json.decode(doctor))).toList();
+    try{
+      List<String>? doctorsstring=sharedPreferences.getStringList('mydoctors');
+      doctors=doctorsstring!.map((doctor) => Doctorss.fromJson(json.decode(doctor))).toList();
+    }catch(e){
+      print(e);
+    }
 
 
+    // if(doctorsstring!.isEmpty){
+    //   doctors=doctorsstring.map((doctor) => Doctorss.fromJson(json.decode(doctor))).toList();
+    // }
+    // else{
+    //   print("now no doctors");
+    // }
   }
 
   void delete(i){
