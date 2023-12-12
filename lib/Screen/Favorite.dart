@@ -97,43 +97,38 @@ class Favourite extends StatelessWidget {
                                                   FontWeight.bold),
                                             ),
                                             Container(
+                                                decoration: BoxDecoration(color: Appcolor().secondcolor,
+                                                    borderRadius: BorderRadius.circular(10)),
+                                                child: Padding(padding:
+                                                  const EdgeInsets.only(left: 10, right: 10),
+                                                  child: Text(
+                                                    "${controller.doctors![i].special}",
+                                                    overflow: TextOverflow.ellipsis,
+                                                    maxLines: 1,
+                                                    style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),
+                                                  ),
+                                                )),
+                                            Container(
                                               width: double.infinity,
                                               height: 30,
                                               child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                 children: [
                                                   Expanded(
-                                                    child: Container(
-                                                        decoration: BoxDecoration(color: Appcolor().secondcolor,
-                                                            borderRadius: BorderRadius.circular(10)),
-                                                        child: Padding(padding:
-                                                          const EdgeInsets.only(left: 10, right: 10),
-                                                          child: Text(
-                                                            "${controller.doctors![i].special}",
-                                                            overflow: TextOverflow.ellipsis,
-                                                            maxLines: 1,
-                                                            style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),
-                                                          ),
-                                                        )),
+                                                    child: Text('${controller.doctors![i].city}',
+                                                        style: TextStyle(
+                                                          fontSize: 15,color: Appcolor().firstcolor,fontFamily: 'ElMessiri-Bold',)),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                    const EdgeInsets.only(
-                                                        left: 15),
-                                                    child: IconButton(
-                                                        onPressed: () {
-                                                         // box.delete(i);
-                                                          controller.delete(i);
-                                                        },
-                                                        icon: Icon(Icons
-                                                            .delete_forever)),
-                                                  ),
+                                                  IconButton(
+                                                      onPressed: () {
+                                                        // box.delete(i);
+                                                        controller.delete(i);
+                                                      },
+                                                      icon: Icon(Icons.delete_forever)),
+
                                                 ],
                                               ),
                                             ),
-                                            Text('${controller.doctors![i].city}',
-                                                style: TextStyle(
-                                                  fontSize: 15,color: Appcolor().firstcolor,fontFamily: 'ElMessiri-Bold',)),
                                             Container(
                                               width: double.infinity,
                                               child: Row(

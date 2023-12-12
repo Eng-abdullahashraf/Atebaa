@@ -232,10 +232,8 @@ class homecontroller extends GetxController{
 
   List<Doctorss> doctors=List.empty(growable: true);
   void savetocache() {
-    //doctors.clear();
     List<String> doctorslist=doctors.map((e) => jsonEncode(e.toJson())).toList();
     sharedPreferences.setStringList('mydoctors', doctorslist);
-    print('object');
   }
 
   void readdata(){
