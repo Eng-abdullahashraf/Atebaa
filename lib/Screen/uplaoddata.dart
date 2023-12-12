@@ -40,9 +40,13 @@ class Uploaddata extends StatelessWidget {
               SizedBox(height: 10,),
               AppTextField(
                   dataList: [
+                    SelectedListItem(name: 'كل المدن'),
                     SelectedListItem(name: 'المنزلة'),
                     SelectedListItem(name: 'البصراط'),
                     SelectedListItem(name: 'الجمالية'),
+                    SelectedListItem(name: 'دكرنس'),
+                    SelectedListItem(name: 'منية النصر'),
+                    SelectedListItem(name: 'ميت سلسيل'),
                     SelectedListItem(name: 'المطرية'),
                   ],
                   textEditingController: city,
