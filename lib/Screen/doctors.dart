@@ -114,7 +114,7 @@ class Doctors extends StatelessWidget {
                                           color: Appcolor().thirdcolor,
                                           border: Border.all(color: Appcolor().firstcolor,width: 1),
                                           borderRadius: BorderRadius.circular(15)),
-                                      height: 150.0,
+                                      height: 155.0,
                                       width: double.infinity,
                                       child: Row(crossAxisAlignment: CrossAxisAlignment.stretch,
                                         children: [
@@ -144,80 +144,73 @@ class Doctors extends StatelessWidget {
                                                             FontWeight.bold),
                                                   ),
                                                   Container(
+                                                      decoration: BoxDecoration(color: Appcolor().secondcolor,
+                                                          borderRadius: BorderRadius.circular(10)),
+                                                      child: Padding(padding: const EdgeInsets.only(left: 10, right: 10),
+                                                        child: Text("${controller.data![i]["special"]}",
+                                                          overflow: TextOverflow.ellipsis,
+                                                          maxLines: 1,
+                                                          style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),
+                                                        ),
+                                                      )),
+                                                  Container(
                                                     width: double.infinity,
                                                     height: 30,
                                                     child: Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                       children: [
                                                         Expanded(
-                                                          child: Container(
-                                                              decoration: BoxDecoration(color: Appcolor().secondcolor,
-                                                                  borderRadius: BorderRadius.circular(10)),
-                                                              child: Padding(padding: const EdgeInsets.only(left: 10, right: 10),
-                                                                child: Text("${controller.data![i]["special"]}",
-                                                                  overflow: TextOverflow.ellipsis,
-                                                                  maxLines: 1,
-                                                                  style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),
-                                                                ),
-                                                              )),
+                                                          child: Text(
+                                                              controller.data![i]["city"],
+                                                              style: TextStyle(
+                                                                  fontSize: 15,color: Appcolor().firstcolor,fontFamily: 'ElMessiri-Bold',)),
                                                         ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsets
-                                                                  .only(left: 15),
-                                                          // child: Addbutton(data: controller.data![i]["name"]),
-                                                          child: IconButton(
-                                                              onPressed: () {controller.readdata();
-                                                                controller.checkinlist(controller.data![i]["name"],);
-                                                                if (controller.z!) {
-                                                                  // controller.delete(x);
-                                                                  ScaffoldMessenger.of(
-                                                                          context)
-                                                                      .showSnackBar(SnackBar(
-                                                                          content:
-                                                                              Text('العنصر مضاف سابقا لازالته من قائمة المفضلة')));
-                                                                } else {
-                                                                  if (controller.doctors.length < 10) {
-                                                                    controller.doctors!.add(Doctorss(
-                                                                        name: controller.data![i]["name"],
-                                                                        special: controller.data![i]["special"],
-                                                                        phone: controller.data![i]["phone"],
-                                                                        address: controller.data![i]["address"],
-                                                                        city: controller.data![i]["city"],
-                                                                      gender: controller.data![i]["gender"]
-                                                                    ));
-                                                                    controller.savetocache();
-                                                                  }
-                                                                  else {
-                                                                    ScaffoldMessenger.of(context)
-                                                                        .showSnackBar(SnackBar(
-                                                                            content:
-                                                                                Text('القائمة المفضلة لديك ممتلئة')));
-                                                                  }
-                                                                }
-                                                                controller.z =
-                                                                    false;
-                                                              },
-                                                              icon: z!
-                                                                  ? Icon(
-                                                                      Icons
-                                                                          .favorite,
-                                                                      color: Colors
-                                                                          .red,
-                                                                    )
-                                                                  : Icon(
-                                                                      Icons
-                                                                          .favorite_border,
-                                                                      color: Colors
-                                                                          .red)),
-                                                        ),
+                                                        IconButton(
+                                                            onPressed: () {controller.readdata();
+                                                            controller.checkinlist(controller.data![i]["name"],);
+                                                            if (controller.z!) {
+                                                              // controller.delete(x);
+                                                              ScaffoldMessenger.of(
+                                                                  context)
+                                                                  .showSnackBar(SnackBar(
+                                                                  content:
+                                                                  Text('العنصر مضاف سابقا لازالته من قائمة المفضلة')));
+                                                            } else {
+                                                              if (controller.doctors.length < 10) {
+                                                                controller.doctors!.add(Doctorss(
+                                                                    name: controller.data![i]["name"],
+                                                                    special: controller.data![i]["special"],
+                                                                    phone: controller.data![i]["phone"],
+                                                                    address: controller.data![i]["address"],
+                                                                    city: controller.data![i]["city"],
+                                                                    gender: controller.data![i]["gender"]
+                                                                ));
+                                                                controller.savetocache();
+                                                              }
+                                                              else {
+                                                                ScaffoldMessenger.of(context)
+                                                                    .showSnackBar(SnackBar(
+                                                                    content:
+                                                                    Text('القائمة المفضلة لديك ممتلئة')));
+                                                              }
+                                                            }
+                                                            controller.z =
+                                                            false;
+                                                            },
+                                                            icon: z!
+                                                                ? Icon(
+                                                              Icons
+                                                                  .favorite,
+                                                              color: Colors
+                                                                  .red,
+                                                            )
+                                                                : Icon(
+                                                                Icons
+                                                                    .favorite_border,
+                                                                color: Colors
+                                                                    .red)),
                                                       ],
                                                     ),
                                                   ),
-                                                  Text(
-                                                      controller.data![i]["city"],
-                                                      style: TextStyle(
-                                                          fontSize: 15,color: Appcolor().firstcolor,fontFamily: 'ElMessiri-Bold',)),
                                                   Container(
                                                     width: double.infinity,
                                                     child: Row(
