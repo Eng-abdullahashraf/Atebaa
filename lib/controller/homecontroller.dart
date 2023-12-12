@@ -15,7 +15,6 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../Screen/doctors.dart';
-import '../Screen/doctorsn.dart';
 
 
 
@@ -240,12 +239,9 @@ class homecontroller extends GetxController{
 
   void readdata(){
     List<String>? doctorsstring=sharedPreferences.getStringList('mydoctors');
-    if(doctorsstring !=null){
-      doctors=doctorsstring.map((doctor) => Doctorss.fromJson(json.decode(doctor))).toList();
-    }
-    else{
-      print("now no doctors");
-    }
+    doctors=doctorsstring!.map((doctor) => Doctorss.fromJson(json.decode(doctor))).toList();
+
+
   }
 
   void delete(i){

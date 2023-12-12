@@ -73,7 +73,9 @@ class Favourite extends StatelessWidget {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(10),
-                                        child: Image.asset('images/pngegg.png'),
+                                        child: controller.doctors![i].gender == 'ذكر'
+                                            ? Image.asset('images/mpa.png', width: 100,)
+                                            : Image.asset('images/doctora.jpg', width: 100),
                                       ),
                                       SizedBox(width: 5.0),
                                       Expanded(
@@ -145,7 +147,7 @@ class Favourite extends StatelessWidget {
                                                     child: Text(
                                                       "${controller.doctors![i].address}",
                                                       style: TextStyle(
-                                                          fontSize: 15,
+                                                          fontSize: 12,fontWeight: FontWeight.bold,
                                                           color: Appcolor()
                                                               .fourthcolor),
                                                       maxLines: 2,
@@ -165,12 +167,24 @@ class Favourite extends StatelessWidget {
                                                 width: double.infinity,
                                                 child: Row(
                                                   children: [
-                                                    Icon(Icons.phone_enabled,color: Colors.green),
+                                                    Container(
+                                                      padding:EdgeInsets.all(3),
+                                                      decoration:BoxDecoration(
+                                                          border: Border.all(color: Color(
+                                                              0xFFEAE9E9),width: 1),
+                                                          shape: BoxShape.circle,color: Colors.white),
+                                                      child: CircleAvatar(
+                                                        backgroundColor: Appcolor().thirdcolor,
+                                                        child: Icon(Icons.phone_enabled,size: 15,color: Colors.green, ),
+                                                        minRadius: 10,
+                                                      ),
+                                                    ),
+                                                    Gap(5),
                                                     Expanded(
                                                       child: Text(
                                                         "${controller.doctors![i].phone}",
                                                         style: TextStyle(
-                                                            fontSize: 18),
+                                                            fontSize: 12,fontWeight: FontWeight.bold),
                                                       ),
                                                     ),
                                                   ],

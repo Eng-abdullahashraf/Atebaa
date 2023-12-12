@@ -94,6 +94,7 @@ class Doctors extends StatelessWidget {
                           child: ListView.separated(
                               scrollDirection: Axis.vertical,
                               itemBuilder: (context, i) {
+                                //controller.readdata();
                                 bool? z = false;
                                 for (var s in controller.doctors) {
                                   if (s.name == controller.data![i]["name"]) {
@@ -148,33 +149,27 @@ class Doctors extends StatelessWidget {
                                                     child: Row(
                                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                       children: [
-                                                        Container(
-                                                            decoration: BoxDecoration(color: Appcolor().secondcolor,
-                                                                borderRadius: BorderRadius.circular(10)),
-                                                            child: Padding(padding: const EdgeInsets.only(left: 10, right: 10),
-                                                              child: Text("${controller.data![i]["special"]}",
-                                                                overflow: TextOverflow.ellipsis,
-                                                                maxLines: 1,
-                                                                style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),
-                                                              ),
-                                                            )),
+                                                        Expanded(
+                                                          child: Container(
+                                                              decoration: BoxDecoration(color: Appcolor().secondcolor,
+                                                                  borderRadius: BorderRadius.circular(10)),
+                                                              child: Padding(padding: const EdgeInsets.only(left: 10, right: 10),
+                                                                child: Text("${controller.data![i]["special"]}",
+                                                                  overflow: TextOverflow.ellipsis,
+                                                                  maxLines: 1,
+                                                                  style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),
+                                                                ),
+                                                              )),
+                                                        ),
                                                         Padding(
                                                           padding:
                                                               const EdgeInsets
                                                                   .only(left: 15),
                                                           // child: Addbutton(data: controller.data![i]["name"]),
                                                           child: IconButton(
-                                                              onPressed: () {
-                                                                controller
-                                                                    .readdata();
-                                                                controller
-                                                                    .checkinlist(
-                                                                  controller
-                                                                          .data![
-                                                                      i]["name"],
-                                                                );
-                                                                if (controller
-                                                                    .z!) {
+                                                              onPressed: () {controller.readdata();
+                                                                controller.checkinlist(controller.data![i]["name"],);
+                                                                if (controller.z!) {
                                                                   // controller.delete(x);
                                                                   ScaffoldMessenger.of(
                                                                           context)
@@ -188,13 +183,13 @@ class Doctors extends StatelessWidget {
                                                                         special: controller.data![i]["special"],
                                                                         phone: controller.data![i]["phone"],
                                                                         address: controller.data![i]["address"],
-                                                                        city: controller.data![i]["city"]
+                                                                        city: controller.data![i]["city"],
+                                                                      gender: controller.data![i]["gender"]
                                                                     ));
                                                                     controller.savetocache();
                                                                   }
                                                                   else {
-                                                                    ScaffoldMessenger.of(
-                                                                            context)
+                                                                    ScaffoldMessenger.of(context)
                                                                         .showSnackBar(SnackBar(
                                                                             content:
                                                                                 Text('القائمة المفضلة لديك ممتلئة')));
@@ -372,13 +367,14 @@ class Doctors extends StatelessWidget {
                                                                     Text('العنصر مضاف سابقا لازالته من قائمة المفضلة')));
                                                               } else {
                                                                 if (controller.doctors.length < 10) {
-                                                                  controller.doctors!.add(Doctorss(
-                                                                      name: controller.data![i]["name"],
-                                                                      special: controller.data![i]["special"],
-                                                                      phone: controller.data![i]["phone"],
-                                                                      address: controller.data![i]["address"],
-                                                                      city: controller.data![i]["city"]
-                                                                  ));
+                                                                  // controller.doctors!.add(Doctorss(
+                                                                  //     name: controller.data![i]["name"],
+                                                                  //     special: controller.data![i]["special"],
+                                                                  //     phone: controller.data![i]["phone"],
+                                                                  //     address: controller.data![i]["address"],
+                                                                  //     city: controller.data![i]["city"],
+                                                                  //     gender: controller.data![i]["gender"]
+                                                                  // ));
                                                                   controller.savetocache();
                                                                 }
                                                                 else {

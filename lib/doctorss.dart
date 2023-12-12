@@ -4,6 +4,7 @@
   String phone;
   String address;
   String city;
+  String gender;
 
   Doctorss({
     required this.name,
@@ -11,6 +12,7 @@
     required this.phone,
     required this.address,
     required this.city,
+    required this.gender,
   });
 
   factory Doctorss.fromJson(Map<String, dynamic> json) => Doctorss(
@@ -19,6 +21,7 @@
     phone: json["phone"],
     address: json["address"],
     city: json["city"],
+    gender: json["gender"]
   );
 
   Map<String, dynamic> toJson() => {
@@ -27,5 +30,6 @@
     "phone": phone,
     "address": address,
     "city": city,
+    "gender": gender,
   };
 }
