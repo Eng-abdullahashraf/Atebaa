@@ -110,24 +110,24 @@ class Aboutus extends StatelessWidget {
                     ],
                   ),
                 ),
-                GetBuilder(
-                  init: homecontroller(),
-                  builder: (controller) =>
-                      IconButton(
-                        onPressed: () {
-                          if(controller.x==4){
-                            Get.to(Uploaddata());
-                          }
-                          else{
-                            controller.changestate();
-                          }
-                        },
-                        icon: Icon(
-                          Icons.add_circle,
-                          color: Appcolor().secondcolor,
-                        )
-                      ),
-                )
+                // GetBuilder(
+                //   init: homecontroller(),
+                //   builder: (controller) =>
+                //       IconButton(
+                //         onPressed: () {
+                //           if(controller.x==4){
+                //             Get.to(Uploaddata());
+                //           }
+                //           else{
+                //             controller.changestate();
+                //           }
+                //         },
+                //         icon: Icon(
+                //           Icons.add_circle,
+                //           color: Appcolor().secondcolor,
+                //         )
+                //       ),
+                // )
               ],
             ),
           ],
@@ -155,7 +155,7 @@ class Aboutus extends StatelessWidget {
   }
 
   Calling() async {
-    const url = "tel:+201220288992";
+    const url = "tel:+01001050863";
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -164,7 +164,7 @@ class Aboutus extends StatelessWidget {
   }
 
   Whatsapp() async {
-    const url = "https://wa.me/qr/ZTCNIH7GQWRZL1";
+    const url = "https://wa.me/message/LNHQM734SP6CM1";
     if (await canLaunch(url)) {
       await launch(url);
     } else {

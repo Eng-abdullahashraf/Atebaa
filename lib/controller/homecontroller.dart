@@ -21,13 +21,13 @@ import '../Screen/doctors.dart';
 class homecontroller extends GetxController{
 
 
-  final Connectivity _connectivity = Connectivity();
+  Connectivity _connectivity = Connectivity();
 
   @override
   void onInit() async{
     super.onInit();
     sharedPreferences=await SharedPreferences.getInstance();
-    _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+    _connectivity.onConnectivityChanged.listen(updateConnectionStatus);
   }
 
   //........................................................
@@ -199,7 +199,7 @@ class homecontroller extends GetxController{
   //..............................................
   //.....................................................
   bool? noin=true;
-  void _updateConnectionStatus(ConnectivityResult connectivityResult) {
+  void updateConnectionStatus(ConnectivityResult connectivityResult) {
 
     if (connectivityResult == ConnectivityResult.none) {
       noin=false;
@@ -220,7 +220,7 @@ class homecontroller extends GetxController{
       );
     } else {
       if (Get.isSnackbarOpen) {
-        noin=true;
+        //noin=true;
         Get.closeCurrentSnackbar();
       }
     }

@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +21,9 @@ class Homescreen extends StatelessWidget {
         backgroundColor: Appcolor().secondcolor,
         body: GetBuilder<homecontroller>(
           init: homecontroller(),
-          builder: (controller) => Padding(
+          builder: (controller) =>
+
+              Padding(
             padding: const EdgeInsets.all(25),
             child: SingleChildScrollView(
               child: Column(
@@ -103,7 +106,9 @@ class Homescreen extends StatelessWidget {
                       isCitySelected: true),
                   buttons('بحث', 45, double.infinity, 20,
                       Appcolor().firstcolor, Appcolor().thirdcolor, () {
-                    if (controller.noin == true) {
+                        // Connectivity _connectivity = Connectivity();
+                        // _connectivity.onConnectivityChanged.listen(controller.updateConnectionStatus);
+                        if (controller.noin == true) {
                       controller.city = cites.text;
                       controller.special = specialty.text;
                       controller.getdata(context);
@@ -120,8 +125,8 @@ class Homescreen extends StatelessWidget {
                               )
                           ),
                           isDismissible: false,
-                          duration: const Duration(seconds: 100),
-                          backgroundColor: Colors.red!,
+                          duration: const Duration(seconds: 5),
+                          backgroundColor: Color(0xffada8a8),
                           icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
                           margin: EdgeInsets.zero,
                           snackStyle: SnackStyle.GROUNDED

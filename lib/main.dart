@@ -12,6 +12,7 @@ import 'package:hive_flutter/adapters.dart';
 void main() async{
   DependencyInjection.init();
   WidgetsFlutterBinding.ensureInitialized();
+
   Platform.isAndroid?
   await Firebase.initializeApp(
     options: FirebaseOptions(

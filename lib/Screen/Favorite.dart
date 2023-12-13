@@ -44,7 +44,7 @@ class Favourite extends StatelessWidget {
                     child: controller.doctors.isEmpty
                         ? Center(
                           child: Text(
-                              'لا يوجد احد في قائمة المفضلة',
+                              'قائمتك المفضلة فارغة',
                               style: TextStyle(
                                 fontSize: 25,
                                 color: Appcolor().firstcolor,
