@@ -135,7 +135,7 @@ class Homescreen extends StatelessWidget {
                                         ),
                                         isDismissible: false,
                                         duration: const Duration(seconds: 2),
-                                        backgroundColor: Color(0xff157002),
+                                        backgroundColor: Color(0xffff0000),
                                         icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
                                         margin: EdgeInsets.zero,
                                         snackStyle: SnackStyle.GROUNDED
