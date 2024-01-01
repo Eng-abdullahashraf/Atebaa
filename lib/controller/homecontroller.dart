@@ -27,8 +27,11 @@ class homecontroller extends GetxController{
   void onInit() async{
     super.onInit();
     sharedPreferences=await SharedPreferences.getInstance();
-    _connectivity.onConnectivityChanged.listen(updateConnectionStatus);
+   // _connectivity.onConnectivityChanged.listen(updateConnectionStatus);
+    checkinternet();
+
   }
+
 
   //........................................................
   //..................................................................
@@ -197,7 +200,19 @@ class homecontroller extends GetxController{
 
   //..............................................
   //.....................................................
+
   bool? noin=true;
+
+  void checkinternet()async{
+    var result= await Connectivity().checkConnectivity();
+    if(result.name=='none'){
+      noin=false;
+    }else{
+      noin=true;
+    }
+
+  }
+  //...............................................
   void updateConnectionStatus(ConnectivityResult connectivityResult) {
 
     if (connectivityResult == ConnectivityResult.none) {
@@ -219,7 +234,7 @@ class homecontroller extends GetxController{
       );
     } else {
       if (Get.isSnackbarOpen) {
-        //noin=true;
+        noin=true;
         Get.closeCurrentSnackbar();
       }
     }
