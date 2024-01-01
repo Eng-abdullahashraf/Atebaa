@@ -182,7 +182,6 @@ class homecontroller extends GetxController{
           isDismissible: false,
           duration: const Duration(seconds: 3),
           backgroundColor: Colors.black!,
-          icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
           margin: EdgeInsets.zero,
           snackStyle: SnackStyle.GROUNDED
       );

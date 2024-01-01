@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:888295339059:android:4feb7aa3ae8ded69c71f46",
+        "mobilesdk_app_id": "1:888295339059:android:e5491e1e2651439fc71f46",
         "android_client_info": {
-          "package_name": "com.example.atebaa"
+          "package_name": "com.tecs.atebaa"
         }
       },
       "oauth_client": [],
