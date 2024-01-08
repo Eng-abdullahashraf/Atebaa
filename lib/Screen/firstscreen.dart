@@ -19,30 +19,28 @@ class FirstScreen extends StatelessWidget {
     return GetBuilder<homecontroller>(
         init: homecontroller(),
         builder:(controller) {
-          return SafeArea(
-            child: Scaffold(
-              bottomNavigationBar: CurvedNavigationBar(
-                  height: 50,
-                  backgroundColor: Appcolor().secondcolor,
-                  color: Appcolor().firstcolor,
-                  onTap: (value) {
-                    controller.changeScreen(value);
-                  },
-                  items: [
-                    Icon(Icons.home,color: Appcolor().thirdcolor,),
-                    Icon(Icons.favorite,color: Appcolor().thirdcolor,),
-                    Image.asset('images/handpray.png',color: Colors.white,width: 30),
-                    Icon(Icons.contact_page,color: Appcolor().thirdcolor,),
+          return Scaffold(
+            bottomNavigationBar: CurvedNavigationBar(
+                height: 50,
+                backgroundColor: Appcolor().secondcolor,
+                color: Appcolor().firstcolor,
+                onTap: (value) {
+                  controller.changeScreen(value);
+                },
+                items: [
+                  Icon(Icons.home,color: Appcolor().thirdcolor,),
+                  Icon(Icons.favorite,color: Appcolor().thirdcolor,),
+                  Image.asset('images/handpray.png',color: Colors.white,width: 30),
+                  Icon(Icons.contact_page,color: Appcolor().thirdcolor,),
 
 
-                  ]
-              ),
-              body: GetBuilder<homecontroller>(
-                init: homecontroller(),
-                builder: (controller) => Container(
-                    color: Appcolor().secondcolor,
-                    child: controller.Screennav[controller.screennum!]),
-              ),
+                ]
+            ),
+            body: GetBuilder<homecontroller>(
+              init: homecontroller(),
+              builder: (controller) => Container(
+                  color: Appcolor().secondcolor,
+                  child: controller.Screennav[controller.screennum!]),
             ),
           );
         });

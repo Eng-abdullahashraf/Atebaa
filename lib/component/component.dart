@@ -233,4 +233,7 @@ Widget doa()=>Column(
 );
 
 
+Widget carouslerImage(String x) => ClipRRect(
+    borderRadius: BorderRadius.circular(20), child: Image(image: AssetImage('$x')));
+
 //decoration: BoxDecoration(border: Border.all(color: Appcolor().firstcolor,width: 1) ),

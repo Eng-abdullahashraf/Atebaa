@@ -1,6 +1,6 @@
 import 'package:animated_conditional_builder/animated_conditional_builder.dart';
 import 'package:atebaa/controller/homecontroller.dart';
-import 'package:atebaa/doctorss.dart';
+import 'package:atebaa/constant/doctorss.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../component.dart';
+import '../component/component.dart';
 
 class Doctors extends StatelessWidget {
   Doctors({Key? key}) : super(key: key);

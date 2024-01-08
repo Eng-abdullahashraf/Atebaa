@@ -1,5 +1,5 @@
 import 'package:animated_conditional_builder/animated_conditional_builder.dart';
-import 'package:atebaa/component.dart';
+import 'package:atebaa/component/component.dart';
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/material.dart';

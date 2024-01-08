@@ -3,8 +3,8 @@ import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../Apptextfield.dart';
-import '../component.dart';
+import '../constant/Apptextfield.dart';
+import '../component/component.dart';
 import '../controller/homecontroller.dart';
 import '../theme/colors.dart';
 

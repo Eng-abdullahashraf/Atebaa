@@ -1,25 +1,23 @@
 
 import 'dart:convert';
-
 import 'package:atebaa/Screen/Favorite.dart';
 import 'package:atebaa/Screen/Homescreen.dart';
 import 'package:atebaa/Screen/Roqya.dart';
 import 'package:atebaa/Screen/aboutus.dart';
 import 'package:atebaa/Screen/firstscreen.dart';
-import 'package:atebaa/component.dart';
-import 'package:atebaa/doctorss.dart';
+import 'package:atebaa/component/component.dart';
+import 'package:atebaa/component/pages.dart';
+import 'package:atebaa/constant/doctorss.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../Screen/doctors.dart';
 
 
 
 class homecontroller extends GetxController{
-
 
   Connectivity _connectivity = Connectivity();
 
@@ -27,7 +25,7 @@ class homecontroller extends GetxController{
   void onInit() async{
     super.onInit();
     sharedPreferences=await SharedPreferences.getInstance();
-   // _connectivity.onConnectivityChanged.listen(updateConnectionStatus);
+    _connectivity.onConnectivityChanged.listen(updateConnectionStatus);
     checkinternet();
 
   }
@@ -37,7 +35,7 @@ class homecontroller extends GetxController{
   //..................................................................
 
   List<Widget> Screennav=[
-    Homescreen(),
+    homePage(),
     Favourite(),
     Roqya(),
     Aboutus(),
@@ -135,7 +133,6 @@ class homecontroller extends GetxController{
     update();
   }
 
-
   String? name="";
   void search(value){
     name=value;
@@ -194,8 +191,6 @@ class homecontroller extends GetxController{
       load=true;
       update();
     }
-
-
   }
 
   //..............................................
@@ -217,26 +212,23 @@ class homecontroller extends GetxController{
 
     if (connectivityResult == ConnectivityResult.none) {
       noin=false;
-      Get.rawSnackbar(
-          messageText: const Text(
-              'PLEASE CONNECT TO THE INTERNET',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14
-              )
-          ),
-          isDismissible: false,
-          duration: const Duration(seconds: 5),
-          backgroundColor: Colors.black26!,
-          icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
-          margin: EdgeInsets.zero,
-          snackStyle: SnackStyle.GROUNDED
-      );
+      // Get.rawSnackbar(
+      //     messageText: const Text(
+      //         'PLEASE CONNECT TO THE INTERNET',
+      //         style: TextStyle(
+      //             color: Colors.white,
+      //             fontSize: 14
+      //         )
+      //     ),
+      //     isDismissible: false,
+      //     duration: const Duration(seconds: 5),
+      //     backgroundColor: Colors.black26!,
+      //     icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
+      //     margin: EdgeInsets.zero,
+      //     snackStyle: SnackStyle.GROUNDED
+      // );
     } else {
-      if (Get.isSnackbarOpen) {
-        noin=true;
-        Get.closeCurrentSnackbar();
-      }
+      noin=true;
     }
   }
 
@@ -320,32 +312,6 @@ class homecontroller extends GetxController{
   }
 
   void loadings(){
-    /* Future.delayed(const Duration(seconds: 3),(){
-        if(data!.isEmpty){
-          Get.to(FirstScreen());
-          Get.rawSnackbar(
-              messageText: const Text(
-                  'هذه البلده لا تحتوى على دكاترة حاليا',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14
-                  )
-              ),
-              isDismissible: false,
-              duration: const Duration(seconds: 3),
-              backgroundColor: Colors.black!,
-              icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
-              margin: EdgeInsets.zero,
-              snackStyle: SnackStyle.GROUNDED
-          );
-          update();
-        }
-        else{
-          load=true;
-          update();
-        }
-
-      });*/
     if(doaadata!.isEmpty){
       //Get.to(FirstScreen());
       update();
@@ -355,8 +321,21 @@ class homecontroller extends GetxController{
       update();
     }
 
+    //...........................................
+    //..........................................Carousel
+
 
   }
+  
+  List<String>? itemList=[
+      'images/Research.jpg',
+    'images/Research1.jpg',
+    'images/Research2.jpg',
+  ];
+  List<Widget> gene(){
+    return itemList!.map((item)=>carouslerImage(item)).toList();
+  }
+
 
 
 }
