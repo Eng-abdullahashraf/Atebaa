@@ -41,13 +41,16 @@ class Uploaddata extends StatelessWidget {
               AppTextField(
                   dataList: [
                     SelectedListItem(name: 'كل المدن'),
+                    SelectedListItem(name: 'المنصورة'),
                     SelectedListItem(name: 'المنزلة'),
                     SelectedListItem(name: 'البصراط'),
                     SelectedListItem(name: 'الجمالية'),
+                    SelectedListItem(name: 'المطرية'),
                     SelectedListItem(name: 'دكرنس'),
+                    SelectedListItem(name: 'الرياض'),
+                    SelectedListItem(name: 'الكردي'),
                     SelectedListItem(name: 'منية النصر'),
                     SelectedListItem(name: 'ميت سلسيل'),
-                    SelectedListItem(name: 'المطرية'),
                   ],
                   textEditingController: city,
                   title: 'اختر مدينتك',

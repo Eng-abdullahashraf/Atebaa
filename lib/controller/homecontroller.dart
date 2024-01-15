@@ -8,12 +8,15 @@ import 'package:atebaa/Screen/firstscreen.dart';
 import 'package:atebaa/component/component.dart';
 import 'package:atebaa/component/pages.dart';
 import 'package:atebaa/constant/doctorss.dart';
+import 'package:atebaa/theme/advertisingimage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Screen/doctors.dart';
+import '../constant/addvertisingmodels.dart';
 
 
 
@@ -143,32 +146,6 @@ class homecontroller extends GetxController{
   bool? load=false;
 
   void loading(){
-     /* Future.delayed(const Duration(seconds: 3),(){
-        if(data!.isEmpty){
-          Get.to(FirstScreen());
-          Get.rawSnackbar(
-              messageText: const Text(
-                  'هذه البلده لا تحتوى على دكاترة حاليا',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14
-                  )
-              ),
-              isDismissible: false,
-              duration: const Duration(seconds: 3),
-              backgroundColor: Colors.black!,
-              icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
-              margin: EdgeInsets.zero,
-              snackStyle: SnackStyle.GROUNDED
-          );
-          update();
-        }
-        else{
-          load=true;
-          update();
-        }
-
-      });*/
     if(data!.isEmpty){
       Get.to(FirstScreen());
       Get.rawSnackbar(
@@ -287,9 +264,9 @@ class homecontroller extends GetxController{
 
   List<dynamic>? zekr=[];
 
-  void getzekr(){
-    CollectionReference sr=FirebaseFirestore.instance.collection('doctors');
-  }
+  // void getzekr(){
+  //   CollectionReference sr=FirebaseFirestore.instance.collection('doctors');
+  // }
 
   //....................................
   //..........................................
@@ -332,10 +309,23 @@ class homecontroller extends GetxController{
     'images/Research1.jpg',
     'images/Research2.jpg',
   ];
-  List<Widget> gene(){
-    return itemList!.map((item)=>carouslerImage(item)).toList();
+  List<Widget> gene(context){
+    return addvertingmodel!.map((item)=>carouslerImage(item,context)).toList();
   }
 
 
+  // void getImage()async{
+  //   try{
+  //     final storage = FirebaseStorage.instance.ref().child('files/');
+  //     final listresult=await storage.listAll();
+  //     for(var item in listresult.items){
+  //       print(item);
+  //     }
+  //   }catch(e){
+  //     print(e);
+  //   }
+  //
+  //
+  // }
 
 }
