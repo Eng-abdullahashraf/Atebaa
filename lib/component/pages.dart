@@ -84,16 +84,14 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-
                                   Padding(
-                                    padding: const EdgeInsets.all(15),
+                                    padding: const EdgeInsets.only(top: 10,bottom: 5),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 250,
+                                      height: 230,
                                       child:FlutterCarousel(
                                           items: controller.gene(context),
                                           options: CarouselOptions(
-
                                             height: 170,
                                             enlargeCenterPage: true,
                                             initialPage: 0,
@@ -111,7 +109,7 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(right: 15,left: 15),
+                                    padding: const EdgeInsets.only(right: 15,left: 15,top: 15),
                                     child: Text(
                                       'ابحث عن دكتورك',
                                       textAlign: TextAlign.start,
@@ -126,7 +124,7 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                                   ),
                                   Gap(10),
                                   Padding(
-                                    padding: const EdgeInsets.all(15),
+                                    padding: const EdgeInsets.only(right: 15,left: 15,bottom: 5),
                                     child: Container(
                                       width: double.infinity,
                                       child: Column(
