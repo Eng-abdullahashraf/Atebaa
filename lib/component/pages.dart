@@ -52,36 +52,19 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // Center(
-                          //   child: Image(
-                          //     height: 130,
-                          //     width: 150,
-                          //     image: AssetImage('images/atebaa.png'),
-                          //     //color: Appcolor().firstcolor,
-                          //   ),
-                          // ),
-                          // Center(
-                          //     child: Text(
-                          //   'atebaa',
-                          //   style: TextStyle(
-                          //       fontSize: 45,
-                          //       color: Appcolor().firstcolor,
-                          //       fontFamily: 'Bebas',
-                          //       fontWeight: FontWeight.bold,
-                          //       letterSpacing: 5),
-                          // )),
+
                           Padding(
                             padding: const EdgeInsets.only(left: 30,right: 15,top: 8),
                             child: Container(
                               width: double.infinity,
                               height: 50,
-                             // decoration: BoxDecoration(color: Appcolor().firstcolor),
+
                               child: Row(
                                   children: [
                                     
                                   Image(
                                       image: AssetImage('images/atebaa.png'),
-                                      //color: Appcolor().firstcolor,
+
                                     ),
                                 Expanded(child: Gap(0)),
                                 Text(
@@ -107,7 +90,7 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                                     height: 170,
                                     enlargeCenterPage: true,
                                     initialPage: 0,
-                                    autoPlayInterval: Duration(seconds: 5),
+                                    autoPlayInterval: Duration(seconds: 3),
                                     scrollDirection: Axis.horizontal,
                                     autoPlay: true,
                                     viewportFraction: 1.0,
@@ -224,8 +207,8 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                                       controller.city = cites.text;
                                       controller.special = specialty.text;
                                       controller.getdata(context);
-                                      specialty.clear();
-                                      cites.clear();
+                                      //specialty.clear();
+                                      //cites.clear();
                                     } else {
                                       Get.rawSnackbar(
                                           messageText: const Text(
@@ -250,6 +233,7 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                               ),
                             ),
                           ),
+                          Image(image: AssetImage('images/esm.png')),
                           // Container(
                           //   height: 150,
                           //   width: double.infinity,

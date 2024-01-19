@@ -14,6 +14,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:just_the_tooltip/just_the_tooltip.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Screen/doctors.dart';
 import '../constant/addvertisingmodels.dart';
@@ -23,6 +24,7 @@ import '../constant/addvertisingmodels.dart';
 class homecontroller extends GetxController{
 
   Connectivity _connectivity = Connectivity();
+  //final tooltipController = JustTheController();
 
   @override
   void onInit() async{
@@ -30,6 +32,14 @@ class homecontroller extends GetxController{
     sharedPreferences=await SharedPreferences.getInstance();
     _connectivity.onConnectivityChanged.listen(updateConnectionStatus);
     checkinternet();
+    // Future.delayed(const Duration(seconds: 2), () {
+    //   tooltipController.showTooltip(immediately: false);
+    // });
+    //
+    // tooltipController.addListener(() {
+    //   // Prints the enum value of [TooltipStatus.isShowing] or [TooltipStatus.isHiding]
+    //   print('controller: ${tooltipController.value}');
+    // });
 
   }
 
@@ -150,7 +160,7 @@ class homecontroller extends GetxController{
       Get.to(FirstScreen());
       Get.rawSnackbar(
           messageText: const Text(
-              'هذه البلده لا تحتوى على دكاترة حاليا',
+              'هذه القائمة لا تحتوى على أطباء حاليا',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 14
@@ -189,21 +199,7 @@ class homecontroller extends GetxController{
 
     if (connectivityResult == ConnectivityResult.none) {
       noin=false;
-      // Get.rawSnackbar(
-      //     messageText: const Text(
-      //         'PLEASE CONNECT TO THE INTERNET',
-      //         style: TextStyle(
-      //             color: Colors.white,
-      //             fontSize: 14
-      //         )
-      //     ),
-      //     isDismissible: false,
-      //     duration: const Duration(seconds: 5),
-      //     backgroundColor: Colors.black26!,
-      //     icon : const Icon(Icons.wifi_off, color: Colors.white, size: 35,),
-      //     margin: EdgeInsets.zero,
-      //     snackStyle: SnackStyle.GROUNDED
-      // );
+
     } else {
       noin=true;
     }
@@ -226,14 +222,6 @@ class homecontroller extends GetxController{
     }catch(e){
       print(e);
     }
-
-
-    // if(doctorsstring!.isEmpty){
-    //   doctors=doctorsstring.map((doctor) => Doctorss.fromJson(json.decode(doctor))).toList();
-    // }
-    // else{
-    //   print("now no doctors");
-    // }
   }
 
   void delete(i){
@@ -290,7 +278,6 @@ class homecontroller extends GetxController{
 
   void loadings(){
     if(doaadata!.isEmpty){
-      //Get.to(FirstScreen());
       update();
     }
     else{
@@ -313,19 +300,5 @@ class homecontroller extends GetxController{
     return addvertingmodel!.map((item)=>carouslerImage(item,context)).toList();
   }
 
-
-  // void getImage()async{
-  //   try{
-  //     final storage = FirebaseStorage.instance.ref().child('files/');
-  //     final listresult=await storage.listAll();
-  //     for(var item in listresult.items){
-  //       print(item);
-  //     }
-  //   }catch(e){
-  //     print(e);
-  //   }
-  //
-  //
-  // }
 
 }

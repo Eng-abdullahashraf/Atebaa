@@ -152,31 +152,31 @@ class Aboutus extends StatelessWidget {
                               ''' و أخيراً.. "الدال علي الخير كفاعله" لا تدع منفعة الناس تقف عندك, انشره ليصل لأكبر عدد ممكن, فبنشره سينالك الأجر انت أيضاً'''
 '''
                                                                                رابط التحميل: '''
-                              'https://play.google.com/store/apps/details?id=com.tecs.atebaa)'
+                              'https://play.google.com/store/apps/details?id=com.tecs.atebaa )'
                           ) ;
                         },
                       ),// share
                     ],
                   ),
                 ),
-                GetBuilder(
-                  init: homecontroller(),
-                  builder: (controller) =>
-                      IconButton(
-                        onPressed: () {
-                          if(controller.x==4){
-                            Get.to(Uploaddata());
-                          }
-                          else{
-                            controller.changestate();
-                          }
-                        },
-                        icon: Icon(
-                          Icons.add_circle,
-                          color: Appcolor().secondcolor,
-                        )
-                      ),
-                )
+                // GetBuilder(
+                //   init: homecontroller(),
+                //   builder: (controller) =>
+                //       IconButton(
+                //         onPressed: () {
+                //           if(controller.x==4){
+                //             Get.to(Uploaddata());
+                //           }
+                //           else{
+                //             controller.changestate();
+                //           }
+                //         },
+                //         icon: Icon(
+                //           Icons.add_circle,
+                //           color: Appcolor().secondcolor,
+                //         )
+                //       ),
+                // )
               ],
             ),
           ],

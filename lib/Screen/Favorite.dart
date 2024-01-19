@@ -21,14 +21,27 @@ class Favourite extends StatelessWidget {
               child: Column(
                 children: [
                   Container(
-                    child: Center(
-                        child: Text(
-                      "المفضلة",
-                      style: TextStyle(
-                          fontFamily: "ElMessiri-Bold",
-                          color: Appcolor().thirdcolor,
-                          fontSize: 25),
-                    )),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "المفضلة",
+                            style: TextStyle(
+                            fontFamily: "ElMessiri-Bold",
+                            color: Appcolor().thirdcolor,
+                            fontSize: 20),
+                          ),
+                        ),
+                        Expanded(child: Gap(0)),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('( 10/${controller.doctors.length} )',style: TextStyle(color: Colors.white,fontSize: 20, fontFamily: "ElMessiri-Bold")),
+                        ),
+
+                      ],
+                    ),
                     height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
@@ -65,8 +78,8 @@ class Favourite extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         color: Appcolor().thirdcolor,
                                         border: Border.all(color: Appcolor().firstcolor,width: 1),
-                                        borderRadius: BorderRadius.circular(25)),
-                                    height: 150.0,
+                                        borderRadius: BorderRadius.circular(15)),
+                                    height: 155.0,
                                     width: double.infinity,
                                     child: Row(
                                       crossAxisAlignment:

@@ -409,8 +409,10 @@ Widget carouslerImage(AdvertisingModel x,context) => InkWell(
                             ),
                             Gap(20),
                             InkWell(
-                              child: Icon(Icons.facebook,
-                                  color: Colors.blueAccent, size: 45),
+                              child: CircleAvatar(
+                                backgroundColor: Colors.blueAccent,
+                                child: Image.asset('images/fb.png',width: 25),
+                              ),
                               onTap: () {
                                 launch('${x.whatsapp}');
                               },

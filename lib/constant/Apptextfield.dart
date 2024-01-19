@@ -31,6 +31,7 @@ class _AppTextFieldState extends State<AppTextField> {
   void onTextFieldTap() {
     DropDownState(
       DropDown(
+        searchHintText: "بحث",
         isDismissible: true,
         // bottomSheetTitle: const Text(
         //   'Cities',
