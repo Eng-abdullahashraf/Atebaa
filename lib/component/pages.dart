@@ -47,272 +47,205 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                           ],
                         ),
                       )
-                    : SingleChildScrollView(
+                    : Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-
                           Padding(
                             padding: const EdgeInsets.only(left: 30,right: 15,top: 8),
                             child: Container(
-                              width: double.infinity,
                               height: 50,
 
                               child: Row(
                                   children: [
-                                    
-                                  Image(
+
+                                    Image(
                                       image: AssetImage('images/atebaa.png'),
 
                                     ),
-                                Expanded(child: Gap(0)),
-                                Text(
-                                    'atebaa',
-                                    style: TextStyle(
-                                  fontSize: 45,
-                                  color: Appcolor().firstcolor,
-                                  fontFamily: 'Bebas',
-                                  fontWeight: FontWeight.w400,
-                                  letterSpacing: 5),
-                                  )
-                              ]
+                                    Expanded(child: Gap(0)),
+                                    Text(
+                                      'atebaa',
+                                      style: TextStyle(
+                                          fontSize: 45,
+                                          color: Appcolor().firstcolor,
+                                          fontFamily: 'Bebas',
+                                          fontWeight: FontWeight.w400,
+                                          letterSpacing: 5),
+                                    )
+                                  ]
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Container(
-                              height: 250,
-                              child:FlutterCarousel(
-                                  items: controller.gene(context),
-                                  options: CarouselOptions(
-                                    height: 170,
-                                    enlargeCenterPage: true,
-                                    initialPage: 0,
-                                    autoPlayInterval: Duration(seconds: 3),
-                                    scrollDirection: Axis.horizontal,
-                                    autoPlay: true,
-                                    viewportFraction: 1.0,
-                                    autoPlayCurve: Curves.fastOutSlowIn,
-                                    autoPlayAnimationDuration: Duration(seconds: 2),
-                                    showIndicator: true,
-                                    enableInfiniteScroll: true,
 
-                                  )
-                              )
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 15,left: 15),
-                            child: Text(
-                              'ابحث عن دكتورك',
-                              textAlign: TextAlign.start,
-                              style: TextStyle(
-                                  color: Appcolor().firstcolor,
-                                  fontFamily: 'ElMessiri-Bold',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  fontStyle: FontStyle.normal,
-                                  letterSpacing: -0.3),
-                            ),
-                          ),
-                          Gap(10),
-                          Padding(
-                            padding: const EdgeInsets.all(15),
-                            child: Container(
-                              width: double.infinity,
+                          Expanded(
+                            child: SingleChildScrollView(
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  AppTextField(
-                                      dataList: [
-                                        SelectedListItem(name: 'كل المدن'),
-                                        SelectedListItem(name: 'المنصورة'),
-                                        SelectedListItem(name: 'المنزلة'),
-                                        SelectedListItem(name: 'البصراط'),
-                                        SelectedListItem(name: 'الجمالية'),
-                                        SelectedListItem(name: 'المطرية'),
-                                        SelectedListItem(name: 'دكرنس'),
-                                        SelectedListItem(name: 'الرياض'),
-                                        SelectedListItem(name: 'الكردي'),
-                                        SelectedListItem(name: 'منية النصر'),
-                                        SelectedListItem(name: 'ميت سلسيل'),
-                                      ],
-                                      textEditingController: cites,
-                                      title: 'اختر مدينة',
-                                      hint: 'المدينه',
-                                      isCitySelected: true),
-                                  AppTextField(
-                                      dataList: [
-                                        SelectedListItem(name: 'كل التخصصات'),
-                                        SelectedListItem(name: 'جلديه'),
-                                        SelectedListItem(name: 'اسنان'),
-                                        SelectedListItem(name: 'نفسي'),
-                                        SelectedListItem(name: 'اطفال وحديثي الولادة'),
-                                        SelectedListItem(name: 'مخ واعصاب'),
-                                        SelectedListItem(name: 'عظام'),
-                                        SelectedListItem(name: 'عيون'),
-                                        SelectedListItem(name: 'علاج طبيعي اصابات ملاعب'),
-                                        SelectedListItem(name: 'نساء وتوليد'),
-                                        SelectedListItem(name: 'انف واذن وحنجرة'),
-                                        SelectedListItem(name: 'قلب واوعية دموية'),
-                                        SelectedListItem(name: 'امراض الدم'),
-                                        SelectedListItem(name: 'اورام'),
-                                        SelectedListItem(name: 'باطنة'),
-                                        SelectedListItem(name: 'تخسيس وتغذية'),
-                                        SelectedListItem(name: 'جراحة اطفال'),
-                                        SelectedListItem(name: 'جراحة أورام'),
-                                        SelectedListItem(name: 'جراحة أوعية دموية'),
-                                        SelectedListItem(name: 'جراحة تجميل'),
-                                        SelectedListItem(name: 'جراحة سمنة ومناظير'),
-                                        SelectedListItem(name: 'جراحة عامة'),
-                                        SelectedListItem(name: 'جراحة عمود فقرى'),
-                                        SelectedListItem(name: 'جراحة قلب وصدر'),
-                                        SelectedListItem(name: 'جراحة مخ وأعصاب'),
-                                        SelectedListItem(name: 'جهاز هضمي ومناظير'),
-                                        SelectedListItem(name: 'حساسية ومناعة'),
-                                        SelectedListItem(name: 'ذكورة وعقم'),
-                                        SelectedListItem(name: 'سكر وغدد صماء'),
-                                        SelectedListItem(name: 'سمعيات'),
-                                        SelectedListItem(name: 'صدر وجهاز تنفسي'),
-                                        SelectedListItem(name: 'طب الأسرة'),
-                                        SelectedListItem(name: 'حساسية ومناعة'),
-                                        SelectedListItem(name: 'ذكورة وعقم'),
-                                        SelectedListItem(name: 'روماتيزم'),
-                                        SelectedListItem(name: 'كبد'),
-                                        SelectedListItem(name: 'كلى'),
-                                        SelectedListItem(name: 'مسالك بولية'),
-                                        SelectedListItem(name: 'نطق وتخاطب'),
-                                      ],
-                                      textEditingController: specialty,
-                                      title: 'اختر تخصص',
-                                      hint: 'التخصص',
-                                      isCitySelected: true),
-                                  buttons(
-                                      'بحث',
-                                      45,
-                                      double.infinity,
-                                      20,
-                                      Appcolor().firstcolor,
-                                      Appcolor().thirdcolor, () {
-                                    if (snapshot.data ==
-                                        ConnectivityResult.none) {
-                                      controller.noin = false;
-                                    } else {
-                                      controller.checkinternet();
-                                    }
-                                    if (controller.noin == true) {
-                                      controller.city = cites.text;
-                                      controller.special = specialty.text;
-                                      controller.getdata(context);
-                                      //specialty.clear();
-                                      //cites.clear();
-                                    } else {
-                                      Get.rawSnackbar(
-                                          messageText: const Text(
-                                              'قم بفحص الاتصال بالانترنت',
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 14)),
-                                          isDismissible: false,
-                                          duration: const Duration(seconds: 2),
-                                          backgroundColor: Color(0xffff0000),
-                                          icon: const Icon(
-                                            Icons.wifi_off,
-                                            color: Colors.white,
-                                            size: 35,
-                                          ),
-                                          margin: EdgeInsets.zero,
-                                          snackStyle: SnackStyle.GROUNDED);
-                                    }
-                                    //controller.getImage();
-                                  }, 15),
+
+                                  Padding(
+                                    padding: const EdgeInsets.all(15),
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 250,
+                                      child:FlutterCarousel(
+                                          items: controller.gene(context),
+                                          options: CarouselOptions(
+
+                                            height: 170,
+                                            enlargeCenterPage: true,
+                                            initialPage: 0,
+                                            autoPlayInterval: Duration(seconds: 3),
+                                            scrollDirection: Axis.horizontal,
+                                            autoPlay: true,
+                                            viewportFraction: 1.0,
+                                            autoPlayCurve: Curves.fastOutSlowIn,
+                                            autoPlayAnimationDuration: Duration(seconds: 2),
+                                            showIndicator: true,
+                                            enableInfiniteScroll: true,
+
+                                          )
+                                      )
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 15,left: 15),
+                                    child: Text(
+                                      'ابحث عن دكتورك',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                          color: Appcolor().firstcolor,
+                                          fontFamily: 'ElMessiri-Bold',
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w700,
+                                          fontStyle: FontStyle.normal,
+                                          letterSpacing: -0.3),
+                                    ),
+                                  ),
+                                  Gap(10),
+                                  Padding(
+                                    padding: const EdgeInsets.all(15),
+                                    child: Container(
+                                      width: double.infinity,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          AppTextField(
+                                              dataList: [
+                                                SelectedListItem(name: 'كل المدن'),
+                                                SelectedListItem(name: 'المنصورة'),
+                                                SelectedListItem(name: 'المنزلة'),
+                                                SelectedListItem(name: 'البصراط'),
+                                                SelectedListItem(name: 'الجمالية'),
+                                                SelectedListItem(name: 'المطرية'),
+                                                SelectedListItem(name: 'دكرنس'),
+                                                SelectedListItem(name: 'الرياض'),
+                                                SelectedListItem(name: 'الكردي'),
+                                                SelectedListItem(name: 'منية النصر'),
+                                                SelectedListItem(name: 'ميت سلسيل'),
+                                              ],
+                                              textEditingController: cites,
+                                              title: 'اختر مدينة',
+                                              hint: 'المدينه',
+                                              isCitySelected: true),
+                                          AppTextField(
+                                              dataList: [
+                                                SelectedListItem(name: 'كل التخصصات'),
+                                                SelectedListItem(name: 'جلديه'),
+                                                SelectedListItem(name: 'اسنان'),
+                                                SelectedListItem(name: 'نفسي'),
+                                                SelectedListItem(name: 'اطفال وحديثي الولادة'),
+                                                SelectedListItem(name: 'مخ واعصاب'),
+                                                SelectedListItem(name: 'عظام'),
+                                                SelectedListItem(name: 'عيون'),
+                                                SelectedListItem(name: 'علاج طبيعي اصابات ملاعب'),
+                                                SelectedListItem(name: 'نساء وتوليد'),
+                                                SelectedListItem(name: 'انف واذن وحنجرة'),
+                                                SelectedListItem(name: 'قلب واوعية دموية'),
+                                                SelectedListItem(name: 'امراض الدم'),
+                                                SelectedListItem(name: 'اورام'),
+                                                SelectedListItem(name: 'باطنة'),
+                                                SelectedListItem(name: 'تخسيس وتغذية'),
+                                                SelectedListItem(name: 'جراحة اطفال'),
+                                                SelectedListItem(name: 'جراحة أورام'),
+                                                SelectedListItem(name: 'جراحة أوعية دموية'),
+                                                SelectedListItem(name: 'جراحة تجميل'),
+                                                SelectedListItem(name: 'جراحة سمنة ومناظير'),
+                                                SelectedListItem(name: 'جراحة عامة'),
+                                                SelectedListItem(name: 'جراحة عمود فقرى'),
+                                                SelectedListItem(name: 'جراحة قلب وصدر'),
+                                                SelectedListItem(name: 'جراحة مخ وأعصاب'),
+                                                SelectedListItem(name: 'جهاز هضمي ومناظير'),
+                                                SelectedListItem(name: 'حساسية ومناعة'),
+                                                SelectedListItem(name: 'ذكورة وعقم'),
+                                                SelectedListItem(name: 'سكر وغدد صماء'),
+                                                SelectedListItem(name: 'سمعيات'),
+                                                SelectedListItem(name: 'صدر وجهاز تنفسي'),
+                                                SelectedListItem(name: 'طب الأسرة'),
+                                                SelectedListItem(name: 'حساسية ومناعة'),
+                                                SelectedListItem(name: 'ذكورة وعقم'),
+                                                SelectedListItem(name: 'روماتيزم'),
+                                                SelectedListItem(name: 'كبد'),
+                                                SelectedListItem(name: 'كلى'),
+                                                SelectedListItem(name: 'مسالك بولية'),
+                                                SelectedListItem(name: 'نطق وتخاطب'),
+                                              ],
+                                              textEditingController: specialty,
+                                              title: 'اختر تخصص',
+                                              hint: 'التخصص',
+                                              isCitySelected: true),
+                                          buttons(
+                                              'بحث',
+                                              45,
+                                              double.infinity,
+                                              20,
+                                              Appcolor().firstcolor,
+                                              Appcolor().thirdcolor, () {
+                                            if (snapshot.data ==
+                                                ConnectivityResult.none) {
+                                              controller.noin = false;
+                                            } else {
+                                              controller.checkinternet();
+                                            }
+                                            if (controller.noin == true) {
+                                              controller.city = cites.text;
+                                              controller.special = specialty.text;
+                                              controller.getdata(context);
+                                              //specialty.clear();
+                                              //cites.clear();
+                                            } else {
+                                              Get.rawSnackbar(
+                                                  messageText: const Text(
+                                                      'قم بفحص الاتصال بالانترنت',
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 14)),
+                                                  isDismissible: false,
+                                                  duration: const Duration(seconds: 2),
+                                                  backgroundColor: Color(0xffff0000),
+                                                  icon: const Icon(
+                                                    Icons.wifi_off,
+                                                    color: Colors.white,
+                                                    size: 35,
+                                                  ),
+                                                  margin: EdgeInsets.zero,
+                                                  snackStyle: SnackStyle.GROUNDED);
+                                            }
+                                            //controller.getImage();
+                                          }, 15),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
                           ),
                           Image(image: AssetImage('images/esm.png')),
-                          // Container(
-                          //   height: 150,
-                          //   width: double.infinity,
-                          //   child: ListView.builder(
-                          //     scrollDirection: Axis.horizontal,
-                          //     itemCount: addvertingmodel.length,
-                          //     itemBuilder: (context, index) => Padding(
-                          //       padding:
-                          //           const EdgeInsets.only(left: 10, top: 10),
-                          //       child: InkWell(
-                          //           onTap: () {
-                          //             showDialog(
-                          //                 context: context,
-                          //                 builder:
-                          //                     (BuildContext context) {
-                          //                   return Dialog(
-                          //                     shape:
-                          //                         RoundedRectangleBorder(
-                          //                             borderRadius:
-                          //                                 BorderRadius
-                          //                                     .circular(
-                          //                                         40)),
-                          //                     child: Stack(
-                          //                         alignment: Alignment.bottomCenter,
-                          //                         clipBehavior: Clip.none,
-                          //                         children: [
-                          //                           ClipRRect(
-                          //                             child: Image(image: AssetImage(addvertingmodel[index].image!),fit: BoxFit.cover),
-                          //                             borderRadius:
-                          //                                 BorderRadius
-                          //                                     .circular(
-                          //                                         40),
-                          //                           ),
-                          //                           Positioned(
-                          //                             child: Row(
-                          //                               children: [
-                          //                                 InkWell(
-                          //
-                          //                                   child: CircleAvatar(
-                          //                                     backgroundColor:
-                          //                                         Colors.green,
-                          //                                     child: Icon(
-                          //                                         Icons.call),
-                          //                                   ),
-                          //                                   onTap: () {
-                          //                                     launch('tel:${addvertingmodel[index].phone}');
-                          //                                   },
-                          //                                 ),
-                          //                                 Gap(20),
-                          //                                 InkWell(
-                          //                                   child: Icon(
-                          //                                       Icons.facebook,color: Colors.blueAccent,size: 45),
-                          //                                   onTap: () {
-                          //                                     launch('${addvertingmodel[index].whatsapp}');
-                          //                                   },
-                          //                                 ),
-                          //
-                          //                               ],
-                          //                             ),
-                          //                             bottom: -50,
-                          //                           )
-                          //                         ]),
-                          //                   );
-                          //                 });
-                          //
-                          //
-                          //             // Get.to(AdvertisingScreen());
-                          //           },
-                          //           child: ClipRRect(
-                          //             borderRadius: BorderRadius.circular(20),
-                          //             child: Image(
-                          //                 image: AssetImage(
-                          //                     'images/doctorsadd.jpg')
-                          //
-                          //             ),
-                          //           )),
-                          //     ),
-                          //   ),
-                          // )
+
                         ],
                       ),
                     );
