@@ -7,12 +7,14 @@ import 'package:atebaa/Screen/aboutus.dart';
 import 'package:atebaa/Screen/firstscreen.dart';
 import 'package:atebaa/component/component.dart';
 import 'package:atebaa/component/pages.dart';
+import 'package:atebaa/constant/Admanager.dart';
 import 'package:atebaa/constant/doctorss.dart';
 import 'package:atebaa/theme/advertisingimage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Screen/doctors.dart';
 import '../constant/addvertisingmodels.dart';
@@ -30,14 +32,7 @@ class homecontroller extends GetxController{
     sharedPreferences=await SharedPreferences.getInstance();
     _connectivity.onConnectivityChanged.listen(updateConnectionStatus);
     checkinternet();
-    // Future.delayed(const Duration(seconds: 2), () {
-    //   tooltipController.showTooltip(immediately: false);
-    // });
-    //
-    // tooltipController.addListener(() {
-    //   // Prints the enum value of [TooltipStatus.isShowing] or [TooltipStatus.isHiding]
-    //   print('controller: ${tooltipController.value}');
-    // });
+    loaded();
 
   }
 
@@ -297,6 +292,55 @@ class homecontroller extends GetxController{
   List<Widget> gene(context){
     return addvertingmodel!.map((item)=>carouslerImage(item,context)).toList();
   }
+
+  //.................................
+  //....................................
+  BannerAd? bannerAd;
+  bool isloaded=false;
+
+
+  void loaded(){
+    bannerAd=BannerAd(
+        size: AdSize.banner,
+        adUnitId: AdManager.bannerHome,
+        listener: BannerAdListener(
+          onAdLoaded: (ad){
+            isloaded=true;
+          },
+          onAdFailedToLoad: (ad, error) {
+            ad.dispose();
+          },
+        ),
+        request: AdRequest())..load();
+    update();
+  }
+
+  AppOpenAd? _appOpenAd;
+  void showAppAdd(){
+
+    try{
+      AppOpenAd.load(
+          adUnitId: AdManager.openAdd,
+          request: AdRequest(),
+          adLoadCallback: AppOpenAdLoadCallback(
+            onAdLoaded: (ad) {
+              _appOpenAd=ad;
+              if(_appOpenAd !=null){
+                _appOpenAd!.show();
+              }
+              ad.fullScreenContentCallback=FullScreenContentCallback(
+                onAdWillDismissFullScreenContent: (ad) {ad.dispose();},
+                onAdFailedToShowFullScreenContent: (ad, error) {ad.dispose();},
+              );
+            },
+            onAdFailedToLoad: (error) {},),
+          orientation: AppOpenAd.orientationPortrait);
+    }catch(e){
+      print(e);
+    }
+
+  }
+
 
 
 }

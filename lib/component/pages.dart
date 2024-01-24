@@ -212,8 +212,9 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                                               controller.city = cites.text;
                                               controller.special = specialty.text;
                                               controller.getdata(context);
-                                              //specialty.clear();
-                                              //cites.clear();
+                                              controller.showAppAdd();
+                                              controller.loaded();
+
                                             } else {
                                               Get.rawSnackbar(
                                                   messageText: const Text(
@@ -232,7 +233,6 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                                                   margin: EdgeInsets.zero,
                                                   snackStyle: SnackStyle.GROUNDED);
                                             }
-                                            //controller.getImage();
                                           }, 15),
                                         ],
                                       ),
