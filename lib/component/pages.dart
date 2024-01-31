@@ -9,10 +9,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import '../constant/Apptextfield.dart';
-import '../constant/addvertisingmodels.dart';
 import '../controller/homecontroller.dart';
 import '../theme/colors.dart';
 import 'component.dart';
@@ -77,7 +74,6 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                               ),
                             ),
                           ),
-
                           Expanded(
                             child: SingleChildScrollView(
                               child: Column(
@@ -243,7 +239,6 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                             ),
                           ),
                           Image(image: AssetImage('images/esm.png')),
-
                         ],
                       ),
                     );

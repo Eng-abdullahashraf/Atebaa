@@ -6,14 +6,11 @@ import 'package:atebaa/controller/dependency.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:upgrader/upgrader.dart';
 
 void main() async{
-  // WidgetsFlutterBinding.ensureInitialized();
-  // MobileAds.instance.initialize();
   DependencyInjection.init();
   WidgetsFlutterBinding.ensureInitialized();
-
   Platform.isAndroid?
   await Firebase.initializeApp(
     options: FirebaseOptions(
@@ -24,8 +21,6 @@ void main() async{
     ),
   )
   :await Firebase.initializeApp();
-  //await Hive.initFlutter();
-  //await Hive.openBox('favorite');
   runApp(const MyApp());
 }
 
@@ -44,7 +39,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       locale: const Locale('ar'),
-      home: Splash(),
+      home: UpgradeAlert(child: Splash(),)
       
     );
   }

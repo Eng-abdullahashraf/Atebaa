@@ -44,26 +44,12 @@ class _Splash extends State<Splash> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    /*Image(
-                      height: 150,
-                      image: AssetImage('images/atebaa.png'),
-                      //color: Appcolor().firstcolor,
-                    ),*/
-
                     Expanded(child: Center(child: Text('atebaa',style: TextStyle(fontSize: 85,color: Appcolor().firstcolor,fontFamily: 'Bebas',letterSpacing: 8,),))),
                     Text('Powered by TECS ',style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),),
-
                   ],
                 ),
               ),
-              /*child: Text(
-                'atebaa',
-                style: TextStyle(
-                    fontSize: 60,
-                    color: Appcolor().firstcolor,
-                    fontFamily: "ElMessiri-Bold",
-                    fontWeight: FontWeight.w800),
-              ),*/
+
             )),
       ),
     );

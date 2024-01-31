@@ -376,7 +376,9 @@ Widget doa() => Column(
 Widget carouslerImage(AdvertisingModel x,context) => InkWell(
       child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Image(image: AssetImage('${x.image1}'))),
+          // child: Image(image: AssetImage('${x.image1}'))
+      child: Image.network(x.image1!),
+      ),
       onTap: () {
         showDialog(
             context: context,
@@ -389,9 +391,10 @@ Widget carouslerImage(AdvertisingModel x,context) => InkWell(
                     clipBehavior: Clip.none,
                     children: [
                       ClipRRect(
-                        child: Image(
-                            image: AssetImage(x.image2!),
-                            fit: BoxFit.cover),
+                        // child: Image(
+                        //     image: AssetImage(x.image2!),
+                        //     fit: BoxFit.cover),
+                        child: Image.network(x.image2!),
                         borderRadius: BorderRadius.circular(40),
                       ),
                       Positioned(
