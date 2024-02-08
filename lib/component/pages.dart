@@ -179,8 +179,6 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                                                 SelectedListItem(name: 'سمعيات'),
                                                 SelectedListItem(name: 'صدر وجهاز تنفسي'),
                                                 SelectedListItem(name: 'طب الأسرة'),
-                                                SelectedListItem(name: 'حساسية ومناعة'),
-                                                SelectedListItem(name: 'ذكورة وعقم'),
                                                 SelectedListItem(name: 'روماتيزم'),
                                                 SelectedListItem(name: 'كبد'),
                                                 SelectedListItem(name: 'كلى'),
@@ -198,6 +196,7 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
                                               20,
                                               Appcolor().firstcolor,
                                               Appcolor().thirdcolor, () {
+                                            //controller.getdataapi();
                                             if (snapshot.data ==
                                                 ConnectivityResult.none) {
                                               controller.noin = false;

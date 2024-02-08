@@ -9,6 +9,7 @@ import 'package:atebaa/component/component.dart';
 import 'package:atebaa/component/pages.dart';
 import 'package:atebaa/constant/Admanager.dart';
 import 'package:atebaa/constant/doctorss.dart';
+import 'package:atebaa/controller/dio.dart';
 import 'package:atebaa/theme/advertisingimage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -33,6 +34,7 @@ class homecontroller extends GetxController{
     _connectivity.onConnectivityChanged.listen(updateConnectionStatus);
     checkinternet();
     loaded();
+    getdataapi();
 
   }
 
@@ -289,6 +291,22 @@ class homecontroller extends GetxController{
     'images/Research1.jpg',
     'images/Research2.jpg',
   ];
+
+  List<dynamic>? dataset;
+
+  void getdataapi() {
+
+    diohelp.getdata(URL: 'api/get-doctors-photos').then((value) {
+      dataset = value.data['photos'];
+      print(dataset);
+    }).catchError((error) {
+      error.toString();
+      print('nnnneeeeennnnnnnnnnnnnn');
+
+    });
+    update();
+  }
+
   List<Widget> gene(context){
     return addvertingmodel!.map((item)=>carouslerImage(item,context)).toList();
   }
