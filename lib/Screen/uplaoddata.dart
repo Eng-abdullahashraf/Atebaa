@@ -88,7 +88,7 @@ class Uploaddata extends StatelessWidget {
                     SelectedListItem(name: 'امراض الدم'),
                     SelectedListItem(name: 'اورام'),
                     SelectedListItem(name: 'باطنة'),
-                    SelectedListItem(name: 'تخسيس وتغئية'),
+                    SelectedListItem(name: 'تخسيس وتغذية'),
                     SelectedListItem(name: 'جراحة اطفال'),
                     SelectedListItem(name: 'جراحة أورام'),
                     SelectedListItem(name: 'جراحة أوعية دموية'),
