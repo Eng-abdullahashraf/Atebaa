@@ -17,7 +17,7 @@ class Favourite extends StatelessWidget {
           builder: (controller) {
             controller.readdata();
             return Container(
-              color: Appcolor().secondcolor,
+              color: Appcolor().thirdcolor,
               child: Column(
                 children: [
                   Container(
@@ -135,7 +135,6 @@ class Favourite extends StatelessWidget {
                                                     ),
                                                     IconButton(
                                                         onPressed: () {
-                                                          // box.delete(i);
                                                           controller.delete(i);
                                                         },
                                                         icon: Icon(Icons.delete_forever)),

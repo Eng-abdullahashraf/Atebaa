@@ -431,3 +431,25 @@ Widget carouslerImage(AdvertisingModel x,context) => InkWell(
     );
 
 //decoration: BoxDecoration(border: Border.all(color: Appcolor().firstcolor,width: 1) ),
+Widget tab(double height,String image,String titleContainer)=>Stack(
+  children: [
+    Container(
+      height: height,
+      decoration: BoxDecoration(
+        borderRadius:
+        BorderRadius.circular(20),
+        image: DecorationImage(
+            image: AssetImage(image),
+            fit: BoxFit.fill),
+      ),
+    ),
+    Container(
+      height: height,
+      width: double.infinity,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Color(0x885E5E5E)),
+      child: Center(child: Text(titleContainer,style: TextStyle(fontSize: 24,color: Colors.white,fontFamily: 'ElMessiri-Bold'))),
+    ),
+  ],
+);

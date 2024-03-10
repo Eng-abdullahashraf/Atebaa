@@ -14,7 +14,7 @@ class Aboutus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Appcolor().secondcolor,
+      backgroundColor: Appcolor().thirdcolor,
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -60,7 +60,7 @@ class Aboutus extends StatelessWidget {
                   height: 70,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                      color: Appcolor().secondcolor,
+                      color: Appcolor().thirdcolor,
                       borderRadius: BorderRadius.circular(15)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -1,7 +1,5 @@
 
 
-
-
 class ImageAsset{
   static const String rootimage='images';
   static const String advertingimage1='$rootimage/zaharn.png';

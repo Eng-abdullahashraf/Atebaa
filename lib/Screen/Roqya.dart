@@ -12,7 +12,7 @@ class Roqya extends StatelessWidget {
       child: GetBuilder<homecontroller>(
         init: homecontroller(),
         builder: (controller) => Scaffold(
-          backgroundColor: Appcolor().secondcolor,
+          backgroundColor: Appcolor().thirdcolor,
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

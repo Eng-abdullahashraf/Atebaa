@@ -35,6 +35,7 @@ class homecontroller extends GetxController{
     checkinternet();
     loaded();
     getdataapi();
+    firstopen();
 
   }
 
@@ -43,7 +44,8 @@ class homecontroller extends GetxController{
   //..................................................................
 
   List<Widget> Screennav=[
-    homePage(),
+    //homePage(),
+    Homescreen(),
     Favourite(),
     Roqya(),
     Aboutus(),
@@ -316,6 +318,7 @@ class homecontroller extends GetxController{
   BannerAd? bannerAd;
   bool isloaded=false;
 
+//.............................Advertising
 
   void loaded(){
     bannerAd=BannerAd(
@@ -359,6 +362,37 @@ class homecontroller extends GetxController{
 
   }
 
+//.............................
+
+  int onboardingindex=0;
+  void onboardingnext(context){
+    try{
+      if(onboardingindex<3){
+        onboardingindex=onboardingindex+1;
+      }
+      else{
+        sharedPreferences.setInt('onboarding', 4);
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FirstScreen(),));
+      }
+    update();
+    }catch(e){print(e);}
+  }
+  void onboardingscape(){
+    onboardingindex=4;
+    sharedPreferences.setInt('onboarding', 4);
+    update();
+  }
+
+  void firstopen(){
+    int x=sharedPreferences.getInt('onboarding')!;
+    if(x.isNull){
+      onboardingindex=0;
+    }
+    else{
+      onboardingindex=x;
+    }
+    update();
+  }
 
 
 }

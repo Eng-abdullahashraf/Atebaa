@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:atebaa/controller/homecontroller.dart';
+import 'package:atebaa/onboarding/onboarding%20page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,17 +18,18 @@ class Splash extends StatefulWidget {
 }
 
 class _Splash extends State<Splash> {
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-
     Timer(Duration(seconds: 5), () {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => FirstScreen(),
+            builder: (context) => onboarding(),
           ));
+
     });
   }
 
