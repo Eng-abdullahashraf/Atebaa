@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:atebaa/Screen/Homescreen.dart';
+import 'package:atebaa/Screen/navscreens/Homescreen.dart';
+import 'package:atebaa/Screen/navscreens/profilescreen.dart';
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+
+import '../LoginScreens/LoginPage.dart';
 
 class FirstScreen extends StatelessWidget {
   FirstScreen({Key? key}) : super(key: key);
@@ -22,37 +25,13 @@ class FirstScreen extends StatelessWidget {
         init: homecontroller(),
         builder: (controller) {
           return Scaffold(
-            // bottomNavigationBar: CurvedNavigationBar(
-            //     height: 50,
-            //     backgroundColor: Appcolor().secondcolor,
-            //     color: Appcolor().firstcolor,
-            //     onTap: (value) {
-            //       controller.changeScreen(value);
-            //     },
-            //     items: [
-            //       Icon(
-            //         Icons.home,
-            //         color: Appcolor().thirdcolor,
-            //       ),
-            //       Icon(
-            //         Icons.favorite,
-            //         color: Appcolor().thirdcolor,
-            //       ),
-            //       Image.asset('images/handpray.png',
-            //           color: Colors.white, width: 30),
-            //       Icon(
-            //         Icons.contact_page,
-            //         color: Appcolor().thirdcolor,
-            //       ),
-            //     ]),
+
             floatingActionButton: FloatingActionButton(
                 onPressed: (){
-                  Get.to(Homescreen());
-                  //controller.changeScreen(4);
-                },child: Icon(Icons.login,color: Colors.white),shape: CircleBorder(),mini: true,backgroundColor: Appcolor().firstcolor,),
+                  controller.changeScreen(0);
+                },child: Icon(Icons.home,color: Colors.white),shape: CircleBorder(),mini: true,backgroundColor: Appcolor().firstcolor,),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             bottomNavigationBar: BottomAppBar(
-
               height: 60,
               color: Colors.white,
               shape: CircularNotchedRectangle(),
@@ -63,7 +42,7 @@ class FirstScreen extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: Row(children: [
-                        Expanded(child: IconButton(onPressed: () {controller.changeScreen(0);}, icon: Icon(Icons.home,size: 30,color: controller.screennum==0? Appcolor().firstcolor:Colors.black45,))),
+                        Expanded(child: IconButton(onPressed: () {Get.to(ProfileScreen());}, icon: Icon(Icons.login,size: 30,color:Colors.black45,))),
                         Expanded(child: IconButton(onPressed: () {controller.changeScreen(1);}, icon: Icon(Icons.favorite,size: 30,color: controller.screennum==1? Appcolor().firstcolor:Colors.black45,)))
 
                       ]),
@@ -104,28 +83,3 @@ class FirstScreen extends StatelessWidget {
         });
   }
 }
-//
-//
-// bottomNavigationBar: CurvedNavigationBar(
-// height: 50,
-// backgroundColor: Appcolor().secondcolor,
-// color: Appcolor().firstcolor,
-// onTap: (value) {
-// controller.changeScreen(value);
-// },
-// items: [
-// Icon(
-// Icons.home,
-// color: Appcolor().thirdcolor,
-// ),
-// Icon(
-// Icons.favorite,
-// color: Appcolor().thirdcolor,
-// ),
-// Image.asset('images/handpray.png',
-// color: Colors.white, width: 30),
-// Icon(
-// Icons.contact_page,
-// color: Appcolor().thirdcolor,
-// ),
-// ]),

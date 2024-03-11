@@ -40,7 +40,7 @@ class SignClient extends StatelessWidget {
                     Gap(20),
                     Center(
                       child: Text(
-                        'انشاء حساب عميل',
+                        'انشاء حساب مستخدم',
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 24,
@@ -48,19 +48,7 @@ class SignClient extends StatelessWidget {
                       ),
                     ),
                     Gap(20),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: TextInput(
-                          IconColor: Appcolor().firstcolor,
-                          FillColor: Appcolor().thirdcolor,
-                          PrefIcon: Icon(Icons.email_outlined),
-                          LableText: 'البريد الالكتروني',
-                          HintText: 'Atebaa.doctors@Gmail.com',
-                          Scure: true,
-                          radius: 25,
-                          controller: mailadd),
-                    ),
-                    Gap(8),
+
                     Padding(
                       padding: const EdgeInsets.only(left: 16, right: 16),
                       child: TextInput(

@@ -9,21 +9,21 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
-import '../constant/Apptextfield.dart';
-import '../controller/homecontroller.dart';
-import '../theme/colors.dart';
-import 'component.dart';
+import '../../constant/Apptextfield.dart';
+import '../../controller/homecontroller.dart';
+import '../../theme/colors.dart';
+import '../../component/component.dart';
 
-class searchdoctors extends StatelessWidget {
-  const searchdoctors({super.key});
+class SearchDoctors extends StatelessWidget {
+  const SearchDoctors({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: homePage(),);
+    return Scaffold(body: searchDoctors(),);
   }
 }
 
-Widget homePage() => StreamBuilder<ConnectivityResult>(
+Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
     stream: Connectivity().onConnectivityChanged,
     builder: (context, snapshot) {
       return SafeArea(
@@ -272,13 +272,4 @@ Widget homePage() => StreamBuilder<ConnectivityResult>(
       );
     });
 
-Widget doctorsSearch() => SafeArea(
-    child: GetBuilder<homecontroller>(
-        init: homecontroller(),
-        builder: (controller) {
-          return Column(children: [
-            Image.asset('searchdoc.png')
-          ],);
-        }
-        )
-);
+

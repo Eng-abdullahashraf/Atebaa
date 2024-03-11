@@ -1,4 +1,4 @@
-import 'package:atebaa/Screen/firstscreen.dart';
+import 'package:atebaa/Screen/navscreens/firstscreen.dart';
 import 'package:atebaa/component/component.dart';
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/onboarding/OnboardingModel.dart';

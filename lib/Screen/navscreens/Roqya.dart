@@ -1,4 +1,4 @@
-import 'package:atebaa/Screen/mix%20info.dart';
+import 'package:atebaa/Screen/navscreens/mix%20info.dart';
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/material.dart';

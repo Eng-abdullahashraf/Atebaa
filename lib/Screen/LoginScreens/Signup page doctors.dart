@@ -38,7 +38,7 @@ class SignDoctors extends StatelessWidget {
                     Gap(20),
                     Center(
                       child: Text(
-                        'انشاء حساب دكتور',
+                        'انشاء حساب طبيب',
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 24,
@@ -134,7 +134,7 @@ class SignDoctors extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 8),
                           child: InkWell(onTap: (){},radius: 25,
                             child: Image(
-                              image: AssetImage('images/rect.png'),height: 114,width: 114,
+                              image: AssetImage('images/qrcode.png'),height: 114,width: 114,
                             ),
                           ),
                         )],

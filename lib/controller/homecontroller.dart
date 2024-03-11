@@ -1,12 +1,12 @@
 
 import 'dart:convert';
-import 'package:atebaa/Screen/Favorite.dart';
-import 'package:atebaa/Screen/Homescreen.dart';
-import 'package:atebaa/Screen/Roqya.dart';
-import 'package:atebaa/Screen/aboutus.dart';
-import 'package:atebaa/Screen/firstscreen.dart';
+import 'package:atebaa/Screen/navscreens/Favorite.dart';
+import 'package:atebaa/Screen/navscreens/Homescreen.dart';
+import 'package:atebaa/Screen/navscreens/Roqya.dart';
+import 'package:atebaa/Screen/navscreens/aboutus.dart';
+import 'package:atebaa/Screen/navscreens/firstscreen.dart';
 import 'package:atebaa/component/component.dart';
-import 'package:atebaa/component/pages.dart';
+import 'package:atebaa/Screen/tabbedscreens/searchdoctors.dart';
 import 'package:atebaa/constant/Admanager.dart';
 import 'package:atebaa/constant/doctorss.dart';
 import 'package:atebaa/controller/dio.dart';

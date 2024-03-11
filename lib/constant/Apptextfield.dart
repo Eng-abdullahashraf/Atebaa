@@ -33,13 +33,7 @@ class _AppTextFieldState extends State<AppTextField> {
       DropDown(
         searchHintText: "بحث",
         isDismissible: true,
-        // bottomSheetTitle: const Text(
-        //   'Cities',
-        //   style: TextStyle(
-        //     fontWeight: FontWeight.bold,
-        //     fontSize: 20.0,
-        //   ),
-        // ),
+
         submitButtonChild: const Text(
           'Done',
           style: TextStyle(
@@ -56,7 +50,6 @@ class _AppTextFieldState extends State<AppTextField> {
               widget.textEditingController.text=item.name;
             }
           }
-          //showSnackBar(list.toString());
         },
         enableMultipleSelection: false,
       ),

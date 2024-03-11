@@ -37,27 +37,11 @@ class SignupPage extends StatelessWidget {
                           width: 154,
                         ),
                       )),
-
-                  Gap(35),
-                  Container(
-                    alignment: Alignment.center,
-                    child: IconButtons(
-                        TextButton: 'انشاء حساب عميل',
-                        height: 51.92,
-                        width: MediaQuery.of(context).size.width*0.92,
-                        TextFont: 20,
-                        ButtonColor: Appcolor().firstcolor,
-                        TextColor: Appcolor().thirdcolor,
-                        ontap: () {
-                          Get.to(SignClient());
-                        },
-                        radius: 25),
-                  ),
                   Gap(30),
                   Container(
                     alignment: Alignment.center,
                     child: IconButtons(
-                        TextButton: 'انشاء حساب مشترك',
+                        TextButton: 'انشاء حساب طبيب',
                         height: 51.92,
                         width: MediaQuery.of(context).size.width*0.92,
                         TextFont: 20,
@@ -68,6 +52,22 @@ class SignupPage extends StatelessWidget {
                         },
                         radius: 25),
                   ),
+                  Gap(35),
+                  Container(
+                    alignment: Alignment.center,
+                    child: IconButtons(
+                        TextButton: 'انشاء حساب مستخدم',
+                        height: 51.92,
+                        width: MediaQuery.of(context).size.width*0.92,
+                        TextFont: 20,
+                        ButtonColor: Appcolor().firstcolor,
+                        TextColor: Appcolor().thirdcolor,
+                        ontap: () {
+                          Get.to(SignClient());
+                        },
+                        radius: 25),
+                  ),
+
                 ],
 
               ),

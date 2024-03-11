@@ -1,4 +1,6 @@
-import 'package:atebaa/component/pages.dart';
+import 'package:atebaa/Screen/tabbedscreens/pharmacypage.dart';
+import 'package:atebaa/Screen/tabbedscreens/radiologypage.dart';
+import 'package:atebaa/Screen/tabbedscreens/searchdoctors.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/material.dart';
@@ -6,10 +8,10 @@ import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
-import '../constant/Apptextfield.dart';
-import '../component/component.dart';
-import '../controller/homecontroller.dart';
-import '../theme/colors.dart';
+import '../../constant/Apptextfield.dart';
+import '../../component/component.dart';
+import '../../controller/homecontroller.dart';
+import '../../theme/colors.dart';
 
 class Homescreen extends StatelessWidget {
   Homescreen({super.key});
@@ -102,11 +104,13 @@ class Homescreen extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Expanded(
-                                          child: InkWell( child: tab(123, 'images/doctorstab.jpg', 'أطباء'), onTap: () {Get.to(searchdoctors());},),
+                                          child: InkWell( child: tab(123, 'images/doctorstab.jpg', 'أطباء'), onTap: () {Get.to(SearchDoctors(),transition: Transition.rightToLeft,duration: Duration(seconds: 1));},),
                                         ),
                                         Gap(10),
                                         Expanded(
-                                            child: tab(123, 'images/pharmacytab.jpg', 'صيدليات')
+                                            child: InkWell(child: tab(123, 'images/pharmacytab.jpg', 'صيدليات'),onTap: () {
+                                              Get.to(PharmacyPage(),transition: Transition.rightToLeft,duration: Duration(seconds: 1));
+                                            },)
                                         ),
 
                                       ],
@@ -120,7 +124,9 @@ class Homescreen extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Expanded(
-                                            child: tab(123, 'images/radiology.jpg', 'مراكز')
+                                            child: InkWell(child: tab(123, 'images/radiology.jpg', 'مراكز'),onTap: () {
+                                              Get.to(RadiologyPage(),transition: Transition.rightToLeft,duration: Duration(seconds: 1));
+                                            },)
                                         ),
                                         Gap(10),
                                         Expanded(

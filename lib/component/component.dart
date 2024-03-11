@@ -373,11 +373,11 @@ Widget doa() => Column(
       ],
     );
 
-Widget carouslerImage(AdvertisingModel x,context) => InkWell(
+Widget carouslerImage(AdvertisingModel x, context) => InkWell(
       child: ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          // child: Image(image: AssetImage('${x.image1}'))
-      child: Image.network(x.image1!),
+        borderRadius: BorderRadius.circular(20),
+        // child: Image(image: AssetImage('${x.image1}'))
+        child: Image.network(x.image1!),
       ),
       onTap: () {
         showDialog(
@@ -387,7 +387,7 @@ Widget carouslerImage(AdvertisingModel x,context) => InkWell(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40)),
                 child: Stack(
-                   alignment: Alignment.center,
+                    alignment: Alignment.center,
                     clipBehavior: Clip.none,
                     children: [
                       ClipRRect(
@@ -399,7 +399,6 @@ Widget carouslerImage(AdvertisingModel x,context) => InkWell(
                       ),
                       Positioned(
                         child: Column(
-
                           children: [
                             InkWell(
                               child: CircleAvatar(
@@ -414,7 +413,7 @@ Widget carouslerImage(AdvertisingModel x,context) => InkWell(
                             InkWell(
                               child: CircleAvatar(
                                 backgroundColor: Colors.blueAccent,
-                                child: Image.asset('images/fb.png',width: 25),
+                                child: Image.asset('images/fb.png', width: 25),
                               ),
                               onTap: () {
                                 launch('${x.whatsapp}');
@@ -422,7 +421,7 @@ Widget carouslerImage(AdvertisingModel x,context) => InkWell(
                             ),
                           ],
                         ),
-                        right:-20,
+                        right: -20,
                       )
                     ]),
               );
@@ -431,25 +430,94 @@ Widget carouslerImage(AdvertisingModel x,context) => InkWell(
     );
 
 //decoration: BoxDecoration(border: Border.all(color: Appcolor().firstcolor,width: 1) ),
-Widget tab(double height,String image,String titleContainer)=>Stack(
-  children: [
-    Container(
-      height: height,
-      decoration: BoxDecoration(
-        borderRadius:
-        BorderRadius.circular(20),
-        image: DecorationImage(
-            image: AssetImage(image),
-            fit: BoxFit.fill),
+
+Widget tab(double height, String image, String titleContainer) => Stack(
+      children: [
+        Container(
+          height: height,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            image: DecorationImage(image: AssetImage(image), fit: BoxFit.fill),
+          ),
+        ),
+        Container(
+          height: height,
+          width: double.infinity,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color(0x885E5E5E)),
+          child: Center(
+              child: Text(titleContainer,
+                  style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.white,
+                      fontFamily: 'ElMessiri-Bold'))),
+        ),
+      ],
+    );
+
+Widget pharmacyCard() => Padding(
+      padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Appcolor().thirdcolor,
+            border: Border.all(color: Appcolor().firstcolor, width: 1),
+            borderRadius: BorderRadius.circular(15)),
+        child: Row(children: [
+          ClipRRect(
+              borderRadius: BorderRadius.only(topRight: Radius.circular(15),bottomRight: Radius.circular(15)),
+              child: Image.asset('images/doctora.jpg', width: 100)),
+          Gap(10),
+          Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "صيدلية د. محمد كامل",
+                style: TextStyle(
+                    color: Appcolor().firstcolor,
+                    fontFamily: "ElMessiri-Bold",
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold),
+              ),
+              Gap(8),
+              InkWell(
+                onTap: () {
+                  launch(
+                      'tel: +01211030844');
+                },
+                child: Container(
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      Container(
+                        padding:EdgeInsets.all(3),
+                        decoration:BoxDecoration(
+                            border: Border.all(color: Color(
+                                0xFFEAE9E9),width: 1),
+                            shape: BoxShape.circle,color: Colors.white),
+                        child: CircleAvatar(
+                          backgroundColor: Appcolor().thirdcolor,
+                          child: Icon(Icons.phone_enabled,size: 15,color: Colors.green, ),
+                          minRadius: 10,
+                        ),
+                      ),
+                      Gap(5),
+                      Expanded(
+                        child: Text(
+                          "ت/ 01211030844",
+                          style: TextStyle(
+                              fontSize: 12,fontWeight: FontWeight.bold,color: Appcolor().firstcolor),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Gap(8),
+              Text('المنزلة -الدقهلية - شارع الانصارى',style: TextStyle(fontSize: 14,color: Colors.black,fontWeight: FontWeight.bold),)
+            ],
+          )),
+        ]),
       ),
-    ),
-    Container(
-      height: height,
-      width: double.infinity,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Color(0x885E5E5E)),
-      child: Center(child: Text(titleContainer,style: TextStyle(fontSize: 24,color: Colors.white,fontFamily: 'ElMessiri-Bold'))),
-    ),
-  ],
-);
+    );
