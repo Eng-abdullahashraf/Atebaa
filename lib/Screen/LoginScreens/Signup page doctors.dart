@@ -48,7 +48,7 @@ class SignDoctors extends StatelessWidget {
                     Gap(20),
                     Padding(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: TextInput(
+                      child: textInputform(
                           IconColor: Appcolor().firstcolor,
                           FillColor: Appcolor().thirdcolor,
                           PrefIcon: Icon(Icons.email_outlined),
@@ -61,7 +61,7 @@ class SignDoctors extends StatelessWidget {
                     Gap(8),
                     Padding(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: TextInput(
+                      child: textInputform(
                           IconColor: Appcolor().firstcolor,
                           FillColor: Appcolor().thirdcolor,
                           PrefIcon: Icon(Icons.person),
@@ -96,7 +96,7 @@ class SignDoctors extends StatelessWidget {
                     Gap(8),
                     Padding(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: TextInput(
+                      child: textInputform(
                           IconColor: Appcolor().firstcolor,
                           FillColor: Appcolor().thirdcolor,
                           PrefIcon: Icon(Icons.password),
@@ -109,7 +109,7 @@ class SignDoctors extends StatelessWidget {
                     Gap(8),
                     Padding(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: TextInput(
+                      child: textInputform(
                           IconColor: Appcolor().firstcolor,
                           FillColor: Appcolor().thirdcolor,
                           PrefIcon: Icon(Icons.password),

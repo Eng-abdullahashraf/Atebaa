@@ -50,7 +50,7 @@ class LoginPage extends StatelessWidget {
                   Gap(35),
                   Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: TextInput(
+                    child: textInputform(
                         IconColor: Appcolor().firstcolor,
                         FillColor: Appcolor().thirdcolor,
                         PrefIcon: Icon(Icons.email_outlined),
@@ -63,7 +63,7 @@ class LoginPage extends StatelessWidget {
                   Gap(8),
                   Padding(
                     padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: TextInput(
+                    child: textInputform(
                         IconColor: Appcolor().firstcolor,
                         FillColor: Appcolor().thirdcolor,
                         PrefIcon: Icon(Icons.password),

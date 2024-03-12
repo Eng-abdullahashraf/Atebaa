@@ -1,3 +1,6 @@
+import 'package:atebaa/Screen/profilemenu/changepassword.dart';
+import 'package:atebaa/Screen/profilemenu/profiledata.dart';
+import 'package:atebaa/Screen/profilemenu/socialscreen.dart';
 import 'package:atebaa/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -38,15 +41,19 @@ class ProfileScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(15),
                 child: Column(
                   children: [
-                    RowInProfile('حسابي',Icons.account_circle),
-                    Gap(8),
-                    RowInProfile('وسائل التواصل',Icons.add_link_outlined),
+                    InkWell(child: RowInProfile('حسابي',Icons.account_circle),onTap: () {
+                      Get.to(ProfileData());
+                    },),
+                    Gap(8), InkWell(onTap: () {
+                      Get.to(SocialScreen());
+                    },child: RowInProfile('وسائل التواصل',Icons.add_link_outlined)),
                     Gap(8),
                     RowInProfile('إضافة إعلان',Icons.mic_rounded),
                     Gap(8),
                     RowInProfile('عروض وخصومات',Icons.local_offer),
-                    Gap(8),
-                    RowInProfile('تغيير كلمة السر',Icons.key),
+                    Gap(8), InkWell(onTap: () {
+                      Get.to(ChangePassword());
+                    },child: RowInProfile('تغيير كلمة السر',Icons.key)),
                     Gap(8),
                     RowInProfile('الشروط والخصوصية',Icons.policy),
                     Expanded(child: Gap(8)),

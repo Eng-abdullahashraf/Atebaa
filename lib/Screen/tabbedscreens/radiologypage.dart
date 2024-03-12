@@ -43,12 +43,12 @@ Widget radiology(x) => Column(
     Gap(8),
     Padding(
       padding: const EdgeInsets.only(left: 15,right: 15),
-      child: Container(height: 40,child: TextInput(IconColor: Appcolor().firstcolor, FillColor: Appcolor().thirdcolor, PrefIcon: Icon(Icons.search), LableText: 'ابحث عن صيدليتك', HintText: 'ابحث عن صيدليتك', Scure: false, radius: 10, controller: x)),
+      child: Container(height: 40,child: textInputform(IconColor: Appcolor().firstcolor, FillColor: Appcolor().thirdcolor, PrefIcon: Icon(Icons.search), LableText: 'ابحث عن صيدليتك', HintText: 'ابحث عن صيدليتك', Scure: false, radius: 10, controller: x)),
     ),
     Gap(8),
     Padding(
       padding: const EdgeInsets.only(left: 15,right: 15),
-      child: Container(height: 40,child: TextInput(IconColor: Appcolor().firstcolor, FillColor: Appcolor().thirdcolor, PrefIcon: Icon(Icons.search), LableText: 'ابحث عن صيدليتك', HintText: 'ابحث عن صيدليتك', Scure: false, radius: 10, controller: x)),
+      child: Container(height: 40,child: textInputform(IconColor: Appcolor().firstcolor, FillColor: Appcolor().thirdcolor, PrefIcon: Icon(Icons.search), LableText: 'ابحث عن صيدليتك', HintText: 'ابحث عن صيدليتك', Scure: false, radius: 10, controller: x)),
     ),
     Expanded(
       child: Container(

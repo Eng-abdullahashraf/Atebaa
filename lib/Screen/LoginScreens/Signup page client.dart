@@ -51,7 +51,7 @@ class SignClient extends StatelessWidget {
 
                     Padding(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: TextInput(
+                      child: textInputform(
                           IconColor: Appcolor().firstcolor,
                           FillColor: Appcolor().thirdcolor,
                           PrefIcon: Icon(Icons.person),
@@ -86,7 +86,7 @@ class SignClient extends StatelessWidget {
                     Gap(8),
                     Padding(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: TextInput(
+                      child: textInputform(
                           IconColor: Appcolor().firstcolor,
                           FillColor: Appcolor().thirdcolor,
                           PrefIcon: Icon(Icons.password),
@@ -99,7 +99,7 @@ class SignClient extends StatelessWidget {
                     Gap(8),
                     Padding(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: TextInput(
+                      child: textInputform(
                           IconColor: Appcolor().firstcolor,
                           FillColor: Appcolor().thirdcolor,
                           PrefIcon: Icon(Icons.password),

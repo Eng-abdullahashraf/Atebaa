@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-Widget TextInput({
+Widget textInputform({
   @required Color? IconColor,
   @required Color? FillColor,
   @required Widget? PrefIcon,
