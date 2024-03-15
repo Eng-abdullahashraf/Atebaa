@@ -42,7 +42,14 @@ class FirstScreen extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: Row(children: [
-                        Expanded(child: IconButton(onPressed: () {Get.to(ProfileScreen());}, icon: Icon(Icons.login,size: 30,color:Colors.black45,))),
+                        Expanded(child: IconButton(onPressed: () {
+                          if(controller.logged==true){
+                            controller.changeScreen(5);
+                          }
+                          else{
+                            controller.changeScreen(4);
+                          }
+                        }, icon: controller.logged==true?Icon(Icons.account_circle,size: 30,color:Colors.black45,):Icon(Icons.login,size: 30,color:Colors.black45,))),
                         Expanded(child: IconButton(onPressed: () {controller.changeScreen(1);}, icon: Icon(Icons.favorite,size: 30,color: controller.screennum==1? Appcolor().firstcolor:Colors.black45,)))
 
                       ]),

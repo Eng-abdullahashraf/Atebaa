@@ -1,3 +1,4 @@
+import 'package:atebaa/Screen/tabbedscreens/laboratory.dart';
 import 'package:atebaa/Screen/tabbedscreens/pharmacypage.dart';
 import 'package:atebaa/Screen/tabbedscreens/radiologypage.dart';
 import 'package:atebaa/Screen/tabbedscreens/searchdoctors.dart';
@@ -130,7 +131,9 @@ class Homescreen extends StatelessWidget {
                                         ),
                                         Gap(10),
                                         Expanded(
-                                            child: tab(123, 'images/laboratory.png', 'معامل تحاليل')
+                                            child: InkWell(onTap: () {
+                                              Get.to(Laboratory());
+                                            },child: tab(123, 'images/laboratory.png', 'معامل تحاليل'))
                                         ),
 
                                       ],

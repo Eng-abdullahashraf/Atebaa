@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../theme/colors.dart';
+import 'docinfo.dart';
 import 'navscreens/firstscreen.dart';
 
 class Splash extends StatefulWidget {

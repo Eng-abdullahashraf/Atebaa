@@ -25,7 +25,7 @@ class SignupPage extends StatelessWidget {
                 children: [
                   IconButton(
                       onPressed: () {
-                        Navigator.pop(context);
+                        Get.back();
                       },
                       icon: Icon(Icons.arrow_forward)),
                   Center(

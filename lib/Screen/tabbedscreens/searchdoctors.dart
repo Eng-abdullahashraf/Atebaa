@@ -1,5 +1,4 @@
 import 'package:atebaa/Screen/Advertisingscreen.dart';
-import 'package:atebaa/theme/advertisingimage.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/cupertino.dart';

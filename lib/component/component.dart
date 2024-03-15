@@ -1,3 +1,4 @@
+import 'package:atebaa/Screen/docinfo.dart';
 import 'package:atebaa/constant/addvertisingmodels.dart';
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:flutter/cupertino.dart';
@@ -458,66 +459,189 @@ Widget tab(double height, String image, String titleContainer) => Stack(
 
 Widget pharmacyCard() => Padding(
       padding: const EdgeInsets.only(left: 15, right: 15, top: 5),
-      child: Container(
-        decoration: BoxDecoration(
-            color: Appcolor().thirdcolor,
-            border: Border.all(color: Appcolor().firstcolor, width: 1),
-            borderRadius: BorderRadius.circular(15)),
-        child: Row(children: [
-          ClipRRect(
-              borderRadius: BorderRadius.only(topRight: Radius.circular(15),bottomRight: Radius.circular(15)),
-              child: Image.asset('images/doctora.jpg', width: 100)),
-          Gap(10),
-          Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "صيدلية د. محمد كامل",
-                style: TextStyle(
-                    color: Appcolor().firstcolor,
-                    fontFamily: "ElMessiri-Bold",
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold),
-              ),
-              Gap(8),
-              InkWell(
-                onTap: () {
-                  launch(
-                      'tel: +01211030844');
-                },
-                child: Container(
-                  width: double.infinity,
-                  child: Row(
-                    children: [
-                      Container(
-                        padding:EdgeInsets.all(3),
-                        decoration:BoxDecoration(
-                            border: Border.all(color: Color(
-                                0xFFEAE9E9),width: 1),
-                            shape: BoxShape.circle,color: Colors.white),
-                        child: CircleAvatar(
-                          backgroundColor: Appcolor().thirdcolor,
-                          child: Icon(Icons.phone_enabled,size: 15,color: Colors.green, ),
-                          minRadius: 10,
+      child: InkWell(
+        onTap: () {
+          Get.to(InfoDoctor());
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: Appcolor().thirdcolor,
+              border: Border.all(color: Appcolor().firstcolor, width: 1),
+              borderRadius: BorderRadius.circular(15)),
+          child: Row(children: [
+            ClipRRect(
+                borderRadius: BorderRadius.only(topRight: Radius.circular(15),bottomRight: Radius.circular(15)),
+                child: Image.asset('images/doctora.jpg', width: 100)),
+            Gap(10),
+            Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "صيدلية د. محمد كامل",
+                  style: TextStyle(
+                      color: Appcolor().firstcolor,
+                      fontFamily: "ElMessiri-Bold",
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold),
+                ),
+                Gap(8),
+                InkWell(
+                  onTap: () {
+                    launch(
+                        'tel: +01211030844');
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        Container(
+                          padding:EdgeInsets.all(3),
+                          decoration:BoxDecoration(
+                              border: Border.all(color: Color(
+                                  0xFFEAE9E9),width: 1),
+                              shape: BoxShape.circle,color: Colors.white),
+                          child: CircleAvatar(
+                            backgroundColor: Appcolor().thirdcolor,
+                            child: Icon(Icons.phone_enabled,size: 15,color: Colors.green, ),
+                            minRadius: 10,
+                          ),
                         ),
-                      ),
-                      Gap(5),
-                      Expanded(
-                        child: Text(
-                          "ت/ 01211030844",
-                          style: TextStyle(
-                              fontSize: 12,fontWeight: FontWeight.bold,color: Appcolor().firstcolor),
+                        Gap(5),
+                        Expanded(
+                          child: Text(
+                            "ت/ 01211030844",
+                            style: TextStyle(
+                                fontSize: 12,fontWeight: FontWeight.bold,color: Appcolor().firstcolor),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              Gap(8),
-              Text('المنزلة -الدقهلية - شارع الانصارى',style: TextStyle(fontSize: 14,color: Colors.black,fontWeight: FontWeight.bold),)
-            ],
-          )),
-        ]),
+                Gap(8),
+                Text('المنزلة -الدقهلية - شارع الانصارى',style: TextStyle(fontSize: 14,color: Colors.black,fontWeight: FontWeight.bold),)
+              ],
+            )),
+          ]),
+        ),
       ),
     );
+
+
+Widget dataInformation()=>Container(
+    height: 450,
+    width: double.infinity,
+    decoration: BoxDecoration(color: Colors.white),
+    child: Padding(
+      padding: const EdgeInsets.only(right: 15,left: 15,top: 10),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Center(child: Text("دكتور محمد نبيل الزهار",style: TextStyle(color: Appcolor().firstcolor,fontSize: 24,fontFamily: 'ElMessiri-Bold'))),
+            Center(
+              child: Container(
+                  decoration: BoxDecoration(color: Appcolor().secondcolor,borderRadius: BorderRadius.circular(15)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
+                    child: Text("اخصائي امراض النسا و التوليد",style: TextStyle(color: Appcolor().firstcolor,fontSize: 18,fontWeight: FontWeight.bold)),
+                  )),
+            ),
+            Gap(5),
+            Divider(height: 3,color: Color(0xf3d3b3c),thickness: 2),
+            Gap(5),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.account_balance_wallet,size: 30),
+                Gap(15),
+                Text('سعر الكشف\n ''٢٠٠ جنيه',style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: 'ElMessiri-Bold')),
+              ],
+            ),
+            Gap(10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.phone,size: 30),
+                Gap(15),
+                Text('01001050863',style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: 'ElMessiri-Bold')), ],
+            ),
+            Gap(10),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(Icons.location_on,size: 30),
+                  Gap(15),
+                  Text('المنزله دقهليه',style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: 'ElMessiri-Bold')),
+                ]),
+            Gap(5),
+            Divider(height: 3,color: Color(0xf3d3b3c),thickness: 2),
+            Gap(10),
+            Center(
+              child: Container(
+                width: 200,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 70,
+                      width: 200,
+                      decoration: BoxDecoration(
+                          color: Colors.deepPurpleAccent,
+                          borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(10),
+                              topLeft: Radius.circular(10)),
+                          border: Border.all(color: Colors.white)),
+                      child: Center(
+                        child: Text(
+                          "مواعيد العمل",
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 100,
+                          child: Padding(
+                            child: Text(
+                              "اليوم",
+                              style: TextStyle(
+                                  color: Colors.deepPurpleAccent, fontSize: 20),
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                          ),
+                          decoration: BoxDecoration(
+                              color: Colors.black12,
+                              border: Border.all(color: Colors.white)),
+                        ),
+                        Container(
+                          width: 100,
+                          child: Padding(
+                            child: Text(
+                              "الساعه",
+                              style: TextStyle(
+                                  color: Colors.deepPurpleAccent, fontSize: 20),
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                          ),
+                          decoration: BoxDecoration(
+                              color: Colors.black12,
+                              border: Border.all(color: Colors.white)),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    ));
+Widget offers()=>Container(
+  width: double.infinity,
+    color: Colors.white,
+    child: Center(child: Text('لم يتم اضافة عروض')));

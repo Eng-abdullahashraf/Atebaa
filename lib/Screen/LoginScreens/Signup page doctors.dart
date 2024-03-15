@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 import '../../component/second component.dart';
@@ -26,7 +27,7 @@ class SignDoctors extends StatelessWidget {
                   children: [
                     IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          Get.back();
                         },
                         icon: Icon(Icons.arrow_forward)),
                     Center(
@@ -51,19 +52,6 @@ class SignDoctors extends StatelessWidget {
                       child: textInputform(
                           IconColor: Appcolor().firstcolor,
                           FillColor: Appcolor().thirdcolor,
-                          PrefIcon: Icon(Icons.email_outlined),
-                          LableText: 'البريد الالكتروني',
-                          HintText: 'Atebaa.doctors@Gmail.com',
-                          Scure: true,
-                          radius: 25,
-                          controller: mailadd),
-                    ),
-                    Gap(8),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: textInputform(
-                          IconColor: Appcolor().firstcolor,
-                          FillColor: Appcolor().thirdcolor,
                           PrefIcon: Icon(Icons.person),
                           LableText: 'اسم المستخدم',
                           HintText: 'اسم المستخدم',
@@ -74,22 +62,25 @@ class SignDoctors extends StatelessWidget {
                     Gap(8),
                     Padding(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: TextFormField(
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25))),
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: Icon(
-                              Icons.phone_enabled,
-                              color: Appcolor().firstcolor,
+                      child: Container(
+                        color: Appcolor().thirdcolor,
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(25))),
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.all(0.0),
+                              child: Icon(
+                                Icons.phone_enabled,
+                                color: Appcolor().firstcolor,
+                              ),
                             ),
+                            hintText: 'رقم الهاتف',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
                           ),
-                          hintText: 'رقم الهاتف',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
                         ),
                       ),
                     ),
@@ -146,11 +137,10 @@ class SignDoctors extends StatelessWidget {
                       child: Row(
                         children: [
                           Checkbox(
-                              value: isChecked,
-                              tristate: true,
+                              value: Controller.isChecked,
                               activeColor: Color(0xFF0904FF),
                               onChanged: (bool? value){
-
+                                Controller.changechecked(value);
                               }),
                           Text(
                             'اوافق على القواعد والخصوصية',

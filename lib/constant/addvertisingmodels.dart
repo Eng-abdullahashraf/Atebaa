@@ -1,6 +1,5 @@
 
 
-import '../theme/advertisingimage.dart';
 
 class AdvertisingModel{
 

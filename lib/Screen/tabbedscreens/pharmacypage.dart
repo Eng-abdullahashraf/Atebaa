@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
+import '../../controller/homecontroller.dart';
+
 class PharmacyPage extends StatelessWidget {
    PharmacyPage({super.key});
 
@@ -20,7 +22,11 @@ class PharmacyPage extends StatelessWidget {
 
 //..................................
 
-Widget pharmacyPage(x) => Column(
+Widget pharmacyPage(x) => GetBuilder<homecontroller>(
+  init: homecontroller(),
+  builder: (controller) {
+
+    return Column(
       children: [
         Container(
           alignment: Alignment.centerLeft,
@@ -32,24 +38,53 @@ Widget pharmacyPage(x) => Column(
           width: double.infinity,
           child: Row(
             children: [
-              Expanded(child: Center(child: Text('صيدليات',style: TextStyle(fontSize: 24,color: Appcolor().thirdcolor,fontFamily: 'ElMessiri-Bold'),))),
+              Expanded(
+                  child: Center(
+                      child: Text(
+                        'صيدليات',
+                        style: TextStyle(
+                            fontSize: 24,
+                            color: Appcolor().thirdcolor,
+                            fontFamily: 'ElMessiri-Bold'),
+                      ))),
               IconButton(
                   onPressed: () {
                     Get.back();
                   },
-                  icon: Icon(Icons.arrow_forward_rounded,color: Colors.white,)),
+                  icon: Icon(
+                    Icons.arrow_forward_rounded,
+                    color: Colors.white,
+                  )),
             ],
           ),
         ),
         Gap(8),
         Padding(
-          padding: const EdgeInsets.only(left: 15,right: 15),
-          child: Container(height: 40,child: textInputform(IconColor: Appcolor().firstcolor, FillColor: Appcolor().thirdcolor, PrefIcon: Icon(Icons.search), LableText: 'ابحث عن صيدليتك', HintText: 'ابحث عن صيدليتك', Scure: false, radius: 10, controller: x)),
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          child: Container(
+              height: 60,
+              child: textInputform(
+                  IconColor: Appcolor().firstcolor,
+                  FillColor: Appcolor().thirdcolor,
+                  PrefIcon: Icon(Icons.search),
+                  LableText: 'ابحث عن صيدلية',
+                  HintText: 'ابحث عن صيدلية',
+                  Scure: false,
+                  radius: 10,
+                  controller: x)),
         ),
         Gap(8),
         Padding(
-          padding: const EdgeInsets.only(left: 15,right: 15),
-          child: Container(height: 40,child: textInputform(IconColor: Appcolor().firstcolor, FillColor: Appcolor().thirdcolor, PrefIcon: Icon(Icons.search), LableText: 'ابحث عن صيدليتك', HintText: 'ابحث عن صيدليتك', Scure: false, radius: 10, controller: x)),
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          child: Container(
+              width: double.infinity,
+              height: 60,
+
+              child:DropdownButtonFormField(
+                decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Appcolor().firstcolor,),borderRadius: BorderRadius.circular(10))),
+                value:controller.dropvalue,items: controller.dropItems.map((e) => DropdownMenuItem(value:e,child: Text(e))).toList(), onChanged: (value) {
+                controller.changedrop(value);
+              },) ),
         ),
         Expanded(
           child: Container(
@@ -61,3 +96,5 @@ Widget pharmacyPage(x) => Column(
         )
       ],
     );
+  },
+);

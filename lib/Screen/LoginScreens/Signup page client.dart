@@ -11,7 +11,6 @@ import '../../theme/colors.dart';
 class SignClient extends StatelessWidget {
   SignClient({super.key});
 
-  bool? isChecked = false;
   var mailadd = TextEditingController();
   var password = TextEditingController();
   @override
@@ -28,7 +27,7 @@ class SignClient extends StatelessWidget {
                   children: [
                     IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          Get.back();
                         },
                         icon: Icon(Icons.arrow_forward)),
                     Center(
@@ -64,22 +63,25 @@ class SignClient extends StatelessWidget {
                     Gap(8),
                     Padding(
                       padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: TextFormField(
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(25))),
-                          prefixIcon: Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: Icon(
-                              Icons.phone_enabled,
-                              color: Appcolor().firstcolor,
+                      child: Container(
+                        color: Appcolor().thirdcolor,
+                        child: TextFormField(
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(25))),
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.all(0.0),
+                              child: Icon(
+                                Icons.phone_enabled,
+                                color: Appcolor().firstcolor,
+                              ),
                             ),
+                            hintText: 'رقم الهاتف',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(20)),
                           ),
-                          hintText: 'رقم الهاتف',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
                         ),
                       ),
                     ),
@@ -114,11 +116,10 @@ class SignClient extends StatelessWidget {
                       child: Row(
                         children: [
                           Checkbox(
-                              value: isChecked,
-                              tristate: true,
+                              value: Controller.isChecked,
                               activeColor: Color(0xFF0904FF),
                               onChanged: (bool? value){
-
+                                Controller.changechecked(value);
                               }),
                           Text(
                             'اوافق على القواعد والخصوصية',

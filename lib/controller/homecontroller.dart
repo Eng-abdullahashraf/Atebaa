@@ -1,16 +1,18 @@
 
 import 'dart:convert';
+import 'package:atebaa/Screen/LoginScreens/LoginPage.dart';
 import 'package:atebaa/Screen/navscreens/Favorite.dart';
 import 'package:atebaa/Screen/navscreens/Homescreen.dart';
 import 'package:atebaa/Screen/navscreens/Roqya.dart';
 import 'package:atebaa/Screen/navscreens/aboutus.dart';
 import 'package:atebaa/Screen/navscreens/firstscreen.dart';
+import 'package:atebaa/Screen/navscreens/profilescreen.dart';
+import 'package:atebaa/Screen/profilemenu/profiledata.dart';
 import 'package:atebaa/component/component.dart';
 import 'package:atebaa/Screen/tabbedscreens/searchdoctors.dart';
 import 'package:atebaa/constant/Admanager.dart';
 import 'package:atebaa/constant/doctorss.dart';
 import 'package:atebaa/controller/dio.dart';
-import 'package:atebaa/theme/advertisingimage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +51,8 @@ class homecontroller extends GetxController{
     Favourite(),
     Roqya(),
     Aboutus(),
+    LoginPage(),
+    ProfileScreen(),
   ];
 
   int? screennum=0;
@@ -394,5 +398,36 @@ class homecontroller extends GetxController{
     update();
   }
 
+  //.....................................
+  bool? logged=false;
+
+
+//................. dropdowen
+  List dropItems=['اختر البلد','المنزلة','البصراط'];
+  String? dropvalue='اختر البلد';
+  void changedrop(x){
+    dropvalue=x;
+    update();
+  }
+//checkedbox..............................
+  bool? isChecked = true;
+
+  void changechecked(value){
+    isChecked=value;
+    update();
+  }
+
+
+
+  List datainfo=[
+    dataInformation(),
+    offers()];
+
+  int datainfoindex=0;
+
+  void changedatainfo(x){
+    datainfoindex=x;
+    update();
+  }
 
 }
