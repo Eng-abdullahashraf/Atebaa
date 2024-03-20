@@ -10,6 +10,7 @@ class InfoDoctor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int? i;
+    int? c;
 
     return SafeArea(
       child: GetBuilder<homecontroller>(
