@@ -24,6 +24,7 @@ import '../constant/addvertisingmodels.dart';
 
 
 
+
 class homecontroller extends GetxController{
 
   Connectivity _connectivity = Connectivity();

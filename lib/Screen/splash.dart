@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:atebaa/onboarding/onboarding%20page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import '../../theme/colors.dart';
 
 
@@ -45,7 +46,7 @@ class _Splash extends State<Splash> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Expanded(child: Center(child: Text('atebaa',style: TextStyle(fontSize: 85,color: Appcolor().firstcolor,fontFamily: 'Bebas',letterSpacing: 8,),))),
-                    Text('Powered by TECS ',style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),),
+                    Text('Powered by TECS ',style: TextStyle(fontSize: 15,color: Appcolor().firstcolor,fontWeight: FontWeight.bold),).animate().fade().slide(duration: Duration(seconds: 5)),
                   ],
                 ),
               ),
