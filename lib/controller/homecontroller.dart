@@ -400,6 +400,7 @@ class homecontroller extends GetxController{
   }
 
   //.....................................
+
   bool? logged=false;
 
 
@@ -431,9 +432,6 @@ class homecontroller extends GetxController{
     update();
   }
 
-  void changedinfo(x){
-    datainfoindex=x;
-    update();
-  }
+
 
 }
