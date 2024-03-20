@@ -1,15 +1,11 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/onboarding/onboarding%20page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-
 import '../../theme/colors.dart';
-import 'docinfo.dart';
-import 'navscreens/firstscreen.dart';
+
 
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
