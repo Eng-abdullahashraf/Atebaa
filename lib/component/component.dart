@@ -1,4 +1,5 @@
 import 'package:atebaa/Screen/docinfo.dart';
+import 'package:atebaa/component/second%20component.dart';
 import 'package:atebaa/constant/addvertisingmodels.dart';
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:flutter/cupertino.dart';
@@ -645,3 +646,4 @@ Widget offers()=>Container(
   width: double.infinity,
     color: Colors.white,
     child: Center(child: Text('لم يتم اضافة عروض')));
+

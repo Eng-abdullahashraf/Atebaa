@@ -15,7 +15,7 @@ class Imageonboarding{
    static const String rootimage='images';
    static const String onboardingimage1='$rootimage/doctors.png';
    static const String onboardingimage2='$rootimage/pharmacy.png';
-   static const String onboardingimage3='$rootimage/laboratory.png';
+   static const String onboardingimage3='$rootimage/laboratoryn.png';
    static const String onboardingimage4='$rootimage/Center.png';
 
 }

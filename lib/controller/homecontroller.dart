@@ -1,5 +1,6 @@
 
 import 'dart:convert';
+import 'dart:io';
 import 'package:atebaa/Screen/LoginScreens/LoginPage.dart';
 import 'package:atebaa/Screen/navscreens/Favorite.dart';
 import 'package:atebaa/Screen/navscreens/Homescreen.dart';
@@ -18,6 +19,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Screen/doctors.dart';
 import '../constant/addvertisingmodels.dart';
@@ -420,7 +422,7 @@ class homecontroller extends GetxController{
   }
 
 
-
+//...............................Datainfo
   List datainfo=[
     dataInformation(),
     offers()];
@@ -431,7 +433,19 @@ class homecontroller extends GetxController{
     datainfoindex=x;
     update();
   }
+  //.............................
 
+
+//....................imagepicker
+  File? fImage;
+void getimage() async{
+    var image =await ImagePicker().pickImage(source: ImageSource.gallery);
+    if(image!=null){
+      fImage=File(image!.path);
+    }
+    else{}
+    update();
+}
 
 
 }

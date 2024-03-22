@@ -32,6 +32,8 @@ dependencies:
     sdk: flutter
   localization:
   get:
+  image_picker: ^1.0.7
+  path:
   bloc:
   flutter_bloc:
   carousel_slider:

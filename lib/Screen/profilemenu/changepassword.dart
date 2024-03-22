@@ -19,7 +19,6 @@ class ChangePassword extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
 
-            IconButton(onPressed: () {Get.back();}, icon: Icon(Icons.arrow_forward_rounded)),
 
             Expanded(
               child: Container(

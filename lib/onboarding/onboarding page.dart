@@ -34,7 +34,9 @@ Widget onboardingstyle(items, index, context) => GetBuilder<homecontroller>(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image(image: AssetImage(items[index].image!)),
+              Image(image: AssetImage(items[index].image!),
+                  height: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width),
               Gap(14),
               Text(items[index].title!,
                   style: TextStyle(
@@ -55,7 +57,7 @@ Widget onboardingstyle(items, index, context) => GetBuilder<homecontroller>(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: List.generate(4,
                       (index) => buildDot(index, controller.onboardingindex))),
-              Gap(14),
+              Gap(10),
               buttons('التالى', 45, double.infinity, 18, Appcolor().firstcolor,
                   Appcolor().thirdcolor, () {
                 controller.onboardingnext(context);

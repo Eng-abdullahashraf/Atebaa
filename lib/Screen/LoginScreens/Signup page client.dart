@@ -17,7 +17,7 @@ class SignClient extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<homecontroller>(
       init: homecontroller(),
-      builder: (Controller) {
+      builder: (controller) {
         return SafeArea(
           child: Scaffold(
             body: SingleChildScrollView(
@@ -116,10 +116,10 @@ class SignClient extends StatelessWidget {
                       child: Row(
                         children: [
                           Checkbox(
-                              value: Controller.isChecked,
+                              value: controller.isChecked,
                               activeColor: Color(0xFF0904FF),
                               onChanged: (bool? value){
-                                Controller.changechecked(value);
+                                controller.changechecked(value);
                               }),
                           Text(
                             'اوافق على القواعد والخصوصية',

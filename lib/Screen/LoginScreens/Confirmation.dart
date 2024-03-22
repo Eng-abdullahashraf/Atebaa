@@ -12,7 +12,7 @@ class Confirm extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<homecontroller>(
       init: homecontroller(),
-      builder: (Controller) {
+      builder: (controller) {
         return SafeArea(
           child: Scaffold(
             body: SingleChildScrollView(
