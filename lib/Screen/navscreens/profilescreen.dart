@@ -115,25 +115,28 @@ class ProfileScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               ClipRRect(
-                                borderRadius: BorderRadius.circular(30),
+                                borderRadius: BorderRadius.circular(10),
                                 child: controller.fImage == null
                                     ? Image(
                                           image: AssetImage('images/pngegg.png'),
-                                          width: 130,height: 150,fit: BoxFit.cover,)
-                                    : Image.file(controller.fImage!,width: 130,height: 150,fit: BoxFit.cover),
+                                          width: 130,height: 150,fit: BoxFit.fill,)
+                                    : Image.file(controller.fImage!,width: 130,height: 130,fit: BoxFit.cover),
 
                               ),
                               Gap(8),
-                              Text(
-                                'د/ أحمد محمد السعيد',
-                                style: TextStyle(
-                                    fontSize: 18,
-                                    fontFamily: 'ElMessiri-Bold',
-                                    color: Appcolor().firstcolor),
+                              Container(
+                                color: Appcolor().thirdcolor,
+                                child: Text(
+                                  'د/ أحمد محمد السعيد',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontFamily: 'ElMessiri-Bold',
+                                      color: Appcolor().firstcolor),
+                                ),
                               ),
                             ],
                           ),
-                          top: -5,
+                          top: 0,
                         ),
                       ],
                     ));
@@ -147,19 +150,19 @@ Widget RowInProfile(x, z) => Row(
         Icon(
           z,
           color: Colors.black45,
-          size: 30,
+          size: 25,
         ),
         Gap(8),
         Expanded(
             child: Text(x,
                 style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 13,
                     color: Colors.black45,
                     fontFamily: 'ElMessiri-Bold'))),
         Gap(8),
         Icon(
           Icons.arrow_forward_ios,
-          size: 25,
+          size: 20,
           color: Colors.black45,
         )
       ],

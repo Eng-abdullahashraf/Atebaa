@@ -28,21 +28,39 @@ class ProfileData extends StatelessWidget {
               Gap(20),
               Center(
                 child: InkWell(
-                  onTap: () {
-                    controller.getimage();
-                  },
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(150),
-                    child: controller.fImage == null
-                        ? Container(
-                      width: 100,
-                            height: 100,
-                            color: Appcolor().firstcolor,
-                          )
-                        : Image.file(controller.fImage!,width: 150,height: 150,fit: BoxFit.cover),
-                    //Image(image: AssetImage('images/pngegg.png'), width: 150),
-                  ),
-                ),
+                    onTap: () {
+                      controller.getimage();
+                    },
+                    child: Stack(
+                      alignment: Alignment.bottomRight,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(20),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: controller.fImage == null
+                                ? Container(
+                                    width: 150,
+                                    height: 150,
+                                    color: Appcolor().firstcolor,
+                                  )
+                                : Image.file(controller.fImage!,
+                                    width: 150, height: 150, fit: BoxFit.cover),
+                            //Image(image: AssetImage('images/pngegg.png'), width: 150),
+                          ),
+                        ),
+                        Positioned(
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(150),
+                              child: Container(
+                                width: 35,height: 35,
+                                  color: Appcolor().firstcolor,
+                                  child: Icon(Icons.camera_alt, size: 18,color: Appcolor().thirdcolor,))),
+                          right: 0,
+                          bottom: 10,
+                        ),
+                      ],
+                    )),
               ),
               Gap(13),
               Padding(
@@ -67,15 +85,14 @@ class ProfileData extends StatelessWidget {
                     child: textInputform(
                         IconColor: Appcolor().firstcolor,
                         FillColor: Colors.white,
-                        PrefIcon: Icon(Icons.location_on_outlined),
-                        LableText: 'العنوان',
-                        HintText: 'العنوان تفصيلي',
+                        PrefIcon: Icon(Icons.map),
+                        LableText: 'العنوان بالتفصيل',
+                        HintText: 'العنوان بالتفصيل',
                         Scure: false,
                         radius: 10,
                         controller: name)),
               ),
               Gap(13),
-
               Padding(
                 padding: const EdgeInsets.only(left: 15, right: 15),
                 child: Container(
@@ -83,6 +100,8 @@ class ProfileData extends StatelessWidget {
                   child: TextFormField(
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Appcolor().thirdcolor,
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                       prefixIcon: Padding(
@@ -98,21 +117,6 @@ class ProfileData extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-              Gap(13),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, right: 15),
-                child: Container(
-                    height: 60,
-                    child: textInputform(
-                        IconColor: Appcolor().firstcolor,
-                        FillColor: Colors.white,
-                        PrefIcon: Icon(Icons.folder_special),
-                        LableText: 'التخصص',
-                        HintText: 'باطنه',
-                        Scure: false,
-                        radius: 10,
-                        controller: name)),
               ),
               Gap(13),
               Padding(
@@ -147,9 +151,33 @@ class ProfileData extends StatelessWidget {
               Gap(13),
               Padding(
                 padding: const EdgeInsets.only(left: 15, right: 15),
+                child: TextFormField(
+                  maxLines: 4,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.pending_actions,color: Appcolor().firstcolor,),
+                    labelText: 'نبذه',
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                    fillColor: Appcolor().thirdcolor,
+                    filled: true,
+                  ),
+
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'نبذه';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+
+              Gap(13),
+              Padding(
+                padding: const EdgeInsets.only(left: 15, right: 15),
                 child: buttons('حفظ', 50, double.infinity, 24,
                     Appcolor().firstcolor, Colors.white, () {}, 24),
-              )
+              ),
+                  Gap(15),
+
             ]),
           ),
         );

@@ -13,19 +13,17 @@ Widget textInputform({
   @required TextEditingController? controller,
 
 }) {
-  return  Container(
-    child: TextField(
-        decoration: InputDecoration(
-            prefixIconColor: IconColor,
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius!)),
-            filled: true,
-            fillColor: FillColor,
-            prefixIcon: PrefIcon,
-            labelText: LableText,
-            hintText: HintText),
-        obscureText: Scure,
-        controller: controller),
-  );
+  return  TextField(
+      decoration: InputDecoration(
+          prefixIconColor: IconColor,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius!)),
+          filled: true,
+          fillColor: FillColor,
+          prefixIcon: PrefIcon,
+          labelText: LableText,
+          hintText: HintText),
+      obscureText: Scure,
+      controller: controller);
 }
 
 Widget IconButtons({

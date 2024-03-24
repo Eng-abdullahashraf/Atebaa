@@ -25,7 +25,7 @@ Widget Social(name)=>Container(
                 child: textInputform(
                     IconColor: Appcolor().firstcolor,
                     FillColor: Colors.white,
-                    PrefIcon: Icon(Icons.person),
+                    PrefIcon: Icon(Icons.facebook),
                     LableText: 'رابط حساب فيس بوك',
                     HintText: 'رابط حساب فيس بوك',
                     Scure: false,
@@ -40,9 +40,9 @@ Widget Social(name)=>Container(
                 child: textInputform(
                     IconColor: Appcolor().firstcolor,
                     FillColor: Colors.white,
-                    PrefIcon: Icon(Icons.location_on_outlined),
-                    LableText: 'رابط حساب واتس اب',
-                    HintText: 'رابط حساب واتس اب',
+                    PrefIcon: Icon(Icons.phone),
+                    LableText: 'رقم واتس اب',
+                    HintText: 'رقم واتس اب',
                     Scure: false,
                     radius: 10,
                     controller: name)),
@@ -91,7 +91,7 @@ Widget changePass(name)=>Container(
                 child: textInputform(
                     IconColor: Appcolor().firstcolor,
                     FillColor: Colors.white,
-                    PrefIcon: Icon(Icons.person),
+                    PrefIcon: Icon(Icons.password),
                     LableText: 'كلمة السر القديمة',
                     HintText: '*********',
                     Scure: true,
@@ -106,7 +106,7 @@ Widget changePass(name)=>Container(
                 child: textInputform(
                     IconColor: Appcolor().firstcolor,
                     FillColor: Colors.white,
-                    PrefIcon: Icon(Icons.location_on_outlined),
+                    PrefIcon: Icon(Icons.password),
                     LableText: 'كلمة السر الجديدة',
                     HintText: '*********',
                     Scure: true,
@@ -121,8 +121,8 @@ Widget changePass(name)=>Container(
                 child: textInputform(
                     IconColor: Appcolor().firstcolor,
                     FillColor: Colors.white,
-                    PrefIcon: Icon(Icons.folder_special),
-                    LableText: 'كلمة السر الجديدة',
+                    PrefIcon: Icon(Icons.password),
+                    LableText: 'تاكيد كلمة السر الجديدة',
                     HintText: '*********',
                     Scure: true,
                     radius: 10,

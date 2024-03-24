@@ -41,7 +41,7 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 24,
-                        fontFamily: 'ElMessiri-Bold'),
+                        fontFamily: 'ElMessiri-Bold', ),
                   ),
                 ),
                 Gap(35),
@@ -115,7 +115,7 @@ class LoginPage extends StatelessWidget {
                         Get.to(SignupPage());
                       },
                       child: Text(
-                        'انشاء حساب',style: TextStyle(fontWeight: FontWeight.w700,fontSize: 16,color: Color(0xFF0904FF)),
+                        'انشاء حساب',style: TextStyle(fontWeight: FontWeight.w700,fontSize: 16,color: Color(0xFF0904FF),decoration: TextDecoration.underline),
                       ),
                     )
                   ],
