@@ -48,69 +48,34 @@ class SignClient extends StatelessWidget {
                     ),
                     Gap(20),
 
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: textInputform(
-                          IconColor: Appcolor().firstcolor,
-                          FillColor: Appcolor().thirdcolor,
-                          PrefIcon: Icon(Icons.person),
-                          LableText: 'اسم المستخدم',
-                          HintText: 'اسم المستخدم',
-                          Scure: true,
-                          radius: 25,
-                          controller: mailadd),
-                    ),
-                    Gap(8),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: Container(
-                        color: Appcolor().thirdcolor,
-                        child: TextFormField(
-                          keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
-                            enabledBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(25))),
-                            prefixIcon: Padding(
-                              padding: EdgeInsets.all(0.0),
-                              child: Icon(
-                                Icons.phone_enabled,
-                                color: Appcolor().firstcolor,
-                              ),
-                            ),
-                            hintText: 'رقم الهاتف',
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Gap(8),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: textInputform(
-                          IconColor: Appcolor().firstcolor,
-                          FillColor: Appcolor().thirdcolor,
-                          PrefIcon: Icon(Icons.password),
-                          LableText: 'كلمة السر',
-                          HintText: '**********',
-                          Scure: true,
-                          radius: 25,
-                          controller: password),
-                    ),
-                    Gap(8),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, right: 16),
-                      child: textInputform(
-                          IconColor: Appcolor().firstcolor,
-                          FillColor: Appcolor().thirdcolor,
-                          PrefIcon: Icon(Icons.password),
-                          LableText: 'تاكيد كلمة السر',
-                          HintText: '**********',
-                          Scure: true,
-                          radius: 25,
-                          controller: password),
-                    ),
+                    InputInfoDocForm(
+                        PrefIcon: Icon(Icons.person),
+                        TybeInput: TextInputType.name,
+                        LableText: "اسم المستخدم",
+                        HintText: "اسم المستخدم",
+                        Scure: false,
+                        controller: TextEditingController()),
+                    InputInfoDocForm(
+                        PrefIcon: Icon(Icons.phone_enabled),
+                        TybeInput: TextInputType.number,
+                        LableText: "رقم الهاتف",
+                        HintText: "رقم الهاتف",
+                        Scure: false,
+                        controller: TextEditingController()),
+                    InputInfoDocForm(
+                        PrefIcon: Icon(Icons.password),
+                        TybeInput: TextInputType.visiblePassword,
+                        LableText: "كلمة السر",
+                        HintText: "كلمة السر",
+                        Scure: true,
+                        controller: TextEditingController()),
+                    InputInfoDocForm(
+                        PrefIcon: Icon(Icons.password),
+                        TybeInput: TextInputType.visiblePassword,
+                        LableText: "تأكيد كلمة السر",
+                        HintText: "تأكيد كلمة السر",
+                        Scure: true,
+                        controller: TextEditingController()),
                     Padding(
                       padding: const EdgeInsets.only(right: 16),
                       child: Row(
@@ -134,7 +99,7 @@ class SignClient extends StatelessWidget {
                      Container(
                        alignment: Alignment.center,
                       child: IconButtons(
-                           TextButton: 'انشاء حساب',
+                           TextButton: 'انشاء',
                           height: 51.92,
                            width: MediaQuery.of(context).size.width*0.92,
                            TextFont: 20,

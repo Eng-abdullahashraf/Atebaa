@@ -82,7 +82,7 @@ class _AppTextFieldState extends State<AppTextField> {
               : null,
           decoration: InputDecoration(
             filled: true,
-            fillColor: Colors.black12,
+            fillColor: Colors.white,
             contentPadding:
             const EdgeInsets.only(left: 8, bottom: 0, top: 0, right: 15),
             hintText: widget.textEditingController.text == ""

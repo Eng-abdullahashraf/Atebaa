@@ -36,18 +36,13 @@ class ForgetPass extends StatelessWidget {
                         width: 154,
                       )),
                   Gap(35),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 16, right: 16),
-                    child: textInputform(
-                        IconColor: Appcolor().firstcolor,
-                        FillColor: Appcolor().thirdcolor,
-                        PrefIcon: Icon(Icons.email_outlined),
-                        LableText: 'البريد الالكتروني',
-                        HintText: 'Atebaa.doctors@Gmail.com',
-                        Scure: true,
-                        radius: 25,
-                        controller: mailadd),
-                  ),
+                  InputInfoDocForm(
+                      PrefIcon: Icon(Icons.email_outlined),
+                      TybeInput: TextInputType.emailAddress,
+                      LableText: "البريد الالكترونى",
+                      HintText: "atebaa@gmail.com",
+                      Scure: false,
+                      controller: TextEditingController()),
                   Gap(20),
                   Container(
                     alignment: Alignment.center,
