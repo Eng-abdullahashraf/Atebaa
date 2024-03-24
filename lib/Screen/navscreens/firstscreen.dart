@@ -57,7 +57,7 @@ class FirstScreen extends StatelessWidget {
                           else{
                             controller.changeScreen(4);
                           }
-                        }, icon: controller.logged==true?Icon(Icons.account_circle,size: 30,color:Colors.black45,):Icon(Icons.login,size: 30,color:Colors.black45,))),
+                        }, icon: controller.logged==true?Icon(Icons.account_circle,size: 30,color:controller.screennum==5? Appcolor().firstcolor:Colors.black45,):Icon(Icons.login,size: 30,color:controller.screennum==4? Appcolor().firstcolor:Colors.black45,))),
                         Expanded(child: IconButton(
                             hoverColor: Colors.transparent,
                             onPressed: () {controller.changeScreen(1);}, icon: Icon(Icons.favorite,size: 30,color: controller.screennum==1? Appcolor().firstcolor:Colors.black45,)))

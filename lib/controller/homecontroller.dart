@@ -414,7 +414,7 @@ class homecontroller extends GetxController{
     update();
   }
 //checkedbox..............................
-  bool? isChecked = true;
+  bool? isChecked = false;
 
   void changechecked(value){
     isChecked=value;
