@@ -76,16 +76,17 @@ class SignDoctors extends StatelessWidget {
                               focusedBorder: InputBorder.none,
                               border: InputBorder.none,
                             ),
-                            value: controller.dropvalue,
-                            items: controller.dropItems
+                            value: controller.dropvaluedoctorstype,
+                            items: controller.dropdoctorstype
                                 .map((e) =>
                                 DropdownMenuItem(value: e, child: Text(e)))
                                 .toList(),
                             onChanged: (value) {
-                              controller.changedrop(value);
+                              controller.changedropdoctorstype(value);
                             },
                           )),
                     ),
+
                     Padding(
                       padding:
                       const EdgeInsets.only(left: 16, right: 16, top: 13),
@@ -102,13 +103,13 @@ class SignDoctors extends StatelessWidget {
                               focusedBorder: InputBorder.none,
                               border: InputBorder.none,
                             ),
-                            value: controller.dropvalue,
-                            items: controller.dropItems
+                            value: controller.dropvaluedoctorspecial,
+                            items: controller.dropdoctorsspecial
                                 .map((e) =>
                                 DropdownMenuItem(value: e, child: Text(e)))
                                 .toList(),
                             onChanged: (value) {
-                              controller.changedrop(value);
+                              controller.changedropdoctorsspecial(value);
                             },
                           )),
                     ),

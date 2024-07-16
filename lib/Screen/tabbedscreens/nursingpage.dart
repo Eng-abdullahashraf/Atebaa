@@ -3,26 +3,28 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 import '../../component/component.dart';
-import '../../component/second component.dart';
 import '../../controller/homecontroller.dart';
 import '../../theme/colors.dart';
-class RadiologyPage extends StatelessWidget {
-   RadiologyPage({super.key});
 
-  TextEditingController Radiologycontrollor=TextEditingController();
+class Nursingpage extends StatelessWidget {
+  const Nursingpage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: Scaffold(body: radiology(Radiologycontrollor)));
+    return SafeArea(
+        child: Scaffold(
+          body: nursingPage(),
+        ));
   }
 }
 
-Widget radiology(x) => GetBuilder<homecontroller>(
+
+Widget nursingPage() => GetBuilder<homecontroller>(
   init: homecontroller(),
   builder: (controller) {
-
     return Column(
       children: [
         Container(
@@ -38,7 +40,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
               Expanded(
                   child: Center(
                       child: Text(
-                        'مراكز',
+                        'خدمات التمريض',
                         style: TextStyle(
                             fontSize: 24,
                             color: Appcolor().thirdcolor,
@@ -98,9 +100,10 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                 },
               )),
         ),
+        Gap(8),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 15,right: 15),
             child: Container(
               child: ListView.separated(
                 separatorBuilder: (context, index) => Gap(10),
@@ -109,64 +112,44 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                   bool? z = false;
 
                   if (controller.name!.isEmpty && controller.dropvalue=="اختر البلد") {
-                    return  pharmContainer(
-                        MediaQuery.of(context).size.width*.8,
-                        'مركز / ${controller.radiologydata![i]["name"]}',
-                        controller.radiologydata![i]
-                        ["address"],
-                        controller.radiologydata![i]
-                        ["delevery"],
-                        controller.radiologydata![i]
-                        ["phone"],
-                        controller.radiologydata![i]
-                        ["time"],
-                        controller.radiologydata![i]
-                        ["whatsapp"]);
+                    return  nursingContainer(
+                        'مستر / ${controller.nursingdata![i]["name"]}',
+                        controller.nursingdata![i]["phone"],
+                        controller.nursingdata![i]["whatsapp"],
+                        'العنوان / ${controller.nursingdata![i]["address"]}',
+                        controller.nursingdata![i]["about"],
+                        MediaQuery.of(context).size.width*.8
+                    );
                   }
-                  else if (controller.radiologydata![i]["name"].toString().contains(controller.name! ) && controller.radiologydata![i]["city"]==controller.dropvalue) {
-                    return pharmContainer(
-                        MediaQuery.of(context).size.width*.8,
-                        'مركز / ${controller.radiologydata![i]["name"]}',
-                        controller.radiologydata![i]
-                        ["address"],
-                        controller.radiologydata![i]
-                        ["delevery"],
-                        controller.radiologydata![i]
-                        ["phone"],
-                        controller.radiologydata![i]
-                        ["time"],
-                        controller.radiologydata![i]
-                        ["whatsapp"]);
+                  else if (controller.nursingdata![i]["name"].toString().contains(controller.name! ) && controller.nursingdata![i]["city"]==controller.dropvalue) {
+                    return nursingContainer(
+                        'مستر / ${controller.nursingdata![i]["name"]}',
+                        controller.nursingdata![i]["phone"],
+                        controller.nursingdata![i]["whatsapp"],
+                        'العنوان / ${controller.nursingdata![i]["address"]}',
+                        controller.nursingdata![i]["about"],
+                        MediaQuery.of(context).size.width*.8
+                    );
                   }
-                  else if (controller.name!.isEmpty && controller.radiologydata![i]["city"]==controller.dropvalue) {
-                    return pharmContainer(
-                        MediaQuery.of(context).size.width*.8,
-                        'مركز / ${controller.radiologydata![i]["name"]}',
-                        controller.radiologydata![i]
-                        ["address"],
-                        controller.radiologydata![i]
-                        ["delevery"],
-                        controller.radiologydata![i]
-                        ["phone"],
-                        controller.radiologydata![i]
-                        ["time"],
-                        controller.radiologydata![i]
-                        ["whatsapp"]);
+                  else if (controller.name!.isEmpty && controller.nursingdata![i]["city"]==controller.dropvalue) {
+                    return nursingContainer(
+                        'مستر / ${controller.nursingdata![i]["name"]}',
+                        controller.nursingdata![i]["phone"],
+                        controller.nursingdata![i]["whatsapp"],
+                        'العنوان / ${controller.nursingdata![i]["address"]}',
+                        controller.nursingdata![i]["about"],
+                        MediaQuery.of(context).size.width*.8
+                    );
                   }
-                  else if (controller.radiologydata![i]["name"].toString().contains(controller.name! ) && controller.dropvalue=="اختر البلد") {
-                    return pharmContainer(
-                        MediaQuery.of(context).size.width*.8,
-                        'مركز / ${controller.radiologydata![i]["name"]}',
-                        controller.radiologydata![i]
-                        ["address"],
-                        controller.radiologydata![i]
-                        ["delevery"],
-                        controller.radiologydata![i]
-                        ["phone"],
-                        controller.radiologydata![i]
-                        ["time"],
-                        controller.radiologydata![i]
-                        ["whatsapp"]);
+                  else if (controller.nursingdata![i]["name"].toString().contains(controller.name! ) && controller.dropvalue=="اختر البلد") {
+                    return nursingContainer(
+                        'مستر / ${controller.nursingdata![i]["name"]}',
+                        controller.nursingdata![i]["phone"],
+                        controller.nursingdata![i]["whatsapp"],
+                        'العنوان / ${controller.nursingdata![i]["address"]}',
+                        controller.nursingdata![i]["about"],
+                        MediaQuery.of(context).size.width*.8
+                    );
                   }
                   else {
                     return SizedBox(
@@ -174,7 +157,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                     );
                   }
                 },
-                itemCount: controller.radiologydata!.length,
+                itemCount: controller.nursingdata!.length,
               ),
             ),
           ),

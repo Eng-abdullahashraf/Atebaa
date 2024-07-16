@@ -51,10 +51,11 @@ Widget buttons(
     ElevatedButton(
       onPressed: ontap,
       style: ElevatedButton.styleFrom(
+        backgroundColor: buttoncolor,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(radius!)),
         minimumSize: Size(width!, height!),
-        primary: buttoncolor,
+        //primary: buttoncolor,
       ),
       child: Text(
         '$textbutton',
@@ -379,7 +380,7 @@ Widget carouslerImage(AdvertisingModel x, context) => InkWell(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         // child: Image(image: AssetImage('${x.image1}'))
-        child: Image.network(x.image1!),
+        child: Image(image: AssetImage(x.image1!)),
       ),
       onTap: () {
         showDialog(
@@ -396,7 +397,7 @@ Widget carouslerImage(AdvertisingModel x, context) => InkWell(
                         // child: Image(
                         //     image: AssetImage(x.image2!),
                         //     fit: BoxFit.cover),
-                        child: Image.network(x.image2!),
+                        child: Image(image: AssetImage(x.image2!)),
                         borderRadius: BorderRadius.circular(40),
                       ),
                       Positioned(
@@ -471,12 +472,14 @@ Widget pharmacyCard() => Padding(
               borderRadius: BorderRadius.circular(15)),
           child: Row(children: [
             ClipRRect(
-                borderRadius: BorderRadius.only(topRight: Radius.circular(15),bottomRight: Radius.circular(15)),
+                borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(15),
+                    bottomRight: Radius.circular(15)),
                 child: Image.asset('images/doctora.jpg', width: 100)),
             Gap(10),
             Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "صيدلية د. محمد كامل",
@@ -489,22 +492,26 @@ Widget pharmacyCard() => Padding(
                 Gap(8),
                 InkWell(
                   onTap: () {
-                    launch(
-                        'tel: +01211030844');
+                    launch('tel: +01211030844');
                   },
                   child: Container(
                     width: double.infinity,
                     child: Row(
                       children: [
                         Container(
-                          padding:EdgeInsets.all(3),
-                          decoration:BoxDecoration(
-                              border: Border.all(color: Color(
-                                  0xFFEAE9E9),width: 1),
-                              shape: BoxShape.circle,color: Colors.white),
+                          padding: EdgeInsets.all(3),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Color(0xFFEAE9E9), width: 1),
+                              shape: BoxShape.circle,
+                              color: Colors.white),
                           child: CircleAvatar(
                             backgroundColor: Appcolor().thirdcolor,
-                            child: Icon(Icons.phone_enabled,size: 15,color: Colors.green, ),
+                            child: Icon(
+                              Icons.phone_enabled,
+                              size: 15,
+                              color: Colors.green,
+                            ),
                             minRadius: 10,
                           ),
                         ),
@@ -513,7 +520,9 @@ Widget pharmacyCard() => Padding(
                           child: Text(
                             "ت/ 01211030844",
                             style: TextStyle(
-                                fontSize: 12,fontWeight: FontWeight.bold,color: Appcolor().firstcolor),
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Appcolor().firstcolor),
                           ),
                         ),
                       ],
@@ -521,7 +530,13 @@ Widget pharmacyCard() => Padding(
                   ),
                 ),
                 Gap(8),
-                Text('المنزلة -الدقهلية - شارع الانصارى',style: TextStyle(fontSize: 14,color: Colors.black,fontWeight: FontWeight.bold),)
+                Text(
+                  'المنزلة -الدقهلية - شارع الانصارى',
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                )
               ],
             )),
           ]),
@@ -529,55 +544,77 @@ Widget pharmacyCard() => Padding(
       ),
     );
 
-
-Widget dataInformation()=>Container(
+Widget dataInformation() => Container(
     height: 450,
     width: double.infinity,
     decoration: BoxDecoration(color: Colors.white),
     child: Padding(
-      padding: const EdgeInsets.only(right: 15,left: 15,top: 10),
+      padding: const EdgeInsets.only(right: 15, left: 15, top: 10),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Center(child: Text("دكتور محمد نبيل الزهار",style: TextStyle(color: Appcolor().firstcolor,fontSize: 24,fontFamily: 'ElMessiri-Bold'))),
+            Center(
+                child: Text("دكتور محمد نبيل الزهار",
+                    style: TextStyle(
+                        color: Appcolor().firstcolor,
+                        fontSize: 24,
+                        fontFamily: 'ElMessiri-Bold'))),
             Center(
               child: Container(
-                  decoration: BoxDecoration(color: Appcolor().secondcolor,borderRadius: BorderRadius.circular(15)),
+                  decoration: BoxDecoration(
+                      color: Appcolor().secondcolor,
+                      borderRadius: BorderRadius.circular(15)),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10,top: 5,bottom: 5),
-                    child: Text("اخصائي امراض النسا و التوليد",style: TextStyle(color: Appcolor().firstcolor,fontSize: 18,fontWeight: FontWeight.bold)),
+                    padding: const EdgeInsets.only(
+                        left: 10, right: 10, top: 5, bottom: 5),
+                    child: Text("اخصائي امراض النسا و التوليد",
+                        style: TextStyle(
+                            color: Appcolor().firstcolor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold)),
                   )),
             ),
             Gap(5),
-            Divider(height: 3,color: Color(0xf3d3b3c),thickness: 2),
+            Divider(height: 3, color: Color(0xf3d3b3c), thickness: 2),
             Gap(5),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.account_balance_wallet,size: 30),
+                Icon(Icons.account_balance_wallet, size: 30),
                 Gap(15),
-                Text('سعر الكشف\n ''٢٠٠ جنيه',style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: 'ElMessiri-Bold')),
+                Text('سعر الكشف\n ' '٢٠٠ جنيه',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontFamily: 'ElMessiri-Bold')),
               ],
             ),
             Gap(10),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.phone,size: 30),
+                Icon(Icons.phone, size: 30),
                 Gap(15),
-                Text('01001050863',style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: 'ElMessiri-Bold')), ],
+                Text('01001050863',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 15,
+                        fontFamily: 'ElMessiri-Bold')),
+              ],
             ),
             Gap(10),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(Icons.location_on,size: 30),
-                  Gap(15),
-                  Text('المنزله دقهليه',style: TextStyle(color: Colors.black,fontSize: 15,fontFamily: 'ElMessiri-Bold')),
-                ]),
+            Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+              Icon(Icons.location_on, size: 30),
+              Gap(15),
+              Text('المنزله دقهليه',
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontFamily: 'ElMessiri-Bold')),
+            ]),
             Gap(5),
-            Divider(height: 3,color: Color(0xf3d3b3c),thickness: 2),
+            Divider(height: 3, color: Color(0xf3d3b3c), thickness: 2),
             Gap(10),
             Center(
               child: Container(
@@ -642,8 +679,234 @@ Widget dataInformation()=>Container(
         ),
       ),
     ));
-Widget offers()=>Container(
-  width: double.infinity,
+
+Widget offers() => Container(
+    width: double.infinity,
     color: Colors.white,
     child: Center(child: Text('لم يتم اضافة عروض')));
 
+Widget departmentContainer(x, z, Color? a, context) => Container(
+      width: MediaQuery.of(context).size.width * .4,
+      height: 100,
+      decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1), // Shadow color
+              offset: Offset(
+                  1, 3), // Shadow position (horizontal and vertical offset)
+              blurRadius: 3, // Shadow blur radius
+              spreadRadius: 1, // Shadow spread radius
+            ),
+          ],
+          image: DecorationImage(
+              image: AssetImage(z), fit: BoxFit.fill, opacity: .3),
+          color: Appcolor().gray,
+          borderRadius: BorderRadius.circular(15)),
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 2, bottom: 2),
+        child: Center(
+          child: Text(x,
+              style: TextStyle(
+                  fontSize: 24, color: a, fontFamily: 'ElMessiri-Bold'),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+              textAlign: TextAlign.center),
+        ),
+      ),
+    );
+
+Widget nursingContainer(name,phone,whatsapp,address,about,width) => Container(
+    width: width,
+    decoration: BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage('images/nursingback.jpg'),
+            fit: BoxFit.fill,
+            opacity: 0.2),
+        // border: Border.all(color: Appcolor().firstcolor,width: 1,),
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12.withOpacity(0.1),
+          )
+        ]),
+    child: Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 10, left: 15, right: 15),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            name,
+            style: TextStyle(
+                color: Appcolor().firstcolor,
+                fontSize: 22,
+                fontFamily: 'ElMessiri-Bold'),
+          ),
+          Gap(5),
+          Text(
+            about,
+            style: TextStyle(
+                color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+          ),
+          Gap(10),
+          Text(
+            address,
+            style: TextStyle(
+                color: Appcolor().firstcolor,
+                fontSize: 16,
+                fontFamily: 'ElMessiri-Bold'),
+            textAlign: TextAlign.start,
+          ),
+          Gap(10),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+              InkWell(
+                onTap: () {
+                  launch(
+                      'https://wa.me/+2${whatsapp}');
+
+                },
+                child: Image(
+                    image: AssetImage('images/newwhatsapp.png'),
+                    width: 30),
+              ),
+              Gap(10),
+              InkWell(
+                onTap: () {
+                  launch(
+                      'tel:${phone}');
+
+                },
+
+
+                child: Image(
+                    image: AssetImage('images/newphone.png'), width: 30),
+              )
+            ],
+          ),
+        ],
+      ),
+    ));
+
+Widget pharmContainer(
+        double? x, name, address, delevery, phone, time, whatsapp) =>
+    Container(
+        width: x,
+        decoration: BoxDecoration(
+            color: Appcolor().thirdcolor,
+            border: Border.all(
+              color: Appcolor().secondcolor,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black12.withOpacity(0.05),
+                  offset: Offset(1, 1),
+                  spreadRadius: 1)
+            ]),
+        child: Padding(
+          padding:
+              const EdgeInsets.only(top: 10, bottom: 10, right: 5, left: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image(image: AssetImage('images/mpa.png'), width: 75),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: TextStyle(
+                          color: Appcolor().firstcolor,
+                          fontSize: 18,
+                          fontFamily: 'ElMessiri-Bold'),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                    ),
+                    Gap(8),
+                    Row(children: [
+                      Icon(Icons.location_pin, size: 20),
+                      Gap(5),
+                      Expanded(
+                        child: Text(
+                          address,
+                          style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontFamily: 'ElMessiri-Bold'),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      )
+                    ]),
+                    Gap(8),
+                    Row(children: [
+                      Gap(5),
+                      Image.asset('images/clock.png', width: 15),
+                      Gap(5),
+                      Text(
+                        time,
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontFamily: 'ElMessiri-Bold'),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      )
+                    ]),
+                    Gap(8),
+                    Row(children: [
+                      Icon(Icons.motorcycle, size: 20),
+                      Gap(5),
+                      Text(
+                        delevery,
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontFamily: 'ElMessiri-Bold'),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      )
+                    ]),
+                    Gap(8),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            launch(
+                                'https://wa.me/+2${whatsapp}');
+
+                          },
+                          child: Image(
+                              image: AssetImage('images/newwhatsapp.png'),
+                              width: 30),
+                        ),
+                        Gap(5),
+                        InkWell(
+                          onTap: () {
+                            launch(
+                                'tel:${phone}');
+
+                          },
+
+
+                          child: Image(
+                              image: AssetImage('images/newphone.png'), width: 30),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ));

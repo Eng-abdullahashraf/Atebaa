@@ -69,7 +69,7 @@ class _AppTextFieldState extends State<AppTextField> {
       children: [
         Text(widget.title,style: TextStyle(fontFamily: 'ElMessiri-Bold')),
         const SizedBox(
-          height: 5.0,
+          height: 2.0,
         ),
         TextFormField(
           controller: widget.textEditingController,
@@ -101,7 +101,7 @@ class _AppTextFieldState extends State<AppTextField> {
           ),
         ),
         const SizedBox(
-          height: 15.0,
+          height: 8.0,
         ),
       ],
     );

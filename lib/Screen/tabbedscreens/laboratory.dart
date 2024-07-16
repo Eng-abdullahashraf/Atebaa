@@ -58,36 +58,141 @@ Widget laboratory(x) => GetBuilder<homecontroller>(
             Gap(8),
             Padding(
               padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Container(
-                  height: 60,
-                  child: textInputform(
-                      IconColor: Appcolor().firstcolor,
-                      FillColor: Appcolor().thirdcolor,
-                      PrefIcon: Icon(Icons.search),
-                      LableText: 'ابحث عن معملك',
-                      HintText: 'ابحث عن معملك',
-                      Scure: false,
-                      radius: 10,
-                      controller: x)),
+              child: TextField(
+                decoration: InputDecoration(
+                  prefixIconColor: Appcolor().gray,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15)),
+                  hintText: "بحث",
+                  prefixIcon: Icon(Icons.search),
+                ),
+                onChanged: (value) {
+                  controller.search(value);
+                },
+              ),
             ),
             Gap(8),
             Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
+              padding:
+              const EdgeInsets.only(left: 15, right: 15),
               child: Container(
-                width: double.infinity,
-                  height: 60,
-
-                  child:DropdownButtonFormField(
-                    decoration: InputDecoration(enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Appcolor().firstcolor,),borderRadius: BorderRadius.circular(10))),
-                    value:controller.dropvalue,items: controller.dropItems.map((e) => DropdownMenuItem(value:e,child: Text(e))).toList(), onChanged: (value) {
-                    controller.changedrop(value);
-                  },) ),
+                  padding: EdgeInsets.only(
+                    left: 16,
+                    right: 16,
+                  ),
+                  decoration: BoxDecoration(color: Appcolor().thirdcolor,
+                      border: Border.all(color: Colors.black87),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: DropdownButtonFormField(
+                    decoration: InputDecoration(
+                      focusedBorder: InputBorder.none,
+                      border: InputBorder.none,
+                    ),
+                    value: controller.dropvalue,
+                    items: controller.dropItems
+                        .map((e) =>
+                        DropdownMenuItem(value: e, child: Text(e)))
+                        .toList(),
+                    onChanged: (value) {
+                      controller.changedrop(value);
+                    },
+                  )),
             ),
             Expanded(
-              child: Container(
-                child: ListView.builder(
-                  itemBuilder: (context, i) => pharmacyCard(),
-                  itemCount: 10,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  child: ListView.separated(
+                    separatorBuilder: (context, index) => Gap(10),
+                    itemBuilder: (context, i) {
+                      controller.readdata();
+                      bool? z = false;
+
+                      if (controller.name!.isEmpty && controller.dropvalue=="اختر البلد") {
+                        return  pharmContainer(
+                            MediaQuery.of(context)
+                                .size
+                                .width *
+                                .8,
+                            'معمل / ${controller.laboratorydata![i]["name"]}',
+                            controller.laboratorydata![i]
+                            ["address"],
+                            controller.laboratorydata![i]
+                            ["delevery"],
+                            controller.laboratorydata![i]
+                            ["phone"],
+                            controller.laboratorydata![i]
+                            ["time"],
+                            controller
+                                .laboratorydata![i]
+                            ["whatsapp"]);
+                      }
+                      else if (controller.laboratorydata![i]["name"].toString().contains(controller.name! ) && controller.laboratorydata![i]["city"]==controller.dropvalue) {
+                        return pharmContainer(
+                            MediaQuery.of(context)
+                                .size
+                                .width *
+                                .8,
+                            'معمل / ${controller.laboratorydata![i]["name"]}',
+                            controller.laboratorydata![i]
+                            ["address"],
+                            controller.laboratorydata![i]
+                            ["delevery"],
+                            controller.laboratorydata![i]
+                            ["phone"],
+                            controller.laboratorydata![i]
+                            ["time"],
+                            controller
+                                .laboratorydata![i]
+                            ["whatsapp"]);
+                      }
+                      else if (controller.name!.isEmpty && controller.laboratorydata![i]["city"]==controller.dropvalue) {
+                        return pharmContainer(
+                            MediaQuery.of(context)
+                                .size
+                                .width *
+                                .8,
+                            'معمل / ${controller.laboratorydata![i]["name"]}',
+                            controller.laboratorydata![i]
+                            ["address"],
+                            controller.laboratorydata![i]
+                            ["delevery"],
+                            controller.laboratorydata![i]
+                            ["phone"],
+                            controller.laboratorydata![i]
+                            ["time"],
+                            controller
+                                .laboratorydata![i]
+                            ["whatsapp"]);
+                      }
+                      else if (controller.laboratorydata![i]["name"].toString().contains(controller.name! ) && controller.dropvalue=="اختر البلد") {
+                        return pharmContainer(
+                            MediaQuery.of(context)
+                                .size
+                                .width *
+                                .8,
+                            'معمل / ${controller.laboratorydata![i]["name"]}',
+                            controller.laboratorydata![i]
+                            ["address"],
+                            controller.laboratorydata![i]
+                            ["delevery"],
+                            controller.laboratorydata![i]
+                            ["phone"],
+                            controller.laboratorydata![i]
+                            ["time"],
+                            controller
+                                .laboratorydata![i]
+                            ["whatsapp"]);
+                      }
+
+                      else {
+                        return SizedBox(
+                          height: 0,
+                        );
+                      }
+                    },
+                    itemCount: controller.laboratorydata!.length,
+                  ),
                 ),
               ),
             )

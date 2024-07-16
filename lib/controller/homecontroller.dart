@@ -39,7 +39,7 @@ class homecontroller extends GetxController{
     _connectivity.onConnectivityChanged.listen(updateConnectionStatus);
     checkinternet();
     loaded();
-    getdataapi();
+    //getdataapi();
     firstopen();
 
   }
@@ -50,7 +50,8 @@ class homecontroller extends GetxController{
 
   List<Widget> Screennav=[
     //homePage(),
-    Homescreen(),
+    //Homescreen(),
+    searchDoctors(),
     Favourite(),
     Roqya(),
     Aboutus(),
@@ -254,11 +255,7 @@ class homecontroller extends GetxController{
     update();
   }
 
-  List<dynamic>? zekr=[];
 
-  // void getzekr(){
-  //   CollectionReference sr=FirebaseFirestore.instance.collection('doctors');
-  // }
 
   //....................................
   //..........................................
@@ -406,14 +403,32 @@ class homecontroller extends GetxController{
   bool? logged=false;
 
 
-//................. dropdowen
-  List dropItems=['اختر البلد','المنزلة','البصراط'];
+//................. dropdowen for type of doctors signup
+  List dropdoctorstype=['اختر النوع','عيادة','صيدلية','معمل','مركز'];
+  String? dropvaluedoctorstype='اختر النوع';
+  void changedropdoctorstype(x){
+    dropvaluedoctorstype=x;
+    update();
+  }
+
+//................. dropdowen for type of special signup
+  List dropdoctorsspecial=['اختر التخصص','باطنه','اسنان','كلي','عظام'];
+  String? dropvaluedoctorspecial='اختر التخصص';
+  void changedropdoctorsspecial(x){
+    dropvaluedoctorstype=x;
+    update();
+  }
+
+
+  List dropItems=['اختر البلد','المنصورة','المنزلة','البصراط','الجمالية','المطرية','دكرنس','الرياض','الكردي','منية النصر','ميت سلسيل',];
   String? dropvalue='اختر البلد';
   void changedrop(x){
     dropvalue=x;
     update();
   }
+
 //checkedbox..............................
+
   bool? isChecked = false;
 
   void changechecked(value){
@@ -448,4 +463,85 @@ void getimage() async{
 }
 
 
+  List<dynamic>? pharmacydata=[];
+
+void getPharmacyData()async{
+
+  var response;
+  CollectionReference pharmacy=FirebaseFirestore.instance.collection('pharmacy');
+  response=await pharmacy.get();
+  pharmacydata!.clear();
+  response.docs.forEach((element) {
+    pharmacydata!.add(element.data());
+  });
+  print(pharmacydata);
+  loadingFirstPage();
+
+}
+
+  List<dynamic>? laboratorydata=[];
+
+  void getLaboratoryData()async{
+
+    var response;
+    CollectionReference laboratory=FirebaseFirestore.instance.collection('laboratory');
+    response=await laboratory.get();
+    laboratorydata!.clear();
+    response.docs.forEach((element) {
+      laboratorydata!.add(element.data());
+
+    });
+    print(laboratorydata);
+    loadingFirstPage();
+
+  }
+
+  List<dynamic>? radiologydata=[];
+
+  void getRadiologyData()async{
+
+    var response;
+    CollectionReference radiology=FirebaseFirestore.instance.collection('Radiology');
+    response=await radiology.get();
+    radiologydata!.clear();
+    response.docs.forEach((element) {
+      radiologydata!.add(element.data());
+
+    });
+    print(radiologydata);
+    loadingFirstPage();
+
+  }
+
+  List<dynamic>? nursingdata=[];
+
+  void getNursingData()async{
+
+    var response;
+    CollectionReference Nursing=FirebaseFirestore.instance.collection('nursing');
+    response=await Nursing.get();
+    nursingdata!.clear();
+    response.docs.forEach((element) {
+      nursingdata!.add(element.data());
+    });
+    print(nursingdata);
+    loadingFirstPage();
+
+  }
+
+  bool? loaddatapharmacy=false;
+
+  void loadingFirstPage(){
+    if(pharmacydata!.isEmpty){
+      update();
+    }
+    else{
+      loaddatapharmacy=true;
+      update();
+    }
+
+
+
+
+  }
 }

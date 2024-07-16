@@ -1,3 +1,4 @@
+import 'package:atebaa/Screen/profilemenu/addAdvertising.dart';
 import 'package:atebaa/Screen/profilemenu/changepassword.dart';
 import 'package:atebaa/Screen/profilemenu/profiledata.dart';
 import 'package:atebaa/controller/homecontroller.dart';
@@ -71,8 +72,13 @@ class ProfileScreen extends StatelessWidget {
                                       child: RowInProfile('وسائل التواصل',
                                           Icons.add_link_outlined)),
                                   Gap(15),
-                                  RowInProfile(
-                                      'إضافة إعلان', Icons.mic_rounded),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.to(AddAdvertising());
+                                    },
+                                    child: RowInProfile(
+                                        'إضافة إعلان', Icons.mic_rounded),
+                                  ),
                                   Gap(15),
                                   RowInProfile(
                                       'عروض وخصومات', Icons.local_offer),

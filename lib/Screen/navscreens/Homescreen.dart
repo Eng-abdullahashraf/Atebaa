@@ -105,7 +105,7 @@ class Homescreen extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         Expanded(
-                                          child: InkWell( child: tab(123, 'images/doctorstab.jpg', 'أطباء'), onTap: () {Get.to(SearchDoctors(),transition: Transition.rightToLeft,duration: Duration(seconds: 1));},),
+                                          child: InkWell( child: tab(123, 'images/doctorstab.jpg', 'أطباء'), onTap: () {Get.to(searchDoctors(),transition: Transition.rightToLeft,duration: Duration(seconds: 1));},),
                                         ),
                                         Gap(10),
                                         Expanded(

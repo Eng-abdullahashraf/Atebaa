@@ -17,8 +17,9 @@ class onboarding extends StatelessWidget {
       body: GetBuilder(
         init: homecontroller(),
         builder: (controller) {
-          return controller.onboardingindex<=3?onboardingstyle(
-              onboardinglist, controller.onboardingindex, context):FirstScreen();
+          // return controller.onboardingindex<=3?onboardingstyle(
+          //     onboardinglist, controller.onboardingindex, context):FirstScreen();
+          return FirstScreen();
         },
       ),
     );

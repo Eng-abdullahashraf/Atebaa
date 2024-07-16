@@ -388,9 +388,8 @@ class Doctors extends StatelessWidget {
                                       ),
                                     ),
                                   );
-                                } else if (controller.data![i]["name"]
-                                    .toString()
-                                    .contains(controller.name!)) {
+                                }
+                                else if (controller.data![i]["name"].toString().contains(controller.name!)) {
                                   return Padding(
                                     padding: const EdgeInsets.only(
                                         left: 10, right: 10, bottom: 10),

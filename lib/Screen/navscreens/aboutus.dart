@@ -148,24 +148,24 @@ class Aboutus extends StatelessWidget {
                     ],
                   ),
                 ),
-                GetBuilder(
-                  init: homecontroller(),
-                  builder: (controller) =>
-                      IconButton(
-                        onPressed: () {
-                          if(controller.x==4){
-                            Get.to(Uploaddata());
-                          }
-                          else{
-                            controller.changestate();
-                          }
-                        },
-                        icon: Icon(
-                          Icons.add_circle,
-                          color: Appcolor().secondcolor,
-                        )
-                      ),
-                )
+                // GetBuilder(
+                //   init: homecontroller(),
+                //   builder: (controller) =>
+                //       IconButton(
+                //         onPressed: () {
+                //           if(controller.x==4){
+                //             Get.to(Uploaddata());
+                //           }
+                //           else{
+                //             controller.changestate();
+                //           }
+                //         },
+                //         icon: Icon(
+                //           Icons.add_circle,
+                //           color: Appcolor().secondcolor,
+                //         )
+                //       ),
+                // )
               ],
             ),
           ],
