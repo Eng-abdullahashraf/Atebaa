@@ -677,7 +677,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                             ["time"],
                                                         controller
                                                                 .pharmacydata![index]
-                                                            ["whatsapp"]),
+                                                            ["whatsapp"],'images/pharmalogo.png'),
                                                     separatorBuilder:
                                                         (context, index) =>
                                                             Gap(8),
@@ -753,7 +753,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                             ["time"],
                                                         controller
                                                                 .laboratorydata![index]
-                                                            ["whatsapp"]),
+                                                            ["whatsapp"],'images/lab.png'),
                                                     separatorBuilder:
                                                         (context, index) =>
                                                             Gap(8),

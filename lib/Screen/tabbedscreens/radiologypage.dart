@@ -121,7 +121,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                         controller.radiologydata![i]
                         ["time"],
                         controller.radiologydata![i]
-                        ["whatsapp"]);
+                        ["whatsapp"],'images/radiologytool.png');
                   }
                   else if (controller.radiologydata![i]["name"].toString().contains(controller.name! ) && controller.radiologydata![i]["city"]==controller.dropvalue) {
                     return pharmContainer(
@@ -136,7 +136,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                         controller.radiologydata![i]
                         ["time"],
                         controller.radiologydata![i]
-                        ["whatsapp"]);
+                        ["whatsapp"],'images/radiologytool.png');
                   }
                   else if (controller.name!.isEmpty && controller.radiologydata![i]["city"]==controller.dropvalue) {
                     return pharmContainer(
@@ -151,7 +151,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                         controller.radiologydata![i]
                         ["time"],
                         controller.radiologydata![i]
-                        ["whatsapp"]);
+                        ["whatsapp"],'images/radiologytool.png');
                   }
                   else if (controller.radiologydata![i]["name"].toString().contains(controller.name! ) && controller.dropvalue=="اختر البلد") {
                     return pharmContainer(
@@ -166,7 +166,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                         controller.radiologydata![i]
                         ["time"],
                         controller.radiologydata![i]
-                        ["whatsapp"]);
+                        ["whatsapp"],'images/radiologytool.png');
                   }
                   else {
                     return SizedBox(

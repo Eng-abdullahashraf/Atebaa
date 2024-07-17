@@ -129,7 +129,7 @@ Widget pharmacyPage(x) => GetBuilder<homecontroller>(
                         controller.pharmacydata![i]
                         ["time"],
                         controller.pharmacydata![i]
-                        ["whatsapp"]);
+                        ["whatsapp"],'images/pharmalogo.png');
                   }
                   else if (controller.pharmacydata![i]["name"].toString().contains(controller.name! ) && controller.pharmacydata![i]["city"]==controller.dropvalue) {
                     return pharmContainer(
@@ -144,7 +144,7 @@ Widget pharmacyPage(x) => GetBuilder<homecontroller>(
                         controller.pharmacydata![i]
                         ["time"],
                         controller.pharmacydata![i]
-                        ["whatsapp"]);
+                        ["whatsapp"],'images/pharmalogo.png');
                   }
                   else if (controller.name!.isEmpty && controller.pharmacydata![i]["city"]==controller.dropvalue) {
                     return pharmContainer(
@@ -159,7 +159,7 @@ Widget pharmacyPage(x) => GetBuilder<homecontroller>(
                         controller.pharmacydata![i]
                         ["time"],
                         controller.pharmacydata![i]
-                        ["whatsapp"]);
+                        ["whatsapp"],'images/pharmalogo.png');
                   }
                   else if (controller.pharmacydata![i]["name"].toString().contains(controller.name! ) && controller.dropvalue=="اختر البلد") {
                     return pharmContainer(
@@ -174,7 +174,7 @@ Widget pharmacyPage(x) => GetBuilder<homecontroller>(
                         controller.pharmacydata![i]
                         ["time"],
                         controller.pharmacydata![i]
-                        ["whatsapp"]);
+                        ["whatsapp"],'images/pharmalogo.png');
                   }
                   else {
                     return SizedBox(

@@ -794,7 +794,7 @@ Widget nursingContainer(name,phone,whatsapp,address,about,width) => Container(
     ));
 
 Widget pharmContainer(
-        double? x, name, address, delevery, phone, time, whatsapp) =>
+        double? x, name, address, delevery, phone, time, whatsapp,String? img) =>
     Container(
         width: x,
         decoration: BoxDecoration(
@@ -816,7 +816,8 @@ Widget pharmContainer(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image(image: AssetImage('images/mpa.png'), width: 75),
+              Image.asset(img!,width: 75),
+              //Image(image: AssetImage('images/mpa.png'), width: 75),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
