@@ -103,7 +103,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
             padding: const EdgeInsets.all(8.0),
             child: Container(
               child: ListView.separated(
-                separatorBuilder: (context, index) => Gap(10),
+                separatorBuilder: (context, index) => Gap(0),
                 itemBuilder: (context, i) {
                   controller.readdata();
                   bool? z = false;

@@ -106,7 +106,7 @@ Widget nursingPage() => GetBuilder<homecontroller>(
             padding: const EdgeInsets.only(left: 15,right: 15),
             child: Container(
               child: ListView.separated(
-                separatorBuilder: (context, index) => Gap(10),
+                separatorBuilder: (context, index) => Gap(0),
                 itemBuilder: (context, i) {
                   controller.readdata();
                   bool? z = false;

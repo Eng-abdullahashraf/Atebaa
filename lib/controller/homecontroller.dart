@@ -314,7 +314,7 @@ class homecontroller extends GetxController{
   }
 
   List<Widget> gene(context){
-    return addvertingmodel!.map((item)=>carouslerImage(item,context)).toList();
+    return advdata!.map((item)=>carouslerImage(item,context)).toList();
   }
 
   //.................................
@@ -525,6 +525,23 @@ void getPharmacyData()async{
       nursingdata!.add(element.data());
     });
     print(nursingdata);
+    loadingFirstPage();
+
+  }
+
+
+  List<dynamic>? advdata=[];
+
+  void getAdvertisingData()async{
+
+    var response;
+    CollectionReference advertising=FirebaseFirestore.instance.collection('advertising');
+    response=await advertising.get();
+    advdata!.clear();
+    response.docs.forEach((element) {
+      advdata!.add(element.data());
+    });
+    print(advdata);
     loadingFirstPage();
 
   }

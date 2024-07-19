@@ -16,7 +16,6 @@ List<dynamic> addvertingmodel=[
   AdvertisingModel(image2: 'images/zahran 2.png',image1:'images/zahran.png',phone: '+201283832896',whatsapp: 'https://www.facebook.com/profile.php?id=100090292286162'),
   AdvertisingModel(image2: 'images/adel gweek 2.png',image1: 'images/adel gweek.jpg',phone: '+201551821489',whatsapp: 'https://www.facebook.com/profile.php?id=61551242799670&mibextid=PtKPJ9'),
   AdvertisingModel(image2: 'images/hossam2.png',image1: 'images/hossam.png',phone: '+201019388578',whatsapp: 'https://www.facebook.com/profile.php?id=61550894865990'),
-  //AdvertisingModel(image2: ImageAsset.advertingimage2,image1: ImageAsset.advertingimage1,phone: '+201211030844',whatsapp: 'Sekoo'),
 
 ];
 

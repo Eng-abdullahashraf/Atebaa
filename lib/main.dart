@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:atebaa/Screen/splash.dart';
+import 'package:atebaa/constant/firebase_notification.dart';
 import 'package:atebaa/controller/dependency.dart';
 import 'package:atebaa/controller/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,8 +24,11 @@ void main() async{
     ),
   )
   :await Firebase.initializeApp();
+  await FirebaseNotification().initNotification();
   runApp(const MyApp());
 }
+
+final GlobalKey<NavigatorState> navigatorkey=GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -33,6 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      navigatorKey: navigatorkey,
       title: 'ATEBAA',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

@@ -110,7 +110,7 @@ Widget pharmacyPage(x) => GetBuilder<homecontroller>(
             padding: const EdgeInsets.all(8.0),
             child: Container(
               child: ListView.separated(
-                separatorBuilder: (context, index) => Gap(10),
+                separatorBuilder: (context, index) => Gap(0),
                 // itemBuilder: (context, i) => pharmContainer(MediaQuery.of(context).size.width*.8),
                 itemBuilder: (context, i) {
                   controller.readdata();

@@ -41,6 +41,7 @@ class _Splash extends State<Splash> {
               controller.getLaboratoryData();
               controller.getNursingData();
               controller.getRadiologyData();
+              controller.getAdvertisingData();
               return Container(
                   width: double.infinity,
                   color: Appcolor().thirdcolor,

@@ -545,45 +545,21 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                     right: 15,
                                                     left: 15,
                                                     top: 15),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Text(
-                                                      'خدمات التمريض',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: TextStyle(
-                                                          color: Appcolor()
-                                                              .firstcolor,
-                                                          fontFamily:
-                                                              'ElMessiri-Bold',
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          fontStyle:
-                                                              FontStyle.normal,
-                                                          letterSpacing: -0.3),
-                                                    ),
-                                                    Expanded(child: SizedBox()),
-                                                    Text(
-                                                      'عرض الكل',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: TextStyle(
-                                                          color:
-                                                              Colors.blueAccent,
-                                                          fontFamily:
-                                                              'ElMessiri-Bold',
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          fontStyle:
-                                                              FontStyle.normal,
-                                                          letterSpacing: -0.3),
-                                                    ),
-                                                  ],
+                                                child: Text(
+                                                  'خدمات التمريض',
+                                                  textAlign:
+                                                      TextAlign.start,
+                                                  style: TextStyle(
+                                                      color: Appcolor()
+                                                          .firstcolor,
+                                                      fontFamily:
+                                                          'ElMessiri-Bold',
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontStyle:
+                                                          FontStyle.normal,
+                                                      letterSpacing: -0.3),
                                                 ),
                                               ),
                                               Container(
@@ -613,45 +589,21 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                     right: 15,
                                                     left: 15,
                                                     top: 15),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Text(
-                                                      'صيدليات',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: TextStyle(
-                                                          color: Appcolor()
-                                                              .firstcolor,
-                                                          fontFamily:
-                                                              'ElMessiri-Bold',
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          fontStyle:
-                                                              FontStyle.normal,
-                                                          letterSpacing: -0.3),
-                                                    ),
-                                                    Expanded(child: SizedBox()),
-                                                    Text(
-                                                      'عرض الكل',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: TextStyle(
-                                                          color:
-                                                              Colors.blueAccent,
-                                                          fontFamily:
-                                                              'ElMessiri-Bold',
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          fontStyle:
-                                                              FontStyle.normal,
-                                                          letterSpacing: -0.3),
-                                                    ),
-                                                  ],
+                                                child: Text(
+                                                  'صيدليات',
+                                                  textAlign:
+                                                      TextAlign.start,
+                                                  style: TextStyle(
+                                                      color: Appcolor()
+                                                          .firstcolor,
+                                                      fontFamily:
+                                                          'ElMessiri-Bold',
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontStyle:
+                                                          FontStyle.normal,
+                                                      letterSpacing: -0.3),
                                                 ),
                                               ),
                                               Container(
@@ -681,53 +633,28 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                     separatorBuilder:
                                                         (context, index) =>
                                                             Gap(8),
-                                                    itemCount: controller
-                                                        .pharmacydata!.length),
+                                                    itemCount: controller.pharmacydata!.length < 5? controller.pharmacydata!.length : 5),
                                               ),
                                               Padding(
                                                 padding: const EdgeInsets.only(
                                                     right: 15,
                                                     left: 15,
                                                     top: 15),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceEvenly,
-                                                  children: [
-                                                    Text(
-                                                      'معامل',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: TextStyle(
-                                                          color: Appcolor()
-                                                              .firstcolor,
-                                                          fontFamily:
-                                                              'ElMessiri-Bold',
-                                                          fontSize: 16,
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          fontStyle:
-                                                              FontStyle.normal,
-                                                          letterSpacing: -0.3),
-                                                    ),
-                                                    Expanded(child: SizedBox()),
-                                                    Text(
-                                                      'عرض الكل',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: TextStyle(
-                                                          color:
-                                                              Colors.blueAccent,
-                                                          fontFamily:
-                                                              'ElMessiri-Bold',
-                                                          fontSize: 12,
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          fontStyle:
-                                                              FontStyle.normal,
-                                                          letterSpacing: -0.3),
-                                                    ),
-                                                  ],
+                                                child: Text(
+                                                  'معامل',
+                                                  textAlign:
+                                                      TextAlign.start,
+                                                  style: TextStyle(
+                                                      color: Appcolor()
+                                                          .firstcolor,
+                                                      fontFamily:
+                                                          'ElMessiri-Bold',
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w700,
+                                                      fontStyle:
+                                                          FontStyle.normal,
+                                                      letterSpacing: -0.3),
                                                 ),
                                               ),
                                               Container(
@@ -757,9 +684,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                     separatorBuilder:
                                                         (context, index) =>
                                                             Gap(8),
-                                                    itemCount: controller
-                                                        .laboratorydata!
-                                                        .length),
+                                                    itemCount: controller.laboratorydata!.length < 5? controller.laboratorydata!.length : 5),
                                               ),
                                               Gap(5),
                                             ],
