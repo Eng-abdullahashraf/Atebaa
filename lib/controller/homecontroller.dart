@@ -151,6 +151,31 @@ class homecontroller extends GetxController{
     update();
   }
 
+  void uploaddatafirestors(name,address,city,delevery,phone,time,whats,doc,type)async{
+
+    if(type=='pharmacy'){
+    CollectionReference se=FirebaseFirestore.instance.collection('pharmacy');
+    //doctors.add({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
+    se.doc(doc).set({'address': address,'name':name,'city':city,'delevery':delevery,'phone':phone,'time':time,'whatsapp':whats});
+    print('doaa is added');}
+    else if(type=='laboratory'){
+      CollectionReference se=FirebaseFirestore.instance.collection('laboratory');
+      //doctors.add({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
+      se.doc(doc).set({'address': address,'name':name,'city':city,'delevery':delevery,'phone':phone,'time':time,'whatsapp':whats});
+      print('doaa is added');}
+    else if(type=='Radio'){
+      CollectionReference se=FirebaseFirestore.instance.collection('Radiology');
+      //doctors.add({'name': name,'address':address,'phone':phone,'special':special,'city':city,'gender':gender});
+      se.doc(doc).set({'address': address,'name':name,'city':city,'delevery':delevery,'phone':phone,'time':time,'whatsapp':whats});
+      print('doaa is added');}
+    else{
+      print('error');
+    }
+    update();
+  }
+
+
+
   String? name="";
   void search(value){
     name=value;
@@ -556,9 +581,6 @@ void getPharmacyData()async{
       loaddatapharmacy=true;
       update();
     }
-
-
-
 
   }
 }

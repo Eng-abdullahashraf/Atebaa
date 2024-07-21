@@ -3,6 +3,7 @@ import 'package:atebaa/component/component.dart';
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 import '../constant/Apptextfield.dart';
@@ -18,8 +19,25 @@ class Uploaddata extends StatelessWidget {
    TextEditingController gender = TextEditingController();
    TextEditingController doc = TextEditingController();
 
+   //...................................................
    TextEditingController enwan=TextEditingController();
    TextEditingController metwaa=TextEditingController();
+   //.......................................................
+
+   TextEditingController type=TextEditingController();
+
+   TextEditingController namepharm=TextEditingController();
+   TextEditingController addressph=TextEditingController();
+   TextEditingController delevery=TextEditingController();
+   TextEditingController phoneph=TextEditingController();
+   TextEditingController time=TextEditingController();
+   TextEditingController whatsapp=TextEditingController();
+
+
+
+
+
+
 
 
 
@@ -32,7 +50,6 @@ class Uploaddata extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(children: [
               textFormApp('doc', doc,TextInputType.text),
-
               SizedBox(height: 10,),
               textFormApp('name', name,TextInputType.text),
               SizedBox(height: 10,),
@@ -157,6 +174,71 @@ class Uploaddata extends StatelessWidget {
                   },child: Text('add',style: TextStyle(fontSize: 35),),color: Appcolor().thirdcolor);
 
                 },),
+
+              Gap(25),
+              AppTextField(
+                  dataList: [
+                    SelectedListItem(name: 'laboratory'),
+                    SelectedListItem(name: 'pharmacy'),
+                    SelectedListItem(name: 'Radio'),
+                  ],
+                  textEditingController: type,
+                  title: 'اختر مدينتك',
+                  hint: 'مدينتك',
+                  isCitySelected: true),
+              GetBuilder<homecontroller>(
+                init: homecontroller(),
+                builder: (controller) {
+                  return  Container(
+                      padding: EdgeInsets.only(
+                        left: 16,
+                        right: 16,
+                      ),
+                      decoration: BoxDecoration(color: Appcolor().thirdcolor,
+                          border: Border.all(color: Colors.black87),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: DropdownButtonFormField(
+                        decoration: InputDecoration(
+                          focusedBorder: InputBorder.none,
+                          border: InputBorder.none,
+                        ),
+                        value: controller.dropvalue,
+                        items: controller.dropItems
+                            .map((e) =>
+                            DropdownMenuItem(value: e, child: Text(e)))
+                            .toList(),
+                        onChanged: (value) {
+                          controller.changedrop(value);
+                        },
+                      ));
+                },),
+              textFormApp('doc', doc,TextInputType.text),
+              SizedBox(height: 10,),
+              textFormApp('name', namepharm,TextInputType.text),
+              textFormApp('address', addressph,TextInputType.text),
+              textFormApp('time', time,TextInputType.text),
+              textFormApp('delevery', delevery,TextInputType.text),
+              textFormApp('phone', phoneph,TextInputType.number),
+              textFormApp('whatsapp', whatsapp,TextInputType.number),
+
+              GetBuilder<homecontroller>(
+                init: homecontroller(),
+                builder: (controller) {
+                  return  MaterialButton(onPressed: (){
+                    controller.uploaddatafirestors(namepharm.text,addressph.text,controller.dropvalue,delevery.text,phoneph.text,time.text,whatsapp.text,doc.text,type.text);
+                    namepharm.clear();
+                    addressph.clear();
+                    time.clear();
+                    delevery.clear();
+                    phoneph.clear();
+                    whatsapp.clear();
+
+                  },child: Text('add',style: TextStyle(fontSize: 35),),color: Appcolor().thirdcolor);
+
+                },),
+
+
+
 
 
             ]),
