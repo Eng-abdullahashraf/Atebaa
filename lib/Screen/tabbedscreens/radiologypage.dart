@@ -119,7 +119,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                         controller.radiologydata![i]
                         ["phone"],
                         controller.radiologydata![i]
-                        ["time"],
+                        ["city"],
                         controller.radiologydata![i]
                         ["whatsapp"],'images/radiologytool.png');
                   }
@@ -134,7 +134,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                         controller.radiologydata![i]
                         ["phone"],
                         controller.radiologydata![i]
-                        ["time"],
+                        ["city"],
                         controller.radiologydata![i]
                         ["whatsapp"],'images/radiologytool.png');
                   }
@@ -149,7 +149,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                         controller.radiologydata![i]
                         ["phone"],
                         controller.radiologydata![i]
-                        ["time"],
+                        ["city"],
                         controller.radiologydata![i]
                         ["whatsapp"],'images/radiologytool.png');
                   }
@@ -164,7 +164,7 @@ Widget radiology(x) => GetBuilder<homecontroller>(
                         controller.radiologydata![i]
                         ["phone"],
                         controller.radiologydata![i]
-                        ["time"],
+                        ["city"],
                         controller.radiologydata![i]
                         ["whatsapp"],'images/radiologytool.png');
                   }

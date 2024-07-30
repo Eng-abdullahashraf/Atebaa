@@ -122,7 +122,7 @@ Widget laboratory(x) => GetBuilder<homecontroller>(
                             controller.laboratorydata![i]
                             ["phone"],
                             controller.laboratorydata![i]
-                            ["time"],
+                            ["city"],
                             controller
                                 .laboratorydata![i]
                             ["whatsapp"],'images/lab.png');
@@ -141,7 +141,7 @@ Widget laboratory(x) => GetBuilder<homecontroller>(
                             controller.laboratorydata![i]
                             ["phone"],
                             controller.laboratorydata![i]
-                            ["time"],
+                            ["city"],
                             controller
                                 .laboratorydata![i]
                             ["whatsapp"],'images/lab.png');
@@ -160,7 +160,7 @@ Widget laboratory(x) => GetBuilder<homecontroller>(
                             controller.laboratorydata![i]
                             ["phone"],
                             controller.laboratorydata![i]
-                            ["time"],
+                            ["city"],
                             controller
                                 .laboratorydata![i]
                             ["whatsapp"],'images/lab.png');
@@ -179,7 +179,7 @@ Widget laboratory(x) => GetBuilder<homecontroller>(
                             controller.laboratorydata![i]
                             ["phone"],
                             controller.laboratorydata![i]
-                            ["time"],
+                            ["city"],
                             controller
                                 .laboratorydata![i]
                             ["whatsapp"],'images/lab.png');

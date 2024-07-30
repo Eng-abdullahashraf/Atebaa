@@ -2,6 +2,7 @@ import 'package:atebaa/Screen/docinfo.dart';
 import 'package:atebaa/component/second%20component.dart';
 import 'package:atebaa/constant/addvertisingmodels.dart';
 import 'package:atebaa/controller/homecontroller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -376,11 +377,17 @@ Widget doa() => Column(
       ],
     );
 
+// Image.network(x['image1'])
 Widget carouslerImage(x, context) => InkWell(
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         // child: Image(image: AssetImage('${x.image1}'))
-        child: Image.network(x['image1']),
+        child: CachedNetworkImage(
+            imageUrl: x['image1'],
+          errorWidget: (context, url, error) => Icon(Icons.error_sharp),
+          placeholder: (context, url) => Center(child: CircularProgressIndicator(),),
+
+        ),
       ),
       onTap: () {
         showDialog(
@@ -397,7 +404,13 @@ Widget carouslerImage(x, context) => InkWell(
                         // child: Image(
                         //     image: AssetImage(x.image2!),
                         //     fit: BoxFit.cover),
-                        child: Image.network(x['image2']),
+                        child: CachedNetworkImage(
+                          imageUrl: x['image2'],
+                          errorWidget: (context, url, error) => Icon(Icons.error_sharp),
+                          placeholder: (context, url) => Center(
+                              child: CircularProgressIndicator()),
+
+                        ),
                         borderRadius: BorderRadius.circular(40),
                       ),
                       Positioned(
@@ -715,85 +728,88 @@ Widget departmentContainer(x, z, Color? a, context) => Container(
       ),
     );
 
-Widget nursingContainer(name,phone,whatsapp,address,about,width) => Container(
-    width: width,
-    decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('images/nursingback.jpg'),
-            fit: BoxFit.fill,
-            opacity: 0.2),
-        // border: Border.all(color: Appcolor().firstcolor,width: 1,),
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12.withOpacity(0.1),
-          )
-        ]),
-    child: Padding(
-      padding: const EdgeInsets.only(top: 10, bottom: 10, left: 15, right: 15),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            name,
-            style: TextStyle(
-                color: Appcolor().firstcolor,
-                fontSize: 18,
-                fontFamily: 'ElMessiri-Bold'),
-          ),
-          Gap(5),
-          Text(
-            about,
-            style: TextStyle(
-                color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-          ),
-          Gap(10),
-          Text(
-            address,
-            style: TextStyle(
-                color: Appcolor().firstcolor,
-                fontSize: 16,
-                fontFamily: 'ElMessiri-Bold'),
-            textAlign: TextAlign.start,
-          ),
-          Gap(10),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+Widget nursingContainer(name,phone,whatsapp,address,about,width) => Padding(
+  padding: const EdgeInsets.only(top: 8,right: 8,left: 8),
+  child: Container(
+      width: width,
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('images/nursingback.jpg'),
+              fit: BoxFit.fill,
+              opacity: 0.2),
+          // border: Border.all(color: Appcolor().firstcolor,width: 1,),
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12.withOpacity(0.1),
+            )
+          ]),
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10, bottom: 10, left: 15, right: 15),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              name,
+              style: TextStyle(
+                  color: Appcolor().firstcolor,
+                  fontSize: 18,
+                  fontFamily: 'ElMessiri-Bold'),
+            ),
+            Gap(5),
+            Text(
+              about,
+              style: TextStyle(
+                  color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Gap(10),
+            Text(
+              address,
+              style: TextStyle(
+                  color: Appcolor().firstcolor,
+                  fontSize: 16,
+                  fontFamily: 'ElMessiri-Bold'),
+              textAlign: TextAlign.start,
+            ),
+            Gap(10),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
 
-              InkWell(
-                onTap: () {
-                  launch(
-                      'https://wa.me/+2${whatsapp}');
+                InkWell(
+                  onTap: () {
+                    launch(
+                        'https://wa.me/+2${whatsapp}');
 
-                },
-                child: Image(
-                    image: AssetImage('images/newwhatsapp.png'),
-                    width: 30),
-              ),
-              Gap(10),
-              InkWell(
-                onTap: () {
-                  launch(
-                      'tel:${phone}');
+                  },
+                  child: Image(
+                      image: AssetImage('images/newwhatsapp.png'),
+                      width: 30),
+                ),
+                Gap(10),
+                InkWell(
+                  onTap: () {
+                    launch(
+                        'tel:${phone}');
 
-                },
+                  },
 
 
-                child: Image(
-                    image: AssetImage('images/newphone.png'), width: 30),
-              )
-            ],
-          ),
-        ],
-      ),
-    ));
+                  child: Image(
+                      image: AssetImage('images/newphone.png'), width: 30),
+                )
+              ],
+            ),
+          ],
+        ),
+      )),
+);
 
-Widget pharmContainer(double? x, name, address, delevery, phone, time, whatsapp,String? img) =>
+Widget pharmContainer(double? x, name, address, delevery, phone, city, whatsapp,String? img) =>
     Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Container(
@@ -833,6 +849,16 @@ Widget pharmContainer(double? x, name, address, delevery, phone, time, whatsapp,
                         maxLines: 1,
                       ),
                       Gap(5),
+                      Text(
+                        city,
+                        style: TextStyle(
+                            color: Appcolor().firstcolor,
+                            fontSize: 16,
+                            fontFamily: 'ElMessiri-Bold'),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                      Gap(5),
                       Row(children: [
                         Icon(Icons.location_pin, size: 20),
                         Gap(3),
@@ -849,19 +875,19 @@ Widget pharmContainer(double? x, name, address, delevery, phone, time, whatsapp,
                         )
                       ]),
                       Gap(5),
-                      Row(children: [
-                        Image.asset('images/clock.png', width: 15),
-                        Gap(5),
-                        Text(
-                          time,
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.black,
-                              fontFamily: 'ElMessiri-Bold'),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                        )
-                      ]),
+                      // Row(children: [
+                      //   Image.asset('images/clock.png', width: 15),
+                      //   Gap(5),
+                      //   Text(
+                      //     time,
+                      //     style: TextStyle(
+                      //         fontSize: 14,
+                      //         color: Colors.black,
+                      //         fontFamily: 'ElMessiri-Bold'),
+                      //     overflow: TextOverflow.ellipsis,
+                      //     maxLines: 1,
+                      //   )
+                      // ]),
                       Gap(5),
                       Row(children: [
                         Icon(Icons.motorcycle, size: 20),

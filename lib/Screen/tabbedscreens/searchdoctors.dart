@@ -471,6 +471,11 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
 
                                                                   Get.to(
                                                                       PharmacyPage());
+                                                                  controller.getPharmacyData();
+                                                                  controller.getLaboratoryData();
+                                                                  controller.getNursingData();
+                                                                  controller.getRadiologyData();
+                                                                  controller.getAdvertisingData();
                                                                 },
                                                                 child: departmentContainer(
                                                                     'صيدليات',
@@ -485,6 +490,11 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                   controller.name="";
                                                                   Get.to(
                                                                       RadiologyPage());
+                                                                  controller.getPharmacyData();
+                                                                  controller.getLaboratoryData();
+                                                                  controller.getNursingData();
+                                                                  controller.getRadiologyData();
+                                                                  controller.getAdvertisingData();
                                                                 },
                                                                 child: departmentContainer(
                                                                     'مراكز',
@@ -515,6 +525,11 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                   controller.name="";
                                                                   Get.to(
                                                                       Laboratory());
+                                                                  controller.getPharmacyData();
+                                                                  controller.getLaboratoryData();
+                                                                  controller.getNursingData();
+                                                                  controller.getRadiologyData();
+                                                                  controller.getAdvertisingData();
                                                                 },
                                                                 child: departmentContainer(
                                                                     'معامل',
@@ -528,6 +543,11 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                 controller.dropvalue='اختر البلد';
                                                                 controller.name="";
                                                                 Get.to(Nursingpage());
+                                                                controller.getPharmacyData();
+                                                                controller.getLaboratoryData();
+                                                                controller.getNursingData();
+                                                                controller.getRadiologyData();
+                                                                controller.getAdvertisingData();
                                                               },
                                                               child: departmentContainer(
                                                                   'خدمات تمريض',
@@ -572,7 +592,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                     itemBuilder:
                                                         (context, index) =>
                                                             nursingContainer(
-                                                              'مستر / ${controller.nursingdata![index]["name"]}',
+                                                              '${controller.nursingdata![index]["name"]}',
                                                               controller.nursingdata![index]["phone"],
                                                                 controller.nursingdata![index]["whatsapp"],
                                                                 'العنوان / ${controller.nursingdata![index]["address"]}',
@@ -626,7 +646,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                         controller.pharmacydata![index]
                                                             ["phone"],
                                                         controller.pharmacydata![index]
-                                                            ["time"],
+                                                            ["city"],
                                                         controller
                                                                 .pharmacydata![index]
                                                             ["whatsapp"],'images/pharmalogo.png'),
@@ -677,7 +697,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                         controller.laboratorydata![index]
                                                             ["phone"],
                                                         controller.laboratorydata![index]
-                                                            ["time"],
+                                                            ["city"],
                                                         controller
                                                                 .laboratorydata![index]
                                                             ["whatsapp"],'images/lab.png'),

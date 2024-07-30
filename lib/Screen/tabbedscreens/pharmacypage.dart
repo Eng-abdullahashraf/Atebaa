@@ -127,7 +127,7 @@ Widget pharmacyPage(x) => GetBuilder<homecontroller>(
                         controller.pharmacydata![i]
                         ["phone"],
                         controller.pharmacydata![i]
-                        ["time"],
+                        ["city"],
                         controller.pharmacydata![i]
                         ["whatsapp"],'images/pharmalogo.png');
                   }
@@ -142,7 +142,7 @@ Widget pharmacyPage(x) => GetBuilder<homecontroller>(
                         controller.pharmacydata![i]
                         ["phone"],
                         controller.pharmacydata![i]
-                        ["time"],
+                        ["city"],
                         controller.pharmacydata![i]
                         ["whatsapp"],'images/pharmalogo.png');
                   }
@@ -157,7 +157,7 @@ Widget pharmacyPage(x) => GetBuilder<homecontroller>(
                         controller.pharmacydata![i]
                         ["phone"],
                         controller.pharmacydata![i]
-                        ["time"],
+                        ["city"],
                         controller.pharmacydata![i]
                         ["whatsapp"],'images/pharmalogo.png');
                   }
@@ -172,7 +172,7 @@ Widget pharmacyPage(x) => GetBuilder<homecontroller>(
                         controller.pharmacydata![i]
                         ["phone"],
                         controller.pharmacydata![i]
-                        ["time"],
+                        ["city"],
                         controller.pharmacydata![i]
                         ["whatsapp"],'images/pharmalogo.png');
                   }

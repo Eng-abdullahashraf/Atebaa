@@ -133,7 +133,7 @@ Widget nursingPage() => GetBuilder<homecontroller>(
                   }
                   else if (controller.name!.isEmpty && controller.nursingdata![i]["city"]==controller.dropvalue) {
                     return nursingContainer(
-                        'مستر / ${controller.nursingdata![i]["name"]}',
+                        '${controller.nursingdata![i]["name"]}',
                         controller.nursingdata![i]["phone"],
                         controller.nursingdata![i]["whatsapp"],
                         'العنوان / ${controller.nursingdata![i]["address"]}',
