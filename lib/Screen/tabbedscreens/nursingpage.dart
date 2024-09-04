@@ -113,7 +113,7 @@ Widget nursingPage() => GetBuilder<homecontroller>(
 
                   if (controller.name!.isEmpty && controller.dropvalue=="اختر البلد") {
                     return  nursingContainer(
-                        'مستر / ${controller.nursingdata![i]["name"]}',
+                        ' ${controller.nursingdata![i]["name"]}',
                         controller.nursingdata![i]["phone"],
                         controller.nursingdata![i]["whatsapp"],
                         'العنوان / ${controller.nursingdata![i]["address"]}',
@@ -123,7 +123,7 @@ Widget nursingPage() => GetBuilder<homecontroller>(
                   }
                   else if (controller.nursingdata![i]["name"].toString().contains(controller.name! ) && controller.nursingdata![i]["city"]==controller.dropvalue) {
                     return nursingContainer(
-                        'مستر / ${controller.nursingdata![i]["name"]}',
+                        ' ${controller.nursingdata![i]["name"]}',
                         controller.nursingdata![i]["phone"],
                         controller.nursingdata![i]["whatsapp"],
                         'العنوان / ${controller.nursingdata![i]["address"]}',
@@ -143,7 +143,7 @@ Widget nursingPage() => GetBuilder<homecontroller>(
                   }
                   else if (controller.nursingdata![i]["name"].toString().contains(controller.name! ) && controller.dropvalue=="اختر البلد") {
                     return nursingContainer(
-                        'مستر / ${controller.nursingdata![i]["name"]}',
+                        '${controller.nursingdata![i]["name"]}',
                         controller.nursingdata![i]["phone"],
                         controller.nursingdata![i]["whatsapp"],
                         'العنوان / ${controller.nursingdata![i]["address"]}',
