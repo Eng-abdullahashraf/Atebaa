@@ -712,8 +712,8 @@ Widget departmentContainer(x, z, Color? a, context) => Container(
             ),
           ],
           image: DecorationImage(
-              image: AssetImage(z), fit: BoxFit.fill, opacity: .3),
-          color: Appcolor().gray,
+              image: AssetImage(z), fit: BoxFit.fill, opacity: .6),
+          color: Colors.grey[900],
           borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20, top: 2, bottom: 2),
@@ -736,13 +736,13 @@ Widget nursingContainer(name,phone,whatsapp,address,about,width) => Padding(
           image: DecorationImage(
               image: AssetImage('images/nursingback.jpg'),
               fit: BoxFit.fill,
-              opacity: 0.2),
+              opacity: 0.7),
           // border: Border.all(color: Appcolor().firstcolor,width: 1,),
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12.withOpacity(0.1),
-            )
+              color: Colors.grey, // Shadow color// Shadow spread radius
+            ),
           ]),
       child: Padding(
         padding: const EdgeInsets.only(top: 10, bottom: 10, left: 15, right: 15),
@@ -765,7 +765,7 @@ Widget nursingContainer(name,phone,whatsapp,address,about,width) => Padding(
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
-            Gap(10),
+            Gap(7),
             Text(
               address,
               style: TextStyle(
@@ -774,7 +774,7 @@ Widget nursingContainer(name,phone,whatsapp,address,about,width) => Padding(
                   fontFamily: 'ElMessiri-Bold'),
               textAlign: TextAlign.start,
             ),
-            Gap(10),
+            Gap(8),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -811,7 +811,7 @@ Widget nursingContainer(name,phone,whatsapp,address,about,width) => Padding(
 
 Widget pharmContainer(double? x, name, address, delevery, phone, city, whatsapp,String? img) =>
     Padding(
-      padding: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.all(8),
       child: Container(
           width: x,
           decoration: BoxDecoration(
@@ -823,9 +823,12 @@ Widget pharmContainer(double? x, name, address, delevery, phone, city, whatsapp,
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                    color: Colors.black12.withOpacity(0.05),
-                    offset: Offset(1, 1),
-                    spreadRadius: 1)
+                  color: Colors.grey, // Shadow color
+                  offset: Offset(
+                      1, 1), // Shadow position (horizontal and vertical offset)
+                  blurRadius: 3, // Shadow blur radius
+                  spreadRadius: 1, // Shadow spread radius
+                ),
               ]),
           child: Padding(
             padding:
@@ -888,7 +891,6 @@ Widget pharmContainer(double? x, name, address, delevery, phone, city, whatsapp,
                       //     maxLines: 1,
                       //   )
                       // ]),
-                      Gap(5),
                       Row(children: [
                         Icon(Icons.motorcycle, size: 20),
                         Gap(5),

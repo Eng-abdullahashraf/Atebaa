@@ -103,7 +103,6 @@ class Aboutus extends StatelessWidget {
                           child: Image(
                             image: AssetImage('images/linkedin.png'),color: Appcolor().firstcolor,
                             width: 50,
-
                           ),
                         ),
                         onTap: () {
@@ -193,21 +192,14 @@ class Aboutus extends StatelessWidget {
   }
 
   Facebook() async {
-    const url = "https://www.facebook.com/techsollution";
+    const url = "https://www.facebook.com/profile.php?id=61555724049611";
     if (await canLaunch(url)) {
       await launch(url);
     } else {
       throw "لا يمكن تحميل رابط URL";
     }
   }
-  // Share() async {
-  //   const url = "https://www.facebook.com/techsollution";
-  //   if (await canLaunch(url)) {
-  //     await launch(url);
-  //   } else {
-  //     throw "لا يمكن تحميل رابط URL";
-  //   }
-  // }
+
   Linkedin() async {
     const url = "https://www.linkedin.com/in/tecs-techsolution/";
     if (await canLaunch(url)) {

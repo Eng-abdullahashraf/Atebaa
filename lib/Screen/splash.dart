@@ -5,6 +5,7 @@ import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/onboarding/onboarding%20page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import '../../theme/colors.dart';
@@ -54,17 +55,7 @@ class _Splash extends State<Splash> {
                         children: [
                           Expanded(
                               child: Center(
-                                child: Text(
-                                  'atebaa',
-                                  style: TextStyle(
-                                    fontSize: 85,
-                                    color: Appcolor().firstcolor,
-                                    fontFamily: 'Bebas',
-                                    letterSpacing: 8,
-                                  ),
-                                )
-                                    .animate()
-                                    .scale(duration: Duration(seconds: 2),curve: Curves.easeIn),
+                                child: Image(image: AssetImage('images/ateba.png'),width: 250,)
                               )),
                           Text(
                             'Powered by TECS ',

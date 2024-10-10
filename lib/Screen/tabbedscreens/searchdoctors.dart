@@ -117,6 +117,51 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                             children: [
                                               Padding(
                                                 padding: const EdgeInsets.only(
+                                                    right: 15,
+                                                    left: 15,
+                                                    top: 15),
+                                                child: Row(
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                    Text(
+                                                      'إعلان ',
+                                                      textAlign: TextAlign.start,
+                                                      style: TextStyle(
+                                                          color:
+                                                          Colors.grey[700],
+                                                          fontFamily:
+                                                          'ElMessiri-Bold',
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                          FontWeight.w700,
+                                                          fontStyle:
+                                                          FontStyle.normal,
+                                                          letterSpacing: -0.3),
+                                                    ),
+                                                    CircleAvatar(backgroundColor:Colors.grey[700] ,radius: 1.3,),
+                                                    Text(
+                                                      ' 4.9 ',
+                                                      textAlign: TextAlign.start,
+                                                      style: TextStyle(
+                                                          color:
+                                                          Colors.grey[600],
+                                                          fontFamily:
+                                                          'ElMessiri-Bold',
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                          FontWeight.w700,
+                                                          fontStyle:
+                                                          FontStyle.normal,
+                                                          letterSpacing: -0.3),
+                                                    ),
+                                                    Icon(Icons.star,color:
+                                                    Colors.grey[600],size: 12,)
+                                                  ],
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
                                                     top: 10),
                                                 child: Container(
                                                     width: double.infinity,
@@ -445,13 +490,8 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                               ),
                                               Container(
                                                   width: double.infinity,
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
+                                                  child: Column(crossAxisAlignment: CrossAxisAlignment.center,
+                                                    mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
                                                       SingleChildScrollView(
                                                         scrollDirection:
@@ -468,14 +508,12 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                 onTap: () {
                                                                   controller.dropvalue='اختر البلد';
                                                                   controller.name="";
-
-                                                                  Get.to(
-                                                                      PharmacyPage());
+                                                                  Get.to(PharmacyPage());
                                                                   controller.getPharmacyData();
-                                                                  controller.getLaboratoryData();
-                                                                  controller.getNursingData();
-                                                                  controller.getRadiologyData();
-                                                                  controller.getAdvertisingData();
+                                                                  // controller.getLaboratoryData();
+                                                                  // controller.getNursingData();
+                                                                  // controller.getRadiologyData();
+                                                                  // controller.getAdvertisingData();
                                                                 },
                                                                 child: departmentContainer(
                                                                     'صيدليات',
@@ -490,11 +528,11 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                   controller.name="";
                                                                   Get.to(
                                                                       RadiologyPage());
-                                                                  controller.getPharmacyData();
-                                                                  controller.getLaboratoryData();
-                                                                  controller.getNursingData();
-                                                                  controller.getRadiologyData();
-                                                                  controller.getAdvertisingData();
+                                                                  // controller.getPharmacyData();
+                                                                  // controller.getLaboratoryData();
+                                                                  // controller.getNursingData();
+                                                                   controller.getRadiologyData();
+                                                                  // controller.getAdvertisingData();
                                                                 },
                                                                 child: departmentContainer(
                                                                     'مراكز',
@@ -525,11 +563,11 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                   controller.name="";
                                                                   Get.to(
                                                                       Laboratory());
-                                                                  controller.getPharmacyData();
+                                                                  // controller.getPharmacyData();
                                                                   controller.getLaboratoryData();
-                                                                  controller.getNursingData();
-                                                                  controller.getRadiologyData();
-                                                                  controller.getAdvertisingData();
+                                                                  // controller.getNursingData();
+                                                                  // controller.getRadiologyData();
+                                                                  // controller.getAdvertisingData();
                                                                 },
                                                                 child: departmentContainer(
                                                                     'معامل',
@@ -543,11 +581,11 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                 controller.dropvalue='اختر البلد';
                                                                 controller.name="";
                                                                 Get.to(Nursingpage());
-                                                                controller.getPharmacyData();
-                                                                controller.getLaboratoryData();
+                                                                // controller.getPharmacyData();
+                                                                // controller.getLaboratoryData();
                                                                 controller.getNursingData();
-                                                                controller.getRadiologyData();
-                                                                controller.getAdvertisingData();
+                                                                // controller.getRadiologyData();
+                                                                // controller.getAdvertisingData();
                                                               },
                                                               child: departmentContainer(
                                                                   'خدمات تمريض',
@@ -583,7 +621,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                 ),
                                               ),
                                               Container(
-                                                height: 175,
+                                                height: 185,
                                                 margin: EdgeInsets.all(20),
                                                 width: double.infinity,
                                                 child: ListView.separated(
@@ -608,7 +646,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                 padding: const EdgeInsets.only(
                                                     right: 15,
                                                     left: 15,
-                                                    top: 15),
+                                                    top: 5),
                                                 child: Text(
                                                   'صيدليات',
                                                   textAlign:
@@ -627,7 +665,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                 ),
                                               ),
                                               Container(
-                                                height: 180,
+                                                height: 190,
                                                 margin: EdgeInsets.all(20),
                                                 width: double.infinity,
                                                 child: ListView.separated(
@@ -678,7 +716,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                 ),
                                               ),
                                               Container(
-                                                height: 180,
+                                                height: 190,
                                                 margin: EdgeInsets.all(20),
                                                 width: double.infinity,
                                                 child: ListView.separated(

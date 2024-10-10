@@ -98,7 +98,8 @@ Widget nursingPage() => GetBuilder<homecontroller>(
                 onChanged: (value) {
                   controller.changedrop(value);
                 },
-              )),
+              )
+          ),
         ),
         Gap(8),
         Expanded(

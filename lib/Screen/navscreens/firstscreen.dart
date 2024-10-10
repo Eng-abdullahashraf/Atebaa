@@ -51,7 +51,7 @@ class FirstScreen extends StatelessWidget {
                     Expanded(
                       child: Row(children: [
                         Expanded(child: InkWell(
-                            onTap: () {controller.changeScreen(2);},child: Image.asset('images/handpray.png', color: controller.screennum==2? Appcolor().thirdcolor:Colors.black, width: 25)),),
+                            onTap: () {controller.changeScreen(2);},child: Image.asset('images/handpray.png',width: 15, color: controller.screennum==2? Appcolor().thirdcolor:Colors.black,)),),
                         Expanded(child: IconButton(
                             onPressed: () {controller.changeScreen(3);}, icon: Icon(Icons.info,size: 30,color: controller.screennum==3? Appcolor().thirdcolor:Colors.black,)))
 

@@ -367,7 +367,6 @@ class homecontroller extends GetxController{
 
   AppOpenAd? _appOpenAd;
   void showAppAdd(){
-
     try{
       AppOpenAd.load(
           adUnitId: AdManager.openAdd,
