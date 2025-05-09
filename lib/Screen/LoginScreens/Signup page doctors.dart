@@ -12,12 +12,19 @@ import '../../theme/colors.dart';
 class SignDoctors extends StatelessWidget {
   SignDoctors({super.key});
   bool? isChecked = false;
+  var username = TextEditingController();
+  var name = TextEditingController();
   var mailadd = TextEditingController();
+  var address = TextEditingController();
+  var phone = TextEditingController();
+  var whatsapp = TextEditingController();
+  var government = TextEditingController();
+  var city = TextEditingController();
+  var type = TextEditingController();
+  var gender = TextEditingController();
   var password = TextEditingController();
-  TextEditingController cites = TextEditingController();
+  var verifypassword = TextEditingController();
 
-  List dropItems=['اختر البلد','المنزلة','البصراط'];
-  String? dropvalue='اختر البلد';
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +45,14 @@ class SignDoctors extends StatelessWidget {
                         icon: Icon(Icons.arrow_forward)),
                     Center(
                         child: Image(
-                      image: AssetImage('images/atebaa.png'),
+                      image: AssetImage('images/ateba.png'),
                       height: 157,
                       width: 154,
                     )),
                     Gap(20),
                     Center(
                       child: Text(
-                        'انشاء حساب طبيب',
+                        'انشاء حساب',
                         style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 24,
@@ -59,7 +66,96 @@ class SignDoctors extends StatelessWidget {
                         LableText: "اسم المستخدم",
                         HintText: "اسم المستخدم",
                         Scure: false,
-                        controller: TextEditingController()),
+                        controller: username), //‘Username
+                    InputInfoDocForm(
+                        PrefIcon: Icon(Icons.person),
+                        TybeInput: TextInputType.name,
+                        LableText: "الاسم الشخصي",
+                        HintText: "محمد أحمد السيد",
+                        Scure: false,
+                        controller: name),//name
+                    InputInfoDocForm(
+                        PrefIcon: Icon(Icons.person),
+                        TybeInput: TextInputType.name,
+                        LableText: "العنوان",
+                        HintText: "العنوان بالتفصيل",
+                        Scure: false,
+                        controller: address),//name
+                    InputInfoDocForm(
+                        PrefIcon: Icon(Icons.person),
+                        TybeInput: TextInputType.name,
+                        LableText: "البريد الالكتروني",
+                        HintText: "mail@comp.com",
+                        Scure: false,
+                        controller: mailadd),//name
+                    InputInfoDocForm(
+                        PrefIcon: Icon(Icons.phone_enabled),
+                        TybeInput: TextInputType.number,
+                        LableText: "رقم الهاتف",
+                        HintText: "رقم الهاتف",
+                        Scure: false,
+                        controller: phone),
+                    InputInfoDocForm(
+                        PrefIcon: Icon(Icons.phone_enabled),
+                        TybeInput: TextInputType.number,
+                        LableText: "رقم الواتساب",
+                        HintText: "رقم الواتساب",
+                        Scure: false,
+                        controller: whatsapp),
+
+
+                    Padding(
+                      padding:
+                      const EdgeInsets.only(left: 16, right: 16, top: 13),
+                      child: Container(
+                          padding: EdgeInsets.only(
+                            left: 16,
+                            right: 16,
+                          ),
+                          decoration: BoxDecoration(color: Appcolor().thirdcolor,
+                              border: Border.all(color: Colors.black87),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              focusedBorder: InputBorder.none,
+                              border: InputBorder.none,
+                            ),
+                            value: controller.dropGovvalue,
+                            items: controller.dropGoverItems
+                                .map((e) =>
+                                DropdownMenuItem(value: e, child: Text(e)))
+                                .toList(),
+                            onChanged: (value) {
+                              controller.changgovdrop(value);
+                            },
+                          )),
+                    ),
+                    Padding(
+                      padding:
+                      const EdgeInsets.only(left: 16, right: 16, top: 13),
+                      child: Container(
+                          padding: EdgeInsets.only(
+                            left: 16,
+                            right: 16,
+                          ),
+                          decoration: BoxDecoration(color: Appcolor().thirdcolor,
+                              border: Border.all(color: Colors.black87),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: DropdownButtonFormField(
+                            decoration: InputDecoration(
+                              focusedBorder: InputBorder.none,
+                              border: InputBorder.none,
+                            ),
+                            value: controller.dropCityvalue,
+                            items: controller.dropCityItems
+                                .map((e) =>
+                                DropdownMenuItem(value: e, child: Text(e)))
+                                .toList(),
+                            onChanged: (value) {
+                              controller.changcityedrop(value);
+                            },
+                          )),
+                    ),
                     Padding(
                       padding:
                       const EdgeInsets.only(left: 16, right: 16, top: 13),
@@ -86,133 +182,28 @@ class SignDoctors extends StatelessWidget {
                             },
                           )),
                     ),
-
-                    Padding(
-                      padding:
-                      const EdgeInsets.only(left: 16, right: 16, top: 13),
-                      child: Container(
-                          padding: EdgeInsets.only(
-                            left: 16,
-                            right: 16,
-                          ),
-                          decoration: BoxDecoration(color: Appcolor().thirdcolor,
-                              border: Border.all(color: Colors.black87),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: DropdownButtonFormField(
-                            decoration: InputDecoration(
-                              focusedBorder: InputBorder.none,
-                              border: InputBorder.none,
-                            ),
-                            value: controller.dropvaluedoctorspecial,
-                            items: controller.dropdoctorsspecial
-                                .map((e) =>
-                                DropdownMenuItem(value: e, child: Text(e)))
-                                .toList(),
-                            onChanged: (value) {
-                              controller.changedropdoctorsspecial(value);
-                            },
-                          )),
-                    ),
                     InputInfoDocForm(
-                        PrefIcon: Icon(Icons.phone_enabled),
-                        TybeInput: TextInputType.number,
-                        LableText: "رقم الهاتف",
-                        HintText: "رقم الهاتف",
+                        PrefIcon: Icon(Icons.person),
+                        TybeInput: TextInputType.name,
+                        LableText: "الجنس",
+                        HintText: "الجنس",
                         Scure: false,
-                        controller: TextEditingController()),
-                    Padding(
-                      padding:
-                      const EdgeInsets.only(left: 16, right: 16, top: 13),
-                      child: Container(
-                          padding: EdgeInsets.only(
-                            left: 16,
-                            right: 16,
-                          ),
-                          decoration: BoxDecoration(color: Appcolor().thirdcolor,
-                              border: Border.all(color: Colors.black87),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: DropdownButtonFormField(
-                            decoration: InputDecoration(
-                              focusedBorder: InputBorder.none,
-                              border: InputBorder.none,
-                            ),
-                            value: controller.dropvalue,
-                            items: controller.dropItems
-                                .map((e) =>
-                                DropdownMenuItem(value: e, child: Text(e)))
-                                .toList(),
-                            onChanged: (value) {
-                              controller.changedrop(value);
-                            },
-                          )),
-                    ),
-                    Padding(
-                      padding:
-                      const EdgeInsets.only(left: 16, right: 16, top: 13),
-                      child: Container(
-                          padding: EdgeInsets.only(
-                            left: 16,
-                            right: 16,
-                          ),
-                          decoration: BoxDecoration(color: Appcolor().thirdcolor,
-                              border: Border.all(color: Colors.black87),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: DropdownButtonFormField(
-                            decoration: InputDecoration(
-                              focusedBorder: InputBorder.none,
-                              border: InputBorder.none,
-                            ),
-                            value: controller.dropvalue,
-                            items: controller.dropItems
-                                .map((e) =>
-                                DropdownMenuItem(value: e, child: Text(e)))
-                                .toList(),
-                            onChanged: (value) {
-                              controller.changedrop(value);
-                            },
-                          )),
-                    ),
+                        controller: gender), //‘Username
+
                     InputInfoDocForm(
                         PrefIcon: Icon(Icons.password),
                         TybeInput: TextInputType.visiblePassword,
                         LableText: "كلمة السر",
                         HintText: "كلمة السر",
                         Scure: true,
-                        controller: TextEditingController()),
+                        controller: password),
                     InputInfoDocForm(
                         PrefIcon: Icon(Icons.password),
                         TybeInput: TextInputType.visiblePassword,
                         LableText: "تأكيد كلمة السر",
                         HintText: "تأكيد كلمة السر",
                         Scure: true,
-                        controller: TextEditingController()),
-                    Center(
-                      child: Container(
-                        child: Column(
-                          children: [
-                            Text(
-                              'قم برفع صورة اثبات الشخصية',
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 8),
-                              child: InkWell(
-                                onTap: () {},
-                                radius: 25,
-                                child: Image(
-                                  image: AssetImage('images/qrcode.png'),
-                                  height: 114,
-                                  width: 114,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
+                        controller: verifypassword),
                     Padding(
                       padding: const EdgeInsets.only(right: 35),
                       child: Row(
@@ -242,7 +233,91 @@ class SignDoctors extends StatelessWidget {
                           TextFont: 20,
                           ButtonColor: Appcolor().firstcolor,
                           TextColor: Appcolor().thirdcolor,
-                          ontap: () {},
+                          ontap: () {
+                            try{
+                              Map<String, String> fields = {
+                                "اسم المستخدم": username.text,
+                                "الاسم": name.text,
+                                "العنوان": address.text,
+                                "البريد الإلكتروني": mailadd.text,
+                                "رقم الهاتف": phone.text,
+                                "رقم الواتساب": whatsapp.text,
+                                "المحافظة": controller.dropGovvalue.toString(),
+                                "المدينة": controller.dropCityvalue.toString(),
+                                "نوع الطبيب": controller.dropvaluedoctorstype.toString(),
+                                "النوع": gender.text,
+                                "كلمة السر": password.text,
+                              };
+                              String? emptyField;
+
+                              fields.forEach((key, value) {
+                                if (value.trim().isEmpty ||
+                                    value == 'اختر المحافظة' ||
+                                    value == 'اختر المدينة' ||
+                                    value == 'اختر النوع') {
+                                  emptyField ??= key;
+                                }
+                              });
+                              if (emptyField != null) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text("من فضلك أدخل $emptyField"),
+                                    backgroundColor: Colors.red,
+                                    duration: Duration(seconds: 3),
+                                  ),
+                                );
+                              } else if (password.text != verifypassword.text) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text("كلمة السر وتأكيدها غير متطابقين"),
+                                    backgroundColor: Colors.red,
+                                    duration: Duration(seconds: 3),
+                                  ),
+                                );
+                              } else {
+                                controller.sendData(
+                                  username.text,
+                                  name.text,
+                                  address.text,
+                                  mailadd.text,
+                                  phone.text,
+                                  whatsapp.text,
+                                  controller.dropGovvalue,
+                                  controller.dropCityvalue,
+                                  controller.dropvaluedoctorstype,
+                                  gender.text,
+                                  password.text,
+                                );
+                              }
+                              // if(username.text.isEmpty || name.text.isEmpty || address.text.isEmpty || mailadd.text.isEmpty || phone.text.isEmpty || whatsapp.text.isEmpty || controller.dropGovvalue=='اختر المحافظة' ||controller.dropCityvalue=='اختر المدينة' ||controller.dropvaluedoctorstype=='اختر النوع' || gender.text.isEmpty || password.text.isEmpty){
+                              //   ScaffoldMessenger.of(context).showSnackBar(
+                              //     SnackBar(
+                              //       content: Text("راجع البيانات"),
+                              //       backgroundColor: Colors.red,
+                              //       duration: Duration(seconds: 3),
+                              //     ),
+                              //   );
+                              // }
+                              // else{
+                              //   if(password.text==verifypassword.text){
+                              //     controller.sendData(username.text, name.text, address.text, mailadd.text, phone.text, whatsapp.text, controller.dropGovvalue, controller.dropCityvalue, controller.dropvaluedoctorstype, gender.text, password.text);
+                              //   }
+                              //   else{
+                              //     ScaffoldMessenger.of(context).showSnackBar(
+                              //       SnackBar(
+                              //         content: Text("كلمة السر وتأكيدها غير متطابقين"),
+                              //         backgroundColor: Colors.red,
+                              //         duration: Duration(seconds: 3),
+                              //       ),
+                              //     );
+                              //   }
+                              // }
+
+                            }
+                            catch(e){
+                              print(e);
+                            }
+                          },
                           radius: 25),
                     ),
                     Gap(20)

@@ -4,16 +4,17 @@ import 'dart:io';
 import 'package:atebaa/Screen/splash.dart';
 import 'package:atebaa/constant/firebase_notification.dart';
 import 'package:atebaa/controller/dependency.dart';
-import 'package:atebaa/controller/dio.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:upgrader/upgrader.dart';
 
+import 'controller/dio.dart';
+
 void main() async{
   DependencyInjection.init();
   WidgetsFlutterBinding.ensureInitialized();
-  diohelp.init();
+  DioHelper.init();
   Platform.isAndroid?
   await Firebase.initializeApp(
     options: FirebaseOptions(
@@ -33,7 +34,7 @@ final GlobalKey<NavigatorState> navigatorkey=GlobalKey<NavigatorState>();
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  // This wid get is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

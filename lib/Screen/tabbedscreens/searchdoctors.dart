@@ -1,5 +1,6 @@
 import 'package:animated_conditional_builder/animated_conditional_builder.dart';
 import 'package:atebaa/Screen/Advertisingscreen.dart';
+import 'package:atebaa/Screen/LoginScreens/LoginPage.dart';
 import 'package:atebaa/Screen/tabbedscreens/laboratory.dart';
 import 'package:atebaa/Screen/tabbedscreens/nursingpage.dart';
 import 'package:atebaa/Screen/tabbedscreens/pharmacypage.dart';
@@ -13,6 +14,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import '../../constant/Apptextfield.dart';
 import '../../controller/homecontroller.dart';
 import '../../theme/colors.dart';
@@ -37,6 +39,7 @@ import '../../component/component.dart';
 Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
     stream: Connectivity().onConnectivityChanged,
     builder: (context, snapshot) {
+
       return Container(
         color: Appcolor().firstcolor,
         child: SafeArea(
@@ -96,14 +99,20 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                         width:
                                             MediaQuery.of(context).size.width,
                                         child: Padding(
-                                          padding: const EdgeInsets.all(10),
-                                          child: Text(
-                                            'أطباء',
-                                            style: TextStyle(
-                                                color: Appcolor().thirdcolor,
-                                                fontFamily: 'ElMessiri-Bold',
-                                                fontSize: 24),
-                                            textAlign: TextAlign.center,
+                                          padding: const EdgeInsets.only(left: 15,right: 15),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              IconButton(onPressed: (){Get.to(LoginPage());}, icon:Icon(Icons.login,color: Appcolor().thirdcolor,) ),
+                                              Text(
+                                                'أطباء',
+                                                style: TextStyle(
+                                                    color: Appcolor().thirdcolor,
+                                                    fontFamily: 'ElMessiri-Bold',
+                                                    fontSize: 24),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -429,11 +438,9 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                               cites.text;
                                                           controller.special =
                                                               specialty.text;
-                                                          controller
-                                                              .getdata(context);
-                                                          controller
-                                                              .showAppAdd();
+                                                          controller.getdata(context);
                                                           controller.loaded();
+
                                                         } else {
                                                           Get.rawSnackbar(
                                                               messageText: const Text(
@@ -510,10 +517,8 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                   controller.name="";
                                                                   Get.to(PharmacyPage());
                                                                   controller.getPharmacyData();
-                                                                  // controller.getLaboratoryData();
-                                                                  // controller.getNursingData();
-                                                                  // controller.getRadiologyData();
-                                                                  // controller.getAdvertisingData();
+
+
                                                                 },
                                                                 child: departmentContainer(
                                                                     'صيدليات',
@@ -528,11 +533,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                   controller.name="";
                                                                   Get.to(
                                                                       RadiologyPage());
-                                                                  // controller.getPharmacyData();
-                                                                  // controller.getLaboratoryData();
-                                                                  // controller.getNursingData();
                                                                    controller.getRadiologyData();
-                                                                  // controller.getAdvertisingData();
                                                                 },
                                                                 child: departmentContainer(
                                                                     'مراكز',
@@ -563,11 +564,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                   controller.name="";
                                                                   Get.to(
                                                                       Laboratory());
-                                                                  // controller.getPharmacyData();
                                                                   controller.getLaboratoryData();
-                                                                  // controller.getNursingData();
-                                                                  // controller.getRadiologyData();
-                                                                  // controller.getAdvertisingData();
                                                                 },
                                                                 child: departmentContainer(
                                                                     'معامل',
@@ -581,11 +578,7 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                                                 controller.dropvalue='اختر البلد';
                                                                 controller.name="";
                                                                 Get.to(Nursingpage());
-                                                                // controller.getPharmacyData();
-                                                                // controller.getLaboratoryData();
                                                                 controller.getNursingData();
-                                                                // controller.getRadiologyData();
-                                                                // controller.getAdvertisingData();
                                                               },
                                                               child: departmentContainer(
                                                                   'خدمات تمريض',

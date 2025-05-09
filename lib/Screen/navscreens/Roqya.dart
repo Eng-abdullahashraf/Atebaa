@@ -90,7 +90,6 @@ class Roqya extends StatelessWidget {
                                 Expanded(
                                   child: MaterialButton(
                                     onPressed: () {
-                                      controller.showAppAdd();
                                       controller.changezekrdata(0);
                                     },
                                     color: controller.zekrnmuber==1 ?Appcolor().thirdcolor : Color(0xffbebac9),
@@ -102,7 +101,6 @@ class Roqya extends StatelessWidget {
                                 Expanded(
                                   child: MaterialButton(
                                     onPressed: () {
-                                      controller.showAppAdd();
                                       controller.changezekrdata(1);
 
                                     },
@@ -133,7 +131,6 @@ class Roqya extends StatelessWidget {
               builder: (controller) {
               return FloatingActionButton(
                 onPressed: (){
-                  controller.showAppAdd();
                   controller.getdoaa();
                   Get.to(MixInfo());
                   controller.loadings();

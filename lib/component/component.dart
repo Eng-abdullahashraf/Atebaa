@@ -729,19 +729,23 @@ Widget departmentContainer(x, z, Color? a, context) => Container(
     );
 
 Widget nursingContainer(name,phone,whatsapp,address,about,width) => Padding(
-  padding: const EdgeInsets.only(top: 8,right: 8,left: 8),
+  padding: const EdgeInsets.only(top: 8,right: 8,left: 8,bottom: 8),
   child: Container(
       width: width,
       decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('images/nursingback.jpg'),
-              fit: BoxFit.fill,
-              opacity: 0.7),
+          // image: DecorationImage(
+          //     image: AssetImage('images/nursingback.jpg'),
+          //     fit: BoxFit.fill,
+          //     opacity: 0.5),
           // border: Border.all(color: Appcolor().firstcolor,width: 1,),
+          color: Appcolor().thirdcolor,
           borderRadius: BorderRadius.circular(15),
           boxShadow: [
             BoxShadow(
-              color: Colors.grey, // Shadow color// Shadow spread radius
+              color: Colors.black12, // Shadow color
+              offset: Offset(.7, .7), // Shadow position (horizontal and vertical offset)
+              blurRadius: 1, // Shadow blur radius
+              spreadRadius: 1, // Shadow spread radius
             ),
           ]),
       child: Padding(
@@ -775,35 +779,42 @@ Widget nursingContainer(name,phone,whatsapp,address,about,width) => Padding(
               textAlign: TextAlign.start,
             ),
             Gap(8),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+            GetBuilder<homecontroller>(
+                init: homecontroller(),
+                builder: (controller) {
+                  return Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
 
-                InkWell(
-                  onTap: () {
-                    launch(
-                        'https://wa.me/+2${whatsapp}');
+                      InkWell(
+                        onTap: () {
+                          controller.loadRewardedAd();
+                          launch(
+                              'https://wa.me/+2${whatsapp}');
 
-                  },
-                  child: Image(
-                      image: AssetImage('images/newwhatsapp.png'),
-                      width: 30),
-                ),
-                Gap(10),
-                InkWell(
-                  onTap: () {
-                    launch(
-                        'tel:${phone}');
+                        },
+                        child: Image(
+                            image: AssetImage('images/newwhatsapp.png'),
+                            width: 30),
+                      ),
+                      Gap(10),
+                      InkWell(
+                        onTap: () {
+                          controller.loadRewardedAd();
+                          launch(
+                              'tel:${phone}');
 
-                  },
+                        },
 
 
-                  child: Image(
-                      image: AssetImage('images/newphone.png'), width: 30),
-                )
-              ],
-            ),
+                        child: Image(
+                            image: AssetImage('images/newphone.png'), width: 30),
+                      )
+                    ],
+                  );
+
+                },)
           ],
         ),
       )),
@@ -823,10 +834,9 @@ Widget pharmContainer(double? x, name, address, delevery, phone, city, whatsapp,
               borderRadius: BorderRadius.circular(15),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey, // Shadow color
-                  offset: Offset(
-                      1, 1), // Shadow position (horizontal and vertical offset)
-                  blurRadius: 3, // Shadow blur radius
+                  color: Colors.black12, // Shadow color
+                  offset: Offset(.7, .7), // Shadow position (horizontal and vertical offset)
+                  blurRadius: 1, // Shadow blur radius
                   spreadRadius: 1, // Shadow spread radius
                 ),
               ]),
@@ -905,31 +915,38 @@ Widget pharmContainer(double? x, name, address, delevery, phone, city, whatsapp,
                         )
                       ]),
                       Gap(5),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              launch(
-                                  'https://wa.me/+2${whatsapp}');
-                            },
-                            child: Image(
-                                image: AssetImage('images/newwhatsapp.png'),
-                                width: 30),
-                          ),
-                          Gap(5),
-                          InkWell(
-                            onTap: () {
-                              launch(
-                                  'tel:${phone}');
+                      GetBuilder<homecontroller>(
+                          init: homecontroller(),
+                          builder: (controller) {
+                            return Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    controller.loadRewardedAd();
 
-                            },
-                            child: Image(
-                                image: AssetImage('images/newphone.png'), width: 30),
-                          )
-                        ],
-                      ),
+                                    launch(
+                                        'https://wa.me/+2${whatsapp}');
+                                  },
+                                  child: Image(
+                                      image: AssetImage('images/newwhatsapp.png'),
+                                      width: 30),
+                                ),
+                                Gap(5),
+                                InkWell(
+                                  onTap: () {
+                                    controller.loadRewardedAd();
+                                    launch(
+                                        'tel:${phone}');
+
+                                  },
+                                  child: Image(
+                                      image: AssetImage('images/newphone.png'), width: 30),
+                                )
+                              ],
+                            );
+                          },),
                     ],
                   ),
                 ),

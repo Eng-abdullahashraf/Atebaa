@@ -73,13 +73,6 @@ class FirstScreen extends StatelessWidget {
                           color: Appcolor().secondcolor,
                           child: controller.Screennav[controller.screennum!]),
                     ),
-                    controller.isloaded
-                        ? SizedBox(
-                      width: controller.bannerAd!.size.width.toDouble(),
-                      height: controller.bannerAd!.size.height.toDouble(),
-                      child: AdWidget(ad: controller.bannerAd!),
-                    )
-                        : SizedBox(),
                   ],
                 );
               }
