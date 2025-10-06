@@ -24,18 +24,22 @@ class _Splash extends State<Splash> {
     super.initState();
 
     controller = Get.put(homecontroller()); // تحط الكنترولر هنا عشان تضمن نسخة واحدة
+
     controller.getPharmacyData();
     controller.getLaboratoryData();
     controller.getNursingData();
     controller.getRadiologyData();
     controller.getAdvertisingData();
     controller.getdataapi();
-
+    controller.loadUserFromStorage();
+    
     Timer(Duration(seconds: 5), () {
-      Navigator.pushReplacement(
+      Get.off(() => FirstScreen());
+
+      /*Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => FirstScreen()),
-      );
+      );*/
     });
   }
 

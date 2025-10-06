@@ -7,13 +7,22 @@ import 'package:atebaa/controller/dependency.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:upgrader/upgrader.dart';
 
+import 'constant/Users.dart';
 import 'controller/dio.dart';
 
 void main() async{
   DependencyInjection.init();
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(UserAdapter()); // مهم جدًا
+
+  await Hive.openBox<User>('userBox'); // افتح البوكس قبل استخدامه
+
   DioHelper.init();
   Platform.isAndroid?
   await Firebase.initializeApp(

@@ -11,7 +11,6 @@ import '../../theme/colors.dart';
 
 class SignDoctors extends StatelessWidget {
   SignDoctors({super.key});
-  bool? isChecked = false;
   var username = TextEditingController();
   var name = TextEditingController();
   var mailadd = TextEditingController();
@@ -102,8 +101,6 @@ class SignDoctors extends StatelessWidget {
                         HintText: "رقم الواتساب",
                         Scure: false,
                         controller: whatsapp),
-
-
                     Padding(
                       padding:
                       const EdgeInsets.only(left: 16, right: 16, top: 13),

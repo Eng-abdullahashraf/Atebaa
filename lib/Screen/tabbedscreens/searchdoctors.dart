@@ -1,6 +1,7 @@
 import 'package:animated_conditional_builder/animated_conditional_builder.dart';
 import 'package:atebaa/Screen/Advertisingscreen.dart';
 import 'package:atebaa/Screen/LoginScreens/LoginPage.dart';
+import 'package:atebaa/Screen/navscreens/profilescreen.dart';
 import 'package:atebaa/Screen/tabbedscreens/laboratory.dart';
 import 'package:atebaa/Screen/tabbedscreens/nursingpage.dart';
 import 'package:atebaa/Screen/tabbedscreens/pharmacypage.dart';
@@ -20,22 +21,6 @@ import '../../controller/homecontroller.dart';
 import '../../theme/colors.dart';
 import '../../component/component.dart';
 
-// class SearchDoctors extends StatelessWidget {
-//   const SearchDoctors({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: GetBuilder<homecontroller>(
-//           init: homecontroller(),
-//           builder: (controller) => AnimatedConditionalBuilder(
-//               condition: controller.loaddatapharmacy!,
-//               builder: (BuildContext context) => Container(child: Text('data'),),
-//               fallback: (BuildContext context)=>Center(child: CircularProgressIndicator())
-//           ),),
-//     );
-//   }
-// }
 Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
     stream: Connectivity().onConnectivityChanged,
     builder: (context, snapshot) {
@@ -101,9 +86,9 @@ Widget searchDoctors() => StreamBuilder<ConnectivityResult>(
                                         child: Padding(
                                           padding: const EdgeInsets.only(left: 15,right: 15),
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              IconButton(onPressed: (){Get.to(LoginPage());}, icon:Icon(Icons.login,color: Appcolor().thirdcolor,) ),
+                                              // SizedBox(child: controller.users.value!=null?IconButton(onPressed: (){Get.to(ProfileScreen());}, icon:Icon(Icons.account_circle,color: Appcolor().thirdcolor,) ):IconButton(onPressed: (){Get.to(LoginPage());}, icon:Icon(Icons.login,color: Appcolor().thirdcolor,) )),
                                               Text(
                                                 'أطباء',
                                                 style: TextStyle(

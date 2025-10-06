@@ -103,8 +103,10 @@ Widget pharmacyPage(x) => GetBuilder<homecontroller>(
                 onChanged: (value) {
                   controller.changedrop(value);
                 },
-              )),
+              )
+          ),
         ),
+        Gap(8),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),

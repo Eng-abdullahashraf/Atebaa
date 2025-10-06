@@ -19,9 +19,11 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../Screen/doctors.dart';
+import '../constant/Users.dart';
 import '../constant/addvertisingmodels.dart';
 
 class homecontroller extends GetxController {
@@ -36,6 +38,7 @@ class homecontroller extends GetxController {
     checkinternet();
     loaded();
     firstopen();
+    loadUserFromStorage();
     DioHelper.init();
   }
 
@@ -43,8 +46,7 @@ class homecontroller extends GetxController {
   //..................................................................
 
   List<Widget> Screennav = [
-    //homePage(),
-    //Homescreen(),
+
     searchDoctors(),
     Favourite(),
     Roqya(),
@@ -337,14 +339,15 @@ class homecontroller extends GetxController {
 
   List<dynamic>? dataset;
 
-  List dropCityItems = [
+  List<String> dropCityItems = [
     'اختر المدينة',
   ];
+
   String? dropCityvalue = 'اختر المدينة';
-  List dropGoverItems = ['اختر المحافظة'];
+  List<String> dropGoverItems = ['اختر المحافظة'];
   String? dropGovvalue = 'اختر المحافظة';
   List dropItems = [
-    'اختر المدينة',
+    'اختر البلد',
     'المنصورة',
     'المنزلة',
     'البصراط',
@@ -356,11 +359,12 @@ class homecontroller extends GetxController {
     'منية النصر',
     'ميت سلسيل',
   ];
-  String? dropvalue = 'اختر المدينة';
+  String? dropvalue = 'اختر البلد';
   void changcityedrop(x) {
-    dropCityvalue = x;
+    dropvalue = x;
     update();
   }
+
 
   void changgovdrop(x) {
     dropGovvalue = x;
@@ -425,10 +429,14 @@ class homecontroller extends GetxController {
   //api تسجيل الدخول
   var isLoading = false; // حالة التحميل
   var errorMessage = ''; // لتخزين رسالة الخطأ عند حدوث أي خطأ
-  var user = Map<String, dynamic>(); // لتخزين بيانات المستخدم عند تسجيل الدخول
+
+  Rxn<User> users = Rxn<User>();
+
   Future<void> login(String username, String password) async {
     isLoading = true; // بدء عملية التحميل
     errorMessage = ''; // مسح أي رسالة خطأ سابقة
+    var box = await Hive.openBox<User>('users');
+
     Map<String, dynamic> data = {
       'username': username,
       'password': password,
@@ -444,11 +452,18 @@ class homecontroller extends GetxController {
 
       // إذا كانت الاستجابة ناجحة
       if (response.statusCode == 200) {
-        user = response.data['data']; // تخزين بيانات المستخدم في الحالة
         Get.snackbar('نجاح', 'تم تسجيل الدخول بنجاح',
             snackPosition: SnackPosition.BOTTOM);
+        Get.off(ProfileScreen());
+        users.value=User.fromJson(response.data['data']);
+        if (users.value != null) {
+          await box.put('currentUser', users.value!);
+        }
+        update();
+        print(users);
       } else {
         errorMessage = response.data['message'] ?? 'حدث خطأ';
+
       }
     } catch (e) {
       errorMessage = 'حدث خطأ أثناء الاتصال بالـ API';
@@ -457,6 +472,23 @@ class homecontroller extends GetxController {
     }
   }
   //finish api
+  Future<void> loadUserFromStorage() async {
+    var box = await Hive.openBox<User>('users');
+    User? savedUser = box.get('currentUser');
+    if (savedUser != null) {
+      users.value = savedUser;
+      print('User loaded: ${savedUser.name}');
+    }
+  }
+
+  Future<void> deleteUserFromStorage() async {
+    var box = await Hive.openBox<User>('users');
+    await box.delete('currentUser');
+    users.value=null;
+    update();
+    print(users.value);
+    Get.off(FirstScreen());
+  }
 
   List<Widget> gene(context) {
     return advdata!.map((item) => carouslerImage(item, context)).toList();

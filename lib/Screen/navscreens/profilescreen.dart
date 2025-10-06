@@ -107,8 +107,7 @@ class ProfileScreen extends StatelessWidget {
                                   Gap(50),
                                   InkWell(
                                       onTap: () {
-                                        controller.logged = false;
-                                        controller.changeScreen(4);
+                                        controller.deleteUserFromStorage();
                                       },
                                       child: RowInProfile('تسجيل الخروج',
                                           Icons.logout_outlined)),

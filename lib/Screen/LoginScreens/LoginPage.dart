@@ -1,6 +1,5 @@
 import 'package:atebaa/Screen/LoginScreens/Forget%20pass.dart';
 import 'package:atebaa/Screen/LoginScreens/Signup%20page%20doctors.dart';
-import 'package:atebaa/component/component.dart';
 import 'package:atebaa/component/second%20component.dart';
 import 'package:atebaa/controller/homecontroller.dart';
 import 'package:atebaa/theme/colors.dart';
@@ -76,19 +75,45 @@ class LoginPage extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(15),
-                  child: controller.isLoading
-                      ? CircularProgressIndicator() // عرض شريط تحميل أثناء التسجيل
-                      : ElevatedButton(
-                          onPressed: () {
-                            controller.login(
-                              username.text.trim(),
-                              password.text.trim(),
-                            );
-                          },
-                          child: Text('تسجيل الدخول'),
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Appcolor().firstcolor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12)),
+                        elevation: 3,
+                      ),
+                      onPressed: controller.isLoading
+                          ? null
+                          : () {
+                        if (username.text.trim().isEmpty ||
+                            password.text.trim().isEmpty) {
+                          Get.snackbar('خطأ', 'يرجى ملء جميع الحقول',
+                              backgroundColor: Colors.red.shade100,
+                              colorText: Colors.black);
+                          return;
+                        }
+                        controller.login(
+                          username.text.trim(),
+                          password.text.trim(),
+                        );
+                      },
+                      child: controller.isLoading
+                          ? SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          color: Appcolor().thirdcolor,
+                          strokeWidth: 2,
                         ),
-
-
+                      )
+                          : Text(
+                        'تسجيل الدخول',
+                        style: TextStyle(color: Appcolor().thirdcolor),
+                      ),
+                    ),
+                  ),
                 ),
                 if (controller.errorMessage.isNotEmpty)
                   Padding(
@@ -98,7 +123,6 @@ class LoginPage extends StatelessWidget {
                       style: TextStyle(color: Colors.red),
                     ),
                   ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
